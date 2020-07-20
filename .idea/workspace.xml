@@ -641,17 +641,28 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1595209679459</updated>
+<<<<<<< HEAD
       <workItem from="1595209680659" duration="6177000" />
       <workItem from="1595229815638" duration="17533000" />
+=======
+      <workItem from="1595209680659" duration="6776000" />
+>>>>>>> ade0ebfde002eff22eea1315673c1d343cbde6dd
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="23710000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="0" />
     <editor active="true" />
+=======
+    <option name="totallyTimeSpent" value="6776000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+>>>>>>> ade0ebfde002eff22eea1315673c1d343cbde6dd
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.159375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
