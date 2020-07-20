@@ -22,4 +22,8 @@ Route::get('/admin', function () {
 Route::get('/admin_home', function () {
     return view('admin.home');
 });
-//aaaaa
+Route::prefix('admin')->group(function () {
+    Route::get('goods','Admin\GoodsController@goodsadd');
+    Route::post('do_goodsadd','Admin\GoodsController@do_goodsadd');
+    Route::get('goodslist','Admin\GoodsController@goodslist');
+});

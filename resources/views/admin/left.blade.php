@@ -55,28 +55,13 @@
                 <ul class="treeview-menu">
 
                     <li id="admin-login">
-                        <a href="brand.html" target="iframe">
-                            <i class="fa fa-circle-o"></i>品牌管理
+                        <a href="/admin/goods" target="iframe">
+                            <i class="fa fa-circle-o"></i>品牌添加
                         </a>
                     </li>
                     <li id="admin-login">
-                        <a href="specification.html" target="iframe">
-                            <i class="fa fa-circle-o"></i>规格管理
-                        </a>
-                    </li>
-                    <li id="admin-login">
-                        <a href="type_template.html" target="iframe">
-                            <i class="fa fa-circle-o"></i>模板管理
-                        </a>
-                    </li>
-                    <li id="admin-login">
-                        <a href="item_cat.html" target="iframe">
-                            <i class="fa fa-circle-o"></i>分类管理
-                        </a>
-                    </li>
-                    <li id="admin-login">
-                        <a href="goods.html" target="iframe">
-                            <i class="fa fa-circle-o"></i>商品审核
+                        <a href="/admin/goodslist" target="iframe">
+                            <i class="fa fa-circle-o"></i>品牌列表
                         </a>
                     </li>
                 </ul>
