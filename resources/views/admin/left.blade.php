@@ -19,7 +19,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu"  >
             <li class="header">菜单</li>
-            <li id="admin-index"><a href="index.html"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
+            <li id="admin-index"><a href="/admin"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
 
             <!-- 菜单 -->
             <li class="treeview">
@@ -33,7 +33,7 @@
                 <ul class="treeview-menu">
 
                     <li id="admin-login">
-                        <a href="seller_1.html" target="iframe">
+                        <a href="/admin_home" target="iframe">
                             <i class="fa fa-circle-o"></i>商家审核
                         </a>
                     </li>
