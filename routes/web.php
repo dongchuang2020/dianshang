@@ -22,3 +22,4 @@ Route::get('/admin', function () {
 Route::get('/admin_home', function () {
     return view('admin.home');
 });
+//aaaaa
