@@ -22,4 +22,12 @@ Route::get('/admin', function () {
 Route::get('/admin_home', function () {
     return view('admin.home');
 });
-//aaaaa
+
+//广告的增删改查
+Route::any("slogan/show","Admin\SloganController@show");
+Route::any("slogan/doadd","Admin\SloganController@doadd");
+Route::any("slogan/del","Admin\SloganController@del");
+Route::any("slogan/update/{id}","Admin\SloganController@update");
+Route::any("slogan/updatedo","Admin\SloganController@updatedo");
+//角色的增删改查
+Route::any("role/role","Admin\SloganController@role");
