@@ -28,8 +28,49 @@ class GoodsController extends Controller
         }
     }
     public function goodslist(){
-        $res = GoodsModel::all();
+        $where = [
+            'is_del'    => 1,
+        ];
+        $res = GoodsModel::where($where)->paginate(2);
         return view('admin.goods.list',['data'=>$res]);
+    }
+    public function delgoods(Request $request){
+        $goods_id = $request -> goods_id;
+        $where = [
+            'goods_id'  => $goods_id
+        ];
+        $res = GoodsModel::where($where)->update(['is_del'=>2]);
+        if($res){
+            return $this->message('00001','成功');
+        }else{
+            return $this->message('00002','失败');
+        }
+    }
+    public function upgoods($id ){
+        $where = [
+            'goods_id'  => $id
+        ];
+        $res = GoodsModel::where($where)->first();
+        return view('admin.goods.upgoods',['data'=>$res]);
+    }
+    public function do_upgoods( Request $request ){
+        $data = [];
+//        $goods_id = $request ->post("goods_id");
+        $data = $request -> all();
+        $fileinfo=$_FILES["goods_log"];
+        $goods_log = $this -> checkimg($fileinfo);
+        $data['goods_log'] = $goods_log;
+        $data['add_time'] = time();
+        $where = [
+            'goods_id'  => $data['goods_id']
+        ];
+
+        $res = GoodsModel::where($where)->update($data);
+        if($res){
+            echo "<script>alert('修改成功');location='/admin/goodslist'</script>";
+        }else{
+            echo "<script>alert('修改成功');location='/admin/goodslist'</script>";
+        }
     }
     public function checkimg($fileinfo){
         $tmp_name=$fileinfo["tmp_name"];//上传文件临时名字

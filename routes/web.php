@@ -26,4 +26,7 @@ Route::prefix('admin')->group(function () {
     Route::get('goods','Admin\GoodsController@goodsadd');
     Route::post('do_goodsadd','Admin\GoodsController@do_goodsadd');
     Route::get('goodslist','Admin\GoodsController@goodslist');
+    Route::get('delgoods','Admin\GoodsController@delgoods');
+    Route::get('/upgoods/{id}','Admin\GoodsController@upgoods');
+    Route::post('/do_upgoods','Admin\GoodsController@do_upgoods');
 });
