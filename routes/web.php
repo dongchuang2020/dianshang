@@ -22,4 +22,15 @@ Route::get('/admin', function () {
 Route::get('/admin_home', function () {
     return view('admin.home');
 });
-//aaaaa
+
+Route::prefix('admin')->group(function (){
+    Route::get('pipe_add', function () {
+        return view('admin.pipe.pipe_add');
+    });
+    Route::any("pipe_log",function (){
+        return view('admin.pipe.pipe_log');
+    });
+    Route::any('pipe_adds','PipeController@pipe_adds');
+    Route::any('pipe_zhan','PipeController@pipe_zhan');
+    Route::any('pipe_zhan','PipeController@pipe_');
+});

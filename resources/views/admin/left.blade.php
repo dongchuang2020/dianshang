@@ -25,7 +25,7 @@
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
-                    <span>商家管理</span>
+                    <span>管理员</span>
                     <span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				   		 	</span>
@@ -33,13 +33,13 @@
                 <ul class="treeview-menu">
 
                     <li id="admin-login">
-                        <a href="/admin_home" target="iframe">
-                            <i class="fa fa-circle-o"></i>商家审核
+                        <a href="/admin/pipe_add" target="iframe">
+                            <i class="fa fa-circle-o"></i>管理员添加
                         </a>
                     </li>
                     <li id="admin-login">
-                        <a href="seller.html" target="iframe">
-                            <i class="fa fa-circle-o"></i>商家管理
+                        <a href="/admin/pipe_zhan" target="iframe">
+                            <i class="fa fa-circle-o"></i>管理员展示
                         </a>
                     </li>
                 </ul>
