@@ -22,7 +22,6 @@ Route::get('/admin', function () {
 Route::get('/admin_home', function () {
     return view('admin.home');
 });
-
 Route::prefix('admin')->group(function (){
     Route::get('pipe_add', function () {
         return view('admin.pipe.pipe_add');
