@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ChmodModel extends Model
+class Slogan extends Model
 {
-    protected $table="chmod";
-    protected $primaryKey="chmod_id";
+    protected $table="slogan";
+    protected $primaryKey="slogan_id";
     public $timestamps=false;
 }

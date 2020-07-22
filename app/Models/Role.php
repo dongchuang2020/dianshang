@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ChmodModel extends Model
+class Role extends Model
 {
-    protected $table="chmod";
-    protected $primaryKey="chmod_id";
+    protected $table="role";
+    protected $primaryKey="role_id";
     public $timestamps=false;
 }
