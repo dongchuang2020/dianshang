@@ -97,15 +97,25 @@
 				   		 	</span>
                 </a>
                 <ul class="treeview-menu">
-
                     <li id="admin-login">
-                        <a href="content_category.html" target="iframe">
-                            <i class="fa fa-circle-o"></i>广告类型管理
+                        <a href="slogan/show" target="iframe">
+                            <i class="fa fa-circle-o"></i>展示
                         </a>
                     </li>
+                </ul>
+            </li>
+             <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>角色管理</span>
+                    <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
                     <li id="admin-login">
-                        <a href="content.html" target="iframe">
-                            <i class="fa fa-circle-o"></i>广告管理
+                        <a href="role/show" target="iframe">
+                            <i class="fa fa-circle-o"></i>展示
                         </a>
                     </li>
                 </ul>
