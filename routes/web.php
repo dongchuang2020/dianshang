@@ -51,6 +51,10 @@ Route::prefix('admin')->group(function (){
     Route::any('pipe_xui','PipeController@pipe_xui');
     Route::any('pipe_logs','PipeController@pipe_logs');
 });
+//给用户赋角色
+Route::any("pipe/adminrole_add/{id}","PipeController@adminrole_add");
+Route::any("pipe/adminrole_doadd","PipeController@adminrole_doadd");
+
 Route::prefix('admins')->group(function () {
     //商品
     Route::get('goods','Admin\GoodsController@goodsadd');
