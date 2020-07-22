@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 class GoodsController extends Controller
 {
+    //商品添加页面
     public function goodsadd(){
         return view('admin.goods.add');
     }
+    //执行商品添加
     public function do_goodsadd(Request $request){
         $data = [];
         $data = $request -> all();
@@ -27,6 +29,7 @@ class GoodsController extends Controller
             echo "<script>alert('添加成功');location='/admin/goods'</script>";
         }
     }
+    //商品列表
     public function goodslist(){
         $where = [
             'is_del'    => 1,
@@ -34,6 +37,7 @@ class GoodsController extends Controller
         $res = GoodsModel::where($where)->paginate(2);
         return view('admin.goods.list',['data'=>$res]);
     }
+    //商品删除
     public function delgoods(Request $request){
         $goods_id = $request -> goods_id;
         $where = [
@@ -46,6 +50,7 @@ class GoodsController extends Controller
             return $this->message('00002','失败');
         }
     }
+    //商品修改
     public function upgoods($id ){
         $where = [
             'goods_id'  => $id
@@ -53,6 +58,7 @@ class GoodsController extends Controller
         $res = GoodsModel::where($where)->first();
         return view('admin.goods.upgoods',['data'=>$res]);
     }
+    //执行修改
     public function do_upgoods( Request $request ){
         $data = [];
 //        $goods_id = $request ->post("goods_id");
@@ -72,6 +78,7 @@ class GoodsController extends Controller
             echo "<script>alert('修改成功');location='/admin/goodslist'</script>";
         }
     }
+    //检测文件上传
     public function checkimg($fileinfo){
         $tmp_name=$fileinfo["tmp_name"];//上传文件临时名字
         $ext=explode(".",$fileinfo["name"])[1];//文件扩展名
@@ -92,5 +99,4 @@ class GoodsController extends Controller
             'data'  => $data
         ];
     }
-
 }

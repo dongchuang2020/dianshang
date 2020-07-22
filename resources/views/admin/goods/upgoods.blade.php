@@ -127,7 +127,7 @@
             </div>
         @endif
     </div>
-    <button class="btn btn-success">提交</button>
+    <button class="btn btn-success">修改</button>
 </form>
 </body>
 </html>
