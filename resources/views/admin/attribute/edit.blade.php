@@ -27,7 +27,7 @@
                     <table class="table table-bordered table-striped" >
                         <tr>
                             <td>属性名称</td>
-                            <td width="450"><input type="text" value="{{$res->a_name}}" id="a_name"  class="form-control" placeholder="属性名称"  ng-model="entity.title">  </td>
+                            <td width="450"><input type="text" value="{{$res->a_name}}" id="a_name"    class="form-control" placeholder="属性名称"  ng-model="entity.title">  </td>
                         </tr>
                         <tr>
                             <td>

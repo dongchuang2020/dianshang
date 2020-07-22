@@ -56,6 +56,10 @@ Route::any("role/updatedo","Admin\RoleController@updatedo");
 Route::any("role/rolechmod_add/{id}","Admin\RoleController@rolechmod_add");
 Route::any("role/rolechmod_add_do","Admin\RoleController@rolechmod_add_do");
 Route::any("role/role","Admin\SloganController@role");
+Route::any("cate/add_do","Admin\CateController@add_do");
+Route::any("cate/del","Admin\CateController@del");
+Route::any("cate/add","Admin\CateController@add");
+Route::any("cate/index","Admin\CateController@index");
 
 Route::prefix('admin')->group(function (){
     Route::get('pipe_add', function () {
@@ -69,6 +73,10 @@ Route::prefix('admin')->group(function (){
     Route::any('pipe_xui','PipeController@pipe_xui');
     Route::any('pipe_logs','PipeController@pipe_logs');
 });
+//给用户赋角色
+Route::any("pipe/adminrole_add/{id}","PipeController@adminrole_add");
+Route::any("pipe/adminrole_doadd","PipeController@adminrole_doadd");
+
 Route::prefix('admins')->group(function () {
     //商品
     Route::get('goods','Admin\GoodsController@goodsadd');
@@ -81,6 +89,13 @@ Route::prefix('admins')->group(function () {
     Route::get('area','Admin\AreaController@area');
     Route::any('getcity','Admin\AreaController@city');
     Route::any('getarea','Admin\AreaController@getarea');
+    //sku
+    Route::any('/addsku','Admin\SkuController@addsku');
+    Route::any('/do_addsku','Admin\SkuController@do_addsku');
+    Route::any('/skulist','Admin\SkuController@skulist');
+    Route::any('/delsku','Admin\SkuController@del');
+    Route::any('/upsku/{id}','Admin\SkuController@upsku');
+    Route::any('/do_upsku','Admin\SkuController@do_upsku');
 });
 
 #SKU属性值
@@ -91,3 +106,4 @@ Route::prefix('attribute')->group(function(){
     Route::any('edit/{id}','admin\AttrController@edit');
     Route::post('update','admin\AttrController@update');
 });
+

@@ -8,12 +8,12 @@
     <title>商家审核</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="/admin/plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/admin/plugins/adminLTE/css/AdminLTE.css">
-    <link rel="stylesheet" href="/admin/plugins/adminLTE/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="/admin/css/style.css">
-    <script src="/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
-    <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/front/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/front/plugins/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet" href="/front/plugins/adminLTE/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="/front/css/style.css">
+    <script src="/front/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="/front/plugins/bootstrap/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -33,11 +33,10 @@
             <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
                 <thead>
                 <tr>
-                    <th class="" style="padding-right:0px">
-                        <input id="selall" type="checkbox" class="icheckbox_square-blue">
-                    </th>
                     <th class="sorting_asc">商品id</th>
                     <th class="sorting">商品名称</th>
+                    <th class="sorting">品牌名称</th>
+                    <th class="sorting">属性名</th>
                     <th class="sorting">商品价格</th>
                     <th class="sorting">商品图片</th>
                     <th class="sorting">商品数量</th>
@@ -52,9 +51,10 @@
                 <tbody>
                 @foreach($data as $v)
                 <tr goods_id="{{$v->goods_id}}">
-                    <td><input  type="checkbox"></td>
                     <td>{{$v->goods_id}}</td>
                     <td>{{$v->goods_name}}</td>
+                    <td>{{$v->brand_name}}</td>
+                    <td>{{$v->name}}</td>
                     <td>{{$v->goods_price}}</td>
                     <td><img src="{{$v->goods_log}}" alt="" width="100px" height="120px"></td>
                     <td>{{$v->goods_num}}</td>
@@ -66,7 +66,7 @@
                     <td data-goods_id="{{$v->goods_id}}">
                     <td class="text-center">
                         <a href="#" class="btn btn-info" role="button" id="btn" >删除</a>
-                        <a href="{{url('/admin/upgoods/'.$v->goods_id)}}" class="btn btn-info" role="button">修改</a>
+                        <a href="{{url('/admins/upgoods/'.$v->goods_id)}}" class="btn btn-info" role="button">修改</a>
                     </td>
                 </tr>
                 @endforeach
@@ -93,7 +93,7 @@
             success:function (res) {
                 if(res.code=='00001'){
                     alert(res.msg)
-                    window.location.href = '/admin/goodslist';
+                    window.location.href = '/admins/goodslist';
                 }
             }
         })

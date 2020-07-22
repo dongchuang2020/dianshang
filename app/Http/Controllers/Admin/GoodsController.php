@@ -11,7 +11,9 @@ class GoodsController extends Controller
 {
     //商品添加页面
     public function goodsadd(){
-        return view('admin.goods.add');
+        $brand_info = DB::table('shop_brand')->get();
+        $sku_name = DB::table('sku_name')->get();
+        return view('admin.goods.add',['brand_info'=>$brand_info,'sku_name'=>$sku_name]);
     }
     //执行商品添加
     public function do_goodsadd(Request $request){
@@ -24,17 +26,22 @@ class GoodsController extends Controller
         $data['add_time'] = time();
         $res = GoodsModel::insert($data);
         if($res){
-            echo "<script>alert('添加成功');location='/admin/goodslist'</script>";
+            echo "<script>alert('添加成功');location='/admins/goodslist'</script>";
         }else{
-            echo "<script>alert('添加成功');location='/admin/goods'</script>";
+            echo "<script>alert('添加成功');location='/admins/goods'</script>";
         }
     }
     //商品列表
     public function goodslist(){
         $where = [
-            'is_del'    => 1,
+            'sku_name.is_del'    => 1,
+            'goods.is_del'  =>1
         ];
-        $res = GoodsModel::where($where)->paginate(2);
+        $res = GoodsModel::leftjoin("shop_brand","goods.brand_id","=","shop_brand.brand_id")
+            ->leftjoin("sku_name","goods.sid","=","sku_name.sid")
+            ->where($where)
+            ->paginate(2);
+//        var_dump($res);die;
         return view('admin.goods.list',['data'=>$res]);
     }
     //商品删除
@@ -55,8 +62,10 @@ class GoodsController extends Controller
         $where = [
             'goods_id'  => $id
         ];
+        $brand_info = DB::table('shop_brand')->get();
+        $sku_name = DB::table('sku_name')->get();
         $res = GoodsModel::where($where)->first();
-        return view('admin.goods.upgoods',['data'=>$res]);
+        return view('admin.goods.upgoods',['data'=>$res,'brand_info'=>$brand_info,'sku_name'=>$sku_name]);
     }
     //执行修改
     public function do_upgoods( Request $request ){
@@ -73,9 +82,9 @@ class GoodsController extends Controller
 
         $res = GoodsModel::where($where)->update($data);
         if($res){
-            echo "<script>alert('修改成功');location='/admin/goodslist'</script>";
+            echo "<script>alert('修改成功');location='/admins/goodslist'</script>";
         }else{
-            echo "<script>alert('修改成功');location='/admin/goodslist'</script>";
+            echo "<script>alert('修改成功');location='/admins/goodslist'</script>";
         }
     }
     //检测文件上传

@@ -13,27 +13,43 @@
     <script src="/front/plugins/jQuery/jquery-2.2.3.min.js"></script>
 </head>
 <body>
-<form action="{{url('/admin/do_goodsadd')}}" method="post" enctype="multipart/form-data">
+<form action="{{url('/admins/do_goodsadd')}}" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="email" class="text-primary">商品名称</label>
-        <input type="text" class="form-control" name="goods_name">
+        <input type="text" class="form-control" name="goods_name" style="width:200px">
+    </div>
+    <div class="form-group">
+        <h6 class="text-primary">商品品牌</h6><select name="brand_id" id="" class="text-primary" >
+            <option value="">--请选择--</option>
+            @foreach($brand_info as $v)
+            <option value="{{$v->brand_id}}" class="form-control">{{$v->brand_name}}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="form-group">
+        <h6 class="text-primary">商品属性名</h6><select name="sid" class="text-primary">
+            <option value="">--请选择--</option>
+            @foreach($sku_name as  $kk=>$vv)
+                <option value="{{$vv->sid}}" class="form-control">{{$vv->name}}</option>
+            @endforeach
+        </select>
     </div>
     <div class="form-group">
         <label for="pwd" class="text-primary">商品价格</label>
-        <input type="text" class="form-control" name="goods_price">
+        <input type="text" class="form-control" name="goods_price" style="width:200px">
     </div>
     <div class="form-group">
         <label for="pwd" class="text-primary">商品数量</label>
-        <input type="text" class="form-control" name="goods_num">
+        <input type="text" class="form-control" name="goods_num" style="width:200px">
     </div>
 
     <div class="form-group">
         <label for="exampleFormControlFile1" class="text-primary">商品图片</label>
-        <input type="file" class="form-control-file" name="goods_log">
+        <input type="file" class="form-control-file" name="goods_log" >
     </div>
     <div class="form-group">
         <label for="exampleFormControlTextarea1" class="text-primary">商品描述</label>
-        <textarea class="form-control" name="goods_desc" rows="3"></textarea>
+        <textarea class="form-control" name="goods_desc" rows="3" style="width:200px"></textarea>
     </div>
     <label for="email" class="text-primary">是否展示</label>
     <div class="input-group mb-3">
