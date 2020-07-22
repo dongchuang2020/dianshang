@@ -56,14 +56,8 @@
 
                     <li id="admin-login">
 
-                        <a href="/brand/index" target="iframe">
-                            <i class="fa fa-circle-o"></i>品牌管理
-                        </a>>
-
                         <a href="/admins/goods" target="iframe">
                             <i class="fa fa-circle-o"></i>商品添加
-
-
                         </a>
                     </li>
                     <li id="admin-login">
@@ -75,6 +69,24 @@
 
                         </a>
                     </li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>品牌管理</span>
+                    <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li id="admin-login">
+
+                        <a href="/brand/index" target="iframe">
+                            <i class="fa fa-circle-o"></i>品牌展示
+                        </a>
+
                 </ul>
             </li>
             <li class="treeview">
@@ -98,30 +110,6 @@
                             <i class="fa fa-circle-o"></i>分类展示
 
 
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-folder"></i>
-                    <span>sku属性名管理</span>
-                    <span class="pull-right-container">
-				       			<i class="fa fa-angle-left pull-right"></i>
-				   		 	</span>
-                </a>
-                <ul class="treeview-menu">
-
-                    <li id="admin-login">
-                        <a href="/admins/addsku" target="iframe">
-                            <i class="fa fa-circle-o"></i>属性名添加
-                        </a>
-                    </li>
-                    <li id="admin-login">
-                        <a href="/admins/skulist" target="iframe">
-                            <i class="fa fa-circle-o"></i>sku列表
                         </a>
                     </li>
                 </ul>
@@ -188,8 +176,21 @@
                 <ul class="treeview-menu">
 
                     <li id="admin-login">
+                        <a href="/admins/addsku" target="iframe">
+                            <i class="fa fa-circle-o"></i>属性名添加
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="/admins/skulist" target="iframe">
+                            <i class="fa fa-circle-o"></i>属性名展示
+                        </a>
+                    </li>
+                </ul>
+                <ul class="treeview-menu">
+
+                    <li id="admin-login">
                         <a href="/attribute/index" target="iframe">
-                            <i class="fa fa-circle-o"></i>属性管理
+                            <i class="fa fa-circle-o"></i>属性值管理
                         </a>
                     </li>
                 </ul>
