@@ -169,7 +169,7 @@
 					url:url,
 					data:data,
 					dataType:"json",
-					success:functio	n(res){
+					success:function(res){
 						if(res.success=="true"){
 							location.href=res.url;
 						}
