@@ -27,10 +27,10 @@
         </select>
     </div>
     <div class="form-group">
-        <h6 class="text-primary">商品属性名</h6><select name="sid" id="" class="text-primary">
+        <h6 class="text-primary">商品属性名</h6><select name="sid" class="text-primary">
             <option value="">--请选择--</option>
-            @foreach($sku_name as $v)
-                <option value="{{$v->sid}}" class="form-control">{{$v->name}}</option>
+            @foreach($sku_name as  $kk=>$vv)
+                <option value="{{$vv->sid}}" class="form-control">{{$vv->name}}</option>
             @endforeach
         </select>
     </div>

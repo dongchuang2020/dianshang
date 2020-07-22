@@ -34,13 +34,14 @@ class GoodsController extends Controller
     //商品列表
     public function goodslist(){
         $where = [
-            'is_del'    => 1,
+            'sku_name.is_del'    => 1,
+            'goods.is_del'  =>1
         ];
         $res = GoodsModel::leftjoin("shop_brand","goods.brand_id","=","shop_brand.brand_id")
-//            ->leftjoin("sku_name","goods.sid","=","sku_name.sid")
+            ->leftjoin("sku_name","goods.sid","=","sku_name.sid")
             ->where($where)
             ->paginate(2);
-
+//        var_dump($res);die;
         return view('admin.goods.list',['data'=>$res]);
     }
     //商品删除
@@ -61,9 +62,10 @@ class GoodsController extends Controller
         $where = [
             'goods_id'  => $id
         ];
+        $brand_info = DB::table('shop_brand')->get();
+        $sku_name = DB::table('sku_name')->get();
         $res = GoodsModel::where($where)->first();
-
-        return view('admin.goods.upgoods',['data'=>$res]);
+        return view('admin.goods.upgoods',['data'=>$res,'brand_info'=>$brand_info,'sku_name'=>$sku_name]);
     }
     //执行修改
     public function do_upgoods( Request $request ){

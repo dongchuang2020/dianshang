@@ -22,6 +22,22 @@
         <input type="text" class="form-control" name="goods_name" value="{{$data->goods_name}}" style="width:200px">
     </div>
     <div class="form-group">
+        <h6 class="text-primary">商品品牌</h6><select name="brand_id" id="" class="text-primary" >
+            <option value="">--请选择--</option>
+            @foreach($brand_info as $v)
+                <option value="{{$v->brand_id}}" @if($v->brand_id==$data->brand_id) selected @endif class="form-control">{{$v->brand_name}}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="form-group">
+        <h6 class="text-primary">商品属性名</h6><select name="sid" class="text-primary">
+            <option value="">--请选择--</option>
+            @foreach($sku_name as  $kk=>$vv)
+                <option value="{{$vv->sid}}" @if($vv->sid==$data->sid) selected @endif class="form-control">{{$vv->name}}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="form-group">
         <label for="pwd" class="text-primary">商品价格</label>
         <input type="text" class="form-control" name="goods_price" value="{{$data->goods_price}}" style="width:200px">
     </div>
