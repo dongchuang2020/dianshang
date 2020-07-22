@@ -77,7 +77,7 @@
 		                                  <td class="text-center"  >
 		                                  <!-- <button type="button" class="btn bg-olive btn-xs" title="新建" data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i> 修改</button> -->                                           
 		                                 <a href="{{url('slogan/update/'.$v->slogan_id)}}" class="btn bg-olive btn-xs">修改</a>
-		                                 <button type="button" id="del"  class="btn bg-olive btn-xs">删除</button>                                           
+		                                 <button type="button" id="del"  class="btn bg-olive btn-xs">删除</button>
 		                                  </td>
 			                          </tr>
 			                          @endforeach

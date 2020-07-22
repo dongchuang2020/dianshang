@@ -38,6 +38,14 @@
         </select>
     </div>
     <div class="form-group">
+        <h6 class="text-primary">商品属性值</h6><select name="a_id" class="text-primary">
+            <option value="">--请选择--</option>
+            @foreach($attr_info as  $key=>$val)
+                <option value="{{$val->a_id}}" @if($val->a_id==$data->a_id) selected @endif class="form-control">{{$val->a_name}}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="form-group">
         <h6 class="text-primary">商品分类</h6><select name="cate_id" class="text-primary">
             <option value="">--请选择--</option>
             @foreach($cate_info as  $kkk=>$vvv)

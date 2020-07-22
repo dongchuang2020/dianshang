@@ -38,6 +38,7 @@
                     <th class="sorting">品牌名称</th>
                     <th class="sorting">分类名称</th>
                     <th class="sorting">属性名</th>
+                    <th class="sorting">属性值</th>
                     <th class="sorting">商品价格</th>
                     <th class="sorting">商品图片</th>
                     <th class="sorting">商品数量</th>
@@ -57,6 +58,7 @@
                     <td>{{$v->brand_name}}</td>
                     <td>{{$v->cate_name}}</td>
                     <td>{{$v->name}}</td>
+                    <td>{{$v->a_name}}</td>
                     <td>{{$v->goods_price}}</td>
                     <td><img src="{{$v->goods_log}}" alt="" width="100px" height="120px"></td>
                     <td>{{$v->goods_num}}</td>

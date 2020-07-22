@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/front/plugins/adminLTE/css/AdminLTE.css">
     <link rel="stylesheet" href="/front/plugins/adminLTE/css/skins/_all-skins.min.css">
     <link rel="stylesheet" href="/front/css/style.css">
-	<script src="/front/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="/front/js/jquery.min.js"></script>
     <script src="/front/plugins/bootstrap/js/bootstrap.min.js"></script>
     
 </head>
@@ -42,11 +42,10 @@
         </form>
 </div>
 </center>
-<script src='/jquery.js'></script>
 <script>
     $(document).ready(function(){
         $(document).on("click","#btn",function(){
-            // alert(1);return;
+
             var str='';
             $("input[name='role_id']:checked").each(function(){
                 str+=$(this).val()+',';

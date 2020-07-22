@@ -97,3 +97,13 @@ Route::prefix('admins')->group(function () {
     Route::any('/upsku/{id}','Admin\SkuController@upsku');
     Route::any('/do_upsku','Admin\SkuController@do_upsku');
 });
+
+#SKU属性值
+Route::prefix('attribute')->group(function(){
+    Route::get('index','admin\AttrController@index');
+    Route::post('add_do','admin\AttrController@add_do');
+    Route::get('del/{id}','admin\AttrController@del');
+    Route::any('edit/{id}','admin\AttrController@edit');
+    Route::post('update','admin\AttrController@update');
+});
+
