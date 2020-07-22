@@ -23,6 +23,7 @@ Route::get('/admin_home', function () {
     return view('admin.home');
 });
 
+
 #后台品牌
 Route::prefix('brand')->group(function(){
     Route::get('/index','admin\BrandController@index');
@@ -39,6 +40,7 @@ Route::prefix('chmod')->group(function(){
     Route::any('/edit/{id}','admin\ChmodController@edit');
     Route::post('/update','admin\ChmodController@update');
 });
+
 //广告的增删改查
 Route::any("slogan/show","Admin\SloganController@show");
 Route::any("slogan/doadd","Admin\SloganController@doadd");
@@ -54,6 +56,10 @@ Route::any("role/updatedo","Admin\RoleController@updatedo");
 Route::any("role/rolechmod_add/{id}","Admin\RoleController@rolechmod_add");
 Route::any("role/rolechmod_add_do","Admin\RoleController@rolechmod_add_do");
 Route::any("role/role","Admin\SloganController@role");
+Route::any("cate/add_do","Admin\CateController@add_do");
+Route::any("cate/del","Admin\CateController@del");
+Route::any("cate/add","Admin\CateController@add");
+Route::any("cate/index","Admin\CateController@index");
 
 Route::prefix('admin')->group(function (){
     Route::get('pipe_add', function () {

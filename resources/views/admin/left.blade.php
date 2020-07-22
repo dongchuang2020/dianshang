@@ -55,18 +55,45 @@
                 <ul class="treeview-menu">
 
                     <li id="admin-login">
+
+                        <a href="/brand/index" target="iframe">
+                            <i class="fa fa-circle-o"></i>品牌管理
+
                         <a href="/admins/goods" target="iframe">
-                            <i class="fa fa-circle-o"></i>品牌添加
+                            <i class="fa fa-circle-o"></i>商品添加
+
                         </a>
                     </li>
                     <li id="admin-login">
                         <a href="/admins/goodslist" target="iframe">
-                            <i class="fa fa-circle-o"></i>品牌列表
+                            <i class="fa fa-circle-o"></i>商品列表
                         </a>
                     </li>
                 </ul>
             </li>
-
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>分类管理</span>
+                    <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+                </a>
+                <ul class="treeview-menu">
+                    <li id="admin-login">
+                        <a href="cate/add" target="iframe">
+                            <i class="fa fa-circle-o"></i>分类添加
+                        </a>
+                    </li>
+                </ul>
+                <ul class="treeview-menu">
+                    <li id="admin-login">
+                        <a href="cate/index" target="iframe">
+                            <i class="fa fa-circle-o"></i>分类展示
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
