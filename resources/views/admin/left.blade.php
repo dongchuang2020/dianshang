@@ -58,23 +58,21 @@
 
                         <a href="/brand/index" target="iframe">
                             <i class="fa fa-circle-o"></i>品牌管理
+                        </a>>
 
                         <a href="/admins/goods" target="iframe">
                             <i class="fa fa-circle-o"></i>商品添加
-<<<<<<< HEAD
-=======
 
->>>>>>> ec9d9b4d9c2f7cbfeacd5f2cd064d24f803fb776
+
                         </a>
                     </li>
                     <li id="admin-login">
                         <a href="/admins/goodslist" target="iframe">
                             <i class="fa fa-circle-o"></i>商品列表
-<<<<<<< HEAD
-=======
 
 
->>>>>>> ec9d9b4d9c2f7cbfeacd5f2cd064d24f803fb776
+
+
                         </a>
                     </li>
                 </ul>
@@ -98,18 +96,14 @@
                     <li id="admin-login">
                         <a href="cate/index" target="iframe">
                             <i class="fa fa-circle-o"></i>分类展示
-<<<<<<< HEAD
-=======
 
->>>>>>> ec9d9b4d9c2f7cbfeacd5f2cd064d24f803fb776
+
                         </a>
                     </li>
                 </ul>
             </li>
-<<<<<<< HEAD
-=======
 
->>>>>>> ec9d9b4d9c2f7cbfeacd5f2cd064d24f803fb776
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
@@ -132,10 +126,8 @@
                     </li>
                 </ul>
             </li>
-<<<<<<< HEAD
-=======
 
->>>>>>> ec9d9b4d9c2f7cbfeacd5f2cd064d24f803fb776
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
