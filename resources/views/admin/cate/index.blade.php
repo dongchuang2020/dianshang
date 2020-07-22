@@ -104,6 +104,5 @@
                      </div>
                     <!-- /.box-body -->		
 <!-- 广告添加窗口 -->
-<!-- <form action="{{url('cate/index')}}" method="post" enctype="multipart-form"> -->
 </body>
 </html>

@@ -41,7 +41,6 @@
     </div>
         </form>
 </div>
-</div>
 </center>
 <script src='/jquery.js'></script>
 <script>
@@ -75,3 +74,4 @@
         });
     });
 </script>
+</html>
