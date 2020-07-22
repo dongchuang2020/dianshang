@@ -23,7 +23,7 @@ Route::get('/admin_home', function () {
     return view('admin.home');
 });
 
-<<<<<<< HEAD
+
 #后台品牌
 Route::prefix('brand')->group(function(){
     Route::get('/index','admin\BrandController@index');
@@ -40,7 +40,7 @@ Route::prefix('chmod')->group(function(){
     Route::any('/edit/{id}','admin\ChmodController@edit');
     Route::post('/update','admin\ChmodController@update');
 });
-=======
+
 //广告的增删改查
 Route::any("slogan/show","Admin\SloganController@show");
 Route::any("slogan/doadd","Admin\SloganController@doadd");
@@ -82,4 +82,9 @@ Route::prefix('admins')->group(function () {
     Route::any('getcity','Admin\AreaController@city');
     Route::any('getarea','Admin\AreaController@getarea');
 });
->>>>>>> b4cda1a9b6e873c3304fc36e44c98e255da6ed7e
+//品牌的增删改查
+Route::any("cate/add","Admin\CateController@add");//添加
+Route::any("cate/add_do","Admin\CateController@add_do");//添加执行
+Route::any("cate/index","Admin\CateController@index");//展示
+Route::any("cate/del/{cate_id}","Admin\CateController@del");//删除
+

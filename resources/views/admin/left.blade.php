@@ -19,13 +19,16 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu"  >
             <li class="header">菜单</li>
-            <li id="admin-index"><a href="/admin"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
+<
+            <li id="admin-index"><a href=""><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
+
 
             <!-- 菜单 -->
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
                     <span>管理员</span>
+                    <span>品牌管理</span>
                     <span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				   		 	</span>
@@ -40,6 +43,13 @@
                     <li id="admin-login">
                         <a href="/admin/pipe_zhan" target="iframe">
                             <i class="fa fa-circle-o"></i>管理员展示
+                        <a href="cate/add" target="iframe">
+                            <i class="fa fa-circle-o"></i>分类添加
+                        </a>
+                    </li>
+                    <li id="admin-login">
+                        <a href="cate/index" target="iframe">
+                            <i class="fa fa-circle-o"></i>分类展示
                         </a>
                     </li>
                 </ul>
@@ -77,8 +87,13 @@
                 </a>
                 <ul class="treeview-menu">
                     <li id="admin-login">
+
                         <a href="slogan/show" target="iframe">
                             <i class="fa fa-circle-o"></i>展示
+
+                        <a href="/cateadd" target="iframe">
+                            <i class="fa fa-circle-o"></i>分类管理
+
                         </a>
                     </li>
                 </ul>
