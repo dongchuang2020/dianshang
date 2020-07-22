@@ -55,8 +55,13 @@
                 <ul class="treeview-menu">
 
                     <li id="admin-login">
+
+                        <a href="/brand/index" target="iframe">
+                            <i class="fa fa-circle-o"></i>品牌管理
+
                         <a href="/admins/goods" target="iframe">
                             <i class="fa fa-circle-o"></i>品牌添加
+
                         </a>
                     </li>
                     <li id="admin-login">
