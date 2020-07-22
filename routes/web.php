@@ -63,4 +63,11 @@ Route::prefix('admins')->group(function () {
     Route::get('area','Admin\AreaController@area');
     Route::any('getcity','Admin\AreaController@city');
     Route::any('getarea','Admin\AreaController@getarea');
+    //sku
+    Route::any('/addsku','Admin\SkuController@addsku');
+    Route::any('/do_addsku','Admin\SkuController@do_addsku');
+    Route::any('/skulist','Admin\SkuController@skulist');
+    Route::any('/delsku','Admin\SkuController@del');
+    Route::any('/upsku/{id}','Admin\SkuController@upsku');
+    Route::any('/do_upsku','Admin\SkuController@do_upsku');
 });

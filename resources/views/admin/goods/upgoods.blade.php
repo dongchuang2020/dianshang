@@ -13,31 +13,31 @@
     <script src="/front/plugins/jQuery/jquery-2.2.3.min.js"></script>
 </head>
 <body>
-<form action="{{url('/admin/do_upgoods')}}" method="post" enctype="multipart/form-data">
+<form action="{{url('/admins/do_upgoods')}}" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <input type="hidden" value="{{$data->goods_id}}" name="goods_id">
     </div>
     <div class="form-group">
         <label for="email" class="text-primary">商品名称</label>
-        <input type="text" class="form-control" name="goods_name" value="{{$data->goods_name}}">
+        <input type="text" class="form-control" name="goods_name" value="{{$data->goods_name}}" style="width:200px">
     </div>
     <div class="form-group">
         <label for="pwd" class="text-primary">商品价格</label>
-        <input type="text" class="form-control" name="goods_price" value="{{$data->goods_price}}">
+        <input type="text" class="form-control" name="goods_price" value="{{$data->goods_price}}" style="width:200px">
     </div>
     <div class="form-group">
         <label for="pwd" class="text-primary">商品数量</label>
-        <input type="text" class="form-control" name="goods_num" value="{{$data->goods_num}}">
+        <input type="text" class="form-control" name="goods_num" value="{{$data->goods_num}}" style="width:200px">
     </div>
 
     <div class="form-group">
         <label for="exampleFormControlFile1" class="text-primary">商品图片</label>
         <input type="file" class="form-control-file" name="goods_log">
-        <td><img src="{{$data->goods_log}}" alt="" width="100px" height="120px"></td>
+        <td><img src="{{$data->goods_log}}" alt="" width="100px" height="120px" ></td>
     </div>
     <div class="form-group">
         <label for="exampleFormControlTextarea1" class="text-primary">商品描述</label>
-        <textarea class="form-control" name="goods_desc" rows="3">{{$data->goods_desc}}</textarea>
+        <textarea class="form-control" name="goods_desc" rows="3" style="width:200px">{{$data->goods_desc}}</textarea>
     </div>
     <label for="email" class="text-primary">是否展示</label>
     <div class="input-group mb-3">

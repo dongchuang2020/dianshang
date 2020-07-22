@@ -33,7 +33,40 @@ class SkuController extends Controller
         ];
     }
     public function skulist(){
-        $res = SkuModel::get()->toArray();
-        
+        $where = ['is_del'=>1];
+        $res = SkuModel::where($where)->get()->toArray();
+        return view('admin.sku.list',['data'=>$res]);
+    }
+    public function del(Request $request){
+        $id = $request -> id;
+
+        $where = [
+            'sid'    =>$id
+        ];
+        $res = SkuModel::where($where)->update(['is_del'=>2]);
+        if($res){
+            return $this -> message('00000','成功');
+        }else{
+            return $this -> message('00002','失败');
+        }
+    }
+    public function upsku($id){
+        $where = ['sid' => $id];
+        $res = DB::table('sku_name')->where($where)->first();
+        return view('admin.sku.up',['data'=>$res]);
+    }
+    public function do_upsku(Request $request){
+        $data = [];
+        $data['sid'] = $request -> sid;
+        $data['name'] = $request -> name;
+        $whre = [
+            'sid'   => $data['sid']
+        ];
+        $res = DB::table('sku_name')->where($whre)->update($data);
+        if($res){
+            return $this -> message('00000','成功');
+        }else{
+            return $this -> message('00001','失败');
+        }
     }
 }

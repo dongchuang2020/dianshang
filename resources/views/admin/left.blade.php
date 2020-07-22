@@ -56,12 +56,12 @@
 
                     <li id="admin-login">
                         <a href="/admins/goods" target="iframe">
-                            <i class="fa fa-circle-o"></i>品牌添加
+                            <i class="fa fa-circle-o"></i>商品添加
                         </a>
                     </li>
                     <li id="admin-login">
                         <a href="/admins/goodslist" target="iframe">
-                            <i class="fa fa-circle-o"></i>品牌列表
+                            <i class="fa fa-circle-o"></i>商品列表
                         </a>
                     </li>
                 </ul>

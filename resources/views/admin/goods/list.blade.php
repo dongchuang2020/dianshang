@@ -33,11 +33,10 @@
             <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
                 <thead>
                 <tr>
-                    <th class="" style="padding-right:0px">
-                        <input id="selall" type="checkbox" class="icheckbox_square-blue">
-                    </th>
                     <th class="sorting_asc">商品id</th>
                     <th class="sorting">商品名称</th>
+                    <th class="sorting">品牌名称</th>
+                    <th class="sorting">属性名</th>
                     <th class="sorting">商品价格</th>
                     <th class="sorting">商品图片</th>
                     <th class="sorting">商品数量</th>
@@ -52,9 +51,10 @@
                 <tbody>
                 @foreach($data as $v)
                 <tr goods_id="{{$v->goods_id}}">
-                    <td><input  type="checkbox"></td>
                     <td>{{$v->goods_id}}</td>
                     <td>{{$v->goods_name}}</td>
+                    <td>{{$v->brand_name}}</td>
+                    <td>{{$v->name}}</td>
                     <td>{{$v->goods_price}}</td>
                     <td><img src="{{$v->goods_log}}" alt="" width="100px" height="120px"></td>
                     <td>{{$v->goods_num}}</td>
