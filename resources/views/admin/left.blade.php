@@ -61,17 +61,14 @@
 
                         <a href="/admins/goods" target="iframe">
                             <i class="fa fa-circle-o"></i>商品添加
-<<<<<<< HEAD
-=======
 
->>>>>>> 7aad0c0dddba2e2512898d6aa326829569aabe93
                         </a>
                     </li>
                     <li id="admin-login">
                         <a href="/admins/goodslist" target="iframe">
                             <i class="fa fa-circle-o"></i>商品列表
-<<<<<<< HEAD
-=======
+
+
                         </a>
                     </li>
                 </ul>
@@ -95,12 +92,12 @@
                     <li id="admin-login">
                         <a href="cate/index" target="iframe">
                             <i class="fa fa-circle-o"></i>分类展示
->>>>>>> 7aad0c0dddba2e2512898d6aa326829569aabe93
+
                         </a>
                     </li>
                 </ul>
             </li>
-<<<<<<< HEAD
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
@@ -123,8 +120,7 @@
                     </li>
                 </ul>
             </li>
-=======
->>>>>>> 7aad0c0dddba2e2512898d6aa326829569aabe93
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
