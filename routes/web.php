@@ -30,4 +30,10 @@ Route::any("slogan/del","Admin\SloganController@del");
 Route::any("slogan/update/{id}","Admin\SloganController@update");
 Route::any("slogan/updatedo","Admin\SloganController@updatedo");
 //角色的增删改查
-Route::any("role/role","Admin\SloganController@role");
+Route::any("role/show","Admin\RoleController@show");
+Route::any("role/doadd","Admin\RoleController@doadd");
+Route::any("role/del","Admin\RoleController@del");
+Route::any("role/update/{id}","Admin\RoleController@update");
+Route::any("role/updatedo","Admin\RoleController@updatedo");
+Route::any("role/rolechmod_add/{id}","Admin\RoleController@rolechmod_add");
+Route::any("role/rolechmod_add_do","Admin\RoleController@rolechmod_add_do");

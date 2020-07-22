@@ -1,21 +1,36 @@
 <!-- 广告修改窗口 -->
-<form action="{{url('slogan/updatedo')}}" method="post" enctype="multipart/form-data">
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" >
-	<div class="modal-content">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel">广告修改</h3>
-			<input type="hidden" value="{{$res->slogan_id}}" name="slogan_id">
-		</div>
-		<div class="modal-body">							
-			
-			<table class="table table-bordered table-striped"  width="800px">
-				<tr>
-		      		<td>广告标题</td>
-		      		<td><input name="slogan_title" id="slogan_title" value="{{$res->slogan_title}}" class="form-control" placeholder="标题"  ng-model="entity.title">  </td>
-		      	</tr>
-				<tr>
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- 页面meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>广告管理</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="/front/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/front/plugins/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet" href="/front/plugins/adminLTE/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="/front/css/style.css">
+	<script src="/front/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="/front/plugins/bootstrap/js/bootstrap.min.js"></script>
+    
+</head>
+    <div class="box-header with-border" align="center">
+        <h3 class="box-title">修改广告管理</h3>   
+    </div>
+    <div>
+    <center>
+    <div class="form-group form-inline" >
+            <form class="m-t" role="form" action="{{url('slogan/updatedo')}}" method="post" enctype="multipart/form-data">
+            <div  class="form-group form-inline">							
+                <table class="table table-bordered table-striped" >
+                     <input type="hidden" value="{{$res->slogan_id}}" name="slogan_id">
+                    <tr>
+                        <td>广告标题</td>
+                        <td width="450"><input type="text" name="slogan_title" id="slogan_title" value="{{$res->slogan_title}}"  class="form-control" placeholder="名称"  ng-model="entity.title">  </td>
+                    </tr> 
+                    <tr>
 		      		<td>广告分类</td>
 		      		<td>
 		      			<select name="slogancate_id">
@@ -26,12 +41,11 @@
 		                </select>
 		      		</td>
 		      	</tr>
-		      	
-			    <tr>
-		      		<td>广告URL</td>
-		      		<td><input name="slogan_url" id="slogan_url" value="{{$res->slogan_url}}" class="form-control" placeholder="URL" ng-model="entity.url">  </td>
-		      	</tr>			      	
-		      	<tr>
+                    <tr>
+                        <td>广告url</td>
+                        <td width="450"><input type="text" name="slogan_url" id="slogan_url" value="{{$res->slogan_url}}"  class="form-control" placeholder="名称"  ng-model="entity.title">  </td>
+                    </tr> 
+                    <tr>
 		      		<td>广告图片</td>
 		      		<td>
 						<table>
@@ -43,18 +57,19 @@
 							</tr>						
 						</table>
 		      		</td>
-		      	</tr>	
-		      	<tr>
-		      		<td>广告排序</td>
-		      		<td><input name="slogan_sort" id="slogan_sort" value="{{$res->slogan_sort}}" class="form-control" placeholder="排序" ng-model="entity.sortOrder">  </td>
-		      	</tr>	       	
-			 </table>				
-			
-		</div>
-		<div class="modal-footer">					
-			<input type="submit" value="修改"  class="btn btn-primary" >
-		</div>
-	  </div>
-	</div>
+		      	    </tr>
+                    <tr>
+                        <td>广告排序</td>
+                        <td width="450"><input type="text" name="slogan_sort" id="slogan_sort" value="{{$res->slogan_sort}}"  class="form-control" placeholder="名称"  ng-model="entity.title">  </td>
+                    </tr> 
+                    <tr>
+                        <td>
+                            <input type="submit"  class="btn btn-success">
+                        </td>
+                    </tr>		       	
+                </table>				        
+    </div>
+        </form>
 </div>
-</form>
+</div>
+</center>

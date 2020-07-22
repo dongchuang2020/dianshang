@@ -19,13 +19,13 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu"  >
             <li class="header">菜单</li>
-            <li id="admin-index"><a href="index.html"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
+            <li id="admin-index"><a href="/admin"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
 
             <!-- 菜单 -->
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-folder"></i>
-                    <span>商家管理</span>
+                    <span>管理员</span>
                     <span class="pull-right-container">
 				       			<i class="fa fa-angle-left pull-right"></i>
 				   		 	</span>
@@ -33,13 +33,13 @@
                 <ul class="treeview-menu">
 
                     <li id="admin-login">
-                        <a href="seller_1.html" target="iframe">
-                            <i class="fa fa-circle-o"></i>商家审核
+                        <a href="/admin/pipe_add" target="iframe">
+                            <i class="fa fa-circle-o"></i>管理员添加
                         </a>
                     </li>
                     <li id="admin-login">
-                        <a href="seller.html" target="iframe">
-                            <i class="fa fa-circle-o"></i>商家管理
+                        <a href="/admin/pipe_zhan" target="iframe">
+                            <i class="fa fa-circle-o"></i>管理员展示
                         </a>
                     </li>
                 </ul>
@@ -55,28 +55,13 @@
                 <ul class="treeview-menu">
 
                     <li id="admin-login">
-                        <a href="brand.html" target="iframe">
-                            <i class="fa fa-circle-o"></i>品牌管理
+                        <a href="/admin/goods" target="iframe">
+                            <i class="fa fa-circle-o"></i>品牌添加
                         </a>
                     </li>
                     <li id="admin-login">
-                        <a href="specification.html" target="iframe">
-                            <i class="fa fa-circle-o"></i>规格管理
-                        </a>
-                    </li>
-                    <li id="admin-login">
-                        <a href="type_template.html" target="iframe">
-                            <i class="fa fa-circle-o"></i>模板管理
-                        </a>
-                    </li>
-                    <li id="admin-login">
-                        <a href="item_cat.html" target="iframe">
-                            <i class="fa fa-circle-o"></i>分类管理
-                        </a>
-                    </li>
-                    <li id="admin-login">
-                        <a href="goods.html" target="iframe">
-                            <i class="fa fa-circle-o"></i>商品审核
+                        <a href="/admin/goodslist" target="iframe">
+                            <i class="fa fa-circle-o"></i>品牌列表
                         </a>
                     </li>
                 </ul>
@@ -108,7 +93,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li id="admin-login">
-                        <a href="role/" target="iframe">
+                        <a href="role/show" target="iframe">
                             <i class="fa fa-circle-o"></i>展示
                         </a>
                     </li>
