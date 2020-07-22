@@ -187,6 +187,7 @@
             },
             success:function (mu) {
                 alert(mu)
+                location.reload();
             }
         })
         console.log(admin_id);

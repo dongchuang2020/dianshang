@@ -8,8 +8,8 @@
                 <img src="/front/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p> 测试用户</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
+                <p> <?php echo session('name'); ?></p>
+                <a href=""><i class="fa fa-circle text-success"></i> 在线</a>
             </div>
         </div>
 
