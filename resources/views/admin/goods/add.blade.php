@@ -35,6 +35,14 @@
         </select>
     </div>
     <div class="form-group">
+        <h6 class="text-primary">商品分类</h6><select name="cate_id" class="text-primary">
+            <option value="">--请选择--</option>
+            @foreach($cate_info as  $kkk=>$vvv)
+                <option value="{{$vvv->cate_id}}" class="form-control">{{$vvv->cate_name}}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="form-group">
         <label for="pwd" class="text-primary">商品价格</label>
         <input type="text" class="form-control" name="goods_price" style="width:200px">
     </div>
