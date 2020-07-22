@@ -56,6 +56,7 @@ class GoodsController extends Controller
             'goods_id'  => $id
         ];
         $res = GoodsModel::where($where)->first();
+
         return view('admin.goods.upgoods',['data'=>$res]);
     }
     //执行修改
