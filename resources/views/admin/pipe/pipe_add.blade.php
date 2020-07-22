@@ -29,7 +29,7 @@
     <h2>管理员添加</h2>
     <p>...</p>
 </div>
-<form class="nihao">
+<div class="nihao">
     <div class="form-group">
         <label for="exampleInputEmail1">用户名称</label>
         <input type="text" id="yong" class="form-control" >
@@ -47,7 +47,7 @@
         <input type="text" id="you" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     </div>
     <button type="submit" id="zhu" class="btn btn-primary">注册</button>
-</form>
+</div>
 
 <!-- 内容区域 /-->
 </body>

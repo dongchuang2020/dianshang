@@ -36,8 +36,8 @@
         <div class="pull-left">
             <div class="form-group form-inline">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i> 新建</button>
-                    <button type="button" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button>
+{{--                    <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i> 新建</button>--}}
+{{--                    <button type="button" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button>--}}
 
                     <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
                 </div>
@@ -45,7 +45,7 @@
         </div>
         <div class="box-tools pull-right">
             <div class="has-feedback">
-                分类模板名称：<input  >
+                管理员名称：<input  >
                 <button class="btn btn-default">查询</button>
             </div>
         </div>
@@ -55,44 +55,31 @@
         <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
             <thead>
             <tr>
-                <th class="" style="padding-right:0px">
-                    <input id="selall" type="checkbox" class="icheckbox_square-blue">
-                </th>
                 <th class="sorting_asc">模板ID</th>
-                <th class="sorting">分类模板名称</th>
-                <th class="sorting">关联品牌</th>
-                <th class="sorting">关联规格</th>
-                <th class="sorting">扩展属性</th>
+                <th class="sorting">管理员名称</th>
+                <th class="sorting">电话</th>
+                <th class="sorting">邮箱</th>
+                <th class="sorting">添加时间</th>
                 <th class="text-center">操作</th>
             </tr>
             </thead>
             <tbody>
             @foreach($data as $v)
             <tr>
-                <td><input  type="checkbox"></td>
-                <td>{{$v->admin_id}}</td>
+                <td >{{$v->admin_id}}</td>
                 <td>{{$v->admin_name}}</td>
                 <td>{{$v->tel}}</td>
                 <td>{{$v->email}}</td>
                 <td>{{date("Y-d-m H:i:s",$v->add_time)}}</td>
-                <td class="text-center">
-                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" >修改</button>
+                <td  class="text-center">
+                    <a  href="/admin/pipe_xui?id={{$v->admin_id}}" class="btn bg-olive btn-xs"  data-target="#editModal" >修改</a>
+                    <button  class="btn bg-olive btn-xs  shan "  data-id="{{$v->admin_id}}"  >删除</button>
                 </td>
             </tr>
             @endforeach
-            <tr>
-                <td><input  type="checkbox"></td>
-                <td>2</td>
-                <td>服装</td>
-                <td>七匹狼,雅戈尔</td>
-                <td>服装尺码</td>
-                <td></td>
-                <td class="text-center">
-                    <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" >修改</button>
-                </td>
-            </tr>
             </tbody>
         </table>
+        {{$data->links()}}
         <!--数据列表/-->
 
 
@@ -180,5 +167,22 @@
 </div>
 
 </body>
+<script src="/front/js/plugins/jquery/jquery.min.js"></script>
+<script>
+    $('.shan').on('click',function() {
+        var admin_id = $(this).data("id");
+        $.ajax({
+            url:'/admin/pipe_adds',
+            type:'get',
+            data:{
+                'id':admin_id
+            },
+            success:function (mu) {
+                alert(mu)
+            }
+        })
+        console.log(admin_id);
+    })
+</script>
 
 </html>

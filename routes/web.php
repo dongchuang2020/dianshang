@@ -22,6 +22,7 @@ Route::get('/admin', function () {
 Route::get('/admin_home', function () {
     return view('admin.home');
 });
+
 Route::prefix('admin')->group(function (){
     Route::get('pipe_add', function () {
         return view('admin.pipe.pipe_add');
@@ -31,5 +32,6 @@ Route::prefix('admin')->group(function (){
     });
     Route::any('pipe_adds','PipeController@pipe_adds');
     Route::any('pipe_zhan','PipeController@pipe_zhan');
-    Route::any('pipe_zhan','PipeController@pipe_');
+    Route::any('pipe_xui','PipeController@pipe_xui');
+    Route::any('pipe_logs','PipeController@pipe_logs');
 });
