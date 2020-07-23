@@ -13,7 +13,9 @@ class GoodsController extends Controller
     public function goodsadd(){
         $brand_info = DB::table('shop_brand')->get();
         $sku_name = DB::table('sku_name')->get();
-        return view('admin.goods.add',['brand_info'=>$brand_info,'sku_name'=>$sku_name]);
+        $cate_info = DB::table('shop_category')->get();
+        $attr_info = DB::table('attribute')->get();
+        return view('admin.goods.add',['brand_info'=>$brand_info,'sku_name'=>$sku_name,'cate_info'=>$cate_info,'attr_info'=>$attr_info]);
     }
     //执行商品添加
     public function do_goodsadd(Request $request){
@@ -39,9 +41,10 @@ class GoodsController extends Controller
         ];
         $res = GoodsModel::leftjoin("shop_brand","goods.brand_id","=","shop_brand.brand_id")
             ->leftjoin("sku_name","goods.sid","=","sku_name.sid")
+            ->leftjoin("attribute","goods.a_id","=","attribute.a_id")
+            ->leftjoin('shop_category',"goods.cate_id","=","shop_category.cate_id")
             ->where($where)
             ->paginate(2);
-//        var_dump($res);die;
         return view('admin.goods.list',['data'=>$res]);
     }
     //商品删除
@@ -64,13 +67,14 @@ class GoodsController extends Controller
         ];
         $brand_info = DB::table('shop_brand')->get();
         $sku_name = DB::table('sku_name')->get();
+        $cate_info = DB::table('shop_category')->get();
+        $attr_info = DB::table('attribute')->get();
         $res = GoodsModel::where($where)->first();
-        return view('admin.goods.upgoods',['data'=>$res,'brand_info'=>$brand_info,'sku_name'=>$sku_name]);
+        return view('admin.goods.upgoods',['data'=>$res,'brand_info'=>$brand_info,'sku_name'=>$sku_name,'cate_info'=>$cate_info,'attr_info'=>$attr_info]);
     }
     //执行修改
     public function do_upgoods( Request $request ){
         $data = [];
-//        $goods_id = $request ->post("goods_id");
         $data = $request -> all();
         $fileinfo=$_FILES["goods_log"];
         $goods_log = $this -> checkimg($fileinfo);
