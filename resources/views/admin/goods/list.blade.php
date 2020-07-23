@@ -25,6 +25,22 @@
     </div>
 
     <div class="box-body">
+        <form action="{{url('/admins/goodslist')}}" type="post">
+            商品名称：<input type="text" name="goods_name">
+            品牌名称：<select name="brand_id">
+                            <option value="">--请选择--</option>
+                            @foreach($brand_info as $k=>$v)
+                            <option value="{{$v->brand_id}}">{{$v->brand_name}}</option>
+                            @endforeach
+                      </select>
+            分类名称：<select name="cate_id">
+                            <option value="">--请选择--</option>
+                            @foreach($cate_info as $kk=>$vv)
+                            <option value="{{$vv->cate_id}}">{{$vv->cate_name}}</option>
+                            @endforeach
+                      </select>
+            <input type="submit" class="btn btn-info" role="button" value="搜索"> 
+        </form>
 
         <!-- 数据表格 -->
         <div class="table-box">
@@ -38,7 +54,6 @@
                     <th class="sorting">品牌名称</th>
                     <th class="sorting">分类名称</th>
                     <th class="sorting">属性名</th>
-                    <th class="sorting">属性值</th>
                     <th class="sorting">商品价格</th>
                     <th class="sorting">商品图片</th>
                     <th class="sorting">商品数量</th>
@@ -61,7 +76,6 @@
                     <td>{{$v->brand_name}}</td>
                     <td>{{$v->cate_name}}</td>
                     <td>{{$v->name}}</td>
-                    <td>{{$v->a_name}}</td>
                     <td>{{$v->goods_price}}</td>
                     <td><img src="{{$v->goods_log}}" alt="" width="100px" height="120px"></td>
                     <td>{{$v->goods_num}}</td>

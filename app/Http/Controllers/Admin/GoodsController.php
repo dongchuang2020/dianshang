@@ -34,20 +34,44 @@ class GoodsController extends Controller
         }
     }
     //商品列表
-    public function goodslist(){
+    public function goodslist(Request $request){
+        //接受商品名称值
+        $goods_name=$request->post("goods_name");
+        $brand_id=$request->post("brand_id");
+        $cate_id=$request->post("cate_id");
+        $where2=[];
+        if(!empty($goods_name)){
+           $where2[]=['goods_name','like','%'.$goods_name.'%'];
+        }
+        if(!empty($brand_id)){
+            $where2[]=['shop_brand.brand_id',"=",$brand_id];
+        }
+        if(!empty($cate_id)){
+            $where2[]=['shop_category.cate_id',"=",$cate_id];
+        }
+
+
+        $brand_info = DB::table('shop_brand')->get();
+        $cate_info = DB::table('shop_category')->get();
         $where = [
             'sku_name.is_del'    => 1,
             'goods.is_del'  =>1
         ];
+
+
+
         $res = GoodsModel::
             leftjoin("shop_brand","goods.brand_id","=","shop_brand.brand_id")
             ->leftjoin("sku_name","goods.sid","=","sku_name.sid")
             ->leftjoin("attribute","goods.a_id","=","attribute.a_id")
             ->leftjoin('shop_category',"goods.cate_id","=","shop_category.cate_id")
             ->where($where)
+            ->where($where2)
             ->paginate(2);
 //        var_dump($res);die;
-        return view('admin.goods.list',['data'=>$res]);
+
+        return view('admin.goods.list',['data'=>$res,"brand_info"=>$brand_info,"cate_info"=>$cate_info]);
+
     }
     //商品删除
     public function delgoods(Request $request){
