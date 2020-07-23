@@ -26,7 +26,7 @@
                     <table class="table table-bordered table-striped" >
                         <tr>
                             <td>商品名称</td>
-                            <td width="450"><input type="text" name="goods_name"  class="form-control" placeholder="商品名称"  ng-model="entity.title">  </td>
+                            <td width="450"><input type="text"  name="goods_name"  class="form-control" placeholder="商品名称"  ng-model="entity.title">  </td>
                         </tr>
                         <tr>
                             <td>商品品牌</td>
