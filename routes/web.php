@@ -20,9 +20,7 @@ Route::any("admin/pipe_log", function () {
 Route::get('/erees', function () {
     return view('erees');
 });
-Route::get('/admin', function () {
-    return view('admin.index');
-});
+
 
 Route::any('admin/pipe_logs', 'PipeController@pipe_logs');
 
@@ -30,7 +28,9 @@ Route::middleware('check')->group(function () {
     Route::get('/', function () {
         return view('welcome');
     });
-
+    Route::get('/admin', function () {
+        return view('admin.index');
+    });
     Route::get('/admin_home', function () {
         return view('admin.home');
     });
