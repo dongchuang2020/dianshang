@@ -26,17 +26,17 @@
 
     <div class="box-body">
         <form action="{{url('/admins/goodslist')}}" type="post">
-            商品名称：<input type="text" name="goods_name">
+            商品名称：<input type="text" name="goods_name" value="{{$name['goods_name']}}">
             品牌名称：<select name="brand_id">
                             <option value="">--请选择--</option>
                             @foreach($brand_info as $k=>$v)
-                            <option value="{{$v->brand_id}}">{{$v->brand_name}}</option>
+                            <option value="{{$v->brand_id}}" @if($v->brand_id == $name['brand_id']) selected @endif>{{$v->brand_name}}</option>
                             @endforeach
                       </select>
             分类名称：<select name="cate_id">
                             <option value="">--请选择--</option>
                             @foreach($cate_info as $kk=>$vv)
-                            <option value="{{$vv->cate_id}}">{{$vv->cate_name}}</option>
+                            <option value="{{$vv->cate_id}}" @if($vv->cate_id == $name['cate_id']) selected @endif>{{$vv->cate_name}}</option>
                             @endforeach
                       </select>
             <input type="submit" class="btn btn-info" role="button" value="搜索"> 
@@ -100,7 +100,7 @@
                 @endforeach
                 </tbody>
             </table>
-            <div class="paging">{{$data->links()}}</div>
+            <div class="paging">{{$data->appends($name)->links()}}</div>
             <!--数据列表/-->
         </div>
         <!-- 数据表格 /-->

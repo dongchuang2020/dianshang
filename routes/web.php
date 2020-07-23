@@ -21,8 +21,14 @@ Route::get('/erees', function () {
     return view('erees');
 });
 
+Route::any('admin/pipe_del', 'PipeController@del');
 
 Route::any('admin/pipe_logs', 'PipeController@pipe_logs');
+
+//三级联动
+Route::get('area','Admin\AreaController@area');
+Route::any('getcity','Admin\AreaController@city');
+Route::any('getarea','Admin\AreaController@getarea');
 
 Route::middleware('check')->group(function () {
     Route::get('/', function () {
@@ -86,14 +92,12 @@ Route::prefix('brand')->group(function(){
     Route::any("cate/index", "Admin\CateController@index");
 
     Route::prefix('admin')->group(function () {
-        Route::get('pipe_add', function () {
-            return view('admin.pipe.pipe_add');
-        });
+
 
         Route::any('pipe_adds', 'PipeController@pipe_adds');
+        Route::any('pipe_add', 'PipeController@pipe_add');
         Route::any('pipe_zhan', 'PipeController@pipe_zhan');
         Route::any('pipe_xui', 'PipeController@pipe_xui');
-        Route::any('pipe_del', 'PipeController@del');
     });
 //给用户赋角色
     Route::any("pipe/adminrole_add/{id}", "PipeController@adminrole_add");
@@ -110,10 +114,6 @@ Route::prefix('admins')->group(function () {
     Route::post('/do_upgoods','Admin\GoodsController@do_upgoods');
 
 
-    //三级联动
-    Route::get('area','Admin\AreaController@area');
-    Route::any('getcity','Admin\AreaController@city');
-    Route::any('getarea','Admin\AreaController@getarea');
     //sku
     Route::any('/addsku','Admin\SkuController@addsku');
     Route::any('/do_addsku','Admin\SkuController@do_addsku');

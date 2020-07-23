@@ -10,6 +10,10 @@ use App\Models\AdminRole;
 class PipeController extends Controller
 {
     //
+    public function pipe_add(){
+        return view('admin.pipe.pipe_add');
+    }
+
     public function pipe_adds(Request $request){
         $id = $request->get('id');
         if ($id){

@@ -18,8 +18,10 @@ class CheckToken
     {
         $id = session('id');
         if ($id){
-            if ($id == 19){
+            $ls = $request->path();
+            if ($ls == 'admin' || $ls == 'admin_home'){
                 return $next($request);
+
             }
             $un = [];
             $data = DB::table('admin_role')->where('admin_id','=',$id)->get();
@@ -36,7 +38,6 @@ class CheckToken
             $ip = request()->route()->getActionName();
 
             $ip = explode('@',$ip);
-
             if (in_array($ip[0],$un)){
                 return $next($request);
             }else{

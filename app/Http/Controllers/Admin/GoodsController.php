@@ -49,7 +49,11 @@ class GoodsController extends Controller
         if(!empty($cate_id)){
             $where2[]=['shop_category.cate_id',"=",$cate_id];
         }
-
+        $name = [
+            'goods_name'=>$goods_name,
+            'brand_id'=>$brand_id,
+            'cate_id'=>$cate_id
+        ];
 
         $brand_info = DB::table('shop_brand')->get();
         $cate_info = DB::table('shop_category')->get();
@@ -69,7 +73,7 @@ class GoodsController extends Controller
 //        var_dump($res);die;
 
 
-        return view('admin.goods.list',['data'=>$res,"brand_info"=>$brand_info,"cate_info"=>$cate_info]);
+        return view('admin.goods.list',['data'=>$res,"brand_info"=>$brand_info,"cate_info"=>$cate_info,'name'=>$name]);
 
     }
     //商品删除
