@@ -21,7 +21,6 @@ class GoodsController extends Controller
     public function do_goodsadd(Request $request){
         $data = [];
         $data = $request -> all();
-
         //检测文件上传
         $fileinfo=$_FILES["goods_log"];
         $goods_log = $this -> checkimg($fileinfo);
@@ -76,7 +75,6 @@ class GoodsController extends Controller
     //执行修改
     public function do_upgoods( Request $request ){
         $data = [];
-//        $goods_id = $request ->post("goods_id");
         $data = $request -> all();
         $fileinfo=$_FILES["goods_log"];
         $goods_log = $this -> checkimg($fileinfo);
