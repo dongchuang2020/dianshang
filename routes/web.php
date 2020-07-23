@@ -83,6 +83,30 @@ Route::middleware('check')->group(function () {
     Route::any("pipe/adminrole_add/{id}", "PipeController@adminrole_add");
     Route::any("pipe/adminrole_doadd", "PipeController@adminrole_doadd");
 
+
+Route::prefix('admins')->group(function () {
+    //商品
+    Route::get('goods','Admin\GoodsController@goodsadd');
+    Route::post('do_goodsadd','Admin\GoodsController@do_goodsadd');
+    Route::get('goodslist','Admin\GoodsController@goodslist');
+    Route::get('delgoods','Admin\GoodsController@delgoods');
+    Route::get('/upgoods/{id}','Admin\GoodsController@upgoods');
+    Route::post('/do_upgoods','Admin\GoodsController@do_upgoods');
+
+
+    //三级联动
+    Route::get('area','Admin\AreaController@area');
+    Route::any('getcity','Admin\AreaController@city');
+    Route::any('getarea','Admin\AreaController@getarea');
+    //sku
+    Route::any('/addsku','Admin\SkuController@addsku');
+    Route::any('/do_addsku','Admin\SkuController@do_addsku');
+    Route::any('/skulist','Admin\SkuController@skulist');
+    Route::any('/delsku','Admin\SkuController@del');
+    Route::any('/upsku/{id}','Admin\SkuController@upsku');
+    Route::any('/do_upsku','Admin\SkuController@do_upsku');
+});
+
     Route::prefix('admins')->group(function () {
         //商品
         Route::get('goods', 'Admin\GoodsController@goodsadd');
@@ -107,6 +131,7 @@ Route::middleware('check')->group(function () {
         Route::any('/upsku/{id}', 'Admin\SkuController@upsku');
         Route::any('/do_upsku', 'Admin\SkuController@do_upsku');
     });
+
 
 #SKU属性值
     Route::prefix('attribute')->group(function () {

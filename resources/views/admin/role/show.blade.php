@@ -108,7 +108,8 @@
 			<table class="table table-bordered table-striped"  width="800px">
 				<tr>
 		      		<td>角色名称</td>
-		      		<td><input name="role_name"  class="form-control" placeholder="角色名称"  ng-model="entity.title">  </td>
+		      		<td>
+		      			<input name="role_name"  class="form-control" placeholder="角色名称"  ng-model="entity.title">  </td>
 		      	</tr>		      	
 		      		
 			 </table>			
