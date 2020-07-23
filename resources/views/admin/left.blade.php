@@ -8,8 +8,8 @@
                 <img src="/front/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p> 测试用户</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
+                <p> <?php echo session('name'); ?></p>
+                <a href=""><i class="fa fa-circle text-success"></i> 在线</a>
             </div>
         </div>
 
@@ -75,18 +75,9 @@
 				       			<i class="fa fa-angle-left pull-right"></i>
 				   		 	</span>
                 </a>
-                <ul class="treeview-menu">
 
-                    <li id="admin-login">
-                        <a href="cate/add" target="iframe">
-                            <i class="fa fa-circle-o"></i>分类添加
-                        </a>
-                    </li>
-                </ul>
                 <ul class="treeview-menu">
                     <li id="admin-login">
-                        <a href="cate/index" target="iframe">
-                            <i class="fa fa-circle-o"></i>分类展示
 
                         <a href="/brand/index" target="iframe">
                             <i class="fa fa-circle-o"></i>品牌展示

@@ -76,7 +76,9 @@ class PipeController extends Controller
         }
 //        echo $mi;
 //        dd($data->pwd);
-        if ($mi == $data->pwd){
+        if ($mi == $data->pwd && $data->is_del == 1){
+            session(['id'=>$data->admin_id]);
+            session(['name'=>$data->admin_name]);
             return '成功';
         }else{
             return '密码错误';
