@@ -16,7 +16,7 @@
 
     <div class="form-group">
         <label for="email" class="text-primary">属性名</label>
-        <input type="text" class="form-control" name="name" id="name">
+        <input type="text" class="form-control" name="name" id="name" style="width:200px">
     </div>
     <button class="btn btn-success">提交</button>
 

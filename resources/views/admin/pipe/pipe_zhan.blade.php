@@ -24,7 +24,7 @@
 <!-- .box-body -->
 
 <div class="box-header with-border">
-    <h3 class="box-title">商品类型模板管理</h3>
+    <h3 class="box-title">管理员模板管理</h3>
 </div>
 
 <div class="box-body">
@@ -36,18 +36,16 @@
         <div class="pull-left">
             <div class="form-group form-inline">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ><i class="fa fa-file-o"></i> 新建</button>                
-                    <button type="button" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button>
                     <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
                 </div>
             </div>
         </div>
-        <div class="box-tools pull-right">
+        {{--<div class="box-tools pull-right">
             <div class="has-feedback">
                 管理员名称：<input  >
                 <button class="btn btn-default">查询</button>
             </div>
-        </div>
+        </div>--}}
         <!--工具栏/-->
 
         <!--数据列表-->
@@ -187,6 +185,7 @@
             },
             success:function (mu) {
                 alert(mu)
+                location.reload();
             }
         })
         console.log(admin_id);
