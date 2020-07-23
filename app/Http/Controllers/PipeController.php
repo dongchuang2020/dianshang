@@ -120,4 +120,9 @@ class PipeController extends Controller
         return json_encode($msg);   
     }
 
+    public function del(Request $request){
+        $request->session()->flush();
+
+    }
+
 }

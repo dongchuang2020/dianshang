@@ -26,6 +26,21 @@
                 <div  class="form-group form-inline">
                     <table class="table table-bordered table-striped" >
                         <tr>
+                            <td>属性名</td>
+                            <td>
+                                <select name="sid" id="sid" class="form-control">
+                                    <option value="0">--请选择--</option>
+                                    @foreach($re as $k=>$v)
+                                        @if($v->sid==$res->sid)
+                                        <option value="{{$v->sid}}" selected="selected">{{$v->name}}</option>
+                                        @else
+                                            <option value="{{$v->sid}}">{{$v->name}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
                             <td>属性名称</td>
                             <td width="450"><input type="text" value="{{$res->a_name}}" id="a_name"    class="form-control" placeholder="属性名称"  ng-model="entity.title">  </td>
                         </tr>
@@ -46,13 +61,14 @@
     $(document).ready(function(){
         $(document).on("click","#btn",function(){
             var a_id=$("#a_id").val();
+            var sid=$("#sid").val();
             var a_name=$("#a_name").val();
             var url="/attribute/update";
 
             $.ajax({
                 url:url,
                 type:'post',
-                data:{a_id:a_id,a_name:a_name},
+                data:{a_id:a_id,a_name:a_name,sid:sid},
                 dataType:'json',
                 success:function(msg){
 //                    console.log(msg);

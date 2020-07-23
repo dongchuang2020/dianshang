@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 Route::any("admin/pipe_log", function () {
     return view('admin.pipe.pipe_log');
 });
@@ -25,8 +23,13 @@ Route::get('/erees', function () {
 Route::get('/admin', function () {
     return view('admin.index');
 });
+
 Route::any('admin/pipe_logs', 'PipeController@pipe_logs');
+
 Route::middleware('check')->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
     Route::get('/admin_home', function () {
         return view('admin.home');
@@ -34,6 +37,17 @@ Route::middleware('check')->group(function () {
 
 
 #后台品牌
+
+Route::prefix('brand')->group(function(){
+    Route::get('/index','admin\BrandController@index');
+    Route::post('/add_do','admin\BrandController@add_do');
+    Route::any('/del/{id}','admin\BrandController@del');
+    Route::get('/edit/{id}','admin\BrandController@edit');
+    Route::post('/update','admin\BrandController@update');
+    Route::post('/change','admin\BrandController@change');
+    Route::post('/changeName','admin\BrandController@changeName');
+});
+
     Route::prefix('brand')->group(function () {
         Route::get('/index', 'admin\BrandController@index');
         Route::post('/add_do', 'admin\BrandController@add_do');
@@ -41,6 +55,7 @@ Route::middleware('check')->group(function () {
         Route::get('/edit/{id}', 'admin\BrandController@edit');
         Route::post('/update', 'admin\BrandController@update');
     });
+
 #权限管理
     Route::prefix('chmod')->group(function () {
         Route::get('/index', 'admin\ChmodController@index');
@@ -78,6 +93,7 @@ Route::middleware('check')->group(function () {
         Route::any('pipe_adds', 'PipeController@pipe_adds');
         Route::any('pipe_zhan', 'PipeController@pipe_zhan');
         Route::any('pipe_xui', 'PipeController@pipe_xui');
+        Route::any('pipe_del', 'PipeController@del');
     });
 //给用户赋角色
     Route::any("pipe/adminrole_add/{id}", "PipeController@adminrole_add");

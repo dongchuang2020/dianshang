@@ -1,117 +1,131 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- 页面meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>分类管理</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="/front/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/front/plugins/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet" href="/front/plugins/adminLTE/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="/front/css/style.css">
     <script src="/front/plugins/jQuery/jquery-2.2.3.min.js"></script>
-</head>
-<body>
-<form action="{{url('/admins/do_goodsadd')}}" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="email" class="text-primary">商品名称</label>
-        <input type="text" class="form-control" name="goods_name" style="width:200px">
-    </div>
-    <div class="form-group">
-        <h6 class="text-primary">商品品牌</h6><select name="brand_id" id="" class="text-primary" >
-            <option value="">--请选择--</option>
-            @foreach($brand_info as $v)
-            <option value="{{$v->brand_id}}" class="form-control">{{$v->brand_name}}</option>
-            @endforeach
-        </select>
-    </div>
-    <div class="form-group">
-        <h6 class="text-primary">商品属性名</h6><select name="sid" class="text-primary">
-            <option value="">--请选择--</option>
-            @foreach($sku_name as  $kk=>$vv)
-                <option value="{{$vv->sid}}" class="form-control">{{$vv->name}}</option>
-            @endforeach
-        </select>
-    </div>
-    <div class="form-group">
-        <h6 class="text-primary">商品属性值</h6><select name="a_id" class="text-primary">
-            <option value="">--请选择--</option>
-            @foreach($attr_info as  $kkkk=>$vvvv)
-                <option value="{{$vvvv->a_id}}" class="form-control">{{$vvvv->a_name}}</option>
-            @endforeach
-        </select>
-    </div>
-    <div class="form-group">
-        <h6 class="text-primary">商品分类</h6><select name="cate_id" class="text-primary">
-            <option value="">--请选择--</option>
-            @foreach($cate_info as  $kkk=>$vvv)
-                <option value="{{$vvv->cate_id}}" class="form-control">{{$vvv->cate_name}}</option>
-            @endforeach
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="pwd" class="text-primary">商品价格</label>
-        <input type="text" class="form-control" name="goods_price" style="width:200px">
-    </div>
-    <div class="form-group">
-        <label for="pwd" class="text-primary">商品数量</label>
-        <input type="text" class="form-control" name="goods_num" style="width:200px">
-    </div>
+    <script src="/front/plugins/bootstrap/js/bootstrap.min.js"></script>
 
-    <div class="form-group">
-        <label for="exampleFormControlFile1" class="text-primary">商品图片</label>
-        <input type="file" class="form-control-file" name="goods_log" >
-    </div>
-    <div class="form-group">
-        <label for="exampleFormControlTextarea1" class="text-primary">商品描述</label>
-        <textarea class="form-control" name="goods_desc" rows="3" style="width:200px"></textarea>
-    </div>
-    <label for="email" class="text-primary">是否展示</label>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <div class="input-group-text">
-                <input type="radio" value="1" name="is_show" checked>是
-            </div>
-            <div class="input-group-text">
-                <input type="radio" value="2" name="is_show">否
-            </div>
+</head>
+<div class="box-header with-border" align="center">
+    <h3 class="box-title">商品管理</h3>
+</div>
+<div>
+    <center>
+        <div class="form-group form-inline" >
+            <form action="{{url('/admins/do_goodsadd')}}" method="post" enctype="multipart/form-data">
+                <div  class="form-group form-inline">
+                    <table class="table table-bordered table-striped" >
+                        <tr>
+                            <td>商品名称</td>
+                            <td width="450"><input type="text"  name="goods_name"  class="form-control" placeholder="商品名称"  ng-model="entity.title">  </td>
+                        </tr>
+                        <tr>
+                            <td>商品品牌</td>
+                            <td width="450">
+                                <select name="brand_id">
+                                    <option value="0">--请选择--</option>
+                                    @foreach($brand_info as $v)
+                                    <option value="{{$v->brand_id}}">{{$v->brand_name}}</option>
+                                    @endforeach
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>商品属性名</td>
+                            <td width="450">
+                                <select name="sid">
+                                    <option value="0">--请选择--</option>
+                                    @foreach($sku_name as $kk=>$vv)
+                                        <option value="{{$vv->sid}}">{{$vv->name}}</option>
+                                    @endforeach
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>商品属性值</td>
+                            <td width="450">
+                                <select name="a_id">
+                                    <option value="0">--请选择--</option>
+                                    @foreach($attr_info as $kkkk=>$vvvv)
+                                        <option value="{{$vvvv->a_id}}">{{$vvvv->a_name}}</option>
+                                    @endforeach
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>商品分类</td>
+                            <td width="450">
+                                <select name="cate_id">
+                                    <option value="0">--请选择--</option>
+                                    @foreach($cate_info as $kkk=>$vvv)
+                                        <option value="{{$vvv->cate_id}}">{{$vvv->cate_name}}</option>
+                                    @endforeach
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>商品价格</td>
+                            <td width="450"><input type="text" name="goods_price"  class="form-control" placeholder="商品价格"  ng-model="entity.title">  </td>
+                        </tr>
+                        <tr>
+                            <td>商品数量</td>
+                            <td width="450"><input type="text" name="goods_num"  class="form-control" placeholder="商品数量"  ng-model="entity.title">  </td>
+                        </tr>
+                        <tr>
+                            <td>商品图片</td>
+                            <td width="450"><input type="file" name="goods_log"  class="form-control" placeholder="商品图片"  ng-model="entity.title">  </td>
+                        </tr>
+                        <tr>
+                            <td>商品描述</td>
+                            <td width="450">
+                                <textarea name="goods_desc" class="form-control" id="" cols="30" rows="10"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>是否展示</td>
+                            <td width="450">
+                                <input type="radio" name="is_show" value="1" checked> 是
+                                <input type="radio" name="is_show" value="2" > 否
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>是否热卖</td>
+                            <td width="450">
+                                <input type="radio" name="is_hot" value="1" checked> 是
+                                <input type="radio" name="is_hot" value="2" > 否
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>是否上架</td>
+                            <td width="450">
+                                <input type="radio" name="is_sell" value="1" checked> 是
+                                <input type="radio" name="is_sell" value="2" > 否
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>是否新品</td>
+                            <td width="450">
+                                <input type="radio" name="is_new" value="1" checked> 是
+                                <input type="radio" name="is_new" value="2" > 否
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="btn btn-success">提交</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
         </div>
-    </div>
-    <label for="email" class="text-primary">是否热卖</label>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <div class="input-group-text">
-                <input type="radio" value="1" name="is_hot" checked>是
-            </div>
-            <div class="input-group-text">
-                <input type="radio" value="2" name="is_hot">否
-            </div>
-        </div>
-    </div>
-    <label for="email" class="text-primary">是否上架</label>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <div class="input-group-text">
-                <input type="radio" value="1" name="is_sell">是
-            </div>
-            <div class="input-group-text">
-                <input type="radio" value="2" name="is_sell" checked>否
-            </div>
-        </div>
-    </div>
-    <label for="email" class="text-primary">是否新品</label>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <div class="input-group-text">
-                <input type="radio" value="1" name="is_new" checked>是
-            </div>
-            <div class="input-group-text">
-                <input type="radio" value="2" name="is_new">否
-            </div>
-        </div>
-    </div>
-    <button class="btn btn-success">提交</button>
-</form>
-</body>
-</html>
+</div>
+</center>
