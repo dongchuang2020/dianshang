@@ -85,6 +85,8 @@ Route::prefix('admins')->group(function () {
     Route::get('delgoods','Admin\GoodsController@delgoods');
     Route::get('/upgoods/{id}','Admin\GoodsController@upgoods');
     Route::post('/do_upgoods','Admin\GoodsController@do_upgoods');
+
+
     //三级联动
     Route::get('area','Admin\AreaController@area');
     Route::any('getcity','Admin\AreaController@city');

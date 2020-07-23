@@ -108,4 +108,44 @@ class GoodsController extends Controller
             'data'  => $data
         ];
     }
+    //商品名称的即点即改
+    public function chang_goodsname(Request $request){
+        $goods_id=$request->post("goods_id");
+        $field=$request->post("field");
+        $val=$request->post("val");
+        $chang_val=GoodsModel::where("goods_id",$goods_id)->update([$field=>$val]);
+        if($chang_val!==false){
+            return [
+                "code"=>200,
+                "msg"=>"修改成功",
+                "url"=>"/admins/goodslist"
+            ];
+        }else{
+            return [
+                "code"=>100,
+                "msg"=>"修改失败",
+                "url"=>"/admins/goodslist"
+            ];
+        }
+    }
+    //商品是否显示的即点即改
+    public function chang_show(Request $request){
+        $goods_id=$request->post("goods_id");
+        $field=$request->post("field");
+        $val=$request->post("val");
+        $chang_show=GoodsModel::where("goods_id",$goods_id)->update([$field=>$val]);
+        if($chang_show!==false){
+            return [
+                "code"=>200,
+                "msg"=>"修改成功",
+                "url"=>"/admins/goodslist"
+            ];
+        }else{
+            return [
+                "code"=>200,
+                "msg"=>"修改成功",
+                "url"=>"/admins/goodslist"
+            ];
+        }
+    }
 }
