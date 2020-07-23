@@ -91,6 +91,10 @@ Route::middleware('check')->group(function () {
         Route::get('delgoods', 'Admin\GoodsController@delgoods');
         Route::get('/upgoods/{id}', 'Admin\GoodsController@upgoods');
         Route::post('/do_upgoods', 'Admin\GoodsController@do_upgoods');
+        //商品名称即点即改
+        Route::any('chang_goodsname','Admin\GoodsController@chang_goodsname');
+        //商品是否展示即点即改
+        Route::any('chang_show','Admin\GoodsController@chang_show');
         //三级联动
         Route::get('area', 'Admin\AreaController@area');
         Route::any('getcity', 'Admin\AreaController@city');
