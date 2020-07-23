@@ -34,6 +34,7 @@ class CheckToken
             }
             $un = array_unique($un);
             $ip = request()->route()->getActionName();
+
             $ip = explode('@',$ip);
 
             if (in_array($ip[0],$un)){
