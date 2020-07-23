@@ -122,7 +122,7 @@ class PipeController extends Controller
 
     public function del(Request $request){
         $request->session()->flush();
-
+        return redirect('admin/pipe_log');
     }
 
 }

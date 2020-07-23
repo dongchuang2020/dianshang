@@ -43,6 +43,7 @@ class CheckToken
                 return redirect('/erees');
             }
         }else{
+
             return redirect('admin/pipe_log');
         }
     }
