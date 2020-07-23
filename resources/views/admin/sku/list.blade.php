@@ -68,7 +68,10 @@
             data:{'id':id},
             dataType:'json',
             success:function (res) {
-                console.log(res)
+                if(res.code=='00000'){
+                    alert(res.msg)
+                    window.location.href = "/admins/skulist";
+                }
             }
         })
     })
