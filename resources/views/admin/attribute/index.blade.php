@@ -49,7 +49,8 @@
                     <input id="selall" type="checkbox" class="icheckbox_square-blue">
                 </th>
                 <th class="sorting_asc">属性ID</th>
-                <th class="sorting">属性名称</th>
+                <th class="sorting">属性名</th>
+                <th class="sorting">属性值</th>
                 <th class="sorting">添加时间</th>
                 <th class="text-center">操作</th>
             </tr>
@@ -59,8 +60,9 @@
             <tr>
                 <td><input  type="checkbox" ></td>
                 <td>{{$v->a_id}}</td>
+                <td>{{$v->name}}</td>
                 <td>{{$v->a_name}}</td>
-                <td>{{date("Y-m-d h:i:m"),$v->add_time}}</td>
+                <td>{{date("Y-m-d h:i:m",$v->add_time)}}</td>
                 <td class="text-center">
                     <button type="button" onclick="del('{{$v->a_id}}')" class="btn bg-olive btn-xs" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
                     <a href="{{url('/attribute/edit/'.$v->a_id)}}" class="btn bg-olive btn-xs" id="edit">修改</a>
@@ -92,8 +94,19 @@
             <div class="modal-body">
                 <table class="table table-bordered table-striped"  width="800px">
                     <tr>
-                        <td>属性名称</td>
-                        <td><input type="text" id="a_name" class="form-control" placeholder="属性名称" >  </td>
+                        <td>属性名</td>
+                        <td>
+                            <select name="sid" id="sid" class="form-control">
+                                <option value="0">--请选择--</option>
+                                @foreach($re as $k=>$v)
+                                    <option value="{{$v->sid}}">{{$v->name}}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>属性值</td>
+                        <td><input type="text" id="a_name" class="form-control" placeholder="属性值" >  </td>
                     </tr>
                 </table>
             </div>
@@ -112,12 +125,13 @@
     $(document).ready(function(){
         $(document).on("click","#btn",function(){
             var a_name=$("#a_name").val();
+            var sid=$("#sid").val();
             var url="/attribute/add_do";
 
             $.ajax({
                 url:url,
                 type:'post',
-                data:{a_name:a_name},
+                data:{a_name:a_name,sid:sid},
                 dataType:'json',
                 success:function(msg){
                     if(msg.status==200){

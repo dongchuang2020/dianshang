@@ -26,7 +26,7 @@ Route::get('/admin', function () {
     return view('admin.index');
 });
 Route::any('admin/pipe_logs', 'PipeController@pipe_logs');
-Route::middleware('check')->group(function () {
+//Route::middleware('check')->group(function () {
 
     Route::get('/admin_home', function () {
         return view('admin.home');
@@ -154,4 +154,4 @@ Route::prefix('admins')->group(function () {
         Route::post('update', 'admin\AttrController@update');
     });
 
-});
+//});
