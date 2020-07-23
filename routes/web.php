@@ -31,6 +31,8 @@ Route::prefix('brand')->group(function(){
     Route::any('/del/{id}','admin\BrandController@del');
     Route::get('/edit/{id}','admin\BrandController@edit');
     Route::post('/update','admin\BrandController@update');
+    Route::post('/change','admin\BrandController@change');
+    Route::post('/changeName','admin\BrandController@changeName');
 });
 #权限管理
 Route::prefix('chmod')->group(function(){

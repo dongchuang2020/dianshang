@@ -21,13 +21,12 @@ class BrandController extends Controller
             $brand_img=$this->upload('brand_img');
         }
         $brand_show=$request->post('brand_show');
-        $add_time=time();
         $data=[
             'brand_name'=>$brand_name,
             'cate_id'=>$cate_id,
             'brand_img'=>$brand_img,
             'brand_show'=>$brand_show,
-            'add_time'=>$add_time,
+            'add_time'=>time(),
         ];
         $res=BrandModel::insert($data);
         if($res){
@@ -76,6 +75,53 @@ class BrandController extends Controller
         if($res!==false){
             return redirect('/brand/index');
         }
+    }
+    /**
+     * 是否即点即该
+     */
+    public function change(Request $request){
+        $brand_id=$request->post('brand_id');
+        $field=$request->post('field');
+        $value=$request->post('_value');
+        $res=BrandModel::where('brand_id',$brand_id)->update([$field=>$value]);
+        if($res){
+            $msg=[
+                'status'=>'200',
+                'message'=>'修改成功',
+                'url'=>'/brand/index'
+            ];
+        }else{
+            $msg=[
+                'status'=>'100',
+                'message'=>'修改失败',
+                'url'=>''
+            ];
+        }
+        return json_encode($msg);
+    }
+    /**
+     * 品牌名称即点即该
+     */
+    public function changeName(Request $request){
+        $value=$request->post('_value');
+        $field=$request->post('field');
+        $brand_id=$request->post('brand_id');
+        $res=BrandModel::where('brand_id',$brand_id)->update([$field=>$value]);
+//        var_dump($res);exit;
+        if($res){
+            $msg=[
+                'status'=>'200',
+                'message'=>'修改成功',
+                'url'=>'/brand/index'
+            ];
+        }else{
+            $msg=[
+                'status'=>'100',
+                'message'=>'修改失败',
+                'url'=>''
+            ];
+        }
+        return json_encode($msg);
     }
     /**
      * @param $filename

@@ -62,21 +62,24 @@
             <tr brand_id="{{$v->brand_id}}">
                 <td><input  type="checkbox" ></td>
                 <td>{{$v->brand_id}}</td>
-                <td>{{$v->brand_name}}</td>
+                <td field="brand_name">
+                    <span class="span_name">{{$v->brand_name}}</span>
+                    <input type="text" value="{{$v->brand_name}}" class="change_name" style="display:none">
+                </td>
                 <td>{{$v->cate_name}}</td>
                 <td>
                     @if($v->brand_img)
                         <img src="http://uploads.1909.com/{{$v->brand_img}}" width="45px">
                     @endif
                 </td>
-                <td>
+                <td class="change" field="brand_show">
                     @if($v->brand_show=='1')
                         是
                      @else
                         否
                      @endif
                 </td>
-                <td>{{date("Y-m-d h:i:m"),$v->add_time}}</td>
+                <td>{{date("Y-m-d H:i:m",$v->add_time)}}</td>
                 <td class="text-center">
                     <button type="button" onclick="del('{{$v->brand_id}}')" class="btn bg-olive btn-xs" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
                     <a href="{{url('/brand/edit/'.$v->brand_id)}}" class="btn bg-olive btn-xs" >修改</a>
@@ -172,4 +175,66 @@
             }
         }
 
+        $(document).on("click",".change",function(){
+            var _this=$(this);
+            var sign=_this.text();
+            var sign= $.trim(sign);
+            var field=_this.attr("field");
+            var brand_id=_this.parents("tr").attr('brand_id');
+            var url="/brand/change";
+
+            if(sign=="是"){
+                var _value=2;
+            }else{
+                var _value=1;
+            }
+
+            $.ajax({
+                url:url,
+                type:'post',
+                data:{brand_id:brand_id,field:field,_value:_value},
+                dataType:'json',
+                success:function(msg){
+                    if(msg.status==200){
+                        if(sign=="是"){
+                            _this.text="否"
+                        }else{
+                            _this.text="是"
+                        }
+                        var url=msg.url;
+                        location.href=url;
+                    }
+                }
+            });
+        });
+        $(".span_name").click(function(){
+           var _this=$(this);
+           _this.hide();
+           _this.next('input').show();
+        });
+        $(".change_name").blur(function(){
+            var _this=$(this);
+            var _value=_this.val();
+            var field=_this.parent().attr("field");
+            var brand_id=_this.parents("tr").attr("brand_id");
+            var url="/brand/changeName";
+
+            $.ajax({
+               url:url,
+                type:"post",
+                data:{_value:_value,field:field,brand_id:brand_id},
+                dataType:'json',
+                success:function(msg){
+//                    console.log(msg);
+                    if(msg.status==200){
+                        _this.prev("span").text(_value).show();
+                        _this.hide();
+                    }else if(msg.status==100){
+                        alert(msg.message);
+                    }
+                    var url=msg.url;
+                    location.href=url;
+                }
+            });
+        });
 </script>
