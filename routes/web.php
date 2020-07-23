@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 Route::any("admin/pipe_log", function () {
     return view('admin.pipe.pipe_log');
 });
@@ -25,8 +23,13 @@ Route::get('/erees', function () {
 Route::get('/admin', function () {
     return view('admin.index');
 });
+
 Route::any('admin/pipe_logs', 'PipeController@pipe_logs');
-//Route::middleware('check')->group(function () {
+
+Route::middleware('check')->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
     Route::get('/admin_home', function () {
         return view('admin.home');
@@ -90,6 +93,7 @@ Route::prefix('brand')->group(function(){
         Route::any('pipe_adds', 'PipeController@pipe_adds');
         Route::any('pipe_zhan', 'PipeController@pipe_zhan');
         Route::any('pipe_xui', 'PipeController@pipe_xui');
+        Route::any('pipe_del', 'PipeController@del');
     });
 //给用户赋角色
     Route::any("pipe/adminrole_add/{id}", "PipeController@adminrole_add");
@@ -154,4 +158,4 @@ Route::prefix('admins')->group(function () {
         Route::post('update', 'admin\AttrController@update');
     });
 
-//});
+});

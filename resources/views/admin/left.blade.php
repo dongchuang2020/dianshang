@@ -8,8 +8,8 @@
                 <img src="/front/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p> <?php echo session('name'); ?></p>
-                <a href=""><i class="fa fa-circle text-success"></i> 在线</a>
+                <p id="yong"> <?php echo session('name'); ?></p>
+                <a href="" id="a"><i class="fa fa-circle text-success"></i> </a>
             </div>
         </div>
 
@@ -20,6 +20,23 @@
         <ul class="sidebar-menu"  >
             <li class="header">菜单</li>
             <li id="admin-index"><a href="/admin"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
+            <li class="treeview deng" style="display:block">
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>登录</span>
+                    <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+                </a>
+                <ul class="treeview-menu">
+
+                    <li id="admin-login">
+                        <a href="/admin/pipe_log" target="iframe">
+                            <i class="fa fa-circle-o"></i>管理员添加
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
             <!-- 菜单 -->
             <li class="treeview">
@@ -212,9 +229,27 @@
                 </ul>
             </li>
             <!-- 菜单 /-->
-
         </ul>
     </section>
+    <script>
+        $(document).ready(function () {
+            var yong=$('#yong').html();
+
+            var addItems = document.getElementsByClassName('deng');
+            if (yong){
+                for (var i = 0; i < addItems.length; i++) {
+                    addItems[i].style.display = 'block';
+                }
+                $('#a').html('未登录');
+            }else {
+                $('#a').html('在线');
+                for (var i = 0; i < addItems.length; i++) {
+                    addItems[i].style.display = 'none';
+                }
+
+            }
+        })
+    </script>
     <!-- /.sidebar -->
 </aside>
 <!-- 导航侧栏 /-->
