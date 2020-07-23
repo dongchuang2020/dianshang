@@ -52,7 +52,6 @@
                     <th class="sorting_asc">商品id</th>
                     <th class="sorting">商品名称</th>
                     <th class="sorting">品牌名称</th>
-                    <th class="sorting">分类名称</th>
                     <th class="sorting">属性名</th>
                     <th class="sorting">商品价格</th>
                     <th class="sorting">商品图片</th>
@@ -74,7 +73,6 @@
                         <input type="text" class="changValue" value="{{$v->goods_name}}" style="display:none">
                     </td>
                     <td>{{$v->brand_name}}</td>
-                    <td>{{$v->cate_name}}</td>
                     <td>{{$v->name}}</td>
                     <td>{{$v->goods_price}}</td>
                     <td><img src="{{$v->goods_log}}" alt="" width="100px" height="120px"></td>

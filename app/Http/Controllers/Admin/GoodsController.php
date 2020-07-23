@@ -58,8 +58,6 @@ class GoodsController extends Controller
             'goods.is_del'  =>1
         ];
 
-
-
         $res = GoodsModel::
             leftjoin("shop_brand","goods.brand_id","=","shop_brand.brand_id")
             ->leftjoin("sku_name","goods.sid","=","sku_name.sid")
@@ -69,6 +67,7 @@ class GoodsController extends Controller
             ->where($where2)
             ->paginate(2);
 //        var_dump($res);die;
+
 
         return view('admin.goods.list',['data'=>$res,"brand_info"=>$brand_info,"cate_info"=>$cate_info]);
 
