@@ -39,12 +39,14 @@ class GoodsController extends Controller
             'sku_name.is_del'    => 1,
             'goods.is_del'  =>1
         ];
-        $res = GoodsModel::leftjoin("shop_brand","goods.brand_id","=","shop_brand.brand_id")
+        $res = GoodsModel::
+            leftjoin("shop_brand","goods.brand_id","=","shop_brand.brand_id")
             ->leftjoin("sku_name","goods.sid","=","sku_name.sid")
             ->leftjoin("attribute","goods.a_id","=","attribute.a_id")
             ->leftjoin('shop_category',"goods.cate_id","=","shop_category.cate_id")
             ->where($where)
             ->paginate(2);
+//        var_dump($res);die;
         return view('admin.goods.list',['data'=>$res]);
     }
     //商品删除
