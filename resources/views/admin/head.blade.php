@@ -58,6 +58,7 @@
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <!-- Messages: style can be found in dropdown.less-->
+{{--
                     <li class="dropdown messages-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-envelope-o"></i>
@@ -135,7 +136,9 @@
                             <li class="footer"><a href="#">See All Messages</a></li>
                         </ul>
                     </li>
+--}}
                     <!-- Notifications: style can be found in dropdown.less -->
+{{--
                     <li class="dropdown notifications-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-bell-o"></i>
@@ -176,7 +179,9 @@
                             <li class="footer"><a href="#">View all</a></li>
                         </ul>
                     </li>
+--}}
                     <!-- Tasks: style can be found in dropdown.less -->
+{{--
                     <li class="dropdown tasks-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-flag-o"></i>
@@ -254,11 +259,12 @@
                             </li>
                         </ul>
                     </li>
+--}}
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="/front/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                            <span class="hidden-xs">测试用户</span>
+                            <span class="hidden-xs"><?php echo session('name'); ?></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
@@ -266,7 +272,7 @@
                                 <img src="/front/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    测试用户 - 马小白
+                                    <?php echo session('name'); ?>
                                     <small>最后登录 11:20AM</small>
                                 </p>
                             </li>
@@ -277,7 +283,7 @@
                                     <a href="#" class="btn btn-default btn-flat">修改密码</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">注销</a>
+                                    <a href="/admin/pipe_del" class="btn btn-default btn-flat">注销</a>
                                 </div>
                             </li>
                         </ul>

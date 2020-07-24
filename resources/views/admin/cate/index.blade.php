@@ -90,7 +90,6 @@
 		                                  <td class="text-center">                                           
                                                <!-- <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal">修改</button>  -->
                                                <!-- <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal">删除</button> -->
-                                               <a href="" class="btn bg-olive btn-xs">修改</a>           
                                                <a href="{{url('cate/del/'.$v['cate_id'])}}" class="btn bg-olive btn-xs">删除</a>           
 		                                  </td>
                                       </tr>
@@ -104,6 +103,6 @@
                      </div>
                     <!-- /.box-body -->		
 <!-- 广告添加窗口 -->
-<!-- <form action="{{url('cate/index')}}" method="post" enctype="multipart-form"> -->
+
 </body>
 </html>

@@ -13,31 +13,63 @@
     <script src="/front/plugins/jQuery/jquery-2.2.3.min.js"></script>
 </head>
 <body>
-<form action="{{url('/admin/do_upgoods')}}" method="post" enctype="multipart/form-data">
+<form action="{{url('/admins/do_upgoods')}}" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <input type="hidden" value="{{$data->goods_id}}" name="goods_id">
     </div>
     <div class="form-group">
         <label for="email" class="text-primary">商品名称</label>
-        <input type="text" class="form-control" name="goods_name" value="{{$data->goods_name}}">
+        <input type="text" class="form-control" name="goods_name" value="{{$data->goods_name}}" style="width:200px">
+    </div>
+    <div class="form-group">
+        <h6 class="text-primary">商品品牌</h6><select name="brand_id" id="" class="text-primary" >
+            <option value="">--请选择--</option>
+            @foreach($brand_info as $v)
+                <option value="{{$v->brand_id}}" @if($v->brand_id==$data->brand_id) selected @endif class="form-control">{{$v->brand_name}}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="form-group">
+        <h6 class="text-primary">商品属性名</h6><select name="sid" class="text-primary">
+            <option value="">--请选择--</option>
+            @foreach($sku_name as  $kk=>$vv)
+                <option value="{{$vv->sid}}" @if($vv->sid==$data->sid) selected @endif class="form-control">{{$vv->name}}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="form-group">
+        <h6 class="text-primary">商品属性值</h6><select name="a_id" class="text-primary">
+            <option value="">--请选择--</option>
+            @foreach($attr_info as  $key=>$val)
+                <option value="{{$val->a_id}}" @if($val->a_id==$data->a_id) selected @endif class="form-control">{{$val->a_name}}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="form-group">
+        <h6 class="text-primary">商品分类</h6><select name="cate_id" class="text-primary">
+            <option value="">--请选择--</option>
+            @foreach($cate_info as  $kkk=>$vvv)
+                <option value="{{$vvv->cate_id}}" @if($vvv->cate_id==$data->cate_id) selected @endif class="form-control">{{$vvv->cate_name}}</option>
+            @endforeach
+        </select>
     </div>
     <div class="form-group">
         <label for="pwd" class="text-primary">商品价格</label>
-        <input type="text" class="form-control" name="goods_price" value="{{$data->goods_price}}">
+        <input type="text" class="form-control" name="goods_price" value="{{$data->goods_price}}" style="width:200px">
     </div>
     <div class="form-group">
         <label for="pwd" class="text-primary">商品数量</label>
-        <input type="text" class="form-control" name="goods_num" value="{{$data->goods_num}}">
+        <input type="text" class="form-control" name="goods_num" value="{{$data->goods_num}}" style="width:200px">
     </div>
 
     <div class="form-group">
         <label for="exampleFormControlFile1" class="text-primary">商品图片</label>
         <input type="file" class="form-control-file" name="goods_log">
-        <td><img src="{{$data->goods_log}}" alt="" width="100px" height="120px"></td>
+        <td><img src="{{$data->goods_log}}" alt="" width="100px" height="120px" ></td>
     </div>
     <div class="form-group">
         <label for="exampleFormControlTextarea1" class="text-primary">商品描述</label>
-        <textarea class="form-control" name="goods_desc" rows="3">{{$data->goods_desc}}</textarea>
+        <textarea class="form-control" name="goods_desc" rows="3" style="width:200px">{{$data->goods_desc}}</textarea>
     </div>
     <label for="email" class="text-primary">是否展示</label>
     <div class="input-group mb-3">
