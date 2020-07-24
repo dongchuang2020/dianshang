@@ -14,8 +14,10 @@ class GoodsController extends Controller
         $brand_info = DB::table('shop_brand')->get();
         $sku_name = DB::table('sku_name')->get();
         $cate_info = DB::table('shop_category')->get();
+        $ca_info = DB::table('shop_category')->where('parent_id','=',0)->get();
+        //dd($ca_info);
         $attr_info = DB::table('attribute')->get();
-        return view('admin.goods.add',['brand_info'=>$brand_info,'sku_name'=>$sku_name,'cate_info'=>$cate_info,'attr_info'=>$attr_info]);
+        return view('admin.goods.add',['brand_info'=>$brand_info,'sku_name'=>$sku_name,'cate_info'=>$cate_info,'attr_info'=>$attr_info,'ca_info'=>$ca_info]);
     }
     //执行商品添加
     public function do_goodsadd(Request $request){

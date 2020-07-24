@@ -29,6 +29,22 @@
                             <td width="450"><input type="text"  name="goods_name"  class="form-control" placeholder="商品名称"  ng-model="entity.title">  </td>
                         </tr>
                         <tr>
+                            <td>商品分类</td>
+                            <td width="450">
+                                <select name="cate_id">
+                                    <option value="0">--请选择--</option>
+                                    @foreach($ca_info as $v)
+                                        <option value="{{$v->cate_id}}">{{$v->cate_name}}</option>
+                                    @foreach($cate_info as $kkk=>$vvv)
+                                        @if($v->cate_id == $vvv->parent_id)
+                                        <option value="{{$vvv->cate_id}}">&nbsp;&nbsp;{{$vvv->cate_name}}</option>
+                                            @endif
+                                    @endforeach
+                                        @endforeach
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
                             <td>商品品牌</td>
                             <td width="450">
                                 <select name="brand_id">
@@ -57,17 +73,6 @@
                                     <option value="0">--请选择--</option>
                                     @foreach($attr_info as $kkkk=>$vvvv)
                                         <option value="{{$vvvv->a_id}}">{{$vvvv->a_name}}</option>
-                                    @endforeach
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>商品分类</td>
-                            <td width="450">
-                                <select name="cate_id">
-                                    <option value="0">--请选择--</option>
-                                    @foreach($cate_info as $kkk=>$vvv)
-                                        <option value="{{$vvv->cate_id}}">{{$vvv->cate_name}}</option>
                                     @endforeach
                                 </select>
                             </td>
