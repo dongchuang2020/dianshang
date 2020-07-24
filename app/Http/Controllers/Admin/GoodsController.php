@@ -129,6 +129,7 @@ class GoodsController extends Controller
     //检测文件上传
     public function checkimg($fileinfo){
 
+
         $tmp_name=$fileinfo["tmp_name"];//上传文件临时名字
         $ext=explode(".",$fileinfo["name"])[1];//文件扩展名
 
