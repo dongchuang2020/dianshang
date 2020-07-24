@@ -25,12 +25,14 @@ Route::any('admin/pipe_del', 'PipeController@del');
 
 Route::any('admin/pipe_logs', 'PipeController@pipe_logs');
 
+
 //三级联动
 Route::get('area','Admin\AreaController@area');
 Route::any('getcity','Admin\AreaController@city');
 Route::any('getarea','Admin\AreaController@getarea');
 
-Route::middleware('check')->group(function () {
+//Route::middleware('check')->group(function () {
+
     Route::get('/', function () {
         return view('welcome');
     });
@@ -158,4 +160,4 @@ Route::prefix('admins')->group(function () {
         Route::post('update', 'admin\AttrController@update');
     });
 
-});
+//});
