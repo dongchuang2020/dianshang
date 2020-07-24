@@ -67,9 +67,11 @@
 			                              <td><input  type="checkbox"></td>			                              
                                           <td>{{$v['cate_id']}}</td>
                                           <td>{{$v['cate_name']}}</td>
+                                          @if($v['parent_id'] == 0)<td>顶级分类</td>@else
                                           @foreach($da as $n)
                                           @if($v['parent_id'] == $n['cate_id']) <td> {{$n['cate_name']}}</td>@endif
                                           @endforeach
+                                          @endif
 									      <td>
                                               @if($v['cate_show'] == '1')
                                                 是

@@ -72,7 +72,7 @@
                       <td>父级分类</td>
                       <td>
                         <select name='parent_id' class="form-control"> 
-                            <option value="1">顶级分类</option> 
+                            <option value="0">顶级分类</option>
                             @foreach($data as $v)
                                 <option value="{{$v['cate_id']}}">@php echo str_repeat("&nbsp;&nbsp;&nbsp;",$v['level'])@endphp {{$v['cate_name']}}</option> 
                             @endforeach 
