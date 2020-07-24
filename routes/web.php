@@ -21,6 +21,7 @@ Route::get('/erees', function () {
     return view('erees');
 });
 
+
 Route::any('admin/pipe_del', 'PipeController@del');
 
 Route::any('admin/pipe_logs', 'PipeController@pipe_logs');
@@ -40,6 +41,7 @@ Route::middleware('check')->group(function () {
     Route::get('/admin_home', function () {
         return view('admin.home');
     });
+
 
 
 #后台品牌
@@ -63,6 +65,7 @@ Route::prefix('brand')->group(function(){
     });
 
 #权限管理
+
     Route::prefix('chmod')->group(function () {
         Route::get('/index', 'admin\ChmodController@index');
         Route::post('/add_do', 'admin\ChmodController@add_do');
@@ -70,6 +73,7 @@ Route::prefix('brand')->group(function(){
         Route::any('/edit/{id}', 'admin\ChmodController@edit');
         Route::post('/update', 'admin\ChmodController@update');
     });
+
 
 //广告的增删改查
     Route::any("slogan/show", "Admin\SloganController@show");
@@ -123,6 +127,14 @@ Route::prefix('admins')->group(function () {
     Route::any('/do_upsku','Admin\SkuController@do_upsku');
 });
 
+//品牌的增删改查
+Route::any("cate/add","Admin\CateController@add");//添加
+Route::any("cate/add_do","Admin\CateController@add_do");//添加执行
+Route::any("cate/index","Admin\CateController@index");//展示
+Route::any("cate/del/{cate_id}","Admin\CateController@del");//删除
+
+
+
     Route::prefix('admins')->group(function () {
         //商品
         Route::get('goods', 'Admin\GoodsController@goodsadd');
@@ -159,3 +171,4 @@ Route::prefix('admins')->group(function () {
     });
 
 });
+
