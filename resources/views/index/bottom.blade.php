@@ -290,7 +290,7 @@
     </div>
 </script>
 <!--侧栏面板结束-->
-<script type="text/javascript" src="index/js/index/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="index/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript">
     $(function(){
         $("#service").hover(function(){
@@ -308,8 +308,8 @@
 </script>
 <script type="text/javascript" src="index/js/model/cartModel.js"></script>
 <script type="text/javascript" src="index/js/czFunction.js"></script>
-<script type="text/javascript" src="index/js/index/plugins/jquery.easing/jquery.easing.min.js"></script>
-<script type="text/javascript" src="index/js/index/plugins/sui/sui.min.js"></script>
+<script type="text/javascript" src="index/plugins/jquery.easing/jquery.easing.min.js"></script>
+<script type="text/javascript" src="index/plugins/sui/sui.min.js"></script>
 <script type="text/javascript" src="index/js/pages/index.js"></script>
 <script type="text/javascript" src="index/js/widget/cartPanelView.js"></script>
 <script type="text/javascript" src="index/js/widget/jquery.autocomplete.js"></script>
