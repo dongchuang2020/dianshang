@@ -71,6 +71,7 @@
             @endforeach
             </tbody>
         </table>
+        {{ $res->links() }}
         <!--数据列表/-->
 
 

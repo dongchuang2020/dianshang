@@ -10,7 +10,7 @@ use App\Model\SkuModel;
 class AttrController extends Controller
 {
     public function index(){
-        $res=AttrModel::leftjoin('sku_name','attribute.sid','=','sku_name.sid')->get();
+        $res=AttrModel::leftjoin('sku_name','attribute.sid','=','sku_name.sid')->paginate(5);
         $re=SkuModel::get();
         return view('admin.attribute.index',['res'=>$res,'re'=>$re]);
     }
