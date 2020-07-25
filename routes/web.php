@@ -170,6 +170,4 @@ Route::any("cate/del/{cate_id}","Admin\CateController@del");//删除
 });
 
 //index
-Route::any("/", function () {
-    return view('index.index');
-});
+Route::any('/','Index\IndexController@index');
