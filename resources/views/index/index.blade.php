@@ -1,4 +1,5 @@
 @include('index.head');
+
             <div class="yui3-u Center banerArea">
                 <!--banner轮播-->
                 <div id="myCarousel" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
