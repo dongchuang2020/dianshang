@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+//后台
 Route::any("admin/pipe_log", function () {
     return view('admin.pipe.pipe_log');
 });
@@ -34,9 +34,11 @@ Route::any('getarea','Admin\AreaController@getarea');
 
 Route::middleware('check')->group(function () {
 
+
     Route::get('/', function () {
         return view('welcome');
     });
+
     Route::get('/admin', function () {
         return view('admin.index');
     });
@@ -176,4 +178,11 @@ Route::any("cate/del/{cate_id}","Admin\CateController@del");//删除
 });
 
 
+
+
+
+//index
+Route::any("/", function () {
+    return view('index.index');
+});
 
