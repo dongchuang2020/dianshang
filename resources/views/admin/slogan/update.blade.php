@@ -52,7 +52,7 @@
 							<tr>
 								<td>
 								<input type="file" name="slogan_img" value="{{$res->slogan_img}}"/>		
-								<img src="{{env('UPLOAD_URL')}}{{$res->slogan_img}}" width="100px" height="50px">
+								<img src="{{$res->slogan_img}}" alt="" width="120px" height="80px">
 							    </td>
 							</tr>						
 						</table>

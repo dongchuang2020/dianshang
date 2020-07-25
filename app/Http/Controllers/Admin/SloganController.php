@@ -16,9 +16,14 @@ class SloganController extends Controller
    }
    public function doadd(Request $request){
    		$data=$request->all();
-   		if($request->hasFile("slogan_img")){
-   			$data["slogan_img"]=$this->upload("slogan_img");
-   		}   
+         //检测文件上传
+        $fileinfo=$_FILES["slogan_img"];
+        //dd($fileinfo);
+        if ($fileinfo['error'] == 4){
+            echo "<script>alert('没有文件上传');location='/slogan/show'</script>";
+        }
+         $slogan_img = $this -> checkimg($fileinfo);
+         $data['slogan_img'] = $slogan_img;  
    		$slogan=Slogan::insert($data);
    		if($slogan){
    			return redirect("slogan/show");
@@ -55,9 +60,11 @@ class SloganController extends Controller
    }
    public function updatedo(Request $request){
       $data=$request->all();
-      if($request->hasFile("slogan_img")){
-            $data["slogan_img"]=$this->upload("slogan_img");
-      }   
+      $fileinfo=$_FILES["slogan_img"];
+        if($fileinfo['error'] != 4){
+            $slogan_img = $this -> checkimg($fileinfo);
+            $data['slogan_img'] = $slogan_img;
+        }  
       $slogan_id=$data["slogan_id"];
       $where=[
          ["slogan_id","=",$slogan_id]
@@ -67,15 +74,19 @@ class SloganController extends Controller
          return redirect("slogan/show");
       }
    }
-   //文件上传
-   public function upload($filename){
-         //判断上传过程有无错误
-         if(request()->file($filename)->isValid()){
-            $photo=request()->file($filename);
-            $store_result=$photo->store("uploads");
-            return $store_result;
-         }
+    //检测文件上传
+    public function checkimg($fileinfo){
+        $tmp_name=$fileinfo["tmp_name"];//上传文件临时名字
+        $ext=explode(".",$fileinfo["name"])[1];//文件扩展名
 
-         exit("未获取到上传文件获取上传过程出现错误");
-   }
+        $newFileName=md5(uniqid()).".".$ext;
+        $newFilePath="./uploads/".Date("Y/m/d/",time());
+        if(!is_dir($newFilePath)){
+            mkdir($newFilePath,777,true);
+        }
+        $newFilePath=$newFilePath.$newFileName;
+        move_uploaded_file($tmp_name,$newFilePath);
+        $newFilePath=ltrim($newFilePath,".");
+        return $newFilePath;
+    }
 }

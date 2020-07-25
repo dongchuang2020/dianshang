@@ -30,24 +30,14 @@
             </div>
             <div class="yui3-u Right">
                 <div class="news">
-                    <h4><em class="fl">品优购快报</em><span class="fr tip">更多 ></span></h4>
+                    <h4><em class="fl">特价优惠</em><span class="fr tip">更多 ></span></h4>
                     <div class="clearix"></div>
-                    <ul class="news-list unstyled">
-                        <li>
-                            <span class="bold">[特惠]</span>备战开学季 全民半价购数码
+                    <ul class="news-list unstyled">   
+                        @foreach($sloganInfo as $k=>$v) 
+                        <li>  
+                            <a href="">{{$v->slogan_title}}</a>
                         </li>
-                        <li>
-                            <span class="bold">[公告]</span>备战开学季 全民半价购数码
-                        </li>
-                        <li>
-                            <span class="bold">[特惠]</span>备战开学季 全民半价购数码
-                        </li>
-                        <li>
-                            <span class="bold">[公告]</span>备战开学季 全民半价购数码
-                        </li>
-                        <li>
-                            <span class="bold">[特惠]</span>备战开学季 全民半价购数码
-                        </li>
+                        @endforeach  
                     </ul>
                 </div>
                 <ul class="yui3-g Lifeservice">
