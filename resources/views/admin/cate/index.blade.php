@@ -67,9 +67,11 @@
 			                              <td><input  type="checkbox"></td>			                              
                                           <td>{{$v['cate_id']}}</td>
                                           <td>{{$v['cate_name']}}</td>
+                                          @if($v['parent_id'] == 0)<td>顶级分类</td>@else
                                           @foreach($da as $n)
                                           @if($v['parent_id'] == $n['cate_id']) <td> {{$n['cate_name']}}</td>@endif
                                           @endforeach
+                                          @endif
 									      <td>
                                               @if($v['cate_show'] == '1')
                                                 是
@@ -90,7 +92,6 @@
 		                                  <td class="text-center">                                           
                                                <!-- <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal">修改</button>  -->
                                                <!-- <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal">删除</button> -->
-                                               <a href="" class="btn bg-olive btn-xs">修改</a>           
                                                <a href="{{url('cate/del/'.$v['cate_id'])}}" class="btn bg-olive btn-xs">删除</a>           
 		                                  </td>
                                       </tr>
@@ -104,5 +105,6 @@
                      </div>
                     <!-- /.box-body -->		
 <!-- 广告添加窗口 -->
+
 </body>
 </html>

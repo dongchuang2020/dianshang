@@ -23,6 +23,10 @@ class GoodsController extends Controller
         $data = $request -> all();
         //检测文件上传
         $fileinfo=$_FILES["goods_log"];
+        //dd($fileinfo);
+        if ($fileinfo['error'] == 4){
+            echo "<script>alert('没有文件上传');location='/admins/goods'</script>";
+        }
         $goods_log = $this -> checkimg($fileinfo);
         $data['goods_log'] = $goods_log;
         $data['add_time'] = time();
@@ -106,8 +110,10 @@ class GoodsController extends Controller
         $data = [];
         $data = $request -> all();
         $fileinfo=$_FILES["goods_log"];
-        $goods_log = $this -> checkimg($fileinfo);
-        $data['goods_log'] = $goods_log;
+        if($fileinfo['error'] != 4){
+            $goods_log = $this -> checkimg($fileinfo);
+            $data['goods_log'] = $goods_log;
+        }
         $data['add_time'] = time();
         $where = [
             'goods_id'  => $data['goods_id']
@@ -122,8 +128,10 @@ class GoodsController extends Controller
     }
     //检测文件上传
     public function checkimg($fileinfo){
+
         $tmp_name=$fileinfo["tmp_name"];//上传文件临时名字
         $ext=explode(".",$fileinfo["name"])[1];//文件扩展名
+
         $newFileName=md5(uniqid()).".".$ext;
         $newFilePath="./uploads/".Date("Y/m/d/",time());
         if(!is_dir($newFilePath)){

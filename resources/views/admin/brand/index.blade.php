@@ -79,7 +79,7 @@
                         否
                      @endif
                 </td>
-                <td>{{date("Y-m-d H:i:m",$v->add_time)}}</td>
+                <td>{{date("Y-m-d H:i:s",$v->add_time)}}</td>
                 <td class="text-center">
                     <button type="button" onclick="del('{{$v->brand_id}}')" class="btn bg-olive btn-xs" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
                     <a href="{{url('/brand/edit/'.$v->brand_id)}}" class="btn bg-olive btn-xs" >修改</a>
