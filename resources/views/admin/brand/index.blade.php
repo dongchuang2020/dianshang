@@ -69,7 +69,7 @@
                 <td>{{$v->cate_name}}</td>
                 <td>
                     @if($v->brand_img)
-                        <img src="http://uploads.1909.com/{{$v->brand_img}}" width="45px">
+                        <img src="{{$v->brand_img}}" alt="" width="45px" height="65px">
                     @endif
                 </td>
                 <td class="change" field="brand_show">

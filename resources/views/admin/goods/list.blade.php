@@ -30,13 +30,15 @@
             品牌名称：<select name="brand_id">
                             <option value="">--请选择--</option>
                             @foreach($brand_info as $k=>$v)
-                            <option value="{{$v->brand_id}}" @if($v->brand_id == $name['brand_id']) selected @endif>{{$v->brand_name}}</option>
+                            <option value="{{$v->brand_id}}" @if($v->brand_id == $name['brand_id']) 
+                            selected @endif>{{$v->brand_name}}</option>
                             @endforeach
                       </select>
             分类名称：<select name="cate_id">
                             <option value="">--请选择--</option>
                             @foreach($cate_info as $kk=>$vv)
-                            <option value="{{$vv->cate_id}}" @if($vv->cate_id == $name['cate_id']) selected @endif>{{$vv->cate_name}}</option>
+                            <option value="{{$vv->cate_id}}" @if($vv->cate_id == $name['cate_id']) 
+                            selected @endif>{{$vv->cate_name}}</option>
                             @endforeach
                       </select>
             <input type="submit" class="btn btn-info" role="button" value="搜索"> 

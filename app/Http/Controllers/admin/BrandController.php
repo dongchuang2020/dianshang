@@ -17,9 +17,12 @@ class BrandController extends Controller
     public function add_do(Request $request){
         $brand_name=$request->post('brand_name');
         $cate_id=$request->post('cate_id');
-        if($request->hasFile('brand_img')){
-            $brand_img=$this->upload('brand_img');
+        $fileinfo=$_FILES["brand_img"];
+        //dd($fileinfo);
+        if ($fileinfo['error'] == 4){
+            echo "<script>alert('没有文件上传');location='/brand/index'</script>";
         }
+        $brand_img = $this -> checkimg($fileinfo);
         $brand_show=$request->post('brand_show');
         $data=[
             'brand_name'=>$brand_name,
@@ -60,9 +63,12 @@ class BrandController extends Controller
         $brand_id=$request->post('brand_id');
         $brand_name=$request->post('brand_name');
         $cate_id=$request->post('cate_id');
-        if($request->hasFile('brand_img')){
-            $brand_img=$this->upload('brand_img');
+        $fileinfo=$_FILES["brand_img"];
+        //dd($fileinfo);
+        if ($fileinfo['error'] == 4){
+            echo "<script>alert('没有文件上传');location='/brand/index'</script>";
         }
+        $brand_img = $this -> checkimg($fileinfo);
         $brand_show=$request->post('brand_show');
         $data=[
             'brand_id'=>$brand_id,
@@ -128,12 +134,18 @@ class BrandController extends Controller
      * @return false|string
      * 文件上传
      */
-    public function upload($filename){
-        if(request()->file($filename)->isValid()){
-            $photo=request()->file($filename);
-            $store_result=$photo->store('uploads');
-            return $store_result;
+    public function checkimg($fileinfo){
+        $tmp_name=$fileinfo["tmp_name"];//上传文件临时名字
+        $ext=explode(".",$fileinfo["name"])[1];//文件扩展名
+
+        $newFileName=md5(uniqid()).".".$ext;
+        $newFilePath="./uploads/".Date("Y/m/d/",time());
+        if(!is_dir($newFilePath)){
+            mkdir($newFilePath,777,true);
         }
-        exit('未获取到上传文件或上传过程出错');
+        $newFilePath=$newFilePath.$newFileName;
+        move_uploaded_file($tmp_name,$newFilePath);
+        $newFilePath=ltrim($newFilePath,".");
+        return $newFilePath;
     }
 }
