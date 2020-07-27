@@ -18,11 +18,26 @@ class IndexController extends Controller
     	$sloganInfo=Slogan::where(["is_del"=>2])->get();//广告展示
     	$sloganInfo2=Slogan::where(["is_del"=>2])->limit(1)->get();
         $goods_where = [
-            'goods.is_del'  => 1,
-            'goods.cate_id' => 27,
-            'goods.is_hot'  => 1
+
+            'parent_id' => 0,
+
         ];
-        $goods_info = DB::table('goods')->leftjoin('shop_category','goods.cate_id','=','shop_category.cate_id')->where($goods_where)->get();
+        $goods_info = DB::table('shop_category')->where($goods_where)->limit(3)->get();
+        foreach ($goods_info as $k=>$v){
+            $goods_cate = DB::table('shop_category')->where('parent_id','=',$v->cate_id)->get();
+            $goods_data = DB::table('goods')->where('cate_id','=',$v->cate_id)->get();
+            $v->cate = $goods_cate;
+            $v->data = $goods_data;
+            foreach ($goods_cate as $vv){
+                $goods_datas = DB::table('goods')->where('cate_id','=',$vv->cate_id)->get();
+                foreach ($goods_datas as $n){
+                    if ($n){
+                        $v->data[] = $n;
+                    }
+                }
+            }
+        }
+        //  dd($goods_info);
         $brand_res=BrandModel::get();
         $b_res=BrandModel::limit(10)->get();
         $g_res=GoodsModel::orderBy('goods_click','desc')->limit(3)->get();
