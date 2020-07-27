@@ -87,6 +87,7 @@ class IndexController extends Controller
             echo "<script>alert('密码不正确');location='/index/log'</script>";
         }
         if($res){
+            session(['user_name'=>$user_name]);
             echo "<script>alert('登陆成功');location='/'</script>";
         }else{
             echo "<script>alert('失败');location='/index/log'</script>";
@@ -163,5 +164,8 @@ class IndexController extends Controller
             'msg'   => $msg,
             'data'  => $data
         ];
+    }
+    public function test(){
+        echo session('user_name');
     }
 }
