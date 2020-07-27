@@ -321,9 +321,9 @@
                     {{--热门--}}
                     @foreach($goods_info as $v)
                     <li>
-                        @if($v->cate_id = 27 && $v->is_hot == 1 )
+                        {{--@if($v->cate_id = 27 && $v->is_hot == 1 )--}}
                         <a href="#tab2" data-toggle="tab">{{$v->goods_name}}</a>
-                        @endif
+                        {{--@endif--}}
                     </li>
                     @endforeach
                 </ul>
@@ -356,9 +356,7 @@
                                     @foreach($goods_info as $v)
 
                                     <div class="item">
-                                        @if($v->cate_id == 27)
                                         <img src="{{$v->goods_log}}" alt="">
-                                        @endif
                                     </div>
 
                                     @endforeach
