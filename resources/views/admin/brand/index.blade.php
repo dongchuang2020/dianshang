@@ -122,8 +122,13 @@
                             <td>
                                 <select name="cate_id">
                                     <option value="0">--请选择--</option>
-                                    @foreach($re as $k=>$v)
+                                    @foreach($ca_info as $k=>$v)
                                     <option value="{{$v->cate_id}}">{{$v->cate_name}}</option>
+                                    @foreach($re as $kk=>$vv)
+                                        @if($v->cate_id==$vv->parent_id)
+                                        <option value="{{$vv->cate_id}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$vv->cate_name}}</option>
+                                        @endif
+                                    @endforeach
                                     @endforeach
                                 </select>
                             </td>

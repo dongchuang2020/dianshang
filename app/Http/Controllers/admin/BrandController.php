@@ -12,7 +12,9 @@ class BrandController extends Controller
     public function index(){
         $res=BrandModel::leftjoin('shop_category','shop_brand.cate_id','=','shop_category.cate_id')->paginate(3);
         $re=CategoryModel::get();
-        return view('admin.brand.index',['res'=>$res,'re'=>$re]);
+        $ca_info =CategoryModel::where('parent_id','=',0)->get();
+//        dd($ca_info);exit;
+        return view('admin.brand.index',['res'=>$res,'re'=>$re,'ca_info'=>$ca_info]);
     }
     public function add_do(Request $request){
         $brand_name=$request->post('brand_name');

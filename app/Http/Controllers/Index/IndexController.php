@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\BrandModel;
+use App\Model\GoodsModel;
 use App\Models\Slogan;
 
 
@@ -23,8 +24,12 @@ class IndexController extends Controller
         ];
         $goods_info = DB::table('goods')->leftjoin('shop_category','goods.cate_id','=','shop_category.cate_id')->where($goods_where)->get();
         $brand_res=BrandModel::get();
+        $b_res=BrandModel::limit(10)->get();
+        $g_res=GoodsModel::orderBy('goods_click','desc')->limit(3)->get();
+//        dd($g_res);exit;
+//        dd($brand_res);exit;
         $sloganInfo=Slogan::where(["is_del"=>2])->get();
-        return view('index.index',['brand_res'=>$brand_res,"sloganInfo"=>$sloganInfo,'goods_info'=>$goods_info,"sloganInfo2"=>$sloganInfo2]);
+        return view('index.index',['brand_res'=>$brand_res,"sloganInfo"=>$sloganInfo,'goods_info'=>$goods_info,"sloganInfo2"=>$sloganInfo2,'g_res'=>$g_res,'b_res'=>$b_res]);
     }
     public function reg(){
         return view('index.reg');
@@ -171,7 +176,8 @@ class IndexController extends Controller
             'data'  => $data
         ];
     }
-    public function test(){
+    public function test()
+    {
         echo session('user_name');
     }
 }
