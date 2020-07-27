@@ -375,7 +375,7 @@
                             <div class="floor-conver-pit ">
 
                                 <img src="{{$v->goods_log}}" />
-                               
+
                             </div>
                         @endforeach
                     </div>

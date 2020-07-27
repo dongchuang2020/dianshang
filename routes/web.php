@@ -185,4 +185,10 @@ Route::any("cate/del/{cate_id}","Admin\CateController@del");//删除
 
 
 Route::any('/','Index\IndexController@index');
+//注册
+Route::any('/index/reg','Index\IndexController@reg');
+Route::any('/index/sendcode','Index\IndexController@sendcode');
+Route::any('/index/do_reg','Index\IndexController@do_reg');
+Route::any('/index/log','Index\IndexController@log');
+Route::any('/index/do_login','Index\IndexController@do_login');
 

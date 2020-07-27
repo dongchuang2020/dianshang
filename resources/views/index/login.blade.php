@@ -39,12 +39,12 @@
                         <img src="img/wx_cz.jpg" />
                     </div>
                     <div id="profile" class="tab-pane  active">
-                        <form class="sui-form">
+                        <form class="sui-form" action="{{url('/index/do_login')}}" method="post">
                             <div class="input-prepend"><span class="add-on loginname"></span>
-                                <input id="prependedInput" type="text" placeholder="邮箱/用户名/手机号" class="span2 input-xfat">
+                                <input id="prependedInput" type="text" name="user_name" placeholder="邮箱/用户名/手机号" class="span2 input-xfat">
                             </div>
                             <div class="input-prepend"><span class="add-on loginpwd"></span>
-                                <input id="prependedInput" type="password" placeholder="请输入密码" class="span2 input-xfat">
+                                <input id="prependedInput" type="password" name="user_pwd" placeholder="请输入密码" class="span2 input-xfat">
                             </div>
                             <div class="setting">
                                 <label class="checkbox inline">
@@ -54,7 +54,8 @@
                                 <span class="forget">忘记密码？</span>
                             </div>
                             <div class="logined">
-                                <a class="sui-btn btn-block btn-xlarge btn-danger" href="home-index.html" >登&nbsp;&nbsp;录</a>
+                                <button class="sui-btn btn-block btn-xlarge btn-danger">登   陆</button>
+                                {{--<a class="sui-btn btn-block btn-xlarge btn-danger">登&nbsp;&nbsp;录</a>--}}
                             </div>
                         </form>
                         <div class="otherlogin">
@@ -66,7 +67,7 @@
                                     <li><img src="img/weixin.png" /></li>
                                 </ul>
                             </div>
-                            <span class="register"><a href="register.html" target="_blank">立即注册</a></span>
+                            <span class="register"><a href="{{url('/index/reg')}}" target="_blank">立即注册</a></span>
                         </div>
                     </div>
                 </div>
