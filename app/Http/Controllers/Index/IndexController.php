@@ -7,15 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\BrandModel;
 use App\Models\Slogan;
-
-
-
 class IndexController extends Controller
 {
     public function index(){
-
-    	$sloganInfo=Slogan::where(["is_del"=>2])->get();
-    	$sloganInfo2=Slogan::where(["is_del"=>2])->limit(1)->get();
         $goods_where = [
             'goods.is_del'  => 1,
             'goods.cate_id' => 27,
@@ -24,7 +18,7 @@ class IndexController extends Controller
         $goods_info = DB::table('goods')->leftjoin('shop_category','goods.cate_id','=','shop_category.cate_id')->where($goods_where)->get();
         $brand_res=BrandModel::get();
         $sloganInfo=Slogan::where(["is_del"=>2])->get();
-        return view('index.index',['brand_res'=>$brand_res,"sloganInfo"=>$sloganInfo,'goods_info'=>$goods_info,"sloganInfo2"=>$sloganInfo2]);
+        return view('index.index',['brand_res'=>$brand_res,"sloganInfo"=>$sloganInfo,'goods_info'=>$goods_info]);
     }
     public function reg(){
         return view('index.reg');
@@ -61,7 +55,7 @@ class IndexController extends Controller
             return $this -> message('00001','验证码不一致');
         }
 
-        if(time() - $res->time > 300){
+        if(time() - $res->time > 60){
             return $this -> message('00001','验证码过期');
         }
         unset($data['user_pwd1']);
