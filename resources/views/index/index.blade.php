@@ -30,24 +30,14 @@
             </div>
             <div class="yui3-u Right">
                 <div class="news">
-                    <h4><em class="fl">品优购快报</em><span class="fr tip">更多 ></span></h4>
+                    <h4><em class="fl">特价优惠</em><span class="fr tip">更多 ></span></h4>
                     <div class="clearix"></div>
-                    <ul class="news-list unstyled">
-                        <li>
-                            <span class="bold">[特惠]</span>备战开学季 全民半价购数码
+                    <ul class="news-list unstyled">   
+                        @foreach($sloganInfo as $k=>$v) 
+                        <li>  
+                            <a href="">{{$v->slogan_title}}</a>
                         </li>
-                        <li>
-                            <span class="bold">[公告]</span>备战开学季 全民半价购数码
-                        </li>
-                        <li>
-                            <span class="bold">[特惠]</span>备战开学季 全民半价购数码
-                        </li>
-                        <li>
-                            <span class="bold">[公告]</span>备战开学季 全民半价购数码
-                        </li>
-                        <li>
-                            <span class="bold">[特惠]</span>备战开学季 全民半价购数码
-                        </li>
+                        @endforeach  
                     </ul>
                 </div>
                 <ul class="yui3-g Lifeservice">
@@ -285,27 +275,13 @@
             <h3 class="fl">传智播客.有趣区</h3>
         </div>
         <div class="clearfix yui3-g Interest">
-            <span class="x-line"></span>
-            <div class="yui3-u row-405 Interest-conver">
-                <img src="index/img/interest01.png" />
-            </div>
+            @foreach($brand_res as $k=>$v)
             <div class="yui3-u row-225 Interest-conver-split">
-                <h5>好东西</h5>
-                <img src="index/img/interest02.png" />
-                <img src="index/img/interest03.png" />
+                <h5>{{$v->brand_name}}</h5>
+                <img src="{{$v->brand_img}}" />
+                <img src="{{$v->brand_img}}" />
             </div>
-            <div class="yui3-u row-405 Interest-conver-split blockgary">
-                <h5>品牌街</h5>
-                <div class="split-bt">
-                    <img src="index/img/interest04.png" />
-                </div>
-                <div class="x-img fl">
-                    <img src="index/img/interest05.png" />
-                </div>
-                <div class="x-img fr">
-                    <img src="index/img/interest06.png" />
-                </div>
-            </div>
+            @endforeach
             <div class="yui3-u row-165 brandArea">
                 <span class="brand-yline"></span>
                 <ul class="yui3-g brand-list">

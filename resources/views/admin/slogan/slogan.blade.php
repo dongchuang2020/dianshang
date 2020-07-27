@@ -70,7 +70,7 @@
 									      <td>{{$v->slogan_url}}</td>
 									      <td>
 									      	@if($v->slogan_img)
-									      	<img src="{{env('UPLOAD_URL')}}{{$v->slogan_img}}" width="100px" height="50px">
+									      	<img src="{{$v->slogan_img}}" alt="" width="120px" height="80px">
 									      	@endif
 									      </td>
 									      <td>{{$v->slogan_sort}}</td>									     								     
