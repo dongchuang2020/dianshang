@@ -26,19 +26,32 @@
 
     <div class="box-body">
         <form action="{{url('/admins/goodslist')}}" type="post">
+<<<<<<< Updated upstream
             商品名称：<input type="text" name="goods_name" value="{{$name['goods_name']}}">
             品牌名称：<select name="brand_id">
                             <option value="">--请选择--</option>
                             @foreach($brand_info as $k=>$v)
                             <option value="{{$v->brand_id}}" @if($v->brand_id == $name['brand_id']) 
                             selected @endif>{{$v->brand_name}}</option>
+=======
+            商品名称：<input type="text" name="goods_name">
+            品牌名称：<select name="brand_id">
+                            <option value="">--请选择--</option>
+                            @foreach($brand_info as $k=>$v)
+                            <option value="{{$v->brand_id}}">{{$v->brand_name}}</option>
+>>>>>>> Stashed changes
                             @endforeach
                       </select>
             分类名称：<select name="cate_id">
                             <option value="">--请选择--</option>
+<<<<<<< Updated upstream
                             @foreach($cate_info as $kk=>$vv)
                             <option value="{{$vv->cate_id}}" @if($vv->cate_id == $name['cate_id']) 
                             selected @endif>{{$vv->cate_name}}</option>
+=======
+                            @foreach($cate_info as $k=>$v)
+                            <option value="{{$v->cate_id}}">{{$v->cate_name}}</option>
+>>>>>>> Stashed changes
                             @endforeach
                       </select>
             <input type="submit" class="btn btn-info" role="button" value="搜索"> 
@@ -54,7 +67,6 @@
                     <th class="sorting_asc">商品id</th>
                     <th class="sorting">商品名称</th>
                     <th class="sorting">品牌名称</th>
-                    <th class="sorting">分类名称</th>
                     <th class="sorting">属性名</th>
                     <th class="sorting">商品价格</th>
                     <th class="sorting">商品图片</th>
@@ -76,7 +88,6 @@
                         <input type="text" class="changValue" value="{{$v->goods_name}}" style="display:none">
                     </td>
                     <td>{{$v->brand_name}}</td>
-                    <td>{{$v->cate_name}}</td>
                     <td>{{$v->name}}</td>
                     <td>{{$v->goods_price}}</td>
                     <td><img src="{{$v->goods_log}}" alt="" width="100px" height="120px"></td>

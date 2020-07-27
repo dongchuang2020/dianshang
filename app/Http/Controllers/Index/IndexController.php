@@ -11,6 +11,8 @@ use App\Models\Slogan;
 class IndexController extends Controller
 {
     public function index(){
+        $sloganInfo=Slogan::where(["is_del"=>2])->get();//广告展示
+    	$sloganInfo2=Slogan::where(["is_del"=>2])->limit(1)->get();
         $goods_where = [
             'goods.is_del'  => 1,
             'goods.cate_id' => 27,

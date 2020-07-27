@@ -55,11 +55,15 @@ class GoodsController extends Controller
         if(!empty($cate_id)){
             $where2[]=['shop_category.cate_id',"=",$cate_id];
         }
+<<<<<<< Updated upstream
         $name = [
             'goods_name'=>$goods_name,
             'brand_id'=>$brand_id,
             'cate_id'=>$cate_id
         ];
+=======
+
+>>>>>>> Stashed changes
 
         $brand_info = DB::table('shop_brand')->get();
         $cate_info = DB::table('shop_category')->get();
@@ -77,10 +81,14 @@ class GoodsController extends Controller
             ->where($where2)
             ->paginate(2);
 //        var_dump($res);die;
+<<<<<<< Updated upstream
 
 
         return view('admin.goods.list',['data'=>$res,"brand_info"=>$brand_info,"cate_info"=>$cate_info,'name'=>$name]);
 
+=======
+        return view('admin.goods.list',['data'=>$res,"brand_info"=>$brand_info,"cate_info"=>$cate_info]);
+>>>>>>> Stashed changes
     }
     //商品删除
     public function delgoods(Request $request){
