@@ -373,9 +373,9 @@
                         {{--图片展示--}}
                         @foreach($goods_info as $v)
                             <div class="floor-conver-pit ">
-                                @if($v->cate_id == '27')
+
                                 <img src="{{$v->goods_log}}" />
-                                @endif
+                               
                             </div>
                         @endforeach
                     </div>
