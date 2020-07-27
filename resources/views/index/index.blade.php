@@ -282,47 +282,36 @@
 <div class="fun">
     <div class="py-container">
         <div class="title">
-            <h3 class="fl">传智播客.有趣区</h3>
+            <h3 class="fl">国际大牌.有潮牌</h3>
         </div>
         <div class="clearfix yui3-g Interest">
             <span class="x-line"></span>
             <div class="yui3-u row-405 Interest-conver">
-                <img src="index/img/interest01.png" />
+                <img src="{{$brand_res[6]->brand_img}}" width="300px"/>
             </div>
             <div class="yui3-u row-225 Interest-conver-split">
-                <h5>好东西</h5>
-                <img src="index/img/interest02.png" />
-                <img src="index/img/interest03.png" />
+                <h5>{{$brand_res[1]->brand_name}}</h5>
+                <img src="{{$brand_res[1]->brand_img}}" />
+                <img src="{{$brand_res[2]->brand_img}}" />
             </div>
             <div class="yui3-u row-405 Interest-conver-split blockgary">
-                <h5>品牌街</h5>
+                <h5>{{$brand_res[3]->brand_name}}</h5>
                 <div class="split-bt">
-                    <img src="index/img/interest04.png" />
+                    <img src="{{$brand_res[3]->brand_img}}" />
                 </div>
                 <div class="x-img fl">
-                    <img src="index/img/interest05.png" />
+                    <img src="{{$brand_res[3]->brand_img}}" />
                 </div>
                 <div class="x-img fr">
-                    <img src="index/img/interest06.png" />
+                    <img src="{{$brand_res[3]->brand_img}}" />
                 </div>
             </div>
             <div class="yui3-u row-165 brandArea">
                 <span class="brand-yline"></span>
                 <ul class="yui3-g brand-list">
-                    <li class="yui3-u-1-2 brand-pit"><img src="index/img/brand01.png" /></li>
-                    <li class="yui3-u-1-2 brand-pit"><img src="index/img/brand02.png" /></li>
-                    <li class="yui3-u-1-2 brand-pit"><img src="index/img/brand03.png" /></li>
-                    <li class="yui3-u-1-2 brand-pit"><img src="index/img/brand04.png" /></li>
-                    <li class="yui3-u-1-2 brand-pit"><img src="index/img/brand05.png" /></li>
-                    <li class="yui3-u-1-2 brand-pit"><img src="index/img/brand06.png" /></li>
-                    <li class="yui3-u-1-2 brand-pit"><img src="index/img/brand07.png" /></li>
-                    <li class="yui3-u-1-2 brand-pit"><img src="index/img/brand08.png" /></li>
-                    <li class="yui3-u-1-2 brand-pit"><img src="index/img/brand09.png" /></li>
-                    <li class="yui3-u-1-2 brand-pit"><img src="index/img/brand10.png" /></li>
-                    <li class="yui3-u-1-2 brand-pit"><img src="index/img/brand11.png" /></li>
-                    <li class="yui3-u-1-2 brand-pit"><img src="index/img/brand12.png" /></li>
-                    <li class="yui3-u-1-2 brand-pit"><img src="index/img/brand13.png" /></li>
-                    <li class="yui3-u-1-2 brand-pit"><img src="index/img/brand03.png" /></li>
+                    @foreach($brand_res as $k=>$v)
+                    <li class="yui3-u-1-2 brand-pit"><img src="{{$v->brand_img}}" /></li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -332,30 +321,21 @@
 <div id="floor-1" class="floor">
     <div class="py-container">
         <div class="title floors">
+
             <h3 class="fl">家用电器</h3>
             <div class="fr">
                 <ul class="sui-nav nav-tabs">
                     <li class="active">
                         <a href="#tab1" data-toggle="tab">热门</a>
                     </li>
+                    {{--热门--}}
+                    @foreach($goods_info as $v)
                     <li>
-                        <a href="#tab2" data-toggle="tab">大家电</a>
+                        {{--@if($v->cate_id = 27 && $v->is_hot == 1 )--}}
+                        <a href="#tab2" data-toggle="tab">{{$v->goods_name}}</a>
+                        {{--@endif--}}
                     </li>
-                    <li>
-                        <a href="#tab3" data-toggle="tab">生活电器</a>
-                    </li>
-                    <li>
-                        <a href="#tab4" data-toggle="tab">厨房电器</a>
-                    </li>
-                    <li>
-                        <a href="#tab5" data-toggle="tab">应季电器</a>
-                    </li>
-                    <li>
-                        <a href="#tab6" data-toggle="tab">空气/净水</a>
-                    </li>
-                    <li>
-                        <a href="#tab7" data-toggle="tab">高端电器</a>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -364,16 +344,17 @@
                 <div class="yui3-g Floor-1">
                     <div class="yui3-u Left blockgary">
                         <ul class="jd-list">
-                            <li>节能补贴</li>
-                            <li>4K电视</li>
-                            <li>空气净化器</li>
-                            <li>IH电饭煲</li>
-                            <li>滚筒洗衣机</li>
-                            <li>电热水器</li>
+
+                            @foreach($goods_info as $vv)
+                                @if($vv->parent_id == 27)
+                            <li>{{$vv->cate_name}}</li>
+                                @endif
+                            @endforeach
                         </ul>
                         <img src="index/img/floor-1-1.png" />
                     </div>
                     <div class="yui3-u row-330 floorBanner">
+
                         <div id="floorCarousel" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
                             <ol class="carousel-indicators">
                                 <li data-target="#floorCarousel" data-slide-to="0" class="active"></li>
@@ -381,60 +362,34 @@
                                 <li data-target="#floorCarousel" data-slide-to="2"></li>
                             </ol>
                             <div class="carousel-inner">
-                                <div class="active item">
-                                    <img src="index/img/floor-1-b01.png">
-                                </div>
-                                <div class="item">
-                                    <img src="index/img/floor-1-b02.png">
-                                </div>
-                                <div class="item">
-                                    <img src="index/img/floor-1-b03.png">
-                                </div>
+                                {{--轮播图--}}
+                                    @foreach($goods_info as $v)
+
+                                    <div class="item">
+                                        <img src="{{$v->goods_log}}" alt="">
+                                    </div>
+
+                                    @endforeach
                             </div>
+
                             <a href="#floorCarousel" data-slide="prev" class="carousel-control left">‹</a>
                             <a href="#floorCarousel" data-slide="next" class="carousel-control right">›</a>
                         </div>
+
                     </div>
+
                     <div class="yui3-u row-220 split">
                         <span class="floor-x-line"></span>
-                        <div class="floor-conver-pit">
-                            <img src="index/img/floor-1-2.png" />
-                        </div>
-                        <div class="floor-conver-pit">
-                            <img src="index/img/floor-1-3.png" />
-                        </div>
-                    </div>
-                    <div class="yui3-u row-218 split">
-                        <img src="index/img/floor-1-4.png" />
-                    </div>
-                    <div class="yui3-u row-220 split">
-                        <span class="floor-x-line"></span>
-                        <div class="floor-conver-pit">
-                            <img src="index/img/floor-1-5.png" />
-                        </div>
-                        <div class="floor-conver-pit">
-                            <img src="index/img/floor-1-6.png" />
-                        </div>
+                        {{--图片展示--}}
+                        @foreach($goods_info as $v)
+                            <div class="floor-conver-pit ">
+
+                                <img src="{{$v->goods_log}}" />
+
+                            </div>
+                        @endforeach
                     </div>
                 </div>
-            </div>
-            <div id="tab2" class="tab-pane">
-                <p>第二个</p>
-            </div>
-            <div id="tab3" class="tab-pane">
-                <p>第三个</p>
-            </div>
-            <div id="tab4" class="tab-pane">
-                <p>第4个</p>
-            </div>
-            <div id="tab5" class="tab-pane">
-                <p>第5个</p>
-            </div>
-            <div id="tab6" class="tab-pane">
-                <p>第6个</p>
-            </div>
-            <div id="tab7" class="tab-pane">
-                <p>第7个</p>
             </div>
         </div>
     </div>
@@ -442,30 +397,19 @@
 <div id="floor-2" class="floor">
     <div class="py-container">
         <div class="title floors">
-            <h3 class="fl">手机通讯</h3>
+            <h3 class="fl">男装</h3>
             <div class="fr">
                 <ul class="sui-nav nav-tabs">
                     <li class="active">
                         <a href="#tab8" data-toggle="tab">热门</a>
                     </li>
-                    <li>
-                        <a href="#tab9" data-toggle="tab">品质优选</a>
-                    </li>
-                    <li>
-                        <a href="#tab10" data-toggle="tab">新机尝鲜</a>
-                    </li>
-                    <li>
-                        <a href="#tab11" data-toggle="tab">高性价比</a>
-                    </li>
-                    <li>
-                        <a href="#tab12" data-toggle="tab">合约机</a>
-                    </li>
-                    <li>
-                        <a href="#tab13" data-toggle="tab">手机卡</a>
-                    </li>
-                    <li>
-                        <a href="#tab14" data-toggle="tab">手机配件</a>
-                    </li>
+                    {{--@foreach($goods_info as $v)--}}
+                    {{--<li>--}}
+                        {{--@if($v->is_hot ==1 && $v->cate_id == 28)--}}
+                        {{--<a href="#tab9" data-toggle="tab">{{$v->goods_name}}</a>--}}
+                        {{--@endif--}}
+                    {{--</li>--}}
+                    {{--@endforeach--}}
                 </ul>
             </div>
         </div>
@@ -491,6 +435,7 @@
                                 <li data-target="#floorCarousell" data-slide-to="2"></li>
                             </ol>
                             <div class="carousel-inner">
+
                                 <div class="active item">
                                     <img src="index/img/floor-1-b01.png">
                                 </div>

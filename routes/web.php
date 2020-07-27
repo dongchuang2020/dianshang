@@ -26,12 +26,19 @@ Route::any('admin/pipe_del', 'PipeController@del');
 
 Route::any('admin/pipe_logs', 'PipeController@pipe_logs');
 
+
 //三级联动
 Route::get('area','Admin\AreaController@area');
 Route::any('getcity','Admin\AreaController@city');
 Route::any('getarea','Admin\AreaController@getarea');
 
 Route::middleware('check')->group(function () {
+
+
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
     Route::get('/admin', function () {
         return view('admin.index');
     });
@@ -167,7 +174,22 @@ Route::any("cate/del/{cate_id}","Admin\CateController@del");//删除
         Route::post('update', 'admin\AttrController@update');
     });
 
+
 });
 
+
+
+
+
 //index
+
+
 Route::any('/','Index\IndexController@index');
+//注册
+Route::any('/index/reg','Index\IndexController@reg');
+Route::any('/index/sendcode','Index\IndexController@sendcode');
+Route::any('/index/do_reg','Index\IndexController@do_reg');
+Route::any('/index/log','Index\IndexController@log');
+Route::any('/index/do_login','Index\IndexController@do_login');
+Route::any('/index/test','Index\IndexController@test');
+

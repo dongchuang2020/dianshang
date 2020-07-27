@@ -48,7 +48,7 @@
                             <td>品牌图片</td>
                             <td width="450">
                                 <input type="file" name="brand_img" value="{{$res->brand_img}}"  class="form-control" placeholder="品牌名称"  ng-model="entity.title">
-                                <img src="http://uploads.1909.com/{{$res->brand_img}}" width="45px">
+                                <img src="{{$res->brand_img}}" alt="" width="45px" height="65px">
                             </td>
                         </tr>
                         <tr>

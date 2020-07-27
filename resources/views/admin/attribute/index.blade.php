@@ -62,7 +62,7 @@
                 <td>{{$v->a_id}}</td>
                 <td>{{$v->name}}</td>
                 <td>{{$v->a_name}}</td>
-                <td>{{date("Y-m-d h:i:m",$v->add_time)}}</td>
+                <td>{{date("Y-m-d H:i:s",$v->add_time)}}</td>
                 <td class="text-center">
                     <button type="button" onclick="del('{{$v->a_id}}')" class="btn bg-olive btn-xs" title="删除" ><i class="fa fa-trash-o"></i> 删除</button>
                     <a href="{{url('/attribute/edit/'.$v->a_id)}}" class="btn bg-olive btn-xs" id="edit">修改</a>
