@@ -1,5 +1,10 @@
 @include('index.head');
-
+          <style>
+            .ads{
+                width: 250px;
+                height: 70px;
+            }
+          </style>
             <div class="yui3-u Center banerArea">
                 <!--banner轮播-->
                 <div id="myCarousel" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
@@ -9,23 +14,24 @@
                         <li data-target="#myCarousel" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
-                        <div class="active item">
-                            <a href="http://baidu2.wypxj.com/">
-                                <img src="index/img/banner1.jpg"  />
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="http://baidu2.wypxj.com/">
-                                <img src="index/img/banner2.jpg"  />
-                            </a>
-                        </div>
-                        <div class="item">
-                            <a href="http://baidu2.wypxj.com/">
-                                <img src="index/img/banner3.jpg"  />
-                            </a>
+                        @foreach($sloganInfo as $kk=>$vv)
+                            @if($kk == 0)
+                                <div class="item active">
+                                    <a href="{{$vv->slogan_url}}">
+                                        <img src="{{$vv->slogan_img}}" style="width:730px;height:454px" />
+                                    </a>
+                                </div>
+                            @else
+                                <div class="item">
+                                    <a href="{{$vv->slogan_url}}">
+                                        <img src="{{$vv->slogan_img}}" style="width:730px;height:454px" />
+                                    </a>
+                                </div>
+                            @endif
 
-                        </div>
-                    </div><a href="#myCarousel" data-slide="prev" class="carousel-control left">‹</a><a href="#myCarousel" data-slide="next" class="carousel-control right">›</a>
+                            @endforeach
+                    </div>
+                    <a href="#myCarousel" data-slide="prev" class="carousel-control left">‹</a><a href="#myCarousel" data-slide="next" class="carousel-control right">›</a>
                 </div>
             </div>
             <div class="yui3-u Right">
@@ -34,8 +40,9 @@
                     <div class="clearix"></div>
                     <ul class="news-list unstyled">   
                         @foreach($sloganInfo as $k=>$v) 
-                        <li>  
-                            <a href="">{{$v->slogan_title}}</a>
+                        <li slogan_id="{{$v->slogan_id}}"> 
+                            &nbsp;&nbsp;&nbsp;
+                            <a href="{{$v->slogan_url}}">{{$v->slogan_title}}</a>
                         </li>
                         @endforeach  
                     </ul>
@@ -43,54 +50,54 @@
                 <ul class="yui3-g Lifeservice">
                     <li class="yui3-u-1-4 life-item tab-item">
                         <i class="list-item list-item-1"></i>
-                        <span class="service-intro">话费</span>
+                        <span class="service-intro"><a href="https://chongzhi.jd.com/">话费</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item tab-item">
                         <i class="list-item list-item-2"></i>
-                        <span class="service-intro">机票</span>
+                        <span class="service-intro"><a href="https://flights.ctrip.com/">机票</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item tab-item">
                         <i class="list-item list-item-3"></i>
-                        <span class="service-intro">电影票</span>
+                        <span class="service-intro"><a href="https://maoyan.com/">电影票</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item tab-item">
                         <i class="list-item list-item-4"></i>
-                        <span class="service-intro">游戏</span>
+                        <span class="service-intro"><a href="http://tg.37.com/">游戏</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item notab-item">
                         <i class="list-item list-item-5"></i>
-                        <span class="service-intro">彩票</span>
+                        <span class="service-intro"><a href="https://caipiao.taobao.com/">彩票</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item notab-item">
                         <i class="list-item list-item-6"></i>
-                        <span class="service-intro">加油站</span>
+                        <span class="service-intro"><a href="http://www.nucarf.com/">加油站</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item notab-item">
                         <i class="list-item list-item-7"></i>
-                        <span class="service-intro">酒店</span>
+                        <span class="service-intro"><a href="https://hotels.ctrip.com/">酒店</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item notab-item">
                         <i class="list-item list-item-8"></i>
-                        <span class="service-intro">火车票</span>
+                        <span class="service-intro"><a href="https://www.tieyou.com/">火车票</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item  notab-item">
                         <i class="list-item list-item-9"></i>
-                        <span class="service-intro">众筹</span>
+                        <span class="service-intro"><a href="https://www.shuidichou.com/">众筹</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item notab-item">
                         <i class="list-item list-item-10"></i>
-                        <span class="service-intro">理财</span>
+                        <span class="service-intro"><a href="https://money.19lou.com/">理财</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item notab-item">
                         <i class="list-item list-item-11"></i>
-                        <span class="service-intro">礼品卡</span>
+                        <span class="service-intro"><a href="https://o.jd.com/">礼品卡</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item notab-item">
                         <i class="list-item list-item-12"></i>
-                        <span class="service-intro">白条</span>
+                        <span class="service-intro"><a href="https://baitiao.jd.com/">白条</a></span>
                     </li>
                 </ul>
-                <div class="life-item-content">
+                <!-- <div class="life-item-content">
                     <div class="life-detail">
                         <i class="close">关闭</i>
                         <p>话费充值</p>
@@ -108,10 +115,13 @@
                     <div class="life-detail">
                         <i class="close">关闭</i> 游戏
                     </div>
-                </div>
+                </div> -->
+                @foreach($sloganInfo2 as $kkk=>$vvv)
                 <div class="ads">
-                    <img src="index/img/ad1.png" />
+                    <a href="{{$vvv->slogan_url}}">
+                    <img src="{{$vvv->slogan_img}}" style="width:730px;height:100px"/>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
