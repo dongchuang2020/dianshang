@@ -287,30 +287,30 @@
         <div class="clearfix yui3-g Interest">
             <span class="x-line"></span>
             <div class="yui3-u row-405 Interest-conver">
-                <img src="{{$brand_res[6]->brand_img}}" width="300px"/>
+                <img src="{{$g_res[0]->goods_log}}" width="300px"/>
             </div>
             <div class="yui3-u row-225 Interest-conver-split">
-                <h5>{{$brand_res[1]->brand_name}}</h5>
-                <img src="{{$brand_res[1]->brand_img}}" />
-                <img src="{{$brand_res[2]->brand_img}}" />
+                <h5>{{$g_res[1]->goods_name}}</h5>
+                <img src="{{$g_res[1]->goods_log}}" />
+                <img src="{{$g_res[1]->goods_log}}" />
             </div>
             <div class="yui3-u row-405 Interest-conver-split blockgary">
-                <h5>{{$brand_res[3]->brand_name}}</h5>
+                <h5>{{$g_res[2]->goods_name}}</h5>
                 <div class="split-bt">
-                    <img src="{{$brand_res[3]->brand_img}}" />
+                    <img src="{{$g_res[2]->goods_log}}" />
                 </div>
                 <div class="x-img fl">
-                    <img src="{{$brand_res[3]->brand_img}}" />
+                    <img src="{{$g_res[2]->goods_log}}" />
                 </div>
                 <div class="x-img fr">
-                    <img src="{{$brand_res[3]->brand_img}}" />
+                    <img src="{{$g_res[2]->goods_log}}" />
                 </div>
             </div>
             <div class="yui3-u row-165 brandArea">
                 <span class="brand-yline"></span>
                 <ul class="yui3-g brand-list">
                     @foreach($brand_res as $k=>$v)
-                    <li class="yui3-u-1-2 brand-pit"><img src="{{$v->brand_img}}" /></li>
+                        <li class="yui3-u-1-2 brand-pit"><a href="{{$v->brand_url}}"><img src="{{$v->brand_img}}" width="70px"/></a></li>
                     @endforeach
                 </ul>
             </div>
@@ -501,18 +501,11 @@
 <div class="brand">
     <div class="py-container">
         <ul class="Brand-list blockgary">
+            @foreach($b_res as $k=>$v)
             <li class="Brand-item">
-                <img src="index/img/brand_21.png" />
+                <a href="{{$v->brand_url}}"><img src="{{$v->brand_img}}" width="60px"/></a>
             </li>
-            <li class="Brand-item"><img src="index/img/brand_03.png" /></li>
-            <li class="Brand-item"><img src="index/img/brand_05.png" /></li>
-            <li class="Brand-item"><img src="index/img/brand_07.png" /></li>
-            <li class="Brand-item"><img src="index/img/brand_09.png" /></li>
-            <li class="Brand-item"><img src="index/img/brand_11.png" /></li>
-            <li class="Brand-item"><img src="index/img/brand_13.png" /></li>
-            <li class="Brand-item"><img src="index/img/brand_15.png" /></li>
-            <li class="Brand-item"><img src="index/img/brand_17.png" /></li>
-            <li class="Brand-item"><img src="index/img/brand_19.png" /></li>
+            @endforeach
         </ul>
     </div>
 </div>
