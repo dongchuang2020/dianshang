@@ -11,6 +11,24 @@
     <link rel="stylesheet" type="text/css" href="index/css/pages-JD-index.css" />
     <link rel="stylesheet" type="text/css" href="index/css/widget-jquery.autocomplete.css" />
     <link rel="stylesheet" type="text/css" href="index/css/widget-cartPanelView.css" />
+    <style>
+        .tou1{
+            width:260px;
+            height:180px;
+        }
+        .tou2{
+            width: 260px;
+            height: 360px;
+        }
+        .tuo3{
+            width: 300px;
+            height: 150px;
+        }
+        .tou4{
+            width: 260px;
+            height: 276px;
+        }
+    </style>
 </head>
 
 <body>

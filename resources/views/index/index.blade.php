@@ -120,6 +120,7 @@
                 <div class="ads">
                     <a href="{{$vvv->slogan_url}}">
                     <img src="{{$vvv->slogan_img}}" style="width:730px;height:100px"/>
+                        </a>
                 </div>
                 @endforeach
             </div>
@@ -318,40 +319,46 @@
     </div>
 </div>
 <!--楼层-->
+@foreach($goods_info as $v)
 <div id="floor-1" class="floor">
     <div class="py-container">
         <div class="title floors">
 
-            <h3 class="fl">家用电器</h3>
+            <h3 class="fl">{{$v->cate_name}}</h3>
             <div class="fr">
                 <ul class="sui-nav nav-tabs">
                     <li class="active">
                         <a href="#tab1" data-toggle="tab">热门</a>
                     </li>
-                    {{--热门--}}
-                    @foreach($goods_info as $v)
+                    @foreach($v->cate as $k=>$vv)
+                        @if($k < 5)
                     <li>
-                        {{--@if($v->cate_id = 27 && $v->is_hot == 1 )--}}
-                        <a href="#tab2" data-toggle="tab">{{$v->goods_name}}</a>
-                        {{--@endif--}}
+                        <a href="#tab2" data-toggle="tab">{{$vv->cate_name}}</a>
                     </li>
+                        @endif
                     @endforeach
                 </ul>
             </div>
         </div>
+
         <div class="clearfix  tab-content floor-content">
             <div id="tab1" class="tab-pane active">
                 <div class="yui3-g Floor-1">
                     <div class="yui3-u Left blockgary">
                         <ul class="jd-list">
-
-                            @foreach($goods_info as $vv)
-                                @if($vv->parent_id == 27)
-                            <li>{{$vv->cate_name}}</li>
+                            @foreach($v->cate as $k=>$vv)
+                                @if($k >= 5)
+                                    <li>
+                                        <a href="#tab2" data-toggle="tab">{{$vv->cate_name}}</a>
+                                    </li>
                                 @endif
                             @endforeach
                         </ul>
-                        <img src="index/img/floor-1-1.png" />
+                        @foreach($v->data as $k=>$vv)
+                            @if($k == 0)
+                        <img class="tou4" src="{{$vv->goods_log}}" />
+                            @endif
+                            @endforeach
                     </div>
                     <div class="yui3-u row-330 floorBanner">
 
@@ -363,12 +370,12 @@
                             </ol>
                             <div class="carousel-inner">
                                 {{--轮播图--}}
-                                    @foreach($goods_info as $v)
-
-                                    <div class="item">
-                                        <img src="{{$v->goods_log}}" alt="">
+                                    @foreach($v->data as $l=>$vv)
+                                        @if($l <3)
+                                    <div class="item @if($l == 0) active @endif">
+                                        <img class="tou3" src="{{$vv->goods_log}}" style="height: 360px; width: 330px">
                                     </div>
-
+                                    @endif
                                     @endforeach
                             </div>
 
@@ -377,24 +384,75 @@
                         </div>
 
                     </div>
-
                     <div class="yui3-u row-220 split">
                         <span class="floor-x-line"></span>
-                        {{--图片展示--}}
-                        @foreach($goods_info as $v)
-                            <div class="floor-conver-pit ">
-
-                                <img src="{{$v->goods_log}}" />
-
-                            </div>
+                        <div class="floor-conver-pit" >
+                            @foreach($v->data as $k=>$vv)
+                                @if($k == 0)
+                            <img class="tou1" src="{{$vv->goods_log}}" />
+                                @endif
+                                @endforeach
+                        </div>
+                        <div class="floor-conver-pit">
+                            @foreach($v->data as $k=>$vv)
+                                @if($k == 0)
+                                    <img class="tou1" src="{{$vv->goods_log}}" />
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="yui3-u row-218 split">
+                        @foreach($v->data as $k=>$vv)
+                            @if($k == 0)
+                                <img class="tou2" src="{{$vv->goods_log}}" />
+                            @endif
                         @endforeach
                     </div>
+                    <div class="yui3-u row-220 split">
+                        <span class="floor-x-line"></span>
+                        <div class="floor-conver-pit">
+                            @foreach($v->data as $k=>$vv)
+                                @if($k == 0)
+                                    <img class="tou1" src="{{$vv->goods_log}}" />
+                                @endif
+                            @endforeach
+                        </div>
+                        <div class="floor-conver-pit">
+                            @foreach($v->data as $k=>$vv)
+                                @if($k == 0)
+                                    <img class="tou1" src="{{$vv->goods_log}}" />
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+
+                    {{--<div class="yui3-u row-220 split">
+                        <span class="floor-x-line"></span>
+                        图片展示
+                        @foreach($v->data as $vv)
+                            <div class="floor-conver-pit ">
+
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+                                <img src="{{$v->goods_log}}" />
+
+=======
+=======
+>>>>>>> Stashed changes
+                                <img src="{{$vv->goods_log}}" />
+                               
+>>>>>>> Stashed changes
+                            </div>
+                        @endforeach
+                    </div>--}}
                 </div>
             </div>
         </div>
+
     </div>
 </div>
-<div id="floor-2" class="floor">
+@endforeach
+{{--<div id="floor-2" class="floor">
     <div class="py-container">
         <div class="title floors">
             <h3 class="fl">男装</h3>
@@ -403,13 +461,13 @@
                     <li class="active">
                         <a href="#tab8" data-toggle="tab">热门</a>
                     </li>
-                    {{--@foreach($goods_info as $v)--}}
-                    {{--<li>--}}
-                        {{--@if($v->is_hot ==1 && $v->cate_id == 28)--}}
-                        {{--<a href="#tab9" data-toggle="tab">{{$v->goods_name}}</a>--}}
-                        {{--@endif--}}
-                    {{--</li>--}}
-                    {{--@endforeach--}}
+                    --}}{{--@foreach($goods_info as $v)--}}{{--
+                    --}}{{--<li>--}}{{--
+                        --}}{{--@if($v->is_hot ==1 && $v->cate_id == 28)--}}{{--
+                        --}}{{--<a href="#tab9" data-toggle="tab">{{$v->goods_name}}</a>--}}{{--
+                        --}}{{--@endif--}}{{--
+                    --}}{{--</li>--}}{{--
+                    --}}{{--@endforeach--}}{{--
                 </ul>
             </div>
         </div>
@@ -496,7 +554,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>--}}
 <!--商标-->
 <div class="brand">
     <div class="py-container">
