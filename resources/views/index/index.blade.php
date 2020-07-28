@@ -1,4 +1,4 @@
-@include('index.head');
+@include('index.head')
           <style>
             .ads{
                 width: 250px;
@@ -298,14 +298,8 @@
             <div class="yui3-u row-405 Interest-conver-split blockgary">
                 <h5>{{$g_res[2]->goods_name}}</h5>
                 <div class="split-bt">
-                    <img class="tou8" src="{{$g_res[2]->goods_log}}" />
+                    <img class="tou8" src="{{$g_res[2]->goods_log}}" style="width:400px; height:400px;"/>
                 </div>
-                <div class="x-img fl">
-                    <img class="tou8" src="{{$g_res[2]->goods_log}}" />
-                </div>
-                {{--<div class="x-img fr">
-                    <img src="{{$g_res[2]->goods_log}}" />
-                </div>--}}
             </div>
             <div class="yui3-u row-165 brandArea">
                 <span class="brand-yline"></span>
@@ -356,7 +350,7 @@
                         </ul>
                         @foreach($v->data as $k=>$vv)
                             @if($k == 0)
-                        <img class="tou4" src="{{$vv->goods_log}}" />
+                                <a href="{{url('/details/index/'.$vv->goods_id)}}"><img class="tou4" src="{{$vv->goods_log}}" /></a>
                             @endif
                             @endforeach
                     </div>
@@ -395,14 +389,14 @@
                         <div class="floor-conver-pit" >
                             @foreach($v->data as $k=>$vv)
                                 @if($k == 4)
-                            <img class="tou1" src="{{$vv->goods_log}}" />
+                                    <a href="{{url('/details/index/'.$vv->goods_id)}}"><img class="tou1" src="{{$vv->goods_log}}" /></a>
                                 @endif
                                 @endforeach
                         </div>
                         <div class="floor-conver-pit">
                             @foreach($v->data as $k=>$vv)
                                 @if($k == 5)
-                                    <img class="tou1" src="{{$vv->goods_log}}" />
+                                    <a href="{{url('/details/index/'.$vv->goods_id)}}"><img class="tou1" src="{{$vv->goods_log}}" /></a>
                                 @endif
                             @endforeach
                         </div>

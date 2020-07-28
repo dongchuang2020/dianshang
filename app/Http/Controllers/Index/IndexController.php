@@ -41,7 +41,7 @@ class IndexController extends Controller
         //查询所有数据
         $cate_show = CateModel::get();
         //  dd($goods_info);
-        $brand_res=BrandModel::get();
+        $brand_res=BrandModel::limit(16)->get();
         $b_res=BrandModel::limit(10)->get();
         $g_res=GoodsModel::orderBy('goods_click','desc')->limit(3)->get();
 //        dd($g_res);exit;

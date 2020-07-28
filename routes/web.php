@@ -192,6 +192,7 @@ Route::any('/index/do_reg','Index\IndexController@do_reg');
 Route::any('/index/log','Index\IndexController@log');
 Route::any('/index/do_login','Index\IndexController@do_login');
 Route::any('/index/test','Index\IndexController@test');
+
 //个人信息
 Route::any('index/user_info','Index\UserinfoController@index');
 Route::any('index/doadd','Index\UserinfoController@doadd');
@@ -208,3 +209,10 @@ Route::any('/addressDel','Index\AddressController@addressDel');
 Route::any('/addressUpdate/{id}','Index\AddressController@addressUpdate');
 Route::any('/addressUpdatedo','Index\AddressController@addressUpdatedo');
 Route::any('/addressChange','Index\AddressController@addressChange');
+
+
+#商品详情
+Route::prefix('details')->group(function(){
+    Route::get('index/{id}','Index\DetailController@index');
+});
+
