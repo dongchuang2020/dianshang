@@ -33,6 +33,7 @@
 <script>
     $(document).on('change','.changearea',function () {
        var id = $(this).val();
+
        var url = '/admins/getcity';
         $.ajax({
             url:url,

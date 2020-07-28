@@ -65,7 +65,7 @@
                             </ul>
                         </li>
                         <li class="f-item space"></li>
-                        <li class="f-item">网站导航</li>
+                        <li class="f-item"><a href="{{url('/home')}}">个人中心</a></li>
                     </ul>
                 </div>
             </div>

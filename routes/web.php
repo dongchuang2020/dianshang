@@ -193,3 +193,12 @@ Route::any('/index/log','Index\IndexController@log');
 Route::any('/index/do_login','Index\IndexController@do_login');
 Route::any('/index/test','Index\IndexController@test');
 
+//收货地址
+Route::any('/address','Index\AddressController@address');
+Route::any('/getcity','Index\AddressController@getcity');
+Route::any('/getarea','Index\AddressController@getarea');
+Route::any('/addressDo','Index\AddressController@addressDo');
+Route::any('/addressDel','Index\AddressController@addressDel');
+Route::any('/addressUpdate/{id}','Index\AddressController@addressUpdate');
+Route::any('/addressUpdatedo','Index\AddressController@addressUpdatedo');
+Route::any('/addressChange','Index\AddressController@addressChange');
