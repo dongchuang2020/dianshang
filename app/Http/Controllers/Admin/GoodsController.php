@@ -62,6 +62,7 @@ class GoodsController extends Controller
             'cate_id'=>$cate_id
         ];
 
+
         $brand_info = DB::table('shop_brand')->get();
         $cate_info = DB::table('shop_category')->get();
         $where = [
@@ -79,7 +80,8 @@ class GoodsController extends Controller
             ->paginate(2);
 //        var_dump($res);die;
         return view('admin.goods.list',['data'=>$res,"brand_info"=>$brand_info,"cate_info"=>$cate_info,'name'=>$name]);
-        
+
+
     }
     //商品删除
     public function delgoods(Request $request){

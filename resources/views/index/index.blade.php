@@ -288,24 +288,24 @@
         <div class="clearfix yui3-g Interest">
             <span class="x-line"></span>
             <div class="yui3-u row-405 Interest-conver">
-                <img src="{{$g_res[0]->goods_log}}" width="300px"/>
+                <img class="tou6" src="{{$g_res[0]->goods_log}}"/>
             </div>
             <div class="yui3-u row-225 Interest-conver-split">
                 <h5>{{$g_res[1]->goods_name}}</h5>
-                <img src="{{$g_res[1]->goods_log}}" />
-                <img src="{{$g_res[1]->goods_log}}" />
+                <img class="tou7" src="{{$g_res[1]->goods_log}}" />
+                <img class="tou7    " src="{{$g_res[1]->goods_log}}" />
             </div>
             <div class="yui3-u row-405 Interest-conver-split blockgary">
                 <h5>{{$g_res[2]->goods_name}}</h5>
                 <div class="split-bt">
-                    <img src="{{$g_res[2]->goods_log}}" />
+                    <img class="tou8" src="{{$g_res[2]->goods_log}}" />
                 </div>
                 <div class="x-img fl">
-                    <img src="{{$g_res[2]->goods_log}}" />
+                    <img class="tou8" src="{{$g_res[2]->goods_log}}" />
                 </div>
-                <div class="x-img fr">
+                {{--<div class="x-img fr">
                     <img src="{{$g_res[2]->goods_log}}" />
-                </div>
+                </div>--}}
             </div>
             <div class="yui3-u row-165 brandArea">
                 <span class="brand-yline"></span>
@@ -371,10 +371,16 @@
                             <div class="carousel-inner">
                                 {{--轮播图--}}
                                     @foreach($v->data as $l=>$vv)
-                                        @if($l <3)
-                                    <div class="item @if($l == 0) active @endif">
-                                        <img class="tou3" src="{{$vv->goods_log}}" style="height: 360px; width: 330px">
+                                        @if($l <4 && $l != 0)
+                                        @if($l == 1)
+                                    <div class="item active">
+                                        <img src="{{$vv->goods_log}}" style="height: 360px; width: 330px">
                                     </div>
+                                            @else
+                                            <div class="item">
+                                                <img src="{{$vv->goods_log}}" style="height: 360px; width: 330px">
+                                            </div>
+                                        @endif
                                     @endif
                                     @endforeach
                             </div>
@@ -388,14 +394,14 @@
                         <span class="floor-x-line"></span>
                         <div class="floor-conver-pit" >
                             @foreach($v->data as $k=>$vv)
-                                @if($k == 0)
+                                @if($k == 4)
                             <img class="tou1" src="{{$vv->goods_log}}" />
                                 @endif
                                 @endforeach
                         </div>
                         <div class="floor-conver-pit">
                             @foreach($v->data as $k=>$vv)
-                                @if($k == 0)
+                                @if($k == 5)
                                     <img class="tou1" src="{{$vv->goods_log}}" />
                                 @endif
                             @endforeach
@@ -403,7 +409,7 @@
                     </div>
                     <div class="yui3-u row-218 split">
                         @foreach($v->data as $k=>$vv)
-                            @if($k == 0)
+                            @if($k == 6)
                                 <img class="tou2" src="{{$vv->goods_log}}" />
                             @endif
                         @endforeach
@@ -412,14 +418,14 @@
                         <span class="floor-x-line"></span>
                         <div class="floor-conver-pit">
                             @foreach($v->data as $k=>$vv)
-                                @if($k == 0)
+                                @if($k == 7)
                                     <img class="tou1" src="{{$vv->goods_log}}" />
                                 @endif
                             @endforeach
                         </div>
                         <div class="floor-conver-pit">
                             @foreach($v->data as $k=>$vv)
-                                @if($k == 0)
+                                @if($k == 8)
                                     <img class="tou1" src="{{$vv->goods_log}}" />
                                 @endif
                             @endforeach
