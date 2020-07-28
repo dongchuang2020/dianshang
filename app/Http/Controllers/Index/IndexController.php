@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Index;
 
 use App\Http\Controllers\Controller;
+use App\Model\CateModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\BrandModel;
@@ -33,13 +34,24 @@ class IndexController extends Controller
                 }
             }
         }
+        //查询数据
+        $cate_info = CateModel::where('parent_id',0)->get();
+        $cate_dt = CateModel::where('cate_nav_show',1)->get();
+        // dd($cate_info);
+        //查询所有数据
+        $cate_show = CateModel::get();
         //  dd($goods_info);
         $brand_res=BrandModel::get();
         $b_res=BrandModel::limit(10)->get();
         $g_res=GoodsModel::orderBy('goods_click','desc')->limit(3)->get();
 //        dd($g_res);exit;
 //        dd($brand_res);exit;
+<<<<<<< HEAD
         return view('index.index',['brand_res'=>$brand_res,"sloganInfo"=>$sloganInfo,'goods_info'=>$goods_info,"sloganInfo2"=>$sloganInfo2,'g_res'=>$g_res,'b_res'=>$b_res]);
+=======
+        $sloganInfo=Slogan::where(["is_del"=>2])->get();
+        return view('index.index',['cate_nav_show'=>$cate_dt,'cate_info'=>$cate_info,'cate_show'=>$cate_show,'brand_res'=>$brand_res,"sloganInfo"=>$sloganInfo,'goods_info'=>$goods_info,"sloganInfo2"=>$sloganInfo2,'g_res'=>$g_res,'b_res'=>$b_res]);
+>>>>>>> 4fecf7ca22f6a2fd1aae8e138036ae64320c6b5e
     }
     public function reg(){
         return view('index.reg');
@@ -109,6 +121,7 @@ class IndexController extends Controller
         }
         if($res){
             session(['user_name'=>$user_name]);
+            session(['user_id'=>$res->user_id]);
             echo "<script>alert('登陆成功');location='/'</script>";
         }else{
             echo "<script>alert('失败');location='/index/log'</script>";
@@ -188,6 +201,7 @@ class IndexController extends Controller
     }
     public function test()
     {
+        echo session('user_id');
         echo session('user_name');
     }
 }

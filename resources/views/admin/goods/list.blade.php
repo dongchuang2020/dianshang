@@ -26,12 +26,29 @@
 
     <div class="box-body">
         <form action="{{url('/admins/goodslist')}}" type="post">
+<<<<<<< HEAD
             商品名称：<input type="text" name="goods_name" value="{{$name['goods_name']}}">
             品牌名称：<select name="brand_id">
                             <option value="">--请选择--</option>
                             @foreach($brand_info as $k=>$v)
                             <option value="{{$v->brand_id}}" @if($v->brand_id == $name['brand_id']) 
                             selected @endif>{{$v->brand_name}}</option>
+=======
+<<<<<<< HEAD
+            商品名称：<input type="text" name="goods_name">
+            品牌名称：<select name="brand_id">
+                            <option value="">--请选择--</option>
+                            @foreach($brand_info as $k=>$v)
+                            <option value="{{$v->brand_id}}">{{$v->brand_name}}</option>
+=======
+            商品名称：<input type="text" name="goods_name" value="{{$name['goods_name']}}">
+            品牌名称：<select name="brand_id">
+                            <option value="">--请选择--</option>
+                            @foreach($brand_info as $k=>$v)
+                            <option value="{{$v->brand_id}}" @if($v->brand_id == $name['brand_id']) 
+                            selected @endif>{{$v->brand_name}}</option>
+>>>>>>> abf7a8a732c62a48d82ed5a6c06b59db45431d80
+>>>>>>> 4fecf7ca22f6a2fd1aae8e138036ae64320c6b5e
                             @endforeach
                       </select>
             分类名称：<select name="cate_id">
@@ -39,6 +56,15 @@
                             @foreach($cate_info as $kk=>$vv)
                             <option value="{{$vv->cate_id}}" @if($vv->cate_id == $name['cate_id']) 
                             selected @endif>{{$vv->cate_name}}</option>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+                            @foreach($cate_info as $k=>$v)
+                            <option value="{{$v->cate_id}}">{{$v->cate_name}}</option>
+                            @endforeach
+=======
+>>>>>>> abf7a8a732c62a48d82ed5a6c06b59db45431d80
+>>>>>>> 4fecf7ca22f6a2fd1aae8e138036ae64320c6b5e
                             @endforeach
                       </select>
             <input type="submit" class="btn btn-info" role="button" value="搜索"> 
