@@ -36,6 +36,7 @@ class IndexController extends Controller
         }
         //查询数据
         $cate_info = CateModel::where('parent_id',0)->get();
+        $cate_dt = CateModel::where('cate_nav_show',1)->get();
         // dd($cate_info);
         //查询所有数据
         $cate_show = CateModel::get();
@@ -46,7 +47,7 @@ class IndexController extends Controller
 //        dd($g_res);exit;
 //        dd($brand_res);exit;
         $sloganInfo=Slogan::where(["is_del"=>2])->get();
-        return view('index.index',['cate_info'=>$cate_info,'cate_show'=>$cate_show,'brand_res'=>$brand_res,"sloganInfo"=>$sloganInfo,'goods_info'=>$goods_info,"sloganInfo2"=>$sloganInfo2,'g_res'=>$g_res,'b_res'=>$b_res]);
+        return view('index.index',['cate_nav_show'=>$cate_dt,'cate_info'=>$cate_info,'cate_show'=>$cate_show,'brand_res'=>$brand_res,"sloganInfo"=>$sloganInfo,'goods_info'=>$goods_info,"sloganInfo2"=>$sloganInfo2,'g_res'=>$g_res,'b_res'=>$b_res]);
     }
     public function reg(){
         return view('index.reg');
