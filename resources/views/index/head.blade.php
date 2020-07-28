@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="index/css/pages-JD-index.css" />
     <link rel="stylesheet" type="text/css" href="index/css/widget-jquery.autocomplete.css" />
     <link rel="stylesheet" type="text/css" href="index/css/widget-cartPanelView.css" />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <style>
         .tou1{
             width:260px;
@@ -42,7 +43,14 @@
                 <div class="shortcut">
                     <ul class="fl">
                         <li class="f-item">品优购欢迎您！</li>
-                        <li class="f-item">请<a href="login.html" target="_blank">登录</a>　<span><a href="register.html" target="_blank">免费注册</a></span></li>
+                        <li class="f-item">
+                            @if(@session('user_name'))
+                            <a href="{{url('index/user_info')}}" target="_blank">欢迎<?php echo session('user_name')?>登录</a>　
+                                @else
+                                <a href="{{url('index/log')}}" target="_blank">登录</a>　
+                            @endif
+                            <span><a href="{{url('index/reg')}}" target="_blank">免费注册</a></span>
+                        </li>
                     </ul>
                     <ul class="fr">
                         <li class="f-item">我的订单</li>

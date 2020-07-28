@@ -192,4 +192,10 @@ Route::any('/index/do_reg','Index\IndexController@do_reg');
 Route::any('/index/log','Index\IndexController@log');
 Route::any('/index/do_login','Index\IndexController@do_login');
 Route::any('/index/test','Index\IndexController@test');
+//个人信息
+Route::any('index/user_info','Index\UserinfoController@index');
+Route::any('index/doadd','Index\UserinfoController@doadd');
+Route::any('index/del_userinfo','Index\UserinfoController@del');
+Route::any('index/up_userinfo/{id}','Index\UserinfoController@up');
+Route::any('index/doup_userinfo','Index\UserinfoController@do_up');
 

@@ -110,6 +110,7 @@ class IndexController extends Controller
         }
         if($res){
             session(['user_name'=>$user_name]);
+            session(['user_id'=>$res->user_id]);
             echo "<script>alert('登陆成功');location='/'</script>";
         }else{
             echo "<script>alert('失败');location='/index/log'</script>";
@@ -189,6 +190,7 @@ class IndexController extends Controller
     }
     public function test()
     {
+        echo session('user_id');
         echo session('user_name');
     }
 }
