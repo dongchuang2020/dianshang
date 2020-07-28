@@ -23,6 +23,7 @@ class GoodsController extends Controller
     public function do_goodsadd(Request $request){
         $data = [];
         $data = $request -> all();
+        //dd($data);
         //检测文件上传
         $fileinfo=$_FILES["goods_log"];
         //dd($fileinfo);
@@ -195,5 +196,34 @@ class GoodsController extends Controller
                 "url"=>"/admins/goodslist"
             ];
         }
+    }
+    //规格
+    public function guigoods($id){
+        $sku_name = DB::table('sku_name')->get();
+        $goods_id = DB::table('goods')->where('goods_id','=',$id)->first();
+        //dd($ca_info);
+        $attr_info = DB::table('attribute')->get();
+        return view('admin.goods.guigoods',['sku_name'=>$sku_name,'attr_info'=>$attr_info,'goods_id'=>$goods_id]);
+    }
+    //属性值查询
+    public function gui(Request $request){
+        $id = $request -> id;
+        $where = ['sid' => $id];
+        $res = DB::table('attribute')->where($where)->get();
+       // dd($res);
+        return json_encode($res,JSON_UNESCAPED_UNICODE);
+    }
+    //属性商品添加
+    public function do_guigoods(Request $request ){
+        $goods_id = $request->post('goods_id');
+        $sid = $request->post('sid');
+        $a_id = $request->post('a_id');
+        $info = [
+            'goods_id'=>$goods_id,
+            'a_id'=>$a_id
+        ];
+        $data = DB::table('sku_goods')->insert($info);
+        if ($data){
+            echo "<script>alert('添加成功');location='/admins/goodslist'</script>";        }
     }
 }

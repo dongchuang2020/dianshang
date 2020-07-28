@@ -121,6 +121,7 @@
                     <td class="text-center" data-goods_id="{{$v->goods_id}}">
                         <a href="#" class="btn btn-info" role="button" id="btn" >删除</a>
                         <a href="{{url('/admins/upgoods/'.$v->goods_id)}}" class="btn btn-info" role="button">修改</a>
+                        <a href="{{url('/admins/guigoods/'.$v->goods_id)}}" class="btn btn-info" role="button">规格</a>
                     </td>
                 </tr>
                 @endforeach

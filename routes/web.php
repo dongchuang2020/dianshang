@@ -119,7 +119,10 @@ Route::prefix('admins')->group(function () {
     Route::get('goodslist','Admin\GoodsController@goodslist');
     Route::get('delgoods','Admin\GoodsController@delgoods');
     Route::get('/upgoods/{id}','Admin\GoodsController@upgoods');
+    Route::get('/guigoods/{id}','Admin\GoodsController@guigoods');
+    Route::any('/do_guigoods','Admin\GoodsController@do_guigoods');
     Route::post('/do_upgoods','Admin\GoodsController@do_upgoods');
+    Route::any('/gui','Admin\GoodsController@gui');
 
 
     //sku

@@ -144,8 +144,9 @@
                     </div>
                     <div class="yui3-u Center navArea">
                         <ul class="nav">
-                            <li class="f-item">服装城</li>
-                            <li class="f-item">美妆馆</li>
+                            @foreach($cate_dt as $v)
+                            <li class="f-item">{{$v->cate_name}}</li>
+                                @endforeach
                         </ul>
                     </div>
                     <div class="yui3-u Right"></div>
