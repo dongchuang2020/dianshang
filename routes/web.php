@@ -212,7 +212,7 @@ Route::any('/addressDel','Index\AddressController@addressDel');
 Route::any('/addressUpdate/{id}','Index\AddressController@addressUpdate');
 Route::any('/addressUpdatedo','Index\AddressController@addressUpdatedo');
 Route::any('/addressChange','Index\AddressController@addressChange');
-
+Route::any('/indexsearch/{id}','Index\SearchController@search');
 
 #商品详情
 Route::prefix('details')->group(function(){
