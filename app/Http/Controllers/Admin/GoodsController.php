@@ -82,10 +82,6 @@ class GoodsController extends Controller
 //        var_dump($res);die;
         return view('admin.goods.list',['data'=>$res,"brand_info"=>$brand_info,"cate_info"=>$cate_info,'name'=>$name]);
 
-<<<<<<< HEAD
-=======
-
->>>>>>> abf7a8a732c62a48d82ed5a6c06b59db45431d80
     }
     //商品删除
     public function delgoods(Request $request){

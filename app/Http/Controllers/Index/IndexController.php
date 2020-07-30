@@ -11,7 +11,12 @@ use App\Model\GoodsModel;
 use App\Models\Slogan;
 class IndexController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        $goods_name=$request->post('goods_name');
+        $where=[];
+        if($goods_name){
+            $where[]=['goods_name','like','%$goods_name%'];
+        }
         $sloganInfo=Slogan::where(["is_del"=>2])->get();//广告展示
     	$sloganInfo2=Slogan::where(["is_del"=>2])->limit(1)->get();
         $goods_where = [
