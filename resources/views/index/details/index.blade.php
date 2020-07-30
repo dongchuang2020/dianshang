@@ -129,8 +129,9 @@
         <div class="crumb-wrap">
             <ul class="sui-breadcrumb">
                 <li>
-                    <a href="#">手机、数码、通讯</a>
+                    <a href="#"></a>
                 </li>
+
                 <li>
                     <a href="#">手机</a>
                 </li>
@@ -138,6 +139,7 @@
                     <a href="#">Apple苹果</a>
                 </li>
                 <li class="active">iphone 6S系类</li>
+
             </ul>
         </div>
         <!--product-info-->
@@ -191,6 +193,14 @@
                     </div>
                     <div class="summary-wrap">
                         <div class="fl title">
+                            <i>库　　存</i>
+                        </div>
+                        <div class="fl price">
+                            <span id="goods_num">{{$res->goods_num}}</span>
+                        </div>
+                    </div>
+                    <div class="summary-wrap">
+                        <div class="fl title">
                             <i>促　　销</i>
                         </div>
                         <div class="fl fix-width">
@@ -220,62 +230,33 @@
                 </div>
                 <div class="clearfix choose">
                     <div id="specification" class="summary-wrap clearfix">
+                        @foreach($da as $k=>$v)
                         <dl>
-                            <dt>
-                            <div class="fl title">
-                                <i>选择颜色</i>
-                            </div>
-                            </dt>
-                            <dd><a href="javascript:;" class="selected">金色<span title="点击取消选择">&nbsp;</span>
-                                </a></dd>
-                            <dd><a href="javascript:;">银色</a></dd>
-                            <dd><a href="javascript:;">黑色</a></dd>
-                        </dl>
-                        <dl>
-                            <dt>
-                            <div class="fl title">
-                                <i>内存容量</i>
-                            </div>
-                            </dt>
-                            <dd><a href="javascript:;" class="selected">16G<span title="点击取消选择">&nbsp;</span>
-                                </a></dd>
-                            <dd><a href="javascript:;">64G</a></dd>
-                            <dd><a href="javascript:;" class="locked">128G</a></dd>
-                        </dl>
-                        <dl>
-                            <dt>
-                            <div class="fl title">
-                                <i>选择版本</i>
-                            </div>
-                            </dt>
-                            <dd><a href="javascript:;" class="selected">公开版<span title="点击取消选择">&nbsp;</span>
-                                </a></dd>
-                            <dd><a href="javascript:;">移动版</a></dd>
-                        </dl>
-                        <dl>
-                            <dt>
-                            <div class="fl title">
-                                <i>购买方式</i>
-                            </div>
-                            </dt>
-                            <dd><a href="javascript:;" class="selected">官方标配<span title="点击取消选择">&nbsp;</span>
-                                </a></dd>
-                            <dd><a href="javascript:;">移动优惠版</a></dd>
-                            <dd><a href="javascript:;"  class="locked">电信优惠版</a></dd>
-                        </dl>
-                        <dl>
-                            <dt>
-                            <div class="fl title">
-                                <i>套　　装</i>
-                            </div>
-                            </dt>
-                            <dd><a href="javascript:;" class="selected">保护套装<span title="点击取消选择">&nbsp;</span>
-                                </a></dd>
-                            <dd><a href="javascript:;"  class="locked">充电套装</a></dd>
 
+                            <dt>
+                            <div class="fl title">
+                                <i>{{$v->name}}</i>
+                            </div>
+                            </dt>
+                            @foreach($data as $kk=>$vv)
+                                @if($v->sid==$vv->sid)
+                            {{--<dd><a href="javascript:;" class="selected"><span title="点击取消选择">&nbsp;</span>--}}
+                                {{--</a></dd>--}}
+                            <dd><a href="javascript:;" >{{$vv->a_name}}</a></dd>
+                                @endif
+                            @endforeach
                         </dl>
-
-
+<<<<<<< Updated upstream
+                        @if($info==null)
+                        <span id="col" goods_id="{{$res->goods_id}}" >收 藏</span>
+                        <span id="del" goods_id="{{$res->goods_id}}" style="display: none">取消收藏</span>
+                        @else
+                            <span id="col" goods_id="{{$res->goods_id}}" style="display: none">收 藏</span>
+                            <span id="del" goods_id="{{$res->goods_id}}"  >取消收藏</span>
+                        @endif
+=======
+                        @endforeach
+>>>>>>> Stashed changes
                     </div>
 
 
@@ -290,9 +271,9 @@
                         <div class="fl title">
                             <div class="control-group">
                                 <div class="controls">
-                                    <input autocomplete="off" type="text" value="1" minnum="1" class="itxt" />
-                                    <a href="javascript:void(0)" class="increment plus">+</a>
-                                    <a href="javascript:void(0)" class="increment mins">-</a>
+                                    <input autocomplete="off" type="text" value="1" minnum="1" class="itxt" id="buy_number"/>
+                                    <a href="javascript:void(0)" id="add" class="increment plus">+</a>
+                                    <a href="javascript:void(0)" id="less" class="increment mins">-</a>
                                 </div>
                             </div>
                         </div>
@@ -978,3 +959,104 @@
 </body>
 
 </html>
+<<<<<<< Updated upstream
+<script>
+    $(document).on('click','#col',function () {
+        var goods_id = $(this).attr('goods_id');
+        var url = '/index/collect';
+        $.ajax({
+            data:{'goods_id':goods_id},
+            url:url,
+            type:'post',
+            dataType:'json',
+            success:function (res) {
+                if(res.code == '00001'){
+                    alert(res.msg)
+                    window.location.href = '/index/log';
+                }
+                if(res.code == '00002'){
+                    alert(res.msg)
+                    $("#col").hide();
+                    $("#col").next().show();
+                }
+                if(res.code == '00000'){
+                    alert(res.msg)
+                    $("#col").hide();
+                    $("#col").next().show();
+                }
+                if(res.code == '00003'){
+                    alert(res.msg)
+                }
+            }
+        });
+    })
+    $(document).on('click','#del',function () {
+        var goods_id = $(this).attr('goods_id');
+        var url = '/index/del_collect';
+        $.ajax({
+            data:{'goods_id':goods_id},
+            url:url,
+            type:'get',
+            dataType:'json',
+            success:function (res) {
+               if(res.code == '00000'){
+                   alert(res.msg)
+                   $("#del").hide();
+                   $("#del").prev().show();
+               }
+                if(res.code == '00001'){
+                    alert(res.msg)
+                    window.location.href = '/index/log';
+                }
+                if(res.code == '00002'){
+                    alert(res.msg)
+                }
+            }
+        });
+
+    })
+=======
+<script src="/jquery.js"></script>
+<script>
+    $(document).ready(function(){
+        //购买数量加一
+        $(document).on("click","#add",function(){
+            var buy_number=parseInt($("#buy_number").val());
+            var goods_num=parseInt($("#goods_num").text());
+            if(buy_number>=goods_num){
+                $("#buy_number").val(goods_num);
+            }else{
+                var buy_number=buy_number+1;
+                $("#buy_number").val(buy_number);
+            }
+        });
+        //购买数量减一
+        $(document).on("click","#less",function(){
+            var buy_number=parseInt($("#buy_number").val());
+            var goods_num=parseInt($("#goods_num").text());
+            if(buy_number<=1){
+                $("#buy_number").val(1);
+            }else{
+                var buy_number=buy_number-1;
+                $("#buy_number").val(buy_number);
+            }
+        });
+        $(document).on("blur","#buy_number",function(){
+            var buy_number=$("#buy_number").val();
+            var goods_num=parseInt($("#goods_num").text());
+            var reg=/^\d+$/;
+            if(buy_number==""){
+                $("#buy_number").val(1);
+            }else if(!reg.test(buy_number)){
+                $("#buy_number").val(1);
+            }else if(parseInt(buy_number)<1){
+                $("#buy_number").val(1);
+            }else if(parseInt(buy_number)>=goods_num){
+                $("#buy_number").val(goods_num);
+            }else{
+                $("#buy_number").val(parseInt(buy_number));
+            }
+        });
+    });
+>>>>>>> Stashed changes
+</script>
