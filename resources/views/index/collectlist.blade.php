@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-    <title>设置-个人信息</title>
+    <title>我的收藏</title>
     <link rel="icon" href="/assets/img/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="css/pages-seckillOrder.css" />
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 
 <body>
@@ -143,25 +142,11 @@
 <script type="text/javascript" src="js/plugins/sui/sui.min.js"></script>
 <script type="text/javascript" src="js/plugins/jquery-placeholder/jquery.placeholder.min.js"></script>
 <script type="text/javascript" src="js/widget/nav.js"></script>
-<script type="text/javascript" src="js/plugins/birthday/birthday.js"></script>
-<script type="text/javascript" src="js/plugins/citypicker/distpicker.data.js"></script>
-<script type="text/javascript" src="js/plugins/citypicker/distpicker.js"></script>
-<script type="text/javascript" src="js/plugins/upload/uploadPreview.js"></script>
-<script type="text/javascript" src="js/pages/main.js"></script>
-<script>
-    $(function() {
-        $.ms_DatePicker({
-            YearSelector: "#select_year2",
-            MonthSelector: "#select_month2",
-            DaySelector: "#select_day2"
-        });
-    });
-</script>
 </body>
 <!--header-->
 <div id="account">
     <div class="py-container">
-        <div class="yui3-g home">
+        <div class="yui3-g collect">
             <!--左侧列表-->
             <div class="yui3-u-1-6 list">
 
@@ -184,157 +169,132 @@
                     </dl>
                     <dl>
                         <dt><i>·</i> 我的中心</dt>
-                        <dd><a href="{{url('/index/collectlist')}}" >我的收藏</a></dd>
-                        <dd><a href="home-person-footmark.html" >我的足迹</a></dd>
+                        <dd><a href="home-person-collect.html" class="list-active">我的收藏</a></dd>
+                        <dd><a href="home-person-footmark.html">我的足迹</a></dd>
                     </dl>
                     <dl>
                         <dt><i>·</i> 物流消息</dt>
                     </dl>
                     <dl>
                         <dt><i>·</i> 设置</dt>
-                        <dd><a href="home-setting-info.html" class="list-active">个人信息</a></dd>
+                        <dd><a href="{{url('index/user_info')}}">个人信息</a></dd>
                         <dd><a href="home-setting-address.html"  >地址管理</a></dd>
                         <dd><a href="home-setting-safe.html" >安全管理</a></dd>
                     </dl>
                 </div>
             </div>
             <!--右侧主内容-->
-            <div class="yui3-u-5-6">
-                <div class="body userInfo">
-                    <ul class="sui-nav nav-tabs nav-large nav-primary ">
-                        <li class="active"><a href="#one" data-toggle="tab">基本资料</a></li>
-                        <li><a href="#two" data-toggle="tab">头像照片</a></li>
-                    </ul>
-                    <div class="tab-content ">
-                        <div id="one" class="tab-pane active">
-                            <form id="form-msg" class="sui-form form-horizontal" action="{{url('/index/doadd')}}" method="post">
-                                <div class="control-group">
-                                    <label for="inputName" class="control-label">昵称：</label>
-                                    <div class="controls">
-                                        <input type="text" id="user_name" name="user_nickname" placeholder="昵称">
+            <div class="yui3-u-5-6 goods">
+                <div class="body">
+                    <h4>收藏的商品</h4>
+                    <div class="goods-list">
+                        <ul class="yui3-g"  id="goods-list">
+                            @foreach($collectinfo as $v)
+                            <li class="yui3-u-1-4">
+                                <div class="list-wrap">
+                                    <div class="p-img"><img src="{{$v->goods_log}}" alt=''></div>
+                                    <div class="price"><strong><em>¥</em> <i>{{$v->goods_price}}</i></strong></div>
+                                    <div class="attr"><em>{{$v->goods_name}}</em></div>
+                                    <div class="cu"><em><span>促</span>满一件可参加超值换购</em></div>
+                                    <div class="operate">
+                                        <a href="success-cart.html" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a>
+                                        <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a>
+                                        <a href="javascript:void(0);" class="sui-btn btn-bordered">降价通知</a>
                                     </div>
                                 </div>
-                                <div class="control-group">
-                                    <label for="inputGender" class="control-label">性别：</label>
-                                    <div class="controls">
-                                        {{--<label data-toggle="radio" class="radio-pretty inline">--}}
-                                            <input type="radio" name="sex" value="1" class="sex" checked><span>男</span>
-                                        {{--</label>--}}
-                                        {{--<label data-toggle="radio" class="radio-pretty inline">--}}
-                                            <input type="radio" name="sex" value="2" class="sex"><span>女</span>
-                                        {{--</label>--}}
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label for="inputPassword" class="control-label">生日：</label>
-                                    <div class="controls">
-                                        <select id="select_year2" name="year2" rel="1990"></select>年
-                                        <select id="select_month2" name="month2" rel="4"></select>月
-                                        <select id="select_day2" name="day2" rel="3"></select>日
-                                    </div>
-                                </div>
-
-
-                                <div class="control-group">
-                                    <label for="inputPassword" class="control-label">所在地：</label>
-                                    <div class="controls">
-                                        <div data-toggle="distpicker">
-                                            <div class="form-group area">
-                                                <select class="form-control" name="province1" id="province1"></select>
-                                            </div>
-                                            <div class="form-group area">
-                                                <select class="form-control" name="city1" id="city1"></select>
-                                            </div>
-                                            <div class="form-group area">
-                                                <select class="form-control" name="district1" id="district1"></select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label for="inputJob" class="control-label">职业：</label>
-                                    <select name="zhiye" id="">
-                                        <option value="1">程序员</option>
-                                        <option value="2">产品经理</option>
-                                        <option value="3">ui设计</option>
-                                    </select>
-                                    {{--<div class="controls">--}}
-                                        {{--<span class="sui-dropdown dropdown-bordered select"><span class="dropdown-inner">--}}
-                                                {{--<a role="button" data-toggle="dropdown" href="#" class="dropdown-toggle">--}}
-                                                {{--<input name="job" type="hidden" data-rules="required">--}}
-                                                    {{--<i class="caret"></i>--}}
-                                                    {{--<span>请选择</span>--}}
-                                                {{--</a>--}}
-                                            {{--<ul id="menu4" role="menu" aria-labelledby="drop4" class="sui-dropdown-menu" name="zhiye">--}}
-                                                {{--<li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="bj" name="chenxu">程序员</a></li>--}}
-                                                {{--<li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="sb" name="chanpin">产品经理</a></li>--}}
-                                                {{--<li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="sb" name="sheji">UI设计师</a></li>--}}
-                                            {{--</ul>--}}
-                                            {{--</span>--}}
-                                            {{--</span>--}}
-                                    {{--</div>--}}
-                                </div>
-                                <div class="control-group">
-                                    <label for="sanwei" class="control-label"></label>
-                                    <div class="controls">
-
-                                        <button class="sui-btn btn-primary" id="but">立即注册</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <table class="sui-table table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>id</th>
-                                    <th>用户名</th>
-                                    <th>用户昵称</th>
-                                    <th>用户性别</th>
-                                    <th>用户生日</th>
-                                    <th>用户地址</th>
-                                    <th>用户职业</th>
-                                    <th>操作</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($data as $v)
-                                <tr>
-                                    <td>{{$v->uid}}</td>
-                                    <td>{{$v->user_name}}</td>
-                                    <td>{{$v->user_nickname}}</td>
-                                    <td>{{$v->sex==1?'男':'女'}}</td>
-                                    <td>{{$v->year2}},{{$v->month2}},{{$v->day2}}</td>
-                                    <td>{{$v->province1}}{{$v->city1}}{{$v->district1}}</td>
-                                    <td>
-                                        @if($v->zhiye==1)
-                                            程序员
-                                        @elseif($v->zhiye==2)
-                                            产品经理
-                                         @else
-                                            ui设计
-                                        @endif
-                                    </td>
-                                    <td id="{{$v->uid}}">
-                                        <a href="{{url('index/up_userinfo/'.$v->uid)}}">编辑</a>
-                                        <a href="#" id="del">删除</a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        <div id="two" class="tab-pane">
-
-                            <div class="new-photo">
-                                <p>当前头像：</p>
-                                <div class="upload">
-                                    <img id="imgShow_WU_FILE_0" width="100" height="100" src="img/_/photo_icon.png" alt="">
-                                    <input type="file" id="up_img_WU_FILE_0" />
-                                </div>
-
-                            </div>
-                        </div>
+                            </li >
+                            @endforeach
+                        </ul>
                     </div>
 
+
+                    <!--猜你喜欢-->
+                    <div class="like-title">
+                        <div class="mt">
+                            <span class="fl"><strong>猜你喜欢</strong></span>
+                        </div>
+                    </div>
+                    <div class="like-list">
+                        <ul class="yui3-g">
+                            <li class="yui3-u-1-4">
+                                <div class="list-wrap">
+                                    <div class="p-img">
+                                        <img src="img/_/itemlike01.png" />
+                                    </div>
+                                    <div class="attr">
+                                        <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
+                                    </div>
+                                    <div class="price">
+                                        <strong>
+                                            <em>¥</em>
+                                            <i>3699.00</i>
+                                        </strong>
+                                    </div>
+                                    <div class="commit">
+                                        <i class="command">已有6人评价</i>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="yui3-u-1-4">
+                                <div class="list-wrap">
+                                    <div class="p-img">
+                                        <img src="img/_/itemlike02.png" />
+                                    </div>
+                                    <div class="attr">
+                                        <em>Apple苹果iPhone 6s/6s Plus 16G 64G 128G</em>
+                                    </div>
+                                    <div class="price">
+                                        <strong>
+                                            <em>¥</em>
+                                            <i>4388.00</i>
+                                        </strong>
+                                    </div>
+                                    <div class="commit">
+                                        <i class="command">已有700人评价</i>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="yui3-u-1-4">
+                                <div class="list-wrap">
+                                    <div class="p-img">
+                                        <img src="img/_/itemlike03.png" />
+                                    </div>
+                                    <div class="attr">
+                                        <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
+                                    </div>
+                                    <div class="price">
+                                        <strong>
+                                            <em>¥</em>
+                                            <i>4088.00</i>
+                                        </strong>
+                                    </div>
+                                    <div class="commit">
+                                        <i class="command">已有700人评价</i>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="yui3-u-1-4">
+                                <div class="list-wrap">
+                                    <div class="p-img">
+                                        <img src="img/_/itemlike04.png" />
+                                    </div>
+                                    <div class="attr">
+                                        <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
+                                    </div>
+                                    <div class="price">
+                                        <strong>
+                                            <em>¥</em>
+                                            <i>4088.00</i>
+                                        </strong>
+                                    </div>
+                                    <div class="commit">
+                                        <i class="command">已有700人评价</i>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -473,25 +433,6 @@
     </div>
 </div>
 <!--页面底部END-->
-
 undefined
 
 </html>
-<script>
-   $(document).on('click','#del',function () {
-       var uid = $(this).parent('td').attr('id');
-       var url = '/index/del_userinfo';
-       $.ajax({
-           data:{'uid':uid},
-           url:url,
-           type:'post',
-           dataType:'json',
-           success:function (res) {
-               if(res.code == '00000'){
-                   window.location.href = '/index/user_info';
-               }
-           }
-       });
-       return false;
-   })
-</script>

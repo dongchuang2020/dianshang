@@ -207,6 +207,7 @@ Route::any('index/doup_userinfo','Index\UserinfoController@do_up');
 //收藏
 Route::any('index/collect','Index\CollectController@add');
 Route::any('index/del_collect','Index\CollectController@del');
+Route::any('index/collectlist','Index\CollectController@lists');
 
 //收货地址
 Route::any('/address','Index\AddressController@address');

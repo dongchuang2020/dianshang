@@ -59,6 +59,14 @@ class CollectController extends Controller
         }
 
     }
+    public function lists(){
+        $where = [
+            'collect.is_del'    => 1
+        ];
+        $collectinfo = DB::table('collect')->join('goods','goods.goods_id','=','collect.goods_id')->where($where)->get();
+
+        return view('index/collectlist',['collectinfo'=>$collectinfo]);
+    }
     public function message($code , $msg , $data = []){
         return [
             'code'  => $code,
