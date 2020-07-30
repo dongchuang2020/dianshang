@@ -48,7 +48,17 @@ class IndexController extends Controller
 //        dd($g_res);exit;
 //        dd($brand_res);exit;
         $sloganInfo=Slogan::where(["is_del"=>2])->get();
-        return view('index.index',['cate_dt'=>$cate_dt,'cate_info'=>$cate_info,'cate_show'=>$cate_show,'brand_res'=>$brand_res,"sloganInfo"=>$sloganInfo,'goods_info'=>$goods_info,"sloganInfo2"=>$sloganInfo2,'g_res'=>$g_res,'b_res'=>$b_res]);
+        //我的收藏
+        $collect_info = DB::table('collect')->join('goods','goods.goods_id','=','collect.goods_id')->get();
+        //今日推荐
+        $whereinfo = [
+            'is_hot'    => 1,
+            'is_del'    => 1
+        ];
+        $goodsInfo = DB::table('goods')->where($whereinfo)->orderby('add_time','desc')->limit(4)->get();
+        //浏览历史的展示
+        $historyShow=ShopHistory::leftjoin("goods","shop_history.goods_id","=","goods.goods_id")->get();
+        return view('index.index',['cate_dt'=>$cate_dt,'cate_info'=>$cate_info,'cate_show'=>$cate_show,'brand_res'=>$brand_res,"sloganInfo"=>$sloganInfo,'goods_info'=>$goods_info,"sloganInfo2"=>$sloganInfo2,'g_res'=>$g_res,'b_res'=>$b_res,'collect_info'=>$collect_info,'goodsinfo'=>$goodsInfo]);
     }
     public function reg(){
         return view('index.reg');

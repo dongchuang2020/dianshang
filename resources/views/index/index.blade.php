@@ -137,18 +137,20 @@
                     <h3>今日推荐</h3>
                 </div>
             </li>
+            @foreach($goodsinfo as $v)
             <li class="yui3-u-5-24">
-                <a href="list.html" target="_blank"><img src="index/img/today01.png" /></a>
+                <a href="{{url('/details/index/'.$v->goods_id)}}" target="_blank"><img src="{{$v->goods_log}}" width="200" height="200"/></a>
             </li>
-            <li class="yui3-u-5-24">
-                <img src="index/img/today02.png" />
-            </li>
-            <li class="yui3-u-5-24">
-                <img src="index/img/today03.png" />
-            </li>
-            <li class="yui3-u-5-24">
-                <img src="index/img/today04.png" />
-            </li>
+            @endforeach
+            {{--<li class="yui3-u-5-24">--}}
+                {{--<img src="index/img/today02.png" />--}}
+            {{--</li>--}}
+            {{--<li class="yui3-u-5-24">--}}
+                {{--<img src="index/img/today03.png" />--}}
+            {{--</li>--}}
+            {{--<li class="yui3-u-5-24">--}}
+                {{--<img src="index/img/today04.png" />--}}
+            {{--</li>--}}
         </ul>
     </div>
 </div>

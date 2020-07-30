@@ -200,9 +200,18 @@
                     </h3>
                     <div class="tbar-panel-main">
                         <div class="tbar-panel-content J-panel-content">
+                            @foreach($collect_info as $v)
                             <div class="tbar-tipbox2">
                                 <div class="tip-inner"> <i class="i-loading"></i> </div>
+                                <ul>
+                                    <li class="jth-item">
+                                <a href="{{url('/details/index/'.$v->goods_id)}}" class="img-wrap"> <img src="{{$v->goods_log}}" height="100" width="100" /> </a>
+                                <a href="#" target="_blank" class="price">￥{{$v->goods_price}}</a>
+                                <a class="add-cart-button" href="#" target="_blank">加入购物车</a>
+                                    </li>
+                                </ul>
                             </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="tbar-panel-footer J-panel-footer"></div>
@@ -218,7 +227,7 @@
                         <div class="tbar-panel-content J-panel-content">
                             <div class="jt-history-wrap">
                                 <ul>
-                                    <!--<li class="jth-item">
+                                    <li class="jth-item">
                                         <a href="#" class="img-wrap"> <img src=".portal/index/img/like_03.png" height="100" width="100" /> </a>
                                         <a class="add-cart-button" href="#" target="_blank">加入购物车</a>
                                         <a href="#" target="_blank" class="price">￥498.00</a>
@@ -227,7 +236,7 @@
                                         <a href="#" class="img-wrap"> <img src="portal/index/img/like_02.png" height="100" width="100" /></a>
                                         <a class="add-cart-button" href="#" target="_blank">加入购物车</a>
                                         <a href="#" target="_blank" class="price">￥498.00</a>
-                                    </li>-->
+                                    </li>
                                 </ul>
                                 <a href="#" class="history-bottom-more" target="_blank">查看更多足迹商品 &gt;&gt;</a>
                             </div>
