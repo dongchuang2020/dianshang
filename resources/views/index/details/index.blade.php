@@ -274,8 +274,13 @@
                             <dd><a href="javascript:;"  class="locked">充电套装</a></dd>
 
                         </dl>
-
-
+                        @if($info==null)
+                        <span id="col" goods_id="{{$res->goods_id}}" >收 藏</span>
+                        <span id="del" goods_id="{{$res->goods_id}}" style="display: none">取消收藏</span>
+                        @else
+                            <span id="col" goods_id="{{$res->goods_id}}" style="display: none">收 藏</span>
+                            <span id="del" goods_id="{{$res->goods_id}}"  >取消收藏</span>
+                        @endif
                     </div>
 
 
@@ -978,3 +983,59 @@
 </body>
 
 </html>
+<script>
+    $(document).on('click','#col',function () {
+        var goods_id = $(this).attr('goods_id');
+        var url = '/index/collect';
+        $.ajax({
+            data:{'goods_id':goods_id},
+            url:url,
+            type:'post',
+            dataType:'json',
+            success:function (res) {
+                if(res.code == '00001'){
+                    alert(res.msg)
+                    window.location.href = '/index/log';
+                }
+                if(res.code == '00002'){
+                    alert(res.msg)
+                    $("#col").hide();
+                    $("#col").next().show();
+                }
+                if(res.code == '00000'){
+                    alert(res.msg)
+                    $("#col").hide();
+                    $("#col").next().show();
+                }
+                if(res.code == '00003'){
+                    alert(res.msg)
+                }
+            }
+        });
+    })
+    $(document).on('click','#del',function () {
+        var goods_id = $(this).attr('goods_id');
+        var url = '/index/del_collect';
+        $.ajax({
+            data:{'goods_id':goods_id},
+            url:url,
+            type:'get',
+            dataType:'json',
+            success:function (res) {
+               if(res.code == '00000'){
+                   alert(res.msg)
+                   $("#del").hide();
+                   $("#del").prev().show();
+               }
+                if(res.code == '00001'){
+                    alert(res.msg)
+                    window.location.href = '/index/log';
+                }
+                if(res.code == '00002'){
+                    alert(res.msg)
+                }
+            }
+        });
+
+    })
+</script>

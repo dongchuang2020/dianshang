@@ -196,6 +196,9 @@ class IndexController extends Controller
             'data'  => $data
         ];
     }
+    public function del_session(){
+        echo 11;
+    }
     public function test()
     {
         echo session('user_id');

@@ -57,10 +57,12 @@
                         <li class="f-item">品优购欢迎您！</li>
                         <li class="f-item">
                             @if(@session('user_name'))
-                            <a href="{{url('index/user_info')}}" target="_blank">欢迎<?php echo session('user_name')?>登录</a>　
+                            <a href="{{url('index/user_info')}}" target="_blank">欢迎<?php echo session('user_name')?>登录</a>
+                                <a href="{{url('index/del_session')}}">退出</a>　
                                 @else
                                 <a href="{{url('index/log')}}" target="_blank">登录</a>　
                             @endif
+
                             <span><a href="{{url('index/reg')}}" target="_blank">免费注册</a></span>
                         </li>
                     </ul>
