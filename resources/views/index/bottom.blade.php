@@ -232,11 +232,15 @@
                                         <a class="add-cart-button" href="#" target="_blank">加入购物车</a>
                                         <a href="#" target="_blank" class="price">￥498.00</a>
                                     </li>
+                                    @foreach($historyShow as $k=>$v)
                                     <li class="jth-item">
-                                        <a href="#" class="img-wrap"> <img src="portal/index/img/like_02.png" height="100" width="100" /></a>
+                                        <a href="#" class="img-wrap"> <img src="{{$v->goods_log}}" height="100" width="100" /> </a>
                                         <a class="add-cart-button" href="#" target="_blank">加入购物车</a>
                                         <a href="#" target="_blank" class="price">￥498.00</a>
                                     </li>
+                                        <a href="#" target="_blank" class="price">￥{{$v->goods_price}}</a>
+                                    </li>
+                                    @endforeach
                                 </ul>
                                 <a href="#" class="history-bottom-more" target="_blank">查看更多足迹商品 &gt;&gt;</a>
                             </div>

@@ -102,11 +102,11 @@
                     </div>
                     <div class="yui3-u Center searchArea">
                         <div class="search">
-                            <form action="" class="sui-form form-inline">
+                            <form action="{{url('/')}}" class="sui-form form-inline">
                                 <!--searchAutoComplete-->
                                 <div class="input-append">
-                                    <input type="text" id="autocomplete" type="text" class="input-error input-xxlarge" />
-                                    <button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
+                                    <input type="text" name="goods_name" id="autocomplete" type="text" class="input-error input-xxlarge" />
+                                    <button class="sui-btn btn-xlarge btn-danger" type="submit">搜索</button>
                                 </div>
                             </form>
                         </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\AreaModel;
 use DB;
+use App\Models\UserRess;
 
 class AddressController extends Controller
 {
@@ -89,18 +90,23 @@ class AddressController extends Controller
         }
     }
     public function addressChange(Request $request){
-        $is_default=$request->post('is_default');//默认
+        $is_default=$request->post('is_default');//默认值
         $ress_id=$request->post('ress_id');//id
-        if($is_default==1){
-            $where=[
-                ['ress_id','!=',$ress_id]
+        if($is_default=="1"){
+             return [
+                "success"=>"default",
+                "code"=>"100",
+                "url"=>"/address"
             ];
-            DB::table('user_ress')->where($where)->update(['is_default'=>2]);
         }
 
-        $res=DB::table('user_ress')->where(['ress_id'=>$ress_id])->update(['is_default'=>$is_default]);
-        if($res){
-            return [
+        $res=UserRess::where(['ress_id'=>$ress_id])->update(['is_default'=>1]);
+        if ($res) {
+             $where=[
+               ['ress_id','!=',$ress_id]
+           ];
+           UserRess::where($where)->update(['is_default'=>2]);
+           return [
                 "success"=>"true",
                 "code"=>"200",
                 "url"=>"/address"
@@ -112,8 +118,7 @@ class AddressController extends Controller
                 "url"=>"/address"
             ];
         }
-        
-        
+
     }
 
 }

@@ -9,9 +9,15 @@ use Illuminate\Support\Facades\DB;
 use App\Models\BrandModel;
 use App\Model\GoodsModel;
 use App\Models\Slogan;
+use App\Models\ShopHistory;
 class IndexController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        $goods_name=$request->post('goods_name');
+        $where=[];
+        if($goods_name){
+            $where[]=['goods_name','like','%$goods_name%'];
+        }
         $sloganInfo=Slogan::where(["is_del"=>2])->get();//广告展示
     	$sloganInfo2=Slogan::where(["is_del"=>2])->limit(1)->get();
         $goods_where = [
@@ -57,8 +63,8 @@ class IndexController extends Controller
         ];
         $goodsInfo = DB::table('goods')->where($whereinfo)->orderby('add_time','desc')->limit(4)->get();
         //浏览历史的展示
-        $historyShow=ShopHistory::leftjoin("goods","shop_history.goods_id","=","goods.goods_id")->get();
-        return view('index.index',['cate_dt'=>$cate_dt,'cate_info'=>$cate_info,'cate_show'=>$cate_show,'brand_res'=>$brand_res,"sloganInfo"=>$sloganInfo,'goods_info'=>$goods_info,"sloganInfo2"=>$sloganInfo2,'g_res'=>$g_res,'b_res'=>$b_res,'collect_info'=>$collect_info,'goodsinfo'=>$goodsInfo]);
+        $historyShow=ShopHistory::leftjoin("goods","shop_history.goods_id","=","goods.goods_id")->orderby('shop_history.add_time','desc')->limit(6)->get();
+        return view('index.index',['cate_dt'=>$cate_dt,'cate_info'=>$cate_info,'cate_show'=>$cate_show,'brand_res'=>$brand_res,"sloganInfo"=>$sloganInfo,'goods_info'=>$goods_info,"sloganInfo2"=>$sloganInfo2,'g_res'=>$g_res,'b_res'=>$b_res,'collect_info'=>$collect_info,'goodsinfo'=>$goodsInfo,'historyShow'=>$historyShow]);
     }
     public function reg(){
         return view('index.reg');

@@ -222,5 +222,6 @@ Route::any('/indexsearch/{id}','Index\SearchController@search');
 #商品详情
 Route::prefix('details')->group(function(){
     Route::get('index/{id}','Index\DetailController@index');
+    Route::get('historyShow','Index\DetailController@historyShow');
 });
 
