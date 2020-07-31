@@ -242,10 +242,14 @@
                                 @if($v->sid==$vv->sid)
                             {{--<dd><a href="javascript:;" class="selected"><span title="点击取消选择">&nbsp;</span>--}}
                                 {{--</a></dd>--}}
-                            <dd><a href="javascript:;" >{{$vv->a_name}}</a></dd>
+                                    <dd><a href="javascript:;" class="selected" >{{$vv->a_name}}<span title="点击取消选择">&nbsp;</span></a></dd>
                                 @endif
                             @endforeach
                         </dl>
+<<<<<<< Updated upstream
+=======
+                        @endforeach
+>>>>>>> Stashed changes
                         @if($info==null)
                         <span id="col" goods_id="{{$res->goods_id}}" >收 藏</span>
                         <span id="del" goods_id="{{$res->goods_id}}" style="display: none">取消收藏</span>
@@ -253,7 +257,10 @@
                             <span id="col" goods_id="{{$res->goods_id}}" style="display: none">收 藏</span>
                             <span id="del" goods_id="{{$res->goods_id}}"  >取消收藏</span>
                         @endif
+<<<<<<< Updated upstream
                         @endforeach
+=======
+>>>>>>> Stashed changes
                     </div>
 
 
@@ -956,7 +963,6 @@
 </body>
 
 </html>
-<<<<<<< Updated upstream
 <script>
     $(document).on('click','#col',function () {
         var goods_id = $(this).attr('goods_id');
@@ -1012,8 +1018,7 @@
         });
 
     })
-=======
-<script src="/jquery.js"></script>
+</script>
 <script>
     $(document).ready(function(){
         //购买数量加一
@@ -1055,5 +1060,4 @@
             }
         });
     });
->>>>>>> Stashed changes
 </script>

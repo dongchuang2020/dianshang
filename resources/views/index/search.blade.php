@@ -10,6 +10,9 @@
 		<link rel="stylesheet" type="text/css" href="/index/css/webbase.css" />
 		<link rel="stylesheet" type="text/css" href="/index/css/pages-list.css" />
 		<link rel="stylesheet" type="text/css" href="/index/css/widget-cartPanelView.css" />
+		<script type="text/javascript" src="/index/js/plugins/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="/jquery.cookie.js"></script>
+		<script type="text/javascript" src="/jquery.session.js"></script>
 	</head>
 
 	<body>
@@ -145,7 +148,7 @@
 					<li>
 						<a href="/">全部结果</a>
 					</li>					
-					<li class="active">{{$search_show->cate_name}}</li>					
+					<li class="active">@if($search_show->cate_name) {{$search_show->cate_name}} @endif</li>
 				</ul>
 				<ul class="tags-choose">
 					<li class="tag">全网通<i class="sui-icon icon-tb-close"></i></li>
@@ -359,7 +362,7 @@
 						<li class="yui3-u-1-5">
 							<div class="list-wrap">
 								<div class="p-img">
-									<a href="item.html" target="_blank"><img src="{{$v->goods_log}}" /></a>
+									<a href="{{url('/details/index/'.$v->goods_id)}}" target="_blank"><img src="{{$v->goods_log}}" /></a>
 								</div>
 								<div class="price">
 									<strong>
@@ -377,7 +380,7 @@
 									<i class="command">已有2000人评价</i>
 								</div>
 								<div class="operate">
-									<a href="success-cart.html" target="_blank" class="sui-btn btn-bordered btn-danger">加入购物车</a>
+									<a  goods_id="{{$v->goods_id}}" target="_blank" class="sui-btn btn-bordered btn-danger gou">加入购物车</a>
 									<a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a>
 									<a href="javascript:void(0);" class="sui-btn btn-bordered">关注</a>
 								</div>
@@ -777,7 +780,53 @@
 		</div>
 	</script>
 	<!--侧栏面板结束-->
-		<script type="text/javascript" src="/index/js/plugins/jquery/jquery.min.js"></script>
+		<script>
+			$('.gou').on('click',function () {
+				var goods_id = $(this).attr('goods_id');
+				var sess = $.session.get("user_id")?false:true;
+				if (sess){
+					var cook = $.cookie('goods');
+					if (cook){
+						var ni = false;
+						alert(cook)
+							var cooks = JSON.parse(cook);
+							for (var i =0;i<cooks.length;i++){
+								if (cooks[i].goods_id == goods_id){
+									cooks[i].man++;
+									ni = true;
+									break;
+								}
+							}
+							if (!ni){
+								var ogj = {goods_id:goods_id,man:1};
+								cooks.push(ogj);
+							}
+							$.cookie('goods',JSON.stringify(cooks),{
+								expires: 15
+							});
+					} else {
+						var name = [{goods_id:goods_id,man:1}];
+						$.cookie('goods',JSON.stringify(name),{
+							expires:15
+						});
+					}
+				}else {
+					var user_id = $.session.get('user_id');
+					$.ajax({
+						url:'/index/guo_add',
+						type:'get',
+						data:{
+							'goods_id':goods_id,
+							'user_id':user_id,
+							'man':1
+						},
+						success:function (rm) {
+							alert(rm)
+						}
+					})
+				}
+			})
+		</script>
 		<script type="text/javascript">
 			$(function() {
 				$("#service").hover(function() {

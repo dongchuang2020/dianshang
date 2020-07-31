@@ -218,7 +218,9 @@ Route::any('/addressDel','Index\AddressController@addressDel');
 Route::any('/addressUpdate/{id}','Index\AddressController@addressUpdate');
 Route::any('/addressUpdatedo','Index\AddressController@addressUpdatedo');
 Route::any('/addressChange','Index\AddressController@addressChange');
-Route::any('/indexsearch/{id}','Index\SearchController@search');
+Route::any('/index/search/{id}','Index\SearchController@search');
+Route::any('/index/guo_add','Index\CartController@guo_add');
+Route::any('/index/cart_index','Index\CartController@cart_index');
 
 #商品详情
 Route::prefix('details')->group(function(){
