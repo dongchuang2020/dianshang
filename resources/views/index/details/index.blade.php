@@ -246,10 +246,7 @@
                                 @endif
                             @endforeach
                         </dl>
-<<<<<<< Updated upstream
-=======
-                        @endforeach
->>>>>>> Stashed changes
+
                         @if($info==null)
                         <span id="col" goods_id="{{$res->goods_id}}" >收 藏</span>
                         <span id="del" goods_id="{{$res->goods_id}}" style="display: none">取消收藏</span>
@@ -257,42 +254,34 @@
                             <span id="col" goods_id="{{$res->goods_id}}" style="display: none">收 藏</span>
                             <span id="del" goods_id="{{$res->goods_id}}"  >取消收藏</span>
                         @endif
-<<<<<<< Updated upstream
                         @endforeach
-=======
->>>>>>> Stashed changes
                     </div>
-
-
-
-
-
-
-
-
 
                     <div class="summary-wrap">
                         <div class="fl title">
+                            <form action="{{url('/index/addcart')}}" method="get">
+                                <input type="hidden" name="goods_id" value="{{$res->goods_id}}">
                             <div class="control-group">
                                 <div class="controls">
-                                    <input autocomplete="off" type="text" value="1" minnum="1" class="itxt" id="buy_number"/>
+                                    <input autocomplete="off" type="text" value="1" minnum="1" class="itxt" id="buy_number" name="buy_number"/>
                                     <a href="javascript:void(0)" id="add" class="increment plus">+</a>
                                     <a href="javascript:void(0)" id="less" class="increment mins">-</a>
                                 </div>
+                                <button target="_blank" class="sui-btn  btn-danger addshopcar">加入购物车</button>
                             </div>
+                            </form>
                         </div>
-                        <div class="fl">
-                            <ul class="btn-choose unstyled">
-                                <li>
-                                    <a href="cart.html" target="_blank" class="sui-btn  btn-danger addshopcar">加入购物车</a>
-                                </li>
-                            </ul>
-                        </div>
+                        {{--<div class="fl">--}}
+                            {{--<ul class="btn-choose unstyled">--}}
+                                {{--<li>--}}
+                                    {{--<a href="#" target="_blank" class="sui-btn  btn-danger addshopcar" id="but" goods_id="{{$res->goods_id}}">加入购物车</a>--}}
+                                {{--</li>--}}
+                            {{--</ul>--}}
+                        {{--</div>--}}
                     </div>
                 </div>
             </div>
         </div>
-        <!--product-detail-->
         <div class="clearfix product-detail">
             <div class="fl aside">
                 <ul class="sui-nav nav-tabs tab-wraped">
@@ -1018,6 +1007,23 @@
         });
 
     })
+</script>
+<script>
+//    $(document).on('click','#but',function () {
+//        var goods_id = $(this).attr('goods_id');
+//        var buy_number = $('#buy_number').val();
+//
+//        var url = 'index/addcart';
+//        $.ajax({
+//            data:{'goods_id':goods_id,'buy_number':buy_number},
+//            type:'get',
+//            dataType:'json',
+//            success:function (res) {
+//                console.log(res)
+//            }
+//        });
+//        return false;
+//    })
 </script>
 <script>
     $(document).ready(function(){

@@ -66,10 +66,10 @@
             <div class="cart-item-list">
                 <div class="cart-body">
                     @foreach($cart_data as $v)
-                    <div class="cart-list">
+                    <div class="cart-list" goods_id="{{$v->goods_id}}">
                         <ul class="goods-list yui3-g">
                             <li class="yui3-u-1-24">
-                                <input type="checkbox" name="" id="" value="" />
+                                <input type="checkbox" class="box" name="" id="" value="" />
                             </li>
                             <li class="yui3-u-11-24">
                                 <div class="good-item">
@@ -79,12 +79,14 @@
                             </li>
 
                             <li class="yui3-u-1-8"><span class="price">{{$v->goods_price}}</span></li>
-                            <li class="yui3-u-1-8">
-                                <a href="javascript:void(0)" class="increment mins">-</a>
-                                <input autocomplete="off" type="text" value="{{$v->buy}}" minnum="1" class="itxt" />
-                                <a href="javascript:void(0)" class="increment plus">+</a>
+                            <li class="yui3-u-1-8" goods_id="{{$v->goods_id}}" goods_num="{{$v->goods_num}}">
+                                <a href="javascript:void(0)" class="increment mins" id="less">-</a>
+                                <input autocomplete="off" type="text" value="{{$v->buy_number}}" minnum="1" class="itxt number" />
+                                <a href="javascript:void(0)" class="increment plus" id="add">+</a>
                             </li>
-                            <li class="yui3-u-1-8"><span class="sum">{{$v->buy*$v->goods_price}}<?php $name +=$v->buy*$v->goods_price;?></span></li>
+                            <li class="yui3-u-1-8">
+                                <span class="sum" id="total">{{$v->buy_number*$v->goods_price}}</span>
+                            </li>
                             <li class="yui3-u-1-8">
                                 <a href="#none">删除</a><br />
                                 <a href="#none">移到我的关注</a>
@@ -108,7 +110,7 @@
             <div class="toolbar">
                 <div class="chosed">已选择<span>0</span>件商品</div>
                 <div class="sumprice">
-                    <span><em>总价（不含运费） ：</em><i class="summoney">¥{{$name}}</i></span>
+                    <span><em>总价（不含运费） ：</em><i class="summoney" id="money">¥0</i></span>
                     <span><em>已节省：</em><i>-¥20.00</i></span>
                 </div>
                 <div class="sumbtn">
@@ -257,6 +259,112 @@
 <script type="text/javascript" src="/index/jquery.easing/jquery.easing.min.js"></script>
 <script type="text/javascript" src="/index/sui/sui.min.js"></script>
 <script type="text/javascript" src="/index/js/widget/nav.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </body>
 
 </html>
+<script>
+    //点击加号
+    $(document).on('click','#add',function () {
+        var buy_number = parseInt($(this).prev().val());
+        var goods_id = parseInt($(this).parent('li').attr('goods_id'));
+        var goods_num = parseInt($(this).parent('li').attr('goods_num'));
+        var name = null;
+        var _this = $(this);
+        if(buy_number>=goods_num){
+            $(this).prev('input').val(goods_num)
+        }else{
+            buy_number = buy_number+1
+            $(this).prev('input').val(buy_number)
+        }
+       //改变文本框的值
+        checknum(goods_id,buy_number);
+        //给当前复选框选中
+        getCheckbox(_this);
+        //获取小计
+        var url = '/index/total';
+        $.ajax({
+            data:{'goods_id':goods_id},
+            url:url,
+            type:'post',
+            async: false,
+            success:function (res) {
+                name = res;
+            }
+        })
+        $(this).parent('li').next('li').children('span').text(name);
+        //获取总价
+        getPrice();
+    });
+    //点击减号
+    $(document).on('click','#less',function () {
+        var buy_number = parseInt($(this).next().val());
+        var goods_id = parseInt($(this).parent('li').attr('goods_id'));
+        var goods_num = parseInt($(this).parent('li').attr('goods_num'));
+        var name = null;
+        var _this = $(this);
+        if(buy_number<=1){
+            _this.next('input').val(1)
+        }else{
+            buy_number = buy_number-1;
+            _this.next('input').val(buy_number);
+        }
+        //改变文本框的值
+        checknum(goods_id,buy_number);
+        //给当前复选框选中
+        getCheckbox(_this);
+        //获取小计
+        var url = '/index/total';
+        $.ajax({
+            data:{'goods_id':goods_id},
+            url:url,
+            type:'post',
+            async: false,
+            success:function (res) {
+                name = res;
+            }
+        })
+        $(this).parent('li').next('li').children('span').text(name);
+        //获取总价
+        getPrice();
+    })
+    //点击复选框
+    $(document).on('click','.box',function () {
+        getPrice();
+    })
+    //改变文本框的值
+    function checknum(goods_id,buy_number) {
+        var url = '/index/checknum';
+        $.ajax({
+            url:url,
+            data:{"goods_id":goods_id,"buy_number":buy_number},
+            type:'post',
+            dataType:'json',
+            success:function (res) {
+//                console.log(res)
+            }
+        })
+    }
+    //给当前点击复选框选中
+    function getCheckbox(_this) {
+        _this.parents('ul').find("input[class='box']").prop('checked',true);
+    }
+    //获取总价
+    function getPrice() {
+        var goods_id = '';
+        var _box = $("input[class='box']:checked").each(function (index) {
+            goods_id += $(this).parents('div').attr('goods_id')+',';
+        })
+        goods_id = goods_id.substr(0,goods_id.length-1,goods_id);
+        var url = '/index/getprice';
+        $.ajax({
+            data:{'goods_id':goods_id},
+            url:url,
+            type:'get',
+            dataType:'json',
+            success:function (res) {
+                $('#money').text(res)
+            }
+        });
+    }
+</script>

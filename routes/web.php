@@ -220,7 +220,12 @@ Route::any('/addressUpdatedo','Index\AddressController@addressUpdatedo');
 Route::any('/addressChange','Index\AddressController@addressChange');
 Route::any('/index/search/{id}','Index\SearchController@search');
 Route::any('/index/guo_add','Index\CartController@guo_add');
+//购物车
 Route::any('/index/cart_index','Index\CartController@cart_index');
+Route::any('/index/addcart','Index\CartController@addcart');
+Route::any('/index/checknum','Index\CartController@checknum');    //改变文本框数量
+Route::any('/index/total','Index\CartController@total');    //获取小计
+Route::any('/index/getprice','Index\CartController@getprice');    //获取小计
 
 #商品详情
 Route::prefix('details')->group(function(){

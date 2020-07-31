@@ -43,21 +43,110 @@ class CartController extends Controller
         }
     }
     public function cart_index(Request $request){
-        $user_id = session('user_id');
-        if ($user_id){
+            $user_id = session('user_id');
+            if(empty($user_id)){
+                echo "<script>alert('请先登陆');location='/index/log'</script>";
+                die;
+            }
             $wh = [
                 'user_id'=>$user_id,
                 'ls_del'=>1
             ];
-            $cart_da = DB::table('shop_car')->where($wh)->get();
-            $where = [];
-            foreach ($cart_da as $v){
-                $data = DB::table('goods')->where('goods_id','=',$v->goods_id)->first();
-                $data->buy = $v->buy_number;
-                //dd($data);
-                $where[] = $data;
+            $cart_da = DB::table('shop_car')->leftjoin('goods','goods.goods_id','=','shop_car.goods_id')->where($wh)->get();
+            return view('index.cart',['cart_data'=>$cart_da]);
+    }
+    //添加购物车
+    public function addcart(Request $request){
+        $goods_id = $request -> goods_id;
+        $buy_number = $request -> buy_number;
+        $user_id = session('user_id');
+        if(empty($user_id)){
+            echo "<script>alert('请先登陆');location='/index/log'</script>";
+            die;
+        }
+        $where = [
+            'user_id'   => $user_id,
+            'goods_id'  => $goods_id,
+            'ls_del'    => 1
+        ];
+        $cart_info = DB::table('shop_car')->where($where)->first();
+        if($cart_info){
+            $buy_number = $buy_number+$cart_info->buy_number;
+            $time = time();
+            $upcart = DB::table('shop_car')->where($where)->update(['buy_number'=>$buy_number,'add_time'=>$time]);
+            if($upcart){
+                echo "<script>alert('加入购物车成功');location='/index/cart_index'</script>";
+            }else{
+                echo "<script>alert('加入购物车失败');location='/index/addcart'</script>";
+            }
+        }else{
+            $data['goods_id'] = $goods_id;
+            $data['buy_number'] = $buy_number;
+            $data['user_id'] = $user_id;
+            $data['add_time'] = time();
+            $addcart = DB::table('shop_car')->insert($data);
+            if($addcart){
+                echo "<script>alert('加入购物车成功');location='/index/cart_index'</script>";
+            }else{
+                echo "<script>alert('加入购物车失败');location='/index/addcart'</script>";
             }
         }
-        return view('index.cart',['cart_data'=>$where,'name'=>0]);
+    }
+    //改变文本框的值
+    public function checknum(Request $request){
+        $goods_id = $request -> goods_id;
+        $buy_number = $request -> buy_number;
+        $user_id = session('user_id');
+        $where = [
+            'goods_id'  => $goods_id,
+            'user_id'   => $user_id,
+            'ls_del'    => 1
+        ];
+        $buy_info = DB::table('shop_car')->where($where)->update(['buy_number'=>$buy_number]);
+        if($buy_info){
+                return $this -> message('00001','成功');
+            }else{
+                return $this -> message('00002','失败');
+        }
+    }
+    //获取小计
+    public function total(Request $request){
+        $goods_id = $request -> goods_id;
+        $goods_price = DB::table('goods')->where(['goods_id'=>$goods_id])->value('goods_price');
+        $where = [
+            'goods_id'  => $goods_id,
+            'user_id'   => session('user_id'),
+            'ls_del'    => 1
+        ];
+        $buy_number = DB::table('shop_car')->where($where)->value('buy_number');
+        return $total = $buy_number*$goods_price;
+    }
+    //获取总价
+    public function getprice(Request $request){
+        $goods_id = $request -> goods_id;
+        $user_id = session('user_id');
+        $goods_id = explode(',',$goods_id);
+        $data = [];
+        foreach ($goods_id as $v) {
+            $where = [
+                ['goods.goods_id', '=',$v],
+                ['shop_car.user_id', '=', $user_id],
+                ['shop_car.ls_del', '=', 1]
+            ];
+            $res = DB::table('shop_car')->join('goods', 'goods.goods_id', '=', 'shop_car.goods_id')->where($where)->first();
+            $data[] = $res;
+        }
+        $zongjia = 0;
+        foreach ($data as $v){
+            $zongjia += $v->buy_number*$v->goods_price;
+        }
+        return $zongjia;
+    }
+    public function message($code , $msg , $data = []){
+        return [
+            'code'  => $code,
+            'msg'   => $msg,
+            'data'  => $data
+        ];
     }
 }
