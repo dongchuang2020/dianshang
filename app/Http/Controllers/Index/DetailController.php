@@ -11,10 +11,6 @@ use App\Models\CategoryModel;
 use App\Models\SkuGoodsModel;
 use App\Models\AttrModel;
 use App\Model\SkuModel;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 class DetailController extends Controller
 {
     public function index($id){
@@ -29,21 +25,13 @@ class DetailController extends Controller
     	}
 
         $res=GoodsModel::where('goods_id',$id)->first();
-<<<<<<< Updated upstream
-    	//根据商品id 用户id  查询 收藏表
-=======
         $user_id= session('user_id');
->>>>>>> Stashed changes
         $collect_where = [
             'goods_id'  => $id,
             'user_id'   => $user_id,
             'is_del'    => 1
         ];
         $collect_info = DB::table('collect')->where($collect_where)->first();
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
         $sku_goods_res=SkuGoodsModel::where('goods_id',$id)->get();
         $data=[];
         foreach($sku_goods_res as $v) {
