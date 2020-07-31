@@ -242,7 +242,7 @@
                                     </li>
                                     @endforeach
                                 </ul>
-                                <a href="#" class="history-bottom-more" target="_blank">查看更多足迹商品 &gt;&gt;</a>
+                                <a href="{{url('/details/historyShow')}}" class="history-bottom-more" target="_blank">查看更多足迹商品 &gt;&gt;</a>
                             </div>
                         </div>
                     </div>

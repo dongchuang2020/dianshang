@@ -14,6 +14,7 @@ use App\Model\SkuModel;
 class DetailController extends Controller
 {
     public function index($id){
+        //浏览历史记录添加
     	$user_id=session("user_id");//用户id
     	if($user_id){
     		$data=[
@@ -24,6 +25,7 @@ class DetailController extends Controller
     		$historyInfo=ShopHistory::insert($data);
     	}
 
+        //收藏
         $res=GoodsModel::where('goods_id',$id)->first();
         $user_id= session('user_id');
         $collect_where = [

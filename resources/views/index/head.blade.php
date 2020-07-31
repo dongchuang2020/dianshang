@@ -87,7 +87,7 @@
                             </ul>
                         </li>
                         <li class="f-item space"></li>
-                        <li class="f-item"><a href="{{url('/home')}}">个人中心</a></li>
+                        <li class="f-item"><a href="{{url('/usercenter')}}">个人中心</a></li>
                     </ul>
                 </div>
             </div>

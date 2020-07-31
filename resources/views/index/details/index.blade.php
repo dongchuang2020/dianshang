@@ -1012,7 +1012,11 @@
         });
 
     })
+<<<<<<< Updated upstream
 </script>
+=======
+<script src="/jquery.js"></script>
+>>>>>>> Stashed changes
 <script>
     $(document).ready(function(){
         //购买数量加一

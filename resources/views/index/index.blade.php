@@ -334,17 +334,7 @@
                         图片展示
                         @foreach($v->data as $vv)
                             <div class="floor-conver-pit ">
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                                <img src="{{$v->goods_log}}" />
-
-=======
-=======
->>>>>>> Stashed changes
-                                <img src="{{$vv->goods_log}}" />
-                               
->>>>>>> Stashed changes
+                              <img src="{{$vv->goods_log}}" /> 
                             </div>
                         @endforeach
                     </div>--}}
@@ -355,109 +345,6 @@
     </div>
 </div>
 @endforeach
-{{--<div id="floor-2" class="floor">
-    <div class="py-container">
-        <div class="title floors">
-            <h3 class="fl">男装</h3>
-            <div class="fr">
-                <ul class="sui-nav nav-tabs">
-                    <li class="active">
-                        <a href="#tab8" data-toggle="tab">热门</a>
-                    </li>
-                    --}}{{--@foreach($goods_info as $v)--}}{{--
-                    --}}{{--<li>--}}{{--
-                        --}}{{--@if($v->is_hot ==1 && $v->cate_id == 28)--}}{{--
-                        --}}{{--<a href="#tab9" data-toggle="tab">{{$v->goods_name}}</a>--}}{{--
-                        --}}{{--@endif--}}{{--
-                    --}}{{--</li>--}}{{--
-                    --}}{{--@endforeach--}}{{--
-                </ul>
-            </div>
-        </div>
-        <div class="clearfix  tab-content floor-content">
-            <div id="tab8" class="tab-pane active">
-                <div class="yui3-g Floor-1">
-                    <div class="yui3-u Left blockgary">
-                        <ul class="jd-list">
-                            <li>节能补贴</li>
-                            <li>4K电视</li>
-                            <li>空气净化器</li>
-                            <li>IH电饭煲</li>
-                            <li>滚筒洗衣机</li>
-                            <li>电热水器</li>
-                        </ul>
-                        <img src="index/img/floor-1-1.png" />
-                    </div>
-                    <div class="yui3-u row-330 floorBanner">
-                        <div id="floorCarousell" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
-                            <ol class="carousel-indicators">
-                                <li data-target="#floorCarousell" data-slide-to="0" class="active"></li>
-                                <li data-target="#floorCarousell" data-slide-to="1"></li>
-                                <li data-target="#floorCarousell" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-
-                                <div class="active item">
-                                    <img src="index/img/floor-1-b01.png">
-                                </div>
-                                <div class="item">
-                                    <img src="index/img/floor-1-b02.png">
-                                </div>
-                                <div class="item">
-                                    <img src="index/img/floor-1-b03.png">
-                                </div>
-                            </div>
-                            <a href="#floorCarousell" data-slide="prev" class="carousel-control left">‹</a>
-                            <a href="#floorCarousell" data-slide="next" class="carousel-control right">›</a>
-                        </div>
-                    </div>
-                    <div class="yui3-u row-220 split">
-                        <span class="floor-x-line"></span>
-                        <div class="floor-conver-pit">
-                            <img src="index/img/floor-1-2.png" />
-                        </div>
-                        <div class="floor-conver-pit">
-                            <img src="index/img/floor-1-3.png" />
-                        </div>
-                    </div>
-                    <div class="yui3-u row-218 split">
-                        <img src="index/img/floor-1-4.png" />
-                    </div>
-                    <div class="yui3-u row-220 split">
-                        <span class="floor-x-line"></span>
-                        <div class="floor-conver-pit">
-                            <img src="index/img/floor-1-5.png" />
-                        </div>
-                        <div class="floor-conver-pit">
-                            <img src="index/img/floor-1-6.png" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="tab2" class="tab-pane">
-                <p>第二个</p>
-            </div>
-            <div id="tab9" class="tab-pane">
-                <p>第三个</p>
-            </div>
-            <div id="tab10" class="tab-pane">
-                <p>第4个</p>
-            </div>
-            <div id="tab11" class="tab-pane">
-                <p>第5个</p>
-            </div>
-            <div id="tab12" class="tab-pane">
-                <p>第6个</p>
-            </div>
-            <div id="tab13" class="tab-pane">
-                <p>第7个</p>
-            </div>
-            <div id="tab14" class="tab-pane">
-                <p>第8个</p>
-            </div>
-        </div>
-    </div>
-</div>--}}
 <!--商标-->
 <div class="brand">
     <div class="py-container">

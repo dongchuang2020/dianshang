@@ -222,9 +222,11 @@ Route::any('/index/search/{id}','Index\SearchController@search');
 Route::any('/index/guo_add','Index\CartController@guo_add');
 Route::any('/index/cart_index','Index\CartController@cart_index');
 
+//个人中心
+Route::any('/usercenter','Index\AddressController@usercenter');
+
 #商品详情
 Route::prefix('details')->group(function(){
     Route::get('index/{id}','Index\DetailController@index');
-    Route::get('historyShow','Index\DetailController@historyShow');
+    Route::get('historyShow','Index\DetailController@historyShow');//浏览历史记录展示
 });
-
