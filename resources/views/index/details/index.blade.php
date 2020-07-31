@@ -1007,7 +1007,11 @@
         });
 
     })
+<<<<<<< Updated upstream
 </script>
+=======
+<script src="/jquery.js"></script>
+>>>>>>> Stashed changes
 <script>
 //    $(document).on('click','#but',function () {
 //        var goods_id = $(this).attr('goods_id');

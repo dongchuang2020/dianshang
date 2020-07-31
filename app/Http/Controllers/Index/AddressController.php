@@ -10,6 +10,9 @@ use App\Models\UserRess;
 
 class AddressController extends Controller
 {
+    public function usercenter(Request $request){
+        return view("index.usercenter");
+    }
     public function address(Request $request){
     	$areaInfo=AreaModel::where(["pid"=>0])->get();
     	$areaShow=DB::table("user_ress")->get();

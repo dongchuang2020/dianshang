@@ -227,9 +227,11 @@ Route::any('/index/checknum','Index\CartController@checknum');    //改变文本
 Route::any('/index/total','Index\CartController@total');    //获取小计
 Route::any('/index/getprice','Index\CartController@getprice');    //获取小计
 
+//个人中心
+Route::any('/usercenter','Index\AddressController@usercenter');
+
 #商品详情
 Route::prefix('details')->group(function(){
     Route::get('index/{id}','Index\DetailController@index');
-    Route::get('historyShow','Index\DetailController@historyShow');
+    Route::get('historyShow','Index\DetailController@historyShow');//浏览历史记录展示
 });
-
