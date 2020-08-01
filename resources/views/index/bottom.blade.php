@@ -229,7 +229,7 @@
                                 <ul>
                                     @foreach($historyShow as $k=>$v)
                                     <li class="jth-item">
-                                        <a href="#" class="img-wrap"> <img src="{{$v->goods_log}}" height="100" width="100" /> </a>
+                                        <a href="{{url('details/index/'.$v->goods_id)}}" class="img-wrap"> <img src="{{$v->goods_log}}" height="100" width="100" /> </a>
                                         <a class="add-cart-button" href="#" target="_blank">加入购物车</a>
                                         <a href="#" target="_blank" class="price">￥{{$v->goods_price}}</a>                                       
                                     </li>

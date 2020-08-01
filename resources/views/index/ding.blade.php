@@ -1,52 +1,3 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-    <title>品优购，优质！优质！</title>
-    <link rel="icon" href="assets/index/img/favicon.ico">
-
-    <link rel="stylesheet" type="text/css" href="index/css/webbase.css" />
-    <link rel="stylesheet" type="text/css" href="index/css/pages-JD-index.css" />
-    <link rel="stylesheet" type="text/css" href="index/css/widget-jquery.autocomplete.css" />
-    <link rel="stylesheet" type="text/css" href="index/css/widget-cartPanelView.css" />
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <style>
-        .tou1{
-            width:260px;
-            height:180px;
-        }
-        .tou2{
-            width: 260px;
-            height: 360px;
-        }
-        .tuo3{
-            width: 300px;
-            height: 150px;
-        }
-        .tou4{
-            width: 260px;
-            height: 276px;
-        }
-        .tou6{
-            width: 420px;
-            height: 404px;
-        }
-        .tou7{
-            width: 250px;
-            height: 202px;
-        }
-        .tou8{
-            width: 510px;
-            height: 202px;
-        }
-    </style>
-</head>
-
-<body>
-<!-- 头部栏位 -->
-<!--页面顶部-->
 <div id="nav-bottom">
     <!--顶部-->
     <div class="nav-top">
@@ -57,9 +8,9 @@
                         <li class="f-item">品优购欢迎您！</li>
                         <li class="f-item">
                             @if(@session('user_name'))
-                            <a href="{{url('index/user_info')}}" target="_blank">欢迎<?php echo session('user_name')?>登录</a>
+                                <a href="{{url('index/user_info')}}" target="_blank">欢迎<?php echo session('user_name')?>登录</a>
                                 <a href="{{url('index/del_session')}}">退出</a>　
-                                @else
+                            @else
                                 <a href="{{url('index/log')}}" target="_blank">登录</a>　
                             @endif
 
@@ -87,7 +38,7 @@
                             </ul>
                         </li>
                         <li class="f-item space"></li>
-                        <li class="f-item"><a href="{{url('/usercenter')}}">个人中心</a></li>
+                        <li class="f-item"><a href="{{url('/index/user_info')}}">个人中心</a></li>
                     </ul>
                 </div>
             </div>
@@ -110,12 +61,24 @@
                                 </div>
                             </form>
                         </div>
+                        <div class="hotwords">
+                            <ul>
+                                <li class="f-item">品优购首发</li>
+                                <li class="f-item">亿元优惠</li>
+                                <li class="f-item">9.9元团购</li>
+                                <li class="f-item">每满99减30</li>
+                                <li class="f-item">亿元优惠</li>
+                                <li class="f-item">9.9元团购</li>
+                                <li class="f-item">办公用品</li>
+
+                            </ul>
+                        </div>
                     </div>
                     <div class="yui3-u Right shopArea">
                         <div class="fr shopcar">
                             <div class="show-shopcar" id="shopcar">
                                 <span class="car"></span>
-                                <a class="sui-btn btn-default btn-xlarge" href="cart.html" target="_blank">
+                                <a class="sui-btn btn-default btn-xlarge" href="/index/cart_index" target="_blank">
                                     <span>我的购物车</span>
                                     <i class="shopnum">0</i>
                                 </a>
@@ -135,8 +98,8 @@
                     <div class="yui3-u Center navArea">
                         <ul class="nav">
                             @foreach($cate_dt as $v)
-                            <a href="/index/search/{{$v->cate_id}}"><li class="f-item">{{$v->cate_name}}</li></a>
-                                @endforeach
+                                <a href="/index/search/{{$v->cate_id}}"><li class="f-item">{{$v->cate_name}}</li></a>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="yui3-u Right"></div>
@@ -145,34 +108,3 @@
         </div>
     </div>
 </div>
-
-<!--列表-->
-<!--列表-->
-<div class="sort" >
-    <div class="py-container">
-        <div class="yui3-g SortList ">
-            <div class="yui3-u Left all-sort-list">
-                <div class="all-sort-list2">
-                    @foreach($cate_info as $k=>$v)
-                        <div class="item bo" algin="center">
-                            <h3><a href="/index/search/{{$v->cate_id}}">
-                                    {{$v->cate_name}}
-                                </a></h3>
-                            <div class="item-list clearfix">
-                                <div class="subitem">
-                                    @foreach($cate_show as $k=>$n)
-                                        @if($v->cate_id == $n->parent_id)
-                                            <dl class="fore1">
-                                                <dt><a href="/index/search/{{$n->cate_id}}">
-                                                        {{$n->cate_name}}
-                                                    </a></dt>
-                                                <!-- <dd><a href="">免费</a><a href="">小说</a></em><a href="">励志与成功</a><em><a href="">婚恋/两性</a></em><em><a href="">文学</a></em><em><a href="">经管</a></em><em><a href="">畅读VIP</a></em></dd> -->
-                                                </dl>
-                                        @endif
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
