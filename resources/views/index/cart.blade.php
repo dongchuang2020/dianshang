@@ -99,7 +99,7 @@
         </div>
         <div class="cart-tool">
             <div class="select-all">
-                <input type="checkbox" name="" id="" value="" />
+                <input type="checkbox" name="" id="selectall" value=""  />
                 <span>全选</span>
             </div>
             <div class="option">
@@ -371,6 +371,12 @@
                 }
             }
         });
+    })
+    //点击全选
+    $(document).on('click','#selectall',function () {
+        var status = $(this).prop('checked');
+        $(".box").prop('checked',status);
+        getPrice();
     })
     //改变文本框的值
     function checknum(goods_id,buy_number) {
