@@ -42,6 +42,7 @@ class CartController extends Controller
             }
         }
     }
+    //购物车列表
     public function cart_index(Request $request){
             $user_id = session('user_id');
             if(empty($user_id)){
@@ -141,6 +142,43 @@ class CartController extends Controller
             $zongjia += $v->buy_number*$v->goods_price;
         }
         return $zongjia;
+    }
+    //删除
+    public function del(Request $request){
+        $goods_id = $request -> goods_id;
+        $where = [
+            'ls_del'    => 1,
+            'goods_id'  => $goods_id,
+            'user_id'   => session('user_id')
+        ];
+        $del = DB::table('shop_car')->where($where)->update(['ls_del'=>2]);
+        if($del){
+            return $this -> message('00000','删除成功');
+        }else{
+            return $this -> message('00001','删除失败');
+        }
+    }
+    //删除选中的商品
+    public function delall(Request $request){
+        $goods_id = $request -> goods_id;
+        $user_id = session('user_id');
+        $goods_id = explode(',',$goods_id);
+        $data = false;
+        foreach ($goods_id as $v){
+            $where = [
+                ['goods_id','=',$v],
+                ['user_id','=',$user_id]
+            ];
+            $res = DB::table('shop_car')->where($where)->update(['ls_del'=>2]);
+            if ($res){
+                $data = true;
+            }
+        }
+        if($data){
+            return $this -> message('00000','删除成功');
+        }else{
+            return $this -> message('00001','删除失败');
+        }
     }
     public function message($code , $msg , $data = []){
         return [

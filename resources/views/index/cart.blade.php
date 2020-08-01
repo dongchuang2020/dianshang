@@ -88,7 +88,7 @@
                                 <span class="sum" id="total">{{$v->buy_number*$v->goods_price}}</span>
                             </li>
                             <li class="yui3-u-1-8">
-                                <a href="#none">删除</a><br />
+                                <a href="#none" id="del">删除</a><br />
                                 <a href="#none">移到我的关注</a>
                             </li>
                         </ul>
@@ -103,7 +103,7 @@
                 <span>全选</span>
             </div>
             <div class="option">
-                <a href="#none">删除选中的商品</a>
+                <a href="#none" id="delall">删除选中的商品</a>
                 <a href="#none">移到我的关注</a>
                 <a href="#none">清除下柜商品</a>
             </div>
@@ -331,6 +331,46 @@
     //点击复选框
     $(document).on('click','.box',function () {
         getPrice();
+    })
+    //点击删除
+    $(document).on('click','#del',function () {
+        var goods_id = $(this).parents('div').attr('goods_id');
+        var url = '/index/delcart';
+        $.ajax({
+            data:{'goods_id':goods_id},
+            url:url,
+            type:'get',
+            dataType:'json',
+            success:function (res) {
+                if(res.code == '00000'){
+                    window.location.reload();
+                }else{
+                    alert(res.msg)
+                }
+            }
+        });
+    });
+    //点击删除选中的商品
+    $(document).on('click','#delall',function () {
+        var goods_id = '';
+        $("input[class='box']:checked").each(function (index) {
+            goods_id += $(this).parents('div').attr('goods_id')+',';
+        });
+        goods_id = goods_id.substr(0,goods_id.length-1);
+        var url = '/index/delall';
+        $.ajax({
+            data:{'goods_id':goods_id},
+            url:url,
+            type:'post',
+            dataType:'json',
+            success:function (res) {
+                if(res.code == '00000'){
+                    window.location.reload();
+                }else{
+                    alert(res.msg)
+                }
+            }
+        });
     })
     //改变文本框的值
     function checknum(goods_id,buy_number) {
