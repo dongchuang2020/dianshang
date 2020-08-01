@@ -271,11 +271,11 @@
                                         @if($l <4 && $l != 0)
                                         @if($l == 1)
                                     <div class="item active">
-                                        <img src="{{$vv->goods_log}}" style="height: 360px; width: 330px">
+                                        <a href="{{url('/details/index/'.$vv->goods_id)}}"><img src="{{$vv->goods_log}}" style="height: 360px; width: 330px"></a>
                                     </div>
                                             @else
                                             <div class="item">
-                                                <img src="{{$vv->goods_log}}" style="height: 360px; width: 330px">
+                                                <a href="{{url('/details/index/'.$vv->goods_id)}}"><img src="{{$vv->goods_log}}" style="height: 360px; width: 330px"></a>
                                             </div>
                                         @endif
                                     @endif
@@ -307,7 +307,7 @@
                     <div class="yui3-u row-218 split">
                         @foreach($v->data as $k=>$vv)
                             @if($k == 6)
-                                <img class="tou2" src="{{$vv->goods_log}}" />
+                                <a href="{{url('/details/index/'.$vv->goods_id)}}"><img class="tou2" src="{{$vv->goods_log}}" /></a>
                             @endif
                         @endforeach
                     </div>

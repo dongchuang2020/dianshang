@@ -102,7 +102,7 @@
                     </div>
                     <div class="yui3-u Center searchArea">
                         <div class="search">
-                            <form action="{{url('/')}}" class="sui-form form-inline">
+                            <form action="{{url('/index/search')}}" class="sui-form form-inline">
                                 <!--searchAutoComplete-->
                                 <div class="input-append">
                                     <input type="text" name="goods_name" id="autocomplete" type="text" class="input-error input-xxlarge" />

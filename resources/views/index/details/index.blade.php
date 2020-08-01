@@ -157,15 +157,10 @@
                         <!--左右按钮-->
                         <div class="items">
                             <ul>
-                                <li><img src="/index/img/_/s1.png" bimg="img/_/b1.png" onmousemove="preview(this)" /></li>
-                                <li><img src="/index/img/_/s2.png" bimg="img/_/b2.png" onmousemove="preview(this)" /></li>
-                                <li><img src="/index/img/_/s3.png" bimg="img/_/b3.png" onmousemove="preview(this)" /></li>
-                                <li><img src="/index/img/_/s1.png" bimg="img/_/b1.png" onmousemove="preview(this)" /></li>
-                                <li><img src="/index/img/_/s2.png" bimg="img/_/b2.png" onmousemove="preview(this)" /></li>
-                                <li><img src="/index/img/_/s3.png" bimg="img/_/b3.png" onmousemove="preview(this)" /></li>
-                                <li><img src="/index/img/_/s1.png" bimg="img/_/b1.png" onmousemove="preview(this)" /></li>
-                                <li><img src="/index/img/_/s2.png" bimg="img/_/b2.png" onmousemove="preview(this)" /></li>
-                                <li><img src="/index/img/_/s3.png" bimg="img/_/b3.png" onmousemove="preview(this)" /></li>
+                                <li><img src="{{$res->goods_log}}" bimg="img/_/b1.png" onmousemove="preview(this)" /></li>
+                                @foreach($goods_imgs_res as $k=>$v)
+                                <li><img src="{{$v->goods_imgs}}" bimg="img/_/b1.png" onmousemove="preview(this)" /></li>
+                                @endforeach
                             </ul>
                         </div>
                         <a class="next">&gt;</a>
@@ -254,7 +249,13 @@
                             <span id="col" goods_id="{{$res->goods_id}}" style="display: none">收 藏</span>
                             <span id="del" goods_id="{{$res->goods_id}}"  >取消收藏</span>
                         @endif
+<<<<<<< Updated upstream
                         @endforeach
+=======
+
+                        @endforeach
+
+>>>>>>> Stashed changes
                     </div>
 
                     <div class="summary-wrap">
@@ -271,13 +272,14 @@
                             </div>
                             </form>
                         </div>
-                        {{--<div class="fl">--}}
-                            {{--<ul class="btn-choose unstyled">--}}
-                                {{--<li>--}}
-                                    {{--<a href="#" target="_blank" class="sui-btn  btn-danger addshopcar" id="but" goods_id="{{$res->goods_id}}">加入购物车</a>--}}
-                                {{--</li>--}}
-                            {{--</ul>--}}
-                        {{--</div>--}}
+                        <div class="fl">
+                            <ul class="btn-choose unstyled">
+                                <li>
+                                    <a href="cart.html" target="_blank" class="sui-btn  btn-danger addshopcar">加入购物车</a>
+                                    <a href="{{url('/orderadd/'.$res->goods_id)}}" target="_blank" class="sui-btn  btn-danger addshopcar">立即购买</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1007,11 +1009,8 @@
         });
 
     })
-<<<<<<< Updated upstream
 </script>
-=======
 <script src="/jquery.js"></script>
->>>>>>> Stashed changes
 <script>
 //    $(document).on('click','#but',function () {
 //        var goods_id = $(this).attr('goods_id');

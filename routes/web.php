@@ -124,6 +124,9 @@ Route::prefix('admins')->group(function () {
     Route::post('/do_upgoods','Admin\GoodsController@do_upgoods');
     Route::any('/gui','Admin\GoodsController@gui');
 
+    //多图片上传
+    Route::any('/goodsImgs/{id}','Admin\GoodsController@goodsImgs');
+    Route::any('/goods_imgs_add','Admin\GoodsController@goods_imgs_add');
 
     //sku
     Route::any('/addsku','Admin\SkuController@addsku');
@@ -237,3 +240,12 @@ Route::prefix('details')->group(function(){
     Route::get('index/{id}','Index\DetailController@index');
     Route::get('historyShow','Index\DetailController@historyShow');//浏览历史记录展示
 });
+
+<<<<<<< Updated upstream
+//订单的添加
+Route::any('/orderadd/{id}','Index\OrderController@orderadd');
+=======
+#搜索
+Route::any('/index/search','Index\IndexController@search');
+>>>>>>> Stashed changes
+

@@ -26,6 +26,10 @@
 
     <div class="box-body">
         <form action="{{url('/admins/goodslist')}}" type="post">
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
             商品名称：<input type="text" name="goods_name" value="{{$name['goods_name']}}">
             品牌名称：<select name="brand_id">
                             <option value="">--请选择--</option>
@@ -40,10 +44,16 @@
                             <option value="{{$vv->cate_id}}" @if($vv->cate_id == $name['cate_id']) 
                             selected @endif>{{$vv->cate_name}}</option>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                             @foreach($cate_info as $k=>$v)
                             <option value="{{$v->cate_id}}">{{$v->cate_name}}</option>
                             @endforeach
 =======
+>>>>>>> Stashed changes
+=======
+                            @foreach($cate_info as $k=>$v)
+                            <option value="{{$v->cate_id}}">{{$v->cate_name}}</option>
+                            @endforeach
 >>>>>>> Stashed changes
                             @endforeach
                       </select>
@@ -101,7 +111,7 @@
                     <td class="text-center" data-goods_id="{{$v->goods_id}}">
                         <a href="#" class="btn btn-info" role="button" id="btn" >删除</a>
                         <a href="{{url('/admins/upgoods/'.$v->goods_id)}}" class="btn btn-info" role="button">修改</a>
-                        <a href="{{url('/admins/guigoods/'.$v->goods_id)}}" class="btn btn-info" role="button">规格</a>
+                        <a href="{{url('/admins/goodsImgs/'.$v->goods_id)}}" class="btn btn-info" role="button">商品子图片</a>
                     </td>
                 </tr>
                 @endforeach
@@ -200,5 +210,5 @@
             }
         })
 
-    })   
+    })
 </script>
