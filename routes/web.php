@@ -241,11 +241,11 @@ Route::prefix('details')->group(function(){
     Route::get('historyShow','Index\DetailController@historyShow');//浏览历史记录展示
 });
 
-<<<<<<< Updated upstream
+
 //订单的添加
 Route::any('/orderadd/{id}','Index\OrderController@orderadd');
-=======
+
 #搜索
 Route::any('/index/search','Index\IndexController@search');
->>>>>>> Stashed changes
+
 
