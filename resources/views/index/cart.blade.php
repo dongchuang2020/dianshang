@@ -89,7 +89,7 @@
                             </li>
                             <li class="yui3-u-1-8">
                                 <a href="#none" id="del">删除</a><br />
-                                <a href="#none">移到我的关注</a>
+                                {{--<a href="#none">移到我的关注</a>--}}
                             </li>
                         </ul>
                     </div>
@@ -99,19 +99,19 @@
         </div>
         <div class="cart-tool">
             <div class="select-all">
-                <input type="checkbox" name="" id="" value="" />
+                <input type="checkbox" name="" id="selectall" value=""  />
                 <span>全选</span>
             </div>
             <div class="option">
                 <a href="#none" id="delall">删除选中的商品</a>
-                <a href="#none">移到我的关注</a>
-                <a href="#none">清除下柜商品</a>
+                {{--<a href="#none">移到我的关注</a>--}}
+                {{--<a href="#none">清除下柜商品</a>--}}
             </div>
             <div class="toolbar">
                 <div class="chosed">已选择<span>0</span>件商品</div>
                 <div class="sumprice">
                     <span><em>总价（不含运费） ：</em><i class="summoney" id="money">¥0</i></span>
-                    <span><em>已节省：</em><i>-¥20.00</i></span>
+                    {{--<span><em>已节省：</em><i>-¥20.00</i></span>--}}
                 </div>
                 <div class="sumbtn">
                     <a class="sum-btn" href="getOrderInfo.html" target="_blank">结算</a>
@@ -371,6 +371,12 @@
                 }
             }
         });
+    })
+    //点击全选
+    $(document).on('click','#selectall',function () {
+        var status = $(this).prop('checked');
+        $(".box").prop('checked',status);
+        getPrice();
     })
     //改变文本框的值
     function checknum(goods_id,buy_number) {
