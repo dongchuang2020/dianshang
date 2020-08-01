@@ -81,7 +81,7 @@
                             <li class="yui3-u-1-8"><span class="price">{{$v->goods_price}}</span></li>
                             <li class="yui3-u-1-8" goods_id="{{$v->goods_id}}" goods_num="{{$v->goods_num}}">
                                 <a href="javascript:void(0)" class="increment mins" id="less">-</a>
-                                <input autocomplete="off" type="text" value="{{$v->buy_number}}" minnum="1" class="itxt number" />
+                                <input autocomplete="off" type="text" value="{{$v->buy_number}}" minnum="1" class="itxt" id="buy_number" />
                                 <a href="javascript:void(0)" class="increment plus" id="add">+</a>
                             </li>
                             <li class="yui3-u-1-8">
@@ -111,7 +111,7 @@
                 <div class="chosed">已选择<span>0</span>件商品</div>
                 <div class="sumprice">
                     <span><em>总价（不含运费） ：</em><i class="summoney" id="money">¥0</i></span>
-                    {{--<span><em>已节省：</em><i>-¥20.00</i></span>--}}
+                    <span><em>已节省：</em><i>-¥20.00</i></span>
                 </div>
                 <div class="sumbtn">
                     <a class="sum-btn" href="getOrderInfo.html" target="_blank">结算</a>
@@ -328,6 +328,43 @@
         //获取总价
         getPrice();
     })
+    //失去焦点
+    $(document).on('blur','#buy_number',function () {
+        var _this = $(this);
+        var buy_number = _this.val();
+        var goods_id = parseInt($(this).parent('li').attr('goods_id'));
+        var goods_num = parseInt($(this).parent('li').attr('goods_num'));
+        var reg = /^\d+$/;
+        if(!reg.test(parseInt(buy_number))||parseInt(buy_number)<=0){
+            buy_number =1;
+            _this.val(buy_number);
+        }else if(parseInt(buy_number)>=parseInt(goods_num)){
+            buy_number = goods_num;
+            _this.val(buy_number);
+
+        }else{
+            buy_number = parseInt(buy_number);
+            _this.val(buy_number);
+        }
+        //改变文本框的值
+        checknum(goods_id,buy_number);
+        //给当前复选框选中
+        getCheckbox(_this);
+        //获取小计
+        var url = '/index/total';
+        $.ajax({
+            data:{'goods_id':goods_id},
+            url:url,
+            type:'post',
+            async: false,
+            success:function (res) {
+                name = res;
+            }
+        });
+        $(this).parent('li').next('li').children('span').text(name);
+        //获取总价
+        getPrice();
+    });
     //点击复选框
     $(document).on('click','.box',function () {
         getPrice();
