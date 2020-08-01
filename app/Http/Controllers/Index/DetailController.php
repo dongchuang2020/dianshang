@@ -57,7 +57,7 @@ class DetailController extends Controller
     }
     //浏览历史记录展示
     public function historyShow(Request $request){
-        $historyShow=ShopHistory::leftjoin("goods","shop_history.goods_id","=","goods.goods_id")->get();
+        $historyShow=ShopHistory::leftjoin("goods","shop_history.goods_id","=","goods.goods_id")->paginate(9);
         $counts=count($historyShow);
         return view("index.details.historyShow",["historyShow"=>$historyShow,"counts"=>$counts]);
     }

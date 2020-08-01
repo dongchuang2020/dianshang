@@ -206,8 +206,14 @@ $(function(){
                                 @endforeach
                             </ul>
                         </div>
-
-                    </div>
+						<div class="choose-order">
+                                <div class="sui-pagination pagination-large top-pages">
+                                    <ul>
+                                        <li class="active">{{$historyShow->links()}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                  </div>
                 </div>
             </div>
         </div>
