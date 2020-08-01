@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\GoodsModel;
 use Illuminate\Support\Facades\DB;
+use App\Models\GoodsImgsModel;
 
 class GoodsController extends Controller
 {
@@ -224,5 +225,27 @@ class GoodsController extends Controller
         $data = DB::table('sku_goods')->insert($info);
         if ($data){
             echo "<script>alert('添加成功');location='/admins/goodslist'</script>";        }
+    }
+    /**
+     * 多图片上传
+     */
+    public function goodsImgs($id){
+        return view('admin.goods.goodsimgs',['goods_id'=>$id]);
+    }
+    public function goods_imgs_add(Request $request){
+        $data=[];
+        $data=$request->all();
+        $fileinfo=$_FILES["goods_imgs"];
+        if ($fileinfo['error'] == 4){
+            echo "<script>alert('没有文件上传');location='/admins/goods'</script>";
+        }
+        $goods_imgs=$this->checkimg($fileinfo);
+        $data['goods_imgs']=$goods_imgs;
+        $res=GoodsImgsModel::insert($data);
+        if($res){
+            echo "<script>alert('添加成功');location='/admins/goodslist'</script>";
+        }else{
+            echo "<script>alert('添加失败');location='/admins/goods'</script>";
+        }
     }
 }

@@ -13,11 +13,6 @@ use App\Models\ShopHistory;
 class IndexController extends Controller
 {
     public function index(Request $request){
-        $goods_name=$request->post('goods_name');
-        $where=[];
-        if($goods_name){
-            $where[]=['goods_name','like','%$goods_name%'];
-        }
         $sloganInfo=Slogan::where(["is_del"=>2])->get();//广告展示
     	$sloganInfo2=Slogan::where(["is_del"=>2])->limit(1)->get();
         $goods_where = [
@@ -219,5 +214,52 @@ class IndexController extends Controller
     {
         echo session('user_id');
         echo session('user_name');
+    }
+    /**
+     * 搜索
+     */
+    public function search(Request $request){
+        $goods_name=$request->post('goods_name');
+        $where=[];
+        if($goods_name){
+            $where[]=['goods_name','like',"%$goods_name%"];
+        }
+        $where1=[];
+        if($goods_name){
+            $where1[]=['brand_name','=',$goods_name];
+        }
+        $where2=[];
+        if($goods_name){
+            $where2[]=['cate_name','=',$goods_name];
+        }
+        $cate_res=CateModel::where($where2)->first();
+        //dd($cate_res);
+        if($cate_res) {
+            $data = [];
+            $goods_res=GoodsModel::where('cate_id',$cate_res['cate_id'])->get();
+            foreach($goods_res as $v){
+                $data[]=$v;
+            }
+            $cate_da = CateModel::where('parent_id', $cate_res['cate_id'])->get();
+            if ($cate_da) {
+                foreach ($cate_da as $v){
+                    $goods_res = GoodsModel::where('cate_id', $v->cate_id)->get();
+                    foreach($goods_res as $vv) {
+                        $data[] = $vv;
+                    }
+            }
+        }
+            return view('index.search.search',['goods_res'=>$data]);
+        }
+        $brand_res=BrandModel::where($where1)->first();
+       //dd($brand_res);exit;
+        if($brand_res){
+            $goods_res=GoodsModel::where('brand_id',$brand_res['brand_id'])->get();
+            return view('index.search.search',['goods_res'=>$goods_res]);
+        }
+
+       $goods_res=GoodsModel::where($where)->get();
+//       dd($goods_res);exit;
+       return view('index.search.search',['goods_res'=>$goods_res]);
     }
 }
