@@ -212,7 +212,7 @@ $(function(){
                                         <li class="active">{{$historyShow->links()}}</li>
                                     </ul>
                                 </div>
-                            </div>
+                        </div>
                   </div>
                 </div>
             </div>
@@ -225,51 +225,7 @@ $(function(){
 		<div class="footlink">
 			<div class="Mod-service">
 				<ul class="Mod-Service-list">
-					<li class="grid-service-item intro  intro1">
-
-						<i class="serivce-item fl"></i>
-						<div class="service-text">
-							<h4>正品保障</h4>
-							<p>正品保障，提供发票</p>
-						</div>
-
-					</li>
-					<li class="grid-service-item  intro intro2">
-
-						<i class="serivce-item fl"></i>
-						<div class="service-text">
-							<h4>正品保障</h4>
-							<p>正品保障，提供发票</p>
-						</div>
-
-					</li>
-					<li class="grid-service-item intro  intro3">
-
-						<i class="serivce-item fl"></i>
-						<div class="service-text">
-							<h4>正品保障</h4>
-							<p>正品保障，提供发票</p>
-						</div>
-
-					</li>
-					<li class="grid-service-item  intro intro4">
-
-						<i class="serivce-item fl"></i>
-						<div class="service-text">
-							<h4>正品保障</h4>
-							<p>正品保障，提供发票</p>
-						</div>
-
-					</li>
-					<li class="grid-service-item intro intro5">
-
-						<i class="serivce-item fl"></i>
-						<div class="service-text">
-							<h4>正品保障</h4>
-							<p>正品保障，提供发票</p>
-						</div>
-
-					</li>
+					
 				</ul>
 			</div>
 			<div class="clearfix Mod-list">

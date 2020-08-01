@@ -64,7 +64,7 @@ class CollectController extends Controller
         $where = [
             'collect.is_del'    => 1
         ];
-        $collectinfo = DB::table('collect')->join('goods','goods.goods_id','=','collect.goods_id')->where($where)->get();
+        $collectinfo = DB::table('collect')->join('goods','goods.goods_id','=','collect.goods_id')->where($where)->paginate(2);
         $cate_dt = CateModel::where('cate_nav_show',1)->get();
         return view('index/collectlist',['cate_dt'=>$cate_dt,'collectinfo'=>$collectinfo]);
     }
