@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Index;
 
 use App\Http\Controllers\Controller;
+use App\Model\CateModel;
 use Illuminate\Http\Request;
 use App\Model\AreaModel;
 use DB;
@@ -23,7 +24,8 @@ class AddressController extends Controller
     		$area=DB::table("shop_area")->where(["id"=>$v->area])->first();
     		$v->obj=$province->name.$city->name.$area->name;
     	}
-    	return view("index.address",["areaInfo"=>$areaInfo,"areaShow"=>$areaShow]);
+        $cate_dt = CateModel::where('cate_nav_show',1)->get();
+    	return view("index.address",['cate_dt'=>$cate_dt,"areaInfo"=>$areaInfo,"areaShow"=>$areaShow]);
     }
     public function getcity(Request $request){
     	$id=$request->post("id");

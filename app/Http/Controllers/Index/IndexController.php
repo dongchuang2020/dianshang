@@ -130,6 +130,7 @@ class IndexController extends Controller
         if($res){
             session(['user_name'=>$user_name]);
             session(['user_id'=>$res->user_id]);
+            setcookie('user_id',$res->user_id);
             echo "<script>alert('登陆成功');location='/'</script>";
         }else{
             echo "<script>alert('失败');location='/index/log'</script>";

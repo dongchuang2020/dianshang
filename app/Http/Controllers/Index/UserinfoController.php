@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\Index;
 
 use App\Http\Controllers\Controller;
+use App\Model\CateModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class UserinfoController extends Controller
 {
     public function index(){
         $data = DB::table('user_info')->join('user','user.user_id','=','user_info.user_id')->get();
-        return view('index.user_info',['data'=>$data]);
+        $cate_dt = CateModel::where('cate_nav_show',1)->get();
+        return view('index.user_info',['cate_dt'=>$cate_dt,'data'=>$data]);
     }
     public function doadd(Request $request){
         $user_id = session('user_id');
@@ -40,7 +42,8 @@ class UserinfoController extends Controller
     }
     public function up($uid){
         $res = DB::table('user_info')->where(['uid'=>$uid])->first();
-        return view('index.up_userinfo',['data'=>$res]);
+        $cate_dt = CateModel::where('cate_nav_show',1)->get();
+        return view('index.up_userinfo',['cate_dt'=>$cate_dt,'data'=>$res]);
     }
     public function do_up(Request $request){
         $arr = $request -> all();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Index;
 
 use App\Http\Controllers\Controller;
+use App\Model\CateModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class CollectController extends Controller
@@ -64,8 +65,8 @@ class CollectController extends Controller
             'collect.is_del'    => 1
         ];
         $collectinfo = DB::table('collect')->join('goods','goods.goods_id','=','collect.goods_id')->where($where)->get();
-
-        return view('index/collectlist',['collectinfo'=>$collectinfo]);
+        $cate_dt = CateModel::where('cate_nav_show',1)->get();
+        return view('index/collectlist',['cate_dt'=>$cate_dt,'collectinfo'=>$collectinfo]);
     }
     public function message($code , $msg , $data = []){
         return [

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Index;
 
 use App\Http\Controllers\Controller;
+use App\Model\CateModel;
+use App\Models\ShopHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,6 +25,16 @@ class SearchController extends Controller
 
         $search_cate = DB::table('shop_category')->get();
         // dd($search_cate);
-        return view('index.search',['search_info'=>$search_info,'search_show'=>$search_show,'search_brand'=>$search_brand,'search_cate'=>$search_cate]);
+        //查询数据
+        $cate_info = CateModel::where('parent_id',0)->get();
+        $cate_dt = CateModel::where('cate_nav_show',1)->get();
+        // dd($cate_info);
+        //查询所有数据
+        $cate_show = CateModel::get();
+        //我的收藏
+        $collect_info = DB::table('collect')->join('goods','goods.goods_id','=','collect.goods_id')->get();
+        //浏览历史的展示
+        $historyShow=ShopHistory::leftjoin("goods","shop_history.goods_id","=","goods.goods_id")->orderby('shop_history.add_time','desc')->limit(6)->get();
+        return view('index.search',['historyShow'=>$historyShow,'collect_info'=>$collect_info,'cate_dt'=>$cate_dt,'cate_info'=>$cate_info,'cate_show'=>$cate_show,'search_info'=>$search_info,'search_show'=>$search_show,'search_brand'=>$search_brand,'search_cate'=>$search_cate]);
     }
 }
