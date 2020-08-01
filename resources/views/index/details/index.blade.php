@@ -271,13 +271,14 @@
                             </div>
                             </form>
                         </div>
-                        {{--<div class="fl">--}}
-                            {{--<ul class="btn-choose unstyled">--}}
-                                {{--<li>--}}
-                                    {{--<a href="#" target="_blank" class="sui-btn  btn-danger addshopcar" id="but" goods_id="{{$res->goods_id}}">加入购物车</a>--}}
-                                {{--</li>--}}
-                            {{--</ul>--}}
-                        {{--</div>--}}
+                        <div class="fl">
+                            <ul class="btn-choose unstyled">
+                                <li>
+                                    <a href="cart.html" target="_blank" class="sui-btn  btn-danger addshopcar">加入购物车</a>
+                                    <a href="{{url('/orderadd/'.$res->goods_id)}}" target="_blank" class="sui-btn  btn-danger addshopcar">立即购买</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1007,11 +1008,8 @@
         });
 
     })
-<<<<<<< Updated upstream
 </script>
-=======
 <script src="/jquery.js"></script>
->>>>>>> Stashed changes
 <script>
 //    $(document).on('click','#but',function () {
 //        var goods_id = $(this).attr('goods_id');
