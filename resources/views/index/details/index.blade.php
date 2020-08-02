@@ -139,7 +139,15 @@
                                 @endif
                             @endforeach
                         </dl>
+<<<<<<< Updated upstream
                         @endforeach
+=======
+
+
+
+                        @endforeach
+
+>>>>>>> Stashed changes
                             @if($info==null)
                                 <span id="col" goods_id="{{$res->goods_id}}" >收 藏</span>
                                 <span id="del" goods_id="{{$res->goods_id}}" style="display: none">取消收藏</span>
@@ -147,6 +155,10 @@
                                 <span id="col" goods_id="{{$res->goods_id}}" style="display: none">收 藏</span>
                                 <span id="del" goods_id="{{$res->goods_id}}"  >取消收藏</span>
                             @endif
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
                     </div>
 
                     <div class="summary-wrap">
@@ -159,10 +171,21 @@
                                     <a href="javascript:void(0)" id="add" class="increment plus">+</a>
                                     <a href="javascript:void(0)" id="less" class="increment mins">-</a>
                                 </div>
-                                <button target="_blank" class="sui-btn  btn-danger addshopcar">加入购物车</button>
                             </div>
                             </form>
                         </div>
+<<<<<<< Updated upstream
+=======
+                        <div class="fl">
+                            <ul class="btn-choose unstyled">
+                                <li>
+                                    <a href="cart.html" target="_blank" class="sui-btn  btn-danger addshopcar">加入购物车</a>
+                                    <a href="{{url('/orderadd/'.$res->goods_id)}}" target="_blank" class="sui-btn  btn-danger addshopcar">立即购买</a>
+                                    <a href="{{url('/details/comment/'.$res->goods_id)}}"  class="sui-btn  btn-danger addshopcar">评论</a>
+                                </li>
+                            </ul>
+                        </div>
+>>>>>>> Stashed changes
                     </div>
                 </div>
             </div>
@@ -407,7 +430,12 @@
                             <p>售后保障</p>
                         </div>
                         <div id="four" class="tab-pane">
-                            <p>商品评价</p>
+                            @foreach($comment_res as $k=>$v)
+                            <ul class="goods-intro unstyled">
+                            <li>用户名：{{$v->user}}&nbsp;&nbsp;{{date("Y-m-d H:i:s",$v->add_time)}}</li>
+                                    <li> 评价内容：<p><textarea cols="30" rows="10">{{$v->comment}}</textarea></p></li>
+                            </ul>
+                            @endforeach
                         </div>
                         <div id="five" class="tab-pane">
                             <p>手机社区</p>
