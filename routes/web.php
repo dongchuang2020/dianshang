@@ -230,7 +230,8 @@ Route::any('/index/checknum','Index\CartController@checknum');    //改变文本
 Route::any('/index/total','Index\CartController@total');    //获取小计
 Route::any('/index/getprice','Index\CartController@getprice');    //获取小计
 Route::any('/index/delcart','Index\CartController@del');    //删除
-Route::any('/index/delall','Index\CartController@delall');    //删除
+Route::any('/index/delall','Index\CartController@delall');    //全部删除
+Route::any('/index/cookie','Index\CartController@cookies');    //删除
 
 //个人中心
 Route::any('/usercenter','Index\AddressController@usercenter');
@@ -254,11 +255,3 @@ Route::any('/orderadd/{id}','Index\OrderController@orderadd');
 #搜索
 Route::any('/index/search','Index\IndexController@search');
 
-
-
-
-
-//订单的添加
-Route::any('/orderadd/{id}','Index\OrderController@orderadd');
-#搜索
-Route::any('/index/search','Index\IndexController@search');

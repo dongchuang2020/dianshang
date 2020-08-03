@@ -61,8 +61,9 @@ class CartController extends Controller
         $goods_id = $request -> goods_id;
         $buy_number = $request -> buy_number;
         $user_id = session('user_id');
+        $goods_price = DB::table('goods')->where(['goods_id'=>$goods_id])->value('goods_price');
         if(empty($user_id)){
-            echo "<script>alert('请先登陆');location='/index/log'</script>";
+            $this -> addCartCookie($goods_id,$buy_number,$goods_price);
             die;
         }
         $where = [
@@ -72,6 +73,11 @@ class CartController extends Controller
         ];
         $cart_info = DB::table('shop_car')->where($where)->first();
         if($cart_info){
+            $result = $this -> checkGoodsNum($goods_id,$buy_number,$cart_info->buy_number);
+            if($result==false){
+                echo "<script>alert('商品超过库存');location='/index/cart_index'</script>";
+                die;
+            }
             $buy_number = $buy_number+$cart_info->buy_number;
             $time = time();
             $upcart = DB::table('shop_car')->where($where)->update(['buy_number'=>$buy_number,'add_time'=>$time]);
@@ -81,6 +87,11 @@ class CartController extends Controller
                 echo "<script>alert('加入购物车失败');location='/index/addcart'</script>";
             }
         }else{
+            $result = $this -> checkGoodsNum($goods_id,$buy_number,$cart_info->buy_number);
+            if($result==false){
+                echo "<script>alert('商品超过库存');location='/index/cart_index'</script>";
+                die;
+            }
             $data['goods_id'] = $goods_id;
             $data['buy_number'] = $buy_number;
             $data['user_id'] = $user_id;
@@ -91,6 +102,38 @@ class CartController extends Controller
             }else{
                 echo "<script>alert('加入购物车失败');location='/index/addcart'</script>";
             }
+        }
+    }
+    //加入购物车cookie
+    public function addCartCookie($goods_id,$buy_number,$goods_price){
+        $cartCookie = [];
+//        $cartCookie = cookie('cartinfo');
+//        if(!empty($cartCookie)){
+//            if(array_key_exists($goods_id,$cartCookie)){
+//                $cartCookie['buy_number'] = $buy_number+$cartCookie['buy_number'];
+//                $cartCookie['time'] = time();
+//            }else{
+//                $cartCookie = ['goods_id'=>$goods_id,'buy_number'=>$buy_number,'goods_price'=>$goods_price];
+//            }
+//        }else{
+            //检测库存
+            $cartCookieinfo = $this -> checkGoodsNum($goods_id,$buy_number);
+            if($cartCookieinfo==false){
+                echo "<script>alert('商品超过库存');location='/index/cart_index'</script>";
+                die;
+            }
+            $cartCookie = ['goods_id'=>$goods_id,'buy_number'=>$buy_number,'time'=>time(),'goods_price'=>$goods_price];
+            setcookie('cartinfo',serialize($cartCookie));
+
+//        }
+    }
+    //检测库存
+    public function checkGoodsNum($goods_id,$buy_number,$already_number=0){
+        $goods_num = DB::table('goods')->where(['goods_id'=>$goods_id])->value('goods_num');
+        if(($buy_number+$already_number)>$goods_num){
+            return false;
+        }else{
+            return true;
         }
     }
     //改变文本框的值
@@ -186,5 +229,8 @@ class CartController extends Controller
             'msg'   => $msg,
             'data'  => $data
         ];
+    }
+    public function cookies(){
+      var_dump(unserialize($_COOKIE['cartinfo']));
     }
 }
