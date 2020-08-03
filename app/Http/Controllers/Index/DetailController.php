@@ -31,13 +31,8 @@ class DetailController extends Controller
 
         //收藏
         $res=GoodsModel::where('goods_id',$id)->first();
-<<<<<<< HEAD
 
 
-
-
-=======
->>>>>>> 921ae834fa444d128c518bc7405390307e8dc7b6
         $goods_imgs_res=GoodsImgsModel::where('goods_id',$id)->get();
 //        dd($goods_imgs_res);exit;
         $user_id= session('user_id');
@@ -59,10 +54,9 @@ class DetailController extends Controller
             $da[]=$shu_name_res;
         }
         $da=array_unique($da);
-<<<<<<< HEAD
+
      //  dd($da);exit;
-=======
->>>>>>> 921ae834fa444d128c518bc7405390307e8dc7b6
+
 
         $cate_dt = CateModel::where('cate_nav_show',1)->get();
         $comment_res=CommentModel::where('goods_id',$id)->get();
@@ -71,13 +65,8 @@ class DetailController extends Controller
             $v->user = $dat->user_name;
         }
        //dd($comment_res);exit;
-<<<<<<< HEAD
-        return view('Index.details.index',['res'=>$res,'sku_goods_res'=>$sku_goods_res,'data'=>$data,'da'=>$da,'info'=>$collect_info,'goods_imgs_res'=>$goods_imgs_res,'comment_res'=>$comment_res,'cate_dt'=>$cate_dt]);
-
-
-=======
         return view('Index.details.index',['cate_dt'=>$cate_dt,'res'=>$res,'sku_goods_res'=>$sku_goods_res,'data'=>$data,'da'=>$da,'info'=>$collect_info,'goods_imgs_res'=>$goods_imgs_res,'comment_res'=>$comment_res]);
->>>>>>> 921ae834fa444d128c518bc7405390307e8dc7b6
+
     }
     //浏览历史记录展示
     public function historyShow(Request $request){
