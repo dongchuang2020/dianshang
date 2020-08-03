@@ -169,7 +169,7 @@ $(function(){
 						</dl>
 						<dl>
 							<dt><i>·</i> 我的中心</dt>
-							<dd><a href="/index/collect">我的收藏</a></dd>
+							<dd><a href="/index/collectlist">我的收藏</a></dd>
 							<dd><a href="/details/historyShow">我的足迹</a></dd>
 						</dl>
 						<dl>
@@ -633,6 +633,7 @@ $(function(){
 				<p>地址：北京市昌平区建材城西路金燕龙办公楼一层 邮编：100096 电话：400-618-4000 传真：010-82935100</p>
 				<p>京ICP备08001421号京公网安备110108007702</p>
 			</div>
+            'p'
 		</div>
 	</div>
 </div>
