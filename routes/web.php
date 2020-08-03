@@ -239,13 +239,24 @@ Route::any('/usercenter','Index\AddressController@usercenter');
 Route::prefix('details')->group(function(){
     Route::get('index/{id}','Index\DetailController@index');
     Route::get('historyShow','Index\DetailController@historyShow');//浏览历史记录展示
+    #评论
+    Route::any('/comment/{id}','Index\DetailController@comment');
+    Route::any('/comment_add','Index\DetailController@comment_add');
 });
+
+
+
+
 
 //订单的添加
 Route::any('/orderadd/{id}','Index\OrderController@orderadd');
 
 #搜索
 Route::any('/index/search','Index\IndexController@search');
+
+
+
+
 
 //订单的添加
 Route::any('/orderadd/{id}','Index\OrderController@orderadd');
