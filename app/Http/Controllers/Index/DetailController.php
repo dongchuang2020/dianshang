@@ -52,6 +52,7 @@ class DetailController extends Controller
             $da[]=$shu_name_res;
         }
         $da=array_unique($da);
+     //  dd($da);exit;
         $cate_dt = CateModel::where('cate_nav_show',1)->get();
      //  dd($da);exit;
         $comment_res=CommentModel::where('goods_id',$id)->get();
