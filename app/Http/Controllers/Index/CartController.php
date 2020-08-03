@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Index;
 
 use App\Http\Controllers\Controller;
+use App\Model\CateModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -54,7 +55,9 @@ class CartController extends Controller
                 'ls_del'=>1
             ];
             $cart_da = DB::table('shop_car')->leftjoin('goods','goods.goods_id','=','shop_car.goods_id')->where($wh)->get();
-            return view('index.cart',['cart_data'=>$cart_da]);
+            $cate_dt = CateModel::where('cate_nav_show',1)->get();
+
+        return view('index.cart',['cate_dt'=>$cate_dt,'cart_data'=>$cart_da]);
     }
     //添加购物车
     public function addcart(Request $request){
