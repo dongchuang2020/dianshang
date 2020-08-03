@@ -327,7 +327,7 @@
         $(this).parent('li').next('li').children('span').text(name);
         //获取总价
         getPrice();
-    })
+    });
     //失去焦点
     $(document).on('blur','#buy_number',function () {
         var _this = $(this);
@@ -368,7 +368,7 @@
     //点击复选框
     $(document).on('click','.box',function () {
         getPrice();
-    })
+    });
     //点击删除
     $(document).on('click','#del',function () {
         var goods_id = $(this).parents('div').attr('goods_id');
@@ -408,13 +408,13 @@
                 }
             }
         });
-    })
+    });
     //点击全选
     $(document).on('click','#selectall',function () {
         var status = $(this).prop('checked');
         $(".box").prop('checked',status);
         getPrice();
-    })
+    });
     //改变文本框的值
     function checknum(goods_id,buy_number) {
         var url = '/index/checknum';
