@@ -248,15 +248,10 @@
             @endif
         @endforeach
     </div>
-    <div class="submit">
-<<<<<<< HEAD
-        <a class="sui-btn btn-danger btn-xlarge" href="">提交订单</a>
-    </div>
-=======
+
         <a class="sui-btn btn-danger btn-xlarge" href="#" id="but">提交订单</a>
     </div>  b
     </form>
->>>>>>> a259fda8dcbc8734cf8661f7c0a2f6358030d17b
 </div>
 <!-- 底部栏位 -->
 <!--页面底部-->
