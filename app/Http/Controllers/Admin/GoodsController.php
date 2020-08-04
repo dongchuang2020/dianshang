@@ -82,10 +82,6 @@ class GoodsController extends Controller
             ->paginate(2);
 //        var_dump($res);die;
         return view('admin.goods.list',['data'=>$res,"brand_info"=>$brand_info,"cate_info"=>$cate_info,'name'=>$name]);
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     }
     //商品删除
     public function delgoods(Request $request){

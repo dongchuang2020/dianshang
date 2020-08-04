@@ -243,6 +243,7 @@ Route::prefix('details')->group(function(){
     #评论
     Route::any('/comment/{id}','Index\DetailController@comment');
     Route::any('/comment_add','Index\DetailController@comment_add');
+    Route::any('/goodsSku','Index\DetailController@goodsSku');
 });
 
 //订单的添加
