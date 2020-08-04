@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <title>我的订单</title>
-     <link rel="icon" href="assets//index/img/favicon.ico">
+     <link rel="icon" href="assets//index/img//favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/index/css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="/index/css/pages-seckillOrder.css" />
@@ -151,7 +151,7 @@ $(function(){
                 <div class="yui3-u-1-6 list">
 
                     <div class="person-info">
-                        <div class="person-photo"><img src="/index/img/_/photo.png" alt=""></div>
+                        <div class="person-photo"></index/img/ src="/index/img//_/photo.png" alt=""></div>
                         <div class="person-account">
                             <span class="name">Michelle</span>
                             <span class="safe">账户安全</span>
@@ -169,16 +169,17 @@ $(function(){
 						</dl>
 						<dl>
 							<dt><i>·</i> 我的中心</dt>
-							<dd><a href="/index/collectlist">我的收藏</a></dd>
-							<dd><a href="/details/historyShow">我的足迹</a></dd>
+							<dd><a href="home-person-collect.html">我的收藏</a></dd>
+							<dd><a href="home-person-footmark.html">我的足迹</a></dd>
 						</dl>
 						<dl>
 							<dt><i>·</i> 物流消息</dt>
 						</dl>
 						<dl>
 							<dt><i>·</i> 设置</dt>
-							<dd><a href="/index/user_info">个人信息</a></dd>
-							<dd><a href="/address">地址管理</a></dd>
+							<dd><a href="home-setting-info.html">个人信息</a></dd>
+							<dd><a href="home-setting-address.html"  >地址管理</a></dd>
+							<dd><a href="home-setting-safe.html" >安全管理</a></dd>
 						</dl>
                     </div>
                 </div>
@@ -223,7 +224,7 @@ $(function(){
                                     <tbody>
                                         <tr>
                                             <td width="35%">
-                                                <div class="typographic"><img src="/index/img/goods.png" />
+                                                <div class="typographic"></index/img/ src="/index/img//goods.png" />
                                                     <a href="#" class="block-text">包邮 正品玛姬儿压缩面膜无纺布纸膜100粒 送泡瓶面膜刷喷瓶 新款</a>
                                                     <span class="guige">规格：温泉喷雾150ml</span>
                                                 </div>
@@ -273,7 +274,7 @@ $(function(){
                                     <tbody>
                                         <tr>
                                             <td width="35%">
-                                                <div class="typographic"><img src="/index/img/goods.png" />
+                                                <div class="typographic"></index/img/ src="/index/img//goods.png" />
                                                     <a href="#" class="block-text">包邮 正品玛姬儿压缩面膜无纺布纸膜100粒 送泡瓶面膜刷喷瓶 新款</a>
                                                     <span class="guige">规格：温泉喷雾150ml</span>
                                                 </div>
@@ -312,7 +313,7 @@ $(function(){
                                         </tr>
                                         <tr>
                                             <td width="35%">
-                                                <div class="typographic"><img src="/index/img/goods.png" />
+                                                <div class="typographic"></index/img/ src="/index/img//goods.png" />
                                                     <a href="#" class="block-text">包邮 正品玛姬儿压缩面膜无纺布纸膜100粒 送泡瓶面膜刷喷瓶 新款</a>
                                                     <span class="guige">规格：温泉喷雾150ml</span>
                                                 </div>
@@ -348,7 +349,7 @@ $(function(){
                                     <tbody>
                                         <tr>
                                             <td width="35%">
-                                                <div class="typographic"><img src="/index/img/goods.png" />
+                                                <div class="typographic"></index/img/ src="/index/img//goods.png" />
                                                     <a href="#" class="block-text">包邮 正品玛姬儿压缩面膜无纺布纸膜100粒 送泡瓶面膜刷喷瓶 新款</a>
                                                     <span class="guige">规格：温泉喷雾150ml</span>
                                                 </div>
@@ -421,8 +422,8 @@ $(function(){
                             <ul class="yui3-g">
                                 <li class="yui3-u-1-4">
                                     <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="/index/img/_/itemlike01.png" />
+                                        <div class="p-/index/img/">
+                                            </index/img/ src="/index/img//_/itemlike01.png" />
                                         </div>
                                         <div class="attr">
                                             <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
@@ -440,8 +441,8 @@ $(function(){
                                 </li>
                                 <li class="yui3-u-1-4">
                                     <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="/index/img/_/itemlike02.png" />
+                                        <div class="p-/index/img/">
+                                            </index/img/ src="/index/img//_/itemlike02.png" />
                                         </div>
                                         <div class="attr">
                                             <em>Apple苹果iPhone 6s/6s Plus 16G 64G 128G</em>
@@ -459,8 +460,8 @@ $(function(){
                                 </li>
                                 <li class="yui3-u-1-4">
                                     <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="/index/img/_/itemlike03.png" />
+                                        <div class="p-/index/img/">
+                                            </index/img/ src="/index/img//_/itemlike03.png" />
                                         </div>
                                         <div class="attr">
                                             <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
@@ -478,8 +479,8 @@ $(function(){
                                 </li>
                                 <li class="yui3-u-1-4">
                                     <div class="list-wrap">
-                                        <div class="p-img">
-                                            <img src="/index/img/_/itemlike04.png" />
+                                        <div class="p-/index/img/">
+                                            </index/img/ src="/index/img//_/itemlike04.png" />
                                         </div>
                                         <div class="attr">
                                             <em>DELL戴尔Ins 15MR-7528SS 15英寸 银色 笔记本</em>
@@ -612,7 +613,7 @@ $(function(){
 					</div>
 					<div class="yui3-u-1-6">
 						<h4>帮助中心</h4>
-						<img src="/index/img/wx_cz.jpg">
+						</index/img/ src="/index/img//wx_cz.jpg">
 					</div>
 				</div>
 			</div>
@@ -632,7 +633,6 @@ $(function(){
 				<p>地址：北京市昌平区建材城西路金燕龙办公楼一层 邮编：100096 电话：400-618-4000 传真：010-82935100</p>
 				<p>京ICP备08001421号京公网安备110108007702</p>
 			</div>
-            'p'
 		</div>
 	</div>
 </div>

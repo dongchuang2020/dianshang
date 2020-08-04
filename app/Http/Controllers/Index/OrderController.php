@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Index;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\Shop_car;
+use App\Models\Order_goods;
 class OrderController extends Controller
 {
     public function orderadd(Request $request){
@@ -39,7 +40,45 @@ class OrderController extends Controller
     	return view('index.order.getorder',['data'=>$data,"goodss_id"=>$goodss_id,'car_data'=>$car_data,'jia'=>$jia]);
     }
     public function do_orderadd(Request $request){
+<<<<<<< HEAD
         
+=======
+        //订单表入库
+        $data = [];
+        $goods_id = $request -> get('goods_id');
+        $goods_id=explode(",",$goods_id);
+        $data['goods_total'] = $request -> get('price_total');
+        $data['ress_id'] = $request -> get('ress_id');
+        $data['payname'] = $request -> get('payname');
+        $data['user_id'] = session('user_id');
+        $data['order_sn'] =time().$data['payname'].rand(1000,999).$data['user_id'];
+        $data['add_time'] = time();
+        $info = DB::table('shop_order')->insert($data);
+        //订单商品表入库
+        $orderInfo=DB::table("shop_order")->where("order_sn",$data['order_sn'])->first();
+        $order_id=$orderInfo->order_id;
+        $user_id=$orderInfo->user_id;
+        $order_goods = [];
+        foreach($goods_id as $k=>$v){
+            // var_dump($v);
+            // die;
+            $where=[
+                'shop_car.goods_id'=>$v,
+                'user_id'=>$user_id
+                ];
+            $order_info=Shop_car::leftjoin("goods","shop_car.goods_id","=","goods.goods_id")->where($where)->first();
+            $order_goods['user_id']=$order_info['user_id'];
+            $order_goods['goods_id']=$order_info['goods_id'];
+            $order_goods['goods_price']=$order_info['goods_price'];
+            $order_goods['buy_number']=$order_info['buy_number'];
+            $result=Order_goods::insert($order_goods);
+            if($result){
+                return redirect("/payadd");
+            }
+        }
+                    
+
+>>>>>>> 7856c820c99da60107783673138a690308c7a3be
     }
     public function message($code , $msg , $data =[]){
         return [

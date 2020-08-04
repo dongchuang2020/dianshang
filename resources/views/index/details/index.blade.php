@@ -121,6 +121,11 @@
                         </dl>
                         @endforeach
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 7856c820c99da60107783673138a690308c7a3be
                             @if($info==null)
                                 <span id="col" goods_id="{{$res->goods_id}}" >收 藏</span>
                                 <span id="del" goods_id="{{$res->goods_id}}" style="display: none">取消收藏</span>
@@ -128,7 +133,10 @@
                                 <span id="col" goods_id="{{$res->goods_id}}" style="display: none">收 藏</span>
                                 <span id="del" goods_id="{{$res->goods_id}}"  >取消收藏</span>
                             @endif
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7856c820c99da60107783673138a690308c7a3be
                     </div>
 
                     <div class="summary-wrap">
@@ -152,7 +160,7 @@
                             <ul class="btn-choose unstyled">
                                 <li>
 
-                                    <a href="{{url('/orderadd/'.$res->goods_id)}}" target="_blank" class="sui-btn  btn-danger addshopcar">立即购买</a>
+                                    <a href="" target="_blank" class="sui-btn  btn-danger addshopcar">立即购买</a>
                                     <a href="{{url('/details/comment/'.$res->goods_id)}}"  class="sui-btn  btn-danger addshopcar">评论</a>
                                 </li>
                             </ul>

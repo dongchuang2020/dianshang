@@ -168,8 +168,7 @@ Route::any("cate/del/{cate_id}","Admin\CateController@del");//删除
         Route::any('/delsku', 'Admin\SkuController@del');
         Route::any('/upsku/{id}', 'Admin\SkuController@upsku');
         Route::any('/do_upsku', 'Admin\SkuController@do_upsku');
-    });
-
+    }); 
 
 #SKU属性值
     Route::prefix('attribute')->group(function () {

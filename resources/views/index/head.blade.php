@@ -68,17 +68,8 @@
                     </ul>
                     <ul class="fr">
                         <li class="f-item">我的订单</li>
-                        <li class="f-item space"></li>
-                        <li class="f-item"><a href="home.html" target="_blank">我的品优购</a></li>
-                        <li class="f-item space"></li>
-                        <li class="f-item">品优购会员</li>
-                        <li class="f-item space"></li>
-                        <li class="f-item">企业采购</li>
-                        <li class="f-item space"></li>
-                        <li class="f-item">关注品优购</li>
-                        <li class="f-item space"></li>
+                       <!--  <li class="f-item space"></li> -->
                         <li class="f-item" id="service">
-                            <span>客户服务</span>
                             <ul class="service">
                                 <li><a href="cooperation.html" target="_blank">合作招商</a></li>
                                 <li><a href="shoplogin.html" target="_blank">商家后台</a></li>
@@ -117,11 +108,11 @@
                                 <span class="car"></span>
                                 <a class="sui-btn btn-default btn-xlarge" href="/index/cart_index" target="_blank">
                                     <span>我的购物车</span>
-                                    <i class="shopnum">0</i>
+                                    <!-- <i class="shopnum"></i> -->
                                 </a>
                                 <div class="clearfix shopcarlist" id="shopcarlist" style="display:none">
-                                    <p>"啊哦，你的购物车还没有商品哦！"</p>
-                                    <p>"啊哦，你的购物车还没有商品哦！"</p>
+                                    <p>"啊哦，可以加入我的购物车哦！"</p>
+                                    <!-- <p>"啊哦，你的购物车还没有商品哦！"</p> -->
                                 </div>
                             </div>
                         </div>

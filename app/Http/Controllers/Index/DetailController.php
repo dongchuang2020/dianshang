@@ -30,7 +30,16 @@ class DetailController extends Controller
 
         //收藏
         $res=GoodsModel::where('goods_id',$id)->first();
+<<<<<<< HEAD
 
+=======
+
+
+
+    	//dd($res);
+
+
+>>>>>>> 7856c820c99da60107783673138a690308c7a3be
         $goods_imgs_res=GoodsImgsModel::where('goods_id',$id)->get();
 //        dd($goods_imgs_res);exit;
         $user_id= session('user_id');
@@ -52,10 +61,20 @@ class DetailController extends Controller
             $da[]=$shu_name_res;
         }
         $da=array_unique($da);
+
+
+     //  dd($da);exit;
+
+
+
      //  dd($da);exit;
 
         $cate_dt = CateModel::where('cate_nav_show',1)->get();
      //  dd($da);exit;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7856c820c99da60107783673138a690308c7a3be
 
         $cate_dt = CateModel::where('cate_nav_show',1)->get();
 
@@ -68,9 +87,16 @@ class DetailController extends Controller
        //dd($comment_res);exit;
 
         $cate_dt = CateModel::where('cate_nav_show',1)->get();
+<<<<<<< HEAD
 
         return view('Index.details.index',['res'=>$res,'sku_goods_res'=>$sku_goods_res,'data'=>$data,'da'=>$da,'info'=>$collect_info,'goods_imgs_res'=>$goods_imgs_res,'comment_res'=>$comment_res,'cate_dt'=>$cate_dt]);
 
+=======
+       
+        return view('Index.details.index',['res'=>$res,'sku_goods_res'=>$sku_goods_res,'data'=>$data,'da'=>$da,'info'=>$collect_info,'goods_imgs_res'=>$goods_imgs_res,'comment_res'=>$comment_res,'cate_dt'=>$cate_dt]);
+
+
+>>>>>>> 7856c820c99da60107783673138a690308c7a3be
     }
     //浏览历史记录展示
     public function historyShow(Request $request){

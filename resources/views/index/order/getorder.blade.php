@@ -248,7 +248,7 @@
             @endif
         @endforeach
     </div>
-    <div class="submit">
+
         <a class="sui-btn btn-danger btn-xlarge" href="#" id="but">提交订单</a>
     </div>  b
     </form>
