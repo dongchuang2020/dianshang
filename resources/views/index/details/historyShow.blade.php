@@ -169,17 +169,16 @@ $(function(){
 						</dl>
 						<dl>
 							<dt><i>·</i> 我的中心</dt>
-							<dd><a href="home-person-collect.html" >我的收藏</a></dd>
-							<dd><a href="/details/historyShow" class="list-active">我的足迹</a></dd>
+							<dd><a href="/index/collectlist">我的收藏</a></dd>
+							<dd><a href="/details/historyShow">我的足迹</a></dd>
 						</dl>
 						<dl>
 							<dt><i>·</i> 物流消息</dt>
 						</dl>
 						<dl>
 							<dt><i>·</i> 设置</dt>
-							<dd><a href="home-setting-info.html">个人信息</a></dd>
-							<dd><a href="home-setting-address.html"  >地址管理</a></dd>
-							<dd><a href="home-setting-safe.html" >安全管理</a></dd>
+							<dd><a href="/index/user_info">个人信息</a></dd>
+							<dd><a href="/address">地址管理</a></dd>
 						</dl>
                     </div>
                 </div>

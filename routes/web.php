@@ -168,8 +168,7 @@ Route::any("cate/del/{cate_id}","Admin\CateController@del");//删除
         Route::any('/delsku', 'Admin\SkuController@del');
         Route::any('/upsku/{id}', 'Admin\SkuController@upsku');
         Route::any('/do_upsku', 'Admin\SkuController@do_upsku');
-    });
-
+    }); 
 
 #SKU属性值
     Route::prefix('attribute')->group(function () {
@@ -244,21 +243,8 @@ Route::prefix('details')->group(function(){
     Route::any('/comment_add','Index\DetailController@comment_add');
 });
 
-
-
-
-
 //订单的添加
-Route::any('/orderadd/{id}','Index\OrderController@orderadd');
-
+Route::any('/orderadd','Index\OrderController@orderadd');
 #搜索
 Route::any('/index/search','Index\IndexController@search');
 
-
-
-
-
-//订单的添加
-Route::any('/orderadd/{id}','Index\OrderController@orderadd');
-#搜索
-Route::any('/index/search','Index\IndexController@search');

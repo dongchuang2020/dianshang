@@ -53,7 +53,7 @@
 						@foreach($search_cate as $k=>$v)
 							@if($search_show->cate_id == $v->parent_id)
 							<li>
-								<a>|  {{$v->cate_name}}  | </a>
+								<a>| {{$v->cate_name}}  | </a>
 							</li>
 							@endif
 							@endforeach

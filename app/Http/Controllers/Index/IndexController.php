@@ -38,10 +38,16 @@ class IndexController extends Controller
 
         //查询数据
         $cate_info = CateModel::where('parent_id',0)->get();
+        if($cate_info==""){
+            header('Location: http://www.1909.com/');
+        }
         $cate_dt = CateModel::where('cate_nav_show',1)->get();
         // dd($cate_info);
         //查询所有数据
         $cate_show = CateModel::get();
+        if($cate_show==""){
+            header('Location: http://www.1909.com/');
+        }
         //  dd($goods_info);
         $brand_res=BrandModel::limit(16)->get();
         $b_res=BrandModel::limit(10)->get();

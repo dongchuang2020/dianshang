@@ -169,7 +169,7 @@
                             <ul class="btn-choose unstyled">
                                 <li>
 
-                                    <a href="{{url('/orderadd/'.$res->goods_id)}}" target="_blank" class="sui-btn  btn-danger addshopcar">立即购买</a>
+                                    <a href="" target="_blank" class="sui-btn  btn-danger addshopcar">立即购买</a>
                                     <a href="{{url('/details/comment/'.$res->goods_id)}}"  class="sui-btn  btn-danger addshopcar">评论</a>
                                 </li>
                             </ul>

@@ -13,44 +13,10 @@
 
 <body>
 <!--head-->
-<div class="top">
-    <div class="py-container">
-        <div class="shortcut">
-            <ul class="fl">
-                <li class="f-item">品优购欢迎您！</li>
-                <li class="f-item">请登录　<span><a href="#">免费注册</a></span></li>
-            </ul>
-            <ul class="fr">
-                <li class="f-item">我的订单</li>
-                <li class="f-item space"></li>
-                <li class="f-item">我的品优购</li>
-                <li class="f-item space"></li>
-                <li class="f-item">品优购会员</li>
-                <li class="f-item space"></li>
-                <li class="f-item">企业采购</li>
-                <li class="f-item space"></li>
-                <li class="f-item">关注品优购</li>
-                <li class="f-item space"></li>
-                <li class="f-item">客户服务</li>
-                <li class="f-item space"></li>
-                <li class="f-item">网站导航</li>
-            </ul>
-        </div>
-    </div>
-</div>
+@include('index.ding')
 <div class="cart py-container">
     <!--logoArea-->
-    <div class="logoArea">
-        <div class="fl logo"><span class="title">购物车</span></div>
-        <div class="fr search">
-            <form class="sui-form form-inline">
-                <div class="input-append">
-                    <input type="text" type="text" class="input-error input-xxlarge" placeholder="品优购自营" />
-                    <button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
-                </div>
-            </form>
-        </div>
-    </div>
+
     <!--All goods-->
     <div class="allgoods">
         <h4>全部商品<span>11</span></h4>
@@ -114,7 +80,7 @@
                     <span><em>已节省：</em><i>-¥20.00</i></span>
                 </div>
                 <div class="sumbtn">
-                    <a class="sum-btn" href="getOrderInfo.html" target="_blank">结算</a>
+                    <a class="sum-btn" id="jiesuan" target="_blank">结算</a>
                 </div>
             </div>
         </div>
@@ -450,4 +416,18 @@
             }
         });
     }
+    //结算
+    $(document).on('click','#jiesuan',function () {
+        var goods_id = '';
+        $("input[class='box']:checked").each(function (index) {
+            goods_id += $(this).parents('div').attr('goods_id')+',';
+        });
+        goods_id = goods_id.substr(0,goods_id.length-1);
+        if (goods_id) {
+            window.location.href = "/orderadd?goods_id=" + goods_id;
+        }else {
+            alert('请选择商品');
+        }
+
+    })
 </script>
