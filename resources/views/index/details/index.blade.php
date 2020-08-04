@@ -69,7 +69,6 @@
                 <div class="sku-name">
                     <h4>{{$res->goods_name}}</h4>
                 </div>
-                <div class="news"><span>推荐选择下方[移动优惠购],手机套餐齐搞定,不用换号,每月还有花费返</span></div>
                 <div class="summary">
                     <div class="summary-wrap">
                         <div class="fl title">
@@ -77,8 +76,7 @@
                         </div>
                         <div class="fl price">
                             <i>¥</i>
-                            <em>{{$res->goods_price}}</em>
-                            <span>降价通知</span>
+                            <em><span id="goods_price">{{$res->goods_price}}</span></em>
                         </div>
                         <div class="fr remark">
                             <i>累计评价</i><em>612188</em>
@@ -92,16 +90,7 @@
                             <span id="goods_num">{{$res->goods_num}}</span>
                         </div>
                     </div>
-                    <div class="summary-wrap">
-                        <div class="fl title">
-                            <i>促　　销</i>
-                        </div>
-                        <div class="fl fix-width">
-                            <i class="red-bg">加价购</i>
-                            <em class="t-gray">满999.00另加20.00元，或满1999.00另加30.00元，或满2999.00另加40.00元，即可在购物车换
-                                购热销商品</em>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="support">
                     <div class="summary-wrap">
@@ -112,14 +101,7 @@
                             <em class="t-gray">{{$res->goods_desc}}</em>
                         </div>
                     </div>
-                    <div class="summary-wrap">
-                        <div class="fl title">
-                            <i>配 送 至</i>
-                        </div>
-                        <div class="fl fix-width">
-                            <em class="t-gray">满999.00另加20.00元，或满1999.00另加30.00元，或满2999.00另加40.00元，即可在购物车换购热销商品</em>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="clearfix choose">
                     <div id="specification" class="summary-wrap clearfix">
@@ -128,18 +110,25 @@
 
                             <dt>
                             <div class="fl title">
-                                <i>{{$v->name}}</i>
+                                <i class="sku_name">{{$v->name}}</i>
                             </div>
                             </dt>
                             @foreach($data as $kk=>$vv)
                                 @if($v->sid==$vv->sid)
-                            {{--<dd><a href="javascript:;" class="selected"><span title="点击取消选择">&nbsp;</span>--}}
-                                {{--</a></dd>--}}
-                                    <dd><a href="javascript:;" class="selected" >{{$vv->a_name}}<span title="点击取消选择">&nbsp;</span></a></dd>
+                                    <dd a_id="{{$vv['a_id']}}"><a href="javascript:;"  class="" id="aa" name="yangshi" a_id="{{$vv['a_id']}}">{{$vv->a_name}}<span title="点击取消选择">&nbsp;</span></a></dd>
                                 @endif
                             @endforeach
                         </dl>
                         @endforeach
+<<<<<<< Updated upstream
+=======
+
+
+
+
+
+
+>>>>>>> Stashed changes
                             @if($info==null)
                                 <span id="col" goods_id="{{$res->goods_id}}" >收 藏</span>
                                 <span id="del" goods_id="{{$res->goods_id}}" style="display: none">取消收藏</span>
@@ -147,6 +136,12 @@
                                 <span id="col" goods_id="{{$res->goods_id}}" style="display: none">收 藏</span>
                                 <span id="del" goods_id="{{$res->goods_id}}"  >取消收藏</span>
                             @endif
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
                     </div>
 
                     <div class="summary-wrap">
@@ -165,6 +160,10 @@
 
                             </form>
                         </div>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
                         <div class="fl">
                             <ul class="btn-choose unstyled">
                                 <li>
@@ -174,6 +173,10 @@
                                 </li>
                             </ul>
                         </div>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
                     </div>
                 </div>
             </div>
@@ -966,6 +969,38 @@
             }else{
                 $("#buy_number").val(parseInt(buy_number));
             }
+        });
+        $(document).on("click","#aa",function(){
+//            console.log(44);return false;
+            var _this=$(this);
+            _this.parents('dl').find("[name='yangshi']").prop("class",'');
+            _this.prop("class",'selected');
+//            return false;
+//            var a_id= new Array();
+//            $(".selected").each(function(res){
+//                a_id.push($(this).attr('a_id'));
+//            });
+//            var sku_name=$(".sku_name").length;
+//            var selected=$(".selected").length;
+////            console.log(sku_name);
+//            var data={};
+//            data.a_id=a_id;
+//            var url="/details/goodsSku";
+//            if(sku_name==selected){
+//                $.ajax({
+//                   url:url,
+//                   type:'post',
+//                    data:data,
+//                    dataType:'json',
+//                    success:function(msg){
+//                        if(msg.status==200){
+//                            $('.goods_price').text(msg.message);
+//                        }else{
+//                            $('.goods_price').text('该型号商品已售空 请看看其他商品');
+//                        }
+//                    }
+//                });
+//            }
         });
     });
 </script>
