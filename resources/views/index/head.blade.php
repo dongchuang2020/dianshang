@@ -126,8 +126,8 @@
                     <div class="yui3-u Center navArea">
                         <ul class="nav">
                             @foreach($cate_dt as $v)
-                            <a href="/index/search/{{$v->cate_id}}"><li class="f-item">{{$v->cate_name}}</li></a>
-                                @endforeach
+                            <a href="{{url('/index/search/'.$v->cate_id)}}"><li class="f-item">{{$v->cate_name}}</li></a>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="yui3-u Right"></div>

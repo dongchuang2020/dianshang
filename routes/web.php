@@ -223,13 +223,14 @@ Route::any('/addressChange','Index\AddressController@addressChange');
 Route::any('/index/search/{id}','Index\SearchController@search');
 Route::any('/index/guo_add','Index\CartController@guo_add');
 //购物车
-Route::any('/index/cart_index','Index\CartController@cart_index');
+    Route::any('/index/cart_index','Index\CartController@cart_index');
 Route::any('/index/addcart','Index\CartController@addcart');
 Route::any('/index/checknum','Index\CartController@checknum');    //改变文本框数量
 Route::any('/index/total','Index\CartController@total');    //获取小计
 Route::any('/index/getprice','Index\CartController@getprice');    //获取小计
 Route::any('/index/delcart','Index\CartController@del');    //删除
-Route::any('/index/delall','Index\CartController@delall');    //删除
+Route::any('/index/delall','Index\CartController@delall');    //全部删除
+Route::any('/index/cookie','Index\CartController@cookies');    //删除
 
 //个人中心
 Route::any('/usercenter','Index\AddressController@usercenter');
@@ -241,10 +242,12 @@ Route::prefix('details')->group(function(){
     #评论
     Route::any('/comment/{id}','Index\DetailController@comment');
     Route::any('/comment_add','Index\DetailController@comment_add');
+    Route::any('/goodsSku','Index\DetailController@goodsSku');
 });
 
 //订单的添加
 Route::any('/orderadd','Index\OrderController@orderadd');
+Route::any('/do_order','Index\OrderController@do_orderadd');
 #搜索
 Route::any('/index/search','Index\IndexController@search');
 
