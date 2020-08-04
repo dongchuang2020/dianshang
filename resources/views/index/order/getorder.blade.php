@@ -39,6 +39,7 @@
     </div>
 </div>
 <div class="cart py-container">
+    <form action="{{url('/do_orderadd')}}" method="get">
     <!--logoArea-->
     <div class="logoArea">
         <div class="fl logo"><span class="title">结算页</span></div>
@@ -66,8 +67,8 @@
                     <ul class="addr-detail">
                         <li class="addr-item">
                             @foreach($data as $v)
-                            <div>
-                                <div class="con name @if($v->is_default == 1)selected @endif"><a href="javascript:;" >{{$v->name}}<span title="点击取消选择">&nbsp;</a></div>
+                            <div ress_id="{{$v->ress_id}}">
+                                <div class="con name @if($v->is_default == 1)selected @endif" ress_id="{{$v->ress_id}}" id="ress"><a href="javascript:;" >{{$v->name}}<span title="点击取消选择">&nbsp;</a></div>
                                 <div class="con address">{{$v->name}} {{$v->di}} <span>{{$v->tel}}</span>
                                     @if($v->is_default == 1)<span class="base">默认地址 </span>@endif
                                     <span class="edittext"><a data-toggle="modal" data-target=".edit" data-keyboard="false" >编辑</a>&nbsp;&nbsp;<a href="javascript:;">删除</a></span>
@@ -163,10 +164,11 @@
                 </div>
                 <div class="step-cont">
                     <ul class="payType">
-                        <li class="selected">微信付款<span title="点击取消选择"></span></li>
-                        <li>货到付款<span title="点击取消选择"></span></li>
+                        <li class="selected" name="weixin" payname="1">微信付款<span title="点击取消选择"></span></li>
+                        <li name="huodao" payname="2">货到付款<span title="点击取消选择"></span></li>
                     </ul>
                 </div>
+                <input type="hidden" id="goods_id"  value="{{$goodss_id}}">
                 <div class="hr"></div>
                 <div class="step-tit">
                     <h5>送货清单</h5>
@@ -175,7 +177,8 @@
                     <ul class="send-detail">
                         <li>
                             @foreach($car_data as $v)
-                            <div class="sendGoods">
+
+                            <div class="sendGoods goods_id" goods_id="{{$v->goods_id}}">
 
                                 <ul class="yui3-g">
                                     <li class="yui3-u-1-6">
@@ -238,7 +241,7 @@
         </div>
     </div>
     <div class="clearfix trade">
-        <div class="fc-price">应付金额:　<span class="price">¥{{$jia}}</span></div>
+        <div class="fc-price">应付金额:　<span class="price" id="total">¥{{$jia}}</span></div>
         @foreach($data as $v)
             @if($v->is_default == 1)
         <div class="fc-receiverInfo">寄送至:{{$v->di}} 收货人：{{$v->name}} {{$v->tel}}</div>
@@ -246,8 +249,9 @@
         @endforeach
     </div>
     <div class="submit">
-        <a class="sui-btn btn-danger btn-xlarge" href="pay.html">提交订单</a>
+        <a class="sui-btn btn-danger btn-xlarge" href="#" id="but">提交订单</a>
     </div>  b
+    </form>
 </div>
 <!-- 底部栏位 -->
 <!--页面底部-->
@@ -391,3 +395,17 @@
 </body>
 
 </html>
+<script>
+    $(document).on('click','#but',function () {
+        var ress_id = $("#ress").attr('ress_id');
+        var goods_id = $("#goods_id").val();
+        var total = $("#total").text();
+        var price_total = total.substr(1,total.length-1);
+        var payname =$("li[class='selected']").attr('payname');
+
+
+        var url = "/do_order?price_total="+price_total+"&ress_id="+ress_id+"&payname="+payname+"&goods_id="+goods_id;
+        location.href=url;
+        return false;
+    })
+</script>

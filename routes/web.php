@@ -224,7 +224,7 @@ Route::any('/addressChange','Index\AddressController@addressChange');
 Route::any('/index/search/{id}','Index\SearchController@search');
 Route::any('/index/guo_add','Index\CartController@guo_add');
 //购物车
-Route::any('/index/cart_index','Index\CartController@cart_index');
+    Route::any('/index/cart_index','Index\CartController@cart_index');
 Route::any('/index/addcart','Index\CartController@addcart');
 Route::any('/index/checknum','Index\CartController@checknum');    //改变文本框数量
 Route::any('/index/total','Index\CartController@total');    //获取小计
@@ -247,6 +247,7 @@ Route::prefix('details')->group(function(){
 
 //订单的添加
 Route::any('/orderadd','Index\OrderController@orderadd');
+Route::any('/do_order','Index\OrderController@do_orderadd');
 #搜索
 Route::any('/index/search','Index\IndexController@search');
 

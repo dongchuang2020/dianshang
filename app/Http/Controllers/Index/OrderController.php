@@ -19,6 +19,7 @@ class OrderController extends Controller
             $area = DB::table('shop_area')->where('id','=',$v->area)->first();
             $data[$k]->di = $pro->name.$city->name.$area->name.$v->ress;
         }
+        $goodss_id=implode(",",$goods_id);
         $car_data = [];
         $jia = null;
         if ($goods_id){
@@ -34,6 +35,26 @@ class OrderController extends Controller
                 $car_data[] = $goods_data;
             }
         }
-    	return view('index.order.getorder',['data'=>$data,'car_data'=>$car_data,'jia'=>$jia]);
+
+    	return view('index.order.getorder',['data'=>$data,"goodss_id"=>$goodss_id,'car_data'=>$car_data,'jia'=>$jia]);
+    }
+    public function do_orderadd(Request $request){
+        $data = [];
+        $data['goods_id'] = $request -> get('goods_id');
+        $data['goods_total'] = $request -> get('price_total');
+        $data['ress_id'] = $request -> get('ress_id');
+        $data['payname'] = $request -> get('payname');
+        $data['user_id'] = session('user_id');
+        $data['order_sn'] =time().$data['payname'].rand(1000,999).$data['user_id'];
+        $data['add_time'] = time();
+        $info = DB::table('shop_order')->insert($data);
+        
+    }
+    public function message($code , $msg , $data =[]){
+        return [
+            'code'  => $code,
+            'msg'   => $msg,
+            'data'  => $data
+        ];
     }
 }
