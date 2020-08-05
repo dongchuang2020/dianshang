@@ -33,8 +33,8 @@
 					<li class="active">@if($search_show->cate_name) {{$search_show->cate_name}} @endif</li>
 				</ul>
 				<ul class="tags-choose">
-					<li class="tag">全网通<i class="sui-icon icon-tb-close"></i></li>
-					<li class="tag">63G<i class="sui-icon icon-tb-close"></i></li>
+					<li class="tag" id="goods_price" style="display:none;">全网通<i class="sui-icon icon-tb-close"></i></li>
+					<li class="tag" id="brand_name"  style="display:none;">63G<i class="sui-icon icon-tb-close"></i></li>
 				</ul>
 				<form class="fl sui-form form-dark">
 					<div class="input-control control-right">
@@ -79,7 +79,7 @@
 					<div class="value logos">
 						<ul class="logo-list">
 						@foreach($search_brand as $k=>$v)
-							<li><img src="{{$v->brand_img}}" style="width:105px;height:52px" /></li>
+							<li  class="brand_name" brand_name="{{$v->brand_name}}"><img src="{{$v->brand_img}}" style="width:105px;height:52px" /></li>
 						@endforeach
 						</ul>
 					</div>
@@ -89,134 +89,46 @@
 					</div>
 				</div>
 				<div class="type-wrap">
-					<div class="fl key">网络制式</div>
+					<div class="fl key">{{$sku_res->name}}</div>
 					<div class="fl value">
 						<ul class="type-list">
+							@foreach($attr_res as $k=>$v)
+								@if($sku_res->sid==$v->sid)
 							<li>
-								<a>GSM（移动/联通2G）</a>
+								<a>{{$v->a_name}}</a>
 							</li>
-							<li>
-								<a>电信2G</a>
-							</li>
-							<li>
-								<a>电信3G</a>
-							</li>
-							<li>
-								<a>移动3G</a>
-							</li>
-							<li>
-								<a>联通3G</a>
-							</li>
-							<li>
-								<a>联通4G</a>
-							</li>
-							<li>
-								<a>电信3G</a>
-							</li>
-							<li>
-								<a>移动3G</a>
-							</li>
-							<li>
-								<a>联通3G</a>
-							</li>
-							<li>
-								<a>联通4G</a>
-							</li>
+								@endif
+							@endforeach
 						</ul>
 					</div>
 					<div class="fl ext"></div>
 				</div>
-				<div class="type-wrap">
-					<div class="fl key">显示屏尺寸</div>
-					<div class="fl value">
-						<ul class="type-list">
-							<li>
-								<a>4.0-4.9英寸</a>
-							</li>
-							<li>
-								<a>4.0-4.9英寸</a>
-							</li>
-						</ul>
-					</div>
-					<div class="fl ext"></div>
-				</div>
-				<div class="type-wrap">
-					<div class="fl key">摄像头像素</div>
-					<div class="fl value">
-						<ul class="type-list">
-							<li>
-								<a>1200万以上</a>
-							</li>
-							<li>
-								<a>800-1199万</a>
-							</li>
-							<li>
-								<a>1200-1599万</a>
-							</li>
-							<li>
-								<a>1600万以上</a>
-							</li>
-							<li>
-								<a>无摄像头</a>
-							</li>
-						</ul>
-					</div>
-					<div class="fl ext"></div>
-				</div>
+
+
 				<div class="type-wrap">
 					<div class="fl key">价格</div>
 					<div class="fl value">
 						<ul class="type-list">
+							@foreach($price as $k=>$v)
 							<li>
-								<a>0-500元</a>
+								<a class="goods_price">{{$v}}</a>
 							</li>
-							<li>
-								<a>500-1000元</a>
-							</li>
-							<li>
-								<a>1000-1500元</a>
-							</li>
-							<li>
-								<a>1500-2000元</a>
-							</li>
-							<li>
-								<a>2000-3000元 </a>
-							</li>
-							<li>
-								<a>3000元以上</a>
-							</li>
+							@endforeach
 						</ul>
 					</div>
 					<div class="fl ext">
 					</div>
 				</div>
-				<div class="type-wrap">
-					<div class="fl key">更多筛选项</div>
-					<div class="fl value">
-						<ul class="type-list">
-							<li>
-								<a>特点</a>
-							</li>
-							<li>
-								<a>系统</a>
-							</li>
-							<li>
-								<a>手机内存 </a>
-							</li>
-							<li>
-								<a>单卡双卡</a>
-							</li>
-							<li>
-								<a>其他</a>
-							</li>
-						</ul>
-					</div>
 					<div class="fl ext">
 					</div>
 				</div>
 			</div>
 			<!--details-->
-			<div class="details">
+			<div class="details newinfo">
+				<input type="hidden" id="cate_name" value="">
+				<input type="hidden" id="brand_name" value="">
+				<input type="hidden" id="sku_name" value="">
+				<input type="hidden" id="goods_price" value="">
 				<div class="sui-navbar">
 					<div class="navbar-inner filter">
 						<ul class="sui-nav">
@@ -244,7 +156,7 @@
 						<li class="yui3-u-1-5">
 							<div class="list-wrap">
 								<div class="p-img">
-									<a href="{{url('/details/index/'.$v->goods_id)}}" target="_blank"><img src="{{$v->goods_log}}" /></a>
+									<a href="{{url('/details/index/'.$v->goods_id)}}" target="_blank"><img src="{{$v->goods_log}}" style="width:204px;height:245px;"/></a>
 								</div>
 								<div class="price">
 									<strong>
@@ -732,3 +644,34 @@
 	</body>
 
 </html>
+<script src="/jquery.js"></script>
+<script>
+	$(document).ready(function(){
+		$(document).on("click",".goods_price",function(){
+			var _this=$(this);
+			var goods_price=_this.text();
+			var cate_id="{{$search_show->cate_id}}";
+			$("#goods_price").show();
+			$('#goods_price').text(goods_price);
+			var url="/index/search_price";
+
+			$.ajax({
+				url:url,
+				type:'post',
+				data:{goods_price:goods_price,cate_id:cate_id},
+				dataType:'html',
+				success:function(msg){
+//					console.log(msg);
+					$('.newinfo').html(msg);
+				}
+			});
+		});
+		$(document).on("click",".brand_name",function(){
+			var _this=$(this);
+			var brand_name=_this.attr('brand_name');
+//			alert(brand_name);
+			$("#brand_name").show();
+			$("#brand_name").text(brand_name);
+		})
+	});
+</script>
