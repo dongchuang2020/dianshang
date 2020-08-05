@@ -216,11 +216,13 @@ class IndexController extends Controller
         ];
     }
     public function del_session(){
-        echo 11;
+        cookie('user_id',null);
+        session('user_id',null);
+        return redirect('/');
     }
     public function test()
     {
-        echo session('user_id');
+        echo cookie('user_id');
         echo session('user_name');
     }
     /**

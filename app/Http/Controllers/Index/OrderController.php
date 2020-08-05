@@ -74,8 +74,6 @@ class OrderController extends Controller
             //     return redirect("/payadd");
             // }
         }
-                    
-
     }
     public function message($code , $msg , $data =[]){
         return [
