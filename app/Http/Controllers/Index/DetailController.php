@@ -62,6 +62,7 @@ class DetailController extends Controller
 
         $cate_dt = CateModel::where('cate_nav_show',1)->get();
 
+
         $comment_res=CommentModel::where('goods_id',$id)->get();
         foreach($comment_res as $v){
             $dat = DB::table('user')->where('user_id','=',$v->user_id)->first();
@@ -69,10 +70,8 @@ class DetailController extends Controller
         }
        //dd($comment_res);exit;
 
-
-       
+        $cate_dt = CateModel::where('cate_nav_show',1)->get();
         return view('Index.details.index',['res'=>$res,'sku_goods_res'=>$sku_goods_res,'data'=>$data,'da'=>$da,'info'=>$collect_info,'goods_imgs_res'=>$goods_imgs_res,'comment_res'=>$comment_res,'cate_dt'=>$cate_dt]);
-
     }
     //浏览历史记录展示
     public function historyShow(Request $request){

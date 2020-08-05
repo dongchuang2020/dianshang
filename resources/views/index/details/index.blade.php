@@ -149,6 +149,15 @@
                         </div>
 
 
+
+
+
+
+
+
+
+
+
                         <div class="fl">
                             <ul class="btn-choose unstyled">
                                 <li>
@@ -158,6 +167,15 @@
                                 </li>
                             </ul>
                         </div>
+
+
+
+
+
+
+
+
+
 
 
                     </div>

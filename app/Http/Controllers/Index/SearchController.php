@@ -9,6 +9,7 @@ use App\Models\ShopHistory;
 use Illuminate\Http\Request;
 use App\Model\SkuModel;
 use App\Models\AttrModel;
+use App\Models\BrandModel;
 use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
@@ -65,6 +66,7 @@ class SearchController extends Controller
             $start=$one_price*$i;
             // dump($start);
             $end=$one_price*($i+1)-1;
+//            $price[] = $start.'-'.$end;
             // dump($end);
             // number_format — 以千位分隔符方式格式化一个数字
             $price[]=number_format($start,0).'-'.number_format($end,0);
@@ -75,16 +77,23 @@ class SearchController extends Controller
     public function search_price(Request $request){
         $goods_price=$request->post('goods_price');
         $cate_id=$request->post('cate_id');
-//        dd($cate_id);exit;
+        $brand_id=$request->post('brand_id');
+//        dd($brand_id);exit;
         $where=[
             ['cate_id','=',$cate_id],
             ['is_del','=',1]
         ];
+        if(!empty($brand_id)){
+            $where[]= ['brand_id','=',$brand_id];
+        }
+
         if(!empty($goods_price)){
             //价格中是否有-
             if(substr_count($goods_price,'-')>0){
                 //根据-分割
                 $price=explode('-',$goods_price);
+                $price[0]=str_replace(',','',$price[0]);
+                $price[1]=str_replace(',','',$price[1]);
 //                dd($price);
                 $where[]=['goods_price','>=',$price[0]];
                 $where[]=['goods_price','<=',$price[1]];
@@ -95,9 +104,10 @@ class SearchController extends Controller
                 $where[]=['goods.goods_price','>=',$goods_price];
             }
         }
-//        dd($where);
+//        print_r($where);
         $search_goods_res=GoodsModel::where($where)->get();
+//        $search_brand_res=BrandModel::where($where1)->get();
 //        dd($search_goods_res);
-        return view('index.newgoodsprice',['search_goods_res'=>$search_goods_res]);
+        return view('index.newgoodsprice',['search_goods_res'=>$search_goods_res,'goods_price'=>$goods_price,'brand_id'=>$brand_id]);
     }
 }
