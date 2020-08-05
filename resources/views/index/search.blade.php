@@ -34,7 +34,7 @@
 				</ul>
 				<ul class="tags-choose">
 					<li class="tag" id="goods_price" style="display:none;">全网通<i class="sui-icon icon-tb-close"></i></li>
-					<li class="tag" id="brand_name"  style="display:none;">63G<i class="sui-icon icon-tb-close"></i></li>
+					<li class="tag" id="brand"  style="display:none;">63G<i class="sui-icon icon-tb-close"></i></li>
 				</ul>
 				<form class="fl sui-form form-dark">
 					<div class="input-control control-right">
@@ -79,7 +79,7 @@
 					<div class="value logos">
 						<ul class="logo-list">
 						@foreach($search_brand as $k=>$v)
-							<li  class="brand_name" brand_name="{{$v->brand_name}}"><img src="{{$v->brand_img}}" style="width:105px;height:52px" /></li>
+							<li  class="brand_name" brand_name="{{$v->brand_name}}" brand_id="{{$v->brand_id}}"><img src="{{$v->brand_img}}" style="width:105px;height:52px" /></li>
 						@endforeach
 						</ul>
 					</div>
@@ -125,10 +125,12 @@
 			</div>
 			<!--details-->
 			<div class="details newinfo">
+
 				<input type="hidden" id="cate_name" value="">
 				<input type="hidden" id="brand_name" value="">
 				<input type="hidden" id="sku_name" value="">
 				<input type="hidden" id="goods_price" value="">
+
 				<div class="sui-navbar">
 					<div class="navbar-inner filter">
 						<ul class="sui-nav">
@@ -174,9 +176,6 @@
 									<i class="command">已有2000人评价</i>
 								</div>
 								<div class="operate">
-									<a  goods_id="{{$v->goods_id}}" target="_blank" class="sui-btn btn-bordered btn-danger gou">加入购物车</a>
-									<a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a>
-									<a href="javascript:void(0);" class="sui-btn btn-bordered">关注</a>
 								</div>
 							</div>
 						</li>
@@ -653,12 +652,19 @@
 			var cate_id="{{$search_show->cate_id}}";
 			$("#goods_price").show();
 			$('#goods_price').text(goods_price);
+
+			var brand_name=$("#brand_name").val();
+//			console.log(brand_name);
+//			return false;
+			if(brand_name==''){
+				brand_name=null;
+			}
 			var url="/index/search_price";
 
 			$.ajax({
 				url:url,
 				type:'post',
-				data:{goods_price:goods_price,cate_id:cate_id},
+				data:{goods_price:goods_price,cate_id:cate_id,brand_id:brand_name},
 				dataType:'html',
 				success:function(msg){
 //					console.log(msg);
@@ -669,9 +675,25 @@
 		$(document).on("click",".brand_name",function(){
 			var _this=$(this);
 			var brand_name=_this.attr('brand_name');
+			var brand_id = _this.attr('brand_id');
+			var cate_id="{{$search_show->cate_id}}";
 //			alert(brand_name);
-			$("#brand_name").show();
-			$("#brand_name").text(brand_name);
+			$("#brand").show();
+			$("#brand").text(brand_name);
+			var goods_price=$("#goods_price").val();
+			if(goods_price==''){
+				goods_price=null;
+			}
+			var url="/index/search_price";
+			$.ajax({
+				url:url,
+				type:'post',
+				data:{brand_name:brand_name,brand_id:brand_id,cate_id:cate_id,goods_price:goods_price},
+				dataType:'html',
+				success:function(msg){
+					$('.newinfo').html(msg);
+				}
+			});
 		})
 	});
 </script>

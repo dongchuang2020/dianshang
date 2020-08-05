@@ -1,8 +1,10 @@
 <div class="details">
+
     <input type="hidden" id="cate_name" value="">
-    <input type="hidden" id="brand_name" value="">
+    <input type="hidden" id="brand_name" value="{{$brand_id}}">
     <input type="hidden" id="sku_name" value="">
-    <input type="hidden" id="goods_price" value="">
+    <input type="hidden" id="goods_price" value="{{$goods_price}}">
+
     <div class="sui-navbar">
         <div class="navbar-inner filter">
             <ul class="sui-nav">
@@ -48,9 +50,6 @@
                             <i class="command">已有2000人评价</i>
                         </div>
                         <div class="operate">
-                            <a  goods_id="{{$v->goods_id}}" target="_blank" class="sui-btn btn-bordered btn-danger gou">加入购物车</a>
-                            <a href="javascript:void(0);" class="sui-btn btn-bordered">对比</a>
-                            <a href="javascript:void(0);" class="sui-btn btn-bordered">关注</a>
                         </div>
                     </div>
                 </li>
