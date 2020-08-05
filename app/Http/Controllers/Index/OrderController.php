@@ -69,9 +69,10 @@ class OrderController extends Controller
             $order_goods['goods_price']=$order_info['goods_price'];
             $order_goods['buy_number']=$order_info['buy_number'];
             $result=Order_goods::insert($order_goods);
-            if($result){
-                return redirect("/payadd");
-            }
+            dd($result);
+            // if($result){
+            //     return redirect("/payadd");
+            // }
         }
                     
 
