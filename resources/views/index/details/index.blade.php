@@ -123,6 +123,15 @@
 
 
 
+<<<<<<< Updated upstream
+=======
+
+
+
+
+
+
+>>>>>>> Stashed changes
                             @if($info==null)
                                 <span id="col" goods_id="{{$res->goods_id}}" >收 藏</span>
                                 <span id="del" goods_id="{{$res->goods_id}}" style="display: none">取消收藏</span>
@@ -130,6 +139,15 @@
                                 <span id="col" goods_id="{{$res->goods_id}}" style="display: none">收 藏</span>
                                 <span id="del" goods_id="{{$res->goods_id}}"  >取消收藏</span>
                             @endif
+<<<<<<< Updated upstream
+=======
+
+
+
+
+
+
+>>>>>>> Stashed changes
                     </div>
 
                     <div class="summary-wrap">
@@ -149,6 +167,12 @@
                             </form>
                         </div>
 
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
                         <div class="fl">
                             <ul class="btn-choose unstyled">
                                 <li>
@@ -159,6 +183,12 @@
                             </ul>
                         </div>
 
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
                     </div>
                 </div>
             </div>

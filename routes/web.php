@@ -220,7 +220,6 @@ Route::any('/addressDel','Index\AddressController@addressDel');
 Route::any('/addressUpdate/{id}','Index\AddressController@addressUpdate');
 Route::any('/addressUpdatedo','Index\AddressController@addressUpdatedo');
 Route::any('/addressChange','Index\AddressController@addressChange');
-Route::any('/index/search/{id}','Index\SearchController@search');
 Route::any('/index/guo_add','Index\CartController@guo_add');
 //购物车
     Route::any('/index/cart_index','Index\CartController@cart_index');
@@ -250,4 +249,7 @@ Route::any('/orderadd','Index\OrderController@orderadd');
 Route::any('/do_order','Index\OrderController@do_orderadd');
 #搜索
 Route::any('/index/search','Index\IndexController@search');
+
+Route::any('/index/search/{id}','Index\SearchController@search');
+Route::any('/index/search_price','Index\SearchController@search_price');
 

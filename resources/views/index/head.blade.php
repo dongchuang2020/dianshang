@@ -146,7 +146,7 @@
                 <div class="all-sort-list2">
                     @foreach($cate_info as $k=>$v)
                         <div class="item bo" algin="center">
-                            <h3><a href="/index/search/{{$v->cate_id}}">
+                            <h3><a href="{{url('/index/search/'.$v->cate_id)}}">
                                     {{$v->cate_name}}
                                 </a></h3>
                             <div class="item-list clearfix">
@@ -154,7 +154,7 @@
                                     @foreach($cate_show as $k=>$n)
                                         @if($v->cate_id == $n->parent_id)
                                             <dl class="fore1">
-                                                <dt><a href="/index/search/{{$n->cate_id}}">
+                                                <dt><a href="{{url('/index/search/'.$v->cate_id)}}">
                                                         {{$n->cate_name}}
                                                     </a></dt>
                                                 <!-- <dd><a href="">免费</a><a href="">小说</a></em><a href="">励志与成功</a><em><a href="">婚恋/两性</a></em><em><a href="">文学</a></em><em><a href="">经管</a></em><em><a href="">畅读VIP</a></em></dd> -->
