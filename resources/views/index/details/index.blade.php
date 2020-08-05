@@ -120,24 +120,7 @@
                             @endforeach
                         </dl>
                         @endforeach
-<<<<<<< HEAD
-=======
 
-
-<<<<<<< HEAD
-=======
-
-<<<<<<< Updated upstream
-=======
-
-
-
-
-
-
->>>>>>> Stashed changes
->>>>>>> 8ebe1c912dc93d30b00e36cf5bb26dd9dc5a39a2
->>>>>>> e0bf195eeb2cb2b14305d9c9afafda108d0fbccf
                             @if($info==null)
                                 <span id="col" goods_id="{{$res->goods_id}}" >收 藏</span>
                                 <span id="del" goods_id="{{$res->goods_id}}" style="display: none">取消收藏</span>
