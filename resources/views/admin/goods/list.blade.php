@@ -26,10 +26,6 @@
 
     <div class="box-body">
         <form action="{{url('/admins/goodslist')}}" type="post">
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
             商品名称：<input type="text" name="goods_name" value="{{$name['goods_name']}}">
             品牌名称：<select name="brand_id">
                             <option value="">--请选择--</option>
@@ -43,18 +39,12 @@
                             @foreach($cate_info as $kk=>$vv)
                             <option value="{{$vv->cate_id}}" @if($vv->cate_id == $name['cate_id']) 
                             selected @endif>{{$vv->cate_name}}</option>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
                             @foreach($cate_info as $k=>$v)
                             <option value="{{$v->cate_id}}">{{$v->cate_name}}</option>
                             @endforeach
-=======
->>>>>>> Stashed changes
-=======
                             @foreach($cate_info as $k=>$v)
                             <option value="{{$v->cate_id}}">{{$v->cate_name}}</option>
                             @endforeach
->>>>>>> Stashed changes
                             @endforeach
                       </select>
             <input type="submit" class="btn btn-info" role="button" value="搜索"> 

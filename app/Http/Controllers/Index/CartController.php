@@ -66,8 +66,9 @@ class CartController extends Controller
         $user_id = session('user_id');
         $goods_price = DB::table('goods')->where(['goods_id'=>$goods_id])->value('goods_price');
         if(empty($user_id)){
-            $this -> addCartCookie($goods_id,$buy_number,$goods_price);
-            die;
+//            $this -> addCartCookie($goods_id,$buy_number,$goods_price);
+//            die;
+            echo "<script>alert('请先登陆');location='/index/log'</script>";
         }
         $where = [
             'user_id'   => $user_id,

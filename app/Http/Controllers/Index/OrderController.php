@@ -40,9 +40,6 @@ class OrderController extends Controller
     	return view('index.order.getorder',['data'=>$data,"goodss_id"=>$goodss_id,'car_data'=>$car_data,'jia'=>$jia]);
     }
     public function do_orderadd(Request $request){
-<<<<<<< HEAD
-        
-=======
         //订单表入库
         $data = [];
         $goods_id = $request -> get('goods_id');
@@ -76,9 +73,6 @@ class OrderController extends Controller
                 return redirect("/payadd");
             }
         }
-                    
-
->>>>>>> 7856c820c99da60107783673138a690308c7a3be
     }
     public function message($code , $msg , $data =[]){
         return [
