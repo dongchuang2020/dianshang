@@ -252,9 +252,8 @@
         <div class="fc-receiverInfo">寄送至:{{$v->di}} 收货人：{{$v->name}} {{$v->tel}}</div>
             @endif
         @endforeach
+        <div><a class="sui-btn btn-danger btn-xlarge" href="#" id="but">提交订单</a></div>
     </div>
-
-        <a class="sui-btn btn-danger btn-xlarge" href="#" id="but">提交订单</a>
     </form>
 </div>
 <!-- 底部栏位 -->
