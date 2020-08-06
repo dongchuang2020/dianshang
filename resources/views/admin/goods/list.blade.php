@@ -39,12 +39,27 @@
                             @foreach($cate_info as $kk=>$vv)
                             <option value="{{$vv->cate_id}}" @if($vv->cate_id == $name['cate_id']) 
                             selected @endif>{{$vv->cate_name}}</option>
+
                             @foreach($cate_info as $k=>$v)
                             <option value="{{$v->cate_id}}">{{$v->cate_name}}</option>
                             @endforeach
                             @foreach($cate_info as $k=>$v)
                             <option value="{{$v->cate_id}}">{{$v->cate_name}}</option>
                             @endforeach
+
+
+
+                            @foreach($cate_info as $k=>$v)
+                            <option value="{{$v->cate_id}}">{{$v->cate_name}}</option>
+                            @endforeach
+
+
+
+                            @foreach($cate_info as $k=>$v)
+                            <option value="{{$v->cate_id}}">{{$v->cate_name}}</option>
+                            @endforeach
+
+
                             @endforeach
                       </select>
             <input type="submit" class="btn btn-info" role="button" value="搜索"> 

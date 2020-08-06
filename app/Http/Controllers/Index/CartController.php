@@ -74,7 +74,6 @@ class CartController extends Controller
             // $this -> addCartCookie($goods_id,$buy_number,$goods_price);
             // die;
              echo "<script>alert('请先登录');location='/index/log'</script>";
-
         }
         $where = [
             'user_id'   => $user_id,
@@ -97,11 +96,11 @@ class CartController extends Controller
                 echo "<script>alert('加入购物车失败');location='/index/addcart'</script>";
             }
         }else{
-            $result = $this -> checkGoodsNum($goods_id,$buy_number,$cart_info->buy_number);
-            if($result==false){
-                echo "<script>alert('商品超过库存');location='/index/cart_index'</script>";
-                die;
-            }
+            // $result = $this -> checkGoodsNum($goods_id,$buy_number,$cart_info->buy_number);
+            // if($result==false){
+            //     echo "<script>alert('商品超过库存');location='/index/cart_index'</script>";
+            //     die;
+            // }
             $data['goods_id'] = $goods_id;
             $data['buy_number'] = $buy_number;
             $data['user_id'] = $user_id;
