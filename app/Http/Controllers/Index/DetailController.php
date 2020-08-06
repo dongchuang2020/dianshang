@@ -30,19 +30,7 @@ class DetailController extends Controller
 
         //收藏
         $res=GoodsModel::where('goods_id',$id)->first();
-<<<<<<< Updated upstream
 
-<<<<<<< HEAD
-=======
-
-
-    	//dd($res);
-=======
->>>>>>> Stashed changes
-
-    	//dd($res);
-
->>>>>>> 8ebe1c912dc93d30b00e36cf5bb26dd9dc5a39a2
         $goods_imgs_res=GoodsImgsModel::where('goods_id',$id)->get();
 //        dd($goods_imgs_res);exit;
         $user_id= session('user_id');
@@ -74,36 +62,16 @@ class DetailController extends Controller
 
         $cate_dt = CateModel::where('cate_nav_show',1)->get();
      //  dd($da);exit;
-<<<<<<< Updated upstream
-
         $cate_dt = CateModel::where('cate_nav_show',1)->get();
-
-
-=======
-
         $cate_dt = CateModel::where('cate_nav_show',1)->get();
-
->>>>>>> Stashed changes
         $comment_res=CommentModel::where('goods_id',$id)->get();
         foreach($comment_res as $v){
             $dat = DB::table('user')->where('user_id','=',$v->user_id)->first();
             $v->user = $dat->user_name;
         }
        //dd($comment_res);exit;
-<<<<<<< Updated upstream
-
-        $cate_dt = CateModel::where('cate_nav_show',1)->get();
-       
-        return view('Index.details.index',['res'=>$res,'sku_goods_res'=>$sku_goods_res,'data'=>$data,'da'=>$da,'info'=>$collect_info,'goods_imgs_res'=>$goods_imgs_res,'comment_res'=>$comment_res,'cate_dt'=>$cate_dt]);
-
-<<<<<<< HEAD
-=======
-
-=======
         $cate_dt = CateModel::where('cate_nav_show',1)->get();
         return view('Index.details.index',['res'=>$res,'sku_goods_res'=>$sku_goods_res,'data'=>$data,'da'=>$da,'info'=>$collect_info,'goods_imgs_res'=>$goods_imgs_res,'comment_res'=>$comment_res,'cate_dt'=>$cate_dt]);
->>>>>>> Stashed changes
->>>>>>> 8ebe1c912dc93d30b00e36cf5bb26dd9dc5a39a2
     }
     //浏览历史记录展示
     public function historyShow(Request $request){
