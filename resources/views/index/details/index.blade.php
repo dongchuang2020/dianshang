@@ -127,7 +127,6 @@
                                 <span id="col" goods_id="{{$res->goods_id}}" style="display: none">收 藏</span>
                                 <span id="del" goods_id="{{$res->goods_id}}"  >取消收藏</span>
                             @endif
-
                     </div>
 
                     <div class="summary-wrap">
@@ -155,6 +154,10 @@
                                 </li>
                             </ul>
                         </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> cc6cb44d433a440cb3607c9197d8878835e343bf
                     </div>
                 </div>
             </div>

@@ -11,11 +11,7 @@
     <div class="list-items">
         <dl>
             <dt><i>·</i> 订单中心</dt>
-            <dd ><a href="home-index.html"   >我的订单</a></dd>
-            <dd><a href="home-order-pay.html" >待付款</a></dd>
-            <dd><a href="home-order-send.html"  >待发货</a></dd>
-            <dd><a href="home-order-receive.html" >待收货</a></dd>
-            <dd><a href="home-order-evaluate.html" >待评价</a></dd>
+            <dd ><a href="{{url('/usercenter')}}"   >我的订单</a></dd>
         </dl>
         <dl>
              <dt><i>·</i> 我的中心</dt>

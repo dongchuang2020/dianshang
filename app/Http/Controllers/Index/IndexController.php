@@ -215,10 +215,17 @@ class IndexController extends Controller
             'data'  => $data
         ];
     }
+<<<<<<< HEAD
     public function del_session(Request $request){
 //        cookie('user_id',null);
         $request->session()->flush();
 //        session('user_id',null);
+=======
+    public function del_session(){
+        setcookie('user_id',null);
+        session('user_id',null);
+        session('user_name',null);
+>>>>>>> cc6cb44d433a440cb3607c9197d8878835e343bf
         return redirect('/');
     }
     public function test()
