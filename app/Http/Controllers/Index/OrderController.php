@@ -69,10 +69,10 @@ class OrderController extends Controller
             $order_goods['goods_price']=$order_info['goods_price'];
             $order_goods['buy_number']=$order_info['buy_number'];
             $result=Order_goods::insert($order_goods);
-            dd($result);
-            // if($result){
-            //     return redirect("/payadd");
-            // }
+            //dd($result);
+             if($result){
+                 return redirect("/zhi");
+             }
         }
     }
     public function message($code , $msg , $data =[]){
@@ -81,5 +81,6 @@ class OrderController extends Controller
             'msg'   => $msg,
             'data'  => $data
         ];
+    	return view('index.order.getorder',['data'=>$data,'car_data'=>$car_data,'jia'=>$jia]);
     }
 }

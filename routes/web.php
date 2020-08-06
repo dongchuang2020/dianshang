@@ -1,4 +1,4 @@
-<?php
+·<?php
 
 use Illuminate\Support\Facades\Route;
 
@@ -51,31 +51,31 @@ Route::middleware('check')->group(function () {
 #后台品牌
 
 Route::prefix('brand')->group(function(){
-    Route::get('/index','admin\BrandController@index');
-    Route::post('/add_do','admin\BrandController@add_do');
-    Route::any('/del/{id}','admin\BrandController@del');
-    Route::get('/edit/{id}','admin\BrandController@edit');
-    Route::post('/update','admin\BrandController@update');
-    Route::post('/change','admin\BrandController@change');
-    Route::post('/changeName','admin\BrandController@changeName');
+    Route::get('/index','Admin\BrandController@index');
+    Route::post('/add_do','Admin\BrandController@add_do');
+    Route::any('/del/{id}','Admin\BrandController@del');
+    Route::get('/edit/{id}','Admin\BrandController@edit');
+    Route::post('/update','Admin\BrandController@update');
+    Route::post('/change','Admin\BrandController@change');
+    Route::post('/changeName','Admin\BrandController@changeName');
 });
 
     Route::prefix('brand')->group(function () {
-        Route::get('/index', 'admin\BrandController@index');
-        Route::post('/add_do', 'admin\BrandController@add_do');
-        Route::any('/del/{id}', 'admin\BrandController@del');
-        Route::get('/edit/{id}', 'admin\BrandController@edit');
-        Route::post('/update', 'admin\BrandController@update');
+        Route::get('/index', 'Admin\BrandController@index');
+        Route::post('/add_do', 'Admin\BrandController@add_do');
+        Route::any('/del/{id}', 'Admin\BrandController@del');
+        Route::get('/edit/{id}', 'Admin\BrandController@edit');
+        Route::post('/update', 'Admin\BrandController@update');
     });
 
 #权限管理
 
     Route::prefix('chmod')->group(function () {
-        Route::get('/index', 'admin\ChmodController@index');
-        Route::post('/add_do', 'admin\ChmodController@add_do');
-        Route::get('/del/{id}', 'admin\ChmodController@del');
-        Route::any('/edit/{id}', 'admin\ChmodController@edit');
-        Route::post('/update', 'admin\ChmodController@update');
+        Route::get('/index', 'Admin\ChmodController@index');
+        Route::post('/add_do', 'Admin\ChmodController@add_do');
+        Route::get('/del/{id}', 'Admin\ChmodController@del');
+        Route::any('/edit/{id}', 'Admin\ChmodController@edit');
+        Route::post('/update', 'Admin\ChmodController@update');
     });
 
 
@@ -172,11 +172,11 @@ Route::any("cate/del/{cate_id}","Admin\CateController@del");//删除
 
 #SKU属性值
     Route::prefix('attribute')->group(function () {
-        Route::get('index', 'admin\AttrController@index');
-        Route::post('add_do', 'admin\AttrController@add_do');
-        Route::get('del/{id}', 'admin\AttrController@del');
-        Route::any('edit/{id}', 'admin\AttrController@edit');
-        Route::post('update', 'admin\AttrController@update');
+        Route::get('index', 'Admin\AttrController@index');
+        Route::post('add_do', 'Admin\AttrController@add_do');
+        Route::get('del/{id}', 'Admin\AttrController@del');
+        Route::any('edit/{id}', 'Admin\AttrController@edit');
+        Route::post('update', 'Admin\AttrController@update');
     });
 
 
@@ -252,4 +252,5 @@ Route::any('/index/search','Index\IndexController@search');
 
 Route::any('/index/search/{id}','Index\SearchController@search');
 Route::any('/index/search_price','Index\SearchController@search_price');
-
+//Route::get('/zhi', 'ZhiController@zhi');
+Route::get('/zhi', 'Index\Demo_eva_controller@zfu');

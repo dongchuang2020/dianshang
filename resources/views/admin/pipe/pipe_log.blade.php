@@ -55,7 +55,7 @@
             success:function (mo) {
                 //alert(1)
                 //alert(mo)
-                if (mo == '成功'){
+                if (mo == '·成功'){
                     location.href="/admin";
                 }else {
                     alert(mo);
