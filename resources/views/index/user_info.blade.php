@@ -351,13 +351,8 @@ undefined
            type:'post',
 //           dataType:'json',
            success:function (res) {
-<<<<<<< HEAD
-               if(res == "·1"){
-=======
-               if(res== '·1'){
-                   alert("删除成功");
->>>>>>> 0596d9de5ecaeafb52102d81a11132f3900bf699
-                   window.location.href = '/index/user_info';
+               if(res== '1'){
+                   location.reload();
                }else{
                    alert("删除失败");
                }

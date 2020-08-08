@@ -155,10 +155,6 @@
                                 </li>
                             </ul>
                         </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 0596d9de5ecaeafb52102d81a11132f3900bf699
                     </div>
                 </div>
             </div>
@@ -846,9 +842,8 @@
             data:{'goods_id':goods_id},
             url:url,
             type:'post',
-           // dataType:'json',
+            dataType:'json',
             success:function (res) {
-<<<<<<< HEAD
                 if(res.code == '00000'){
                     alert(res.msg);
                     $("#col").hide();
@@ -858,9 +853,9 @@
                     alert(res.msg);
                     window.location.href = '/index/log';
                 }
-                if(res.code == '00002'){
+                if(res.code == '00002') {
                     alert(res.msg);
-=======
+                }
                 if(res == '·1'){
                     alert('请登录')
                     window.location.href = '/index/log';
@@ -872,7 +867,6 @@
                 }
                 if(res == '·3'){
                     alert("收藏成功")
->>>>>>> 0596d9de5ecaeafb52102d81a11132f3900bf699
                     $("#col").hide();
                     $("#col").next().show();
                 }

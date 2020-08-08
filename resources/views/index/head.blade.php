@@ -107,7 +107,7 @@
                                 <span class="car"></span>
                                 <a class="sui-btn btn-default btn-xlarge" href="/index/cart_index" target="_blank">
                                     <span>我的购物车</span>
-                                    <!-- <i class="shopnum"></i> -->
+                                    <i class="shopnum">{{$cart_count}}</i>
                                 </a>
                                 <div class="clearfix shopcarlist" id="shopcarlist" style="display:none">
                                     <p>"啊哦，可以加入我的购物车哦！"</p>

@@ -12,8 +12,8 @@ class CollectController extends Controller
         $goods_id = $request -> goods_id;
         $user_id = session('user_id');
         if(empty($user_id)){
-//            return $this -> message('00001','请先登录');
-            return 1;
+            return $this -> message('00001','请先登录');
+//            return 1;
         }
         $where = [
             'goods_id'  => $goods_id,
@@ -22,15 +22,15 @@ class CollectController extends Controller
         ];
         $info = DB::table('collect')->where($where)->first();
         if($info){
-//            return $this -> message('00002','商品已收藏');
-            return 2;
+            return $this -> message('00002','商品已收藏');
+//            return 2;
         }
         unset($where['is_del']);
         $data_info = DB::table('collect')->where($where)->first();
         if ($data_info){
             $da_info = DB::table('collect')->where($where)->update(['is_del'=>1]);
-//            return $this -> message('00000','收藏成功');
-            return 3;
+            return $this -> message('00000','收藏成功');
+//            return 3;
         }
         $data = [];
         $data['goods_id'] = $goods_id;
@@ -39,11 +39,11 @@ class CollectController extends Controller
         $data['add_time'] = time();
         $res = DB::table('collect')->insert($data);
         if($res){
-//            return $this -> message('00000','收藏成功');
-            return 3;
+            return $this -> message('00000','收藏成功');
+//            return 3;
         }else{
-//            return $this -> message('00003','收藏失败');
-            return 4;
+            return $this -> message('00003','收藏失败');
+//            return 4;
         }
     }
     public function del(Request $request)
@@ -69,7 +69,7 @@ class CollectController extends Controller
         $where = [
             'collect.is_del'    => 1
         ];
-        $collectinfo = DB::table('collect')->join('goods','goods.goods_id','=','collect.goods_id')->where($where)->paginate(2);
+        $collectinfo = DB::table('collect')->join('goods','goods.goods_id','=','collect.goods_id')->where($where)->paginate(4);
         $cate_dt = CateModel::where('cate_nav_show',1)->get();
         return view('index/collectlist',['cate_dt'=>$cate_dt,'collectinfo'=>$collectinfo]);
     }

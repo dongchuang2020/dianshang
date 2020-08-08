@@ -76,7 +76,7 @@
                                         <li class="active">{{$collectinfo->links()}}</li>
                                     </ul>
                                 </div>
-                    </div
+                    </div>
                    
 
 <div class="clearfix footer">  

@@ -363,11 +363,11 @@
             type:'post',
 //            dataType:'json',
             success:function (res) {
-                if(res == '·1'){
+                if(res == '1'){
                     location.reload();
                 }else{
                     alert("删除失败");
-                    location.href='index/cart_index';
+                    location.reload();
                 }
             }
         });

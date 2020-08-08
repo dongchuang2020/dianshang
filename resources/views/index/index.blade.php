@@ -140,11 +140,11 @@
             </li>
             @foreach($goodsinfo as $v)
             <li class="yui3-u-5-24">
-                <a href="{{url('/details/index/'.$v->goods_id)}}" target="_blank"><img src="{{$v->goods_log}}" width="200" height="200"/></a>
+                <a href="{{url('/details/index/'.$v->goods_id)}}" target="_blank"><img src="{{$v->goods_log}}" width="150" height="150"/></a>
             </li>
             @endforeach
             {{--<li class="yui3-u-5-24">--}}
-                {{--<img src="index/img/today02.png" />--}}
+                {{--<img src="index/img/today03.png" />--}}
             {{--</li>--}}
             {{--<li class="yui3-u-5-24">--}}
                 {{--<img src="index/img/today03.png" />--}}
@@ -152,6 +152,7 @@
             {{--<li class="yui3-u-5-24">--}}
                 {{--<img src="index/img/today04.png" />--}}
             {{--</li>--}}
+
         </ul>
     </div>
 </div>
@@ -192,17 +193,17 @@
         <div class="clearfix yui3-g Interest">
             <span class="x-line"></span>
             <div class="yui3-u row-405 Interest-conver">
-                <img class="tou6" src="{{$g_res[0]->goods_log}}"/>
+                <a href="{{url('details/index/'.$g_res[0]->goods_id)}}"><img class="tou6" src="{{$g_res[0]->goods_log}}" /></a>
             </div>
             <div class="yui3-u row-225 Interest-conver-split">
                 <h5>{{$g_res[1]->goods_name}}</h5>
-                <img class="tou7" src="{{$g_res[1]->goods_log}}" />
-                <img class="tou7    " src="{{$g_res[1]->goods_log}}" />
+                <a href="{{url('details/index/'.$g_res[1]->goods_id)}}"><img class="tou7" src="{{$g_res[1]->goods_log}}" /></a>
+                <a href="{{url('details/index/'.$g_res[1]->goods_id)}}"><img class="tou7" src="{{$g_res[1]->goods_log}}" /></a>
             </div>
             <div class="yui3-u row-405 Interest-conver-split blockgary">
-                <h5>{{$g_res[2]->goods_name}}</h5>
+                <a href="{{url('details/index/'.$g_res[2]->goods_id)}}"><h5>{{$g_res[2]->goods_name}}</h5></a>
                 <div class="split-bt">
-                    <img class="tou8" src="{{$g_res[2]->goods_log}}" style="width:400px; height:400px;"/>
+                    <a href="{{url('details/index/'.$g_res[2]->goods_id)}}"> <img class="tou8" src="{{$g_res[2]->goods_log}}" style="width:400px; height:400px;"/></a>
                 </div>
             </div>
             <div class="yui3-u row-165 brandArea">

@@ -51,7 +51,6 @@ class IndexController extends Controller
         $brand_res=BrandModel::limit(16)->get();
         $b_res=BrandModel::limit(10)->get();
         $g_res=GoodsModel::orderBy('goods_click','desc')->limit(3)->get();
-//        dd($g_res);exit;
 //        dd($brand_res);exit;
         $sloganInfo=Slogan::where(["is_del"=>2])->get();
         //我的收藏
@@ -61,8 +60,8 @@ class IndexController extends Controller
             'is_hot'    => 1,
             'is_del'    => 1
         ];
-        $goodsInfo = DB::table('goods')->where($whereinfo)->orderby('add_time','desc')->limit(4)->get();
-        // var_dump($goodsInfo);
+        $goodsInfo = DB::table('goods')->where($whereinfo)->orderby('add_time','desc')->limit(4)->get()->toArray();
+//         var_dump($goodsInfo);die;
         //浏览历史的展示
         $historyShow=ShopHistory::leftjoin("goods","shop_history.goods_id","=","goods.goods_id")->orderby('shop_history.add_time','desc')->limit(4)->get();
 
@@ -72,7 +71,9 @@ class IndexController extends Controller
             'ls_del'    => 1
         ];
         $cart_info = DB::table('shop_car')->join('goods','goods.goods_id','=','shop_car.goods_id')->where($cartwhere)->get();
-        return view('index.index',['cate_dt'=>$cate_dt,'cate_info'=>$cate_info,'cate_show'=>$cate_show,'brand_res'=>$brand_res,"sloganInfo"=>$sloganInfo,'goods_info'=>$goods_info,"sloganInfo2"=>$sloganInfo2,'g_res'=>$g_res,'b_res'=>$b_res,'collect_info'=>$collect_info,'goodsinfo'=>$goodsInfo,'historyShow'=>$historyShow,'cart_info'=>$cart_info]);
+        $cart_count = DB::table('shop_car')->where($cartwhere)->count();
+        //dd($cart_info);
+        return view('index.index',['cate_dt'=>$cate_dt,'cate_info'=>$cate_info,'cate_show'=>$cate_show,'brand_res'=>$brand_res,"sloganInfo"=>$sloganInfo,'goods_info'=>$goods_info,"sloganInfo2"=>$sloganInfo2,'g_res'=>$g_res,'b_res'=>$b_res,'collect_info'=>$collect_info,'goodsinfo'=>$goodsInfo,'historyShow'=>$historyShow,'cart_info'=>$cart_info,'cart_count'=>$cart_count]);
     }
     public function reg(){
         return view('index.reg');
@@ -220,16 +221,10 @@ class IndexController extends Controller
             'data'  => $data
         ];
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> 0596d9de5ecaeafb52102d81a11132f3900bf699
     public function del_session(Request $request){
         $request->session()->flush();
-<<<<<<< HEAD
-=======
 //        session('user_id',null);
->>>>>>> 0596d9de5ecaeafb52102d81a11132f3900bf699
         return redirect('/');
     }
     public function test()

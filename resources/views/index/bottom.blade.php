@@ -177,17 +177,35 @@
                             </div>
                             <div id="J-cart-render">
                                 <!-- 列表 -->
-                                <div id="cart-list" class="tbar-cart-list">
-                                </div>
+                                @foreach($cart_info as $v)
+                                    <div class="tbar-cart-item" >
+
+                                        <div class="jtc-item-promo">
+                                            {{--<em class="promo-tag promo-mz">满赠<i class="arrow"></i></em>--}}
+                                            {{--<div class="promo-text">已购满600元，您可领赠品</div>--}}
+                                        </div>
+                                        <div class="jtc-item-goods">
+
+                                            <span class="p-img"><a href="{{url('details/index/'.$v->goods_id)}}" target="_blank"><img src="{{$v->goods_log}}" alt="{1}" height="50" width="50" /></a></span>
+                                            {{--<div class="p-name">--}}
+                                            <a href="#">{{$v->goods_name}}</a>
+                                            {{--</div>--}}
+                                            {{--<div class="p-price"><strong>¥{3}</strong>×{4} </div>--}}
+                                            {{--<a href="#none" class="p-del J-del">删除</a>--}}
+
+                                        </div>
+
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                     <!-- 小计 -->
                     <div id="cart-footer" class="tbar-panel-footer J-panel-footer">
                         <div class="tbar-checkout">
-                            <div class="jtc-number"> <strong class="J-count" id="cart-number">0</strong>件商品 </div>
-                            <div class="jtc-sum"> 共计：<strong class="J-total" id="cart-sum">¥0</strong> </div>
-                            <a class="jtc-btn J-btn" href="#none" target="_blank">去购物车结算</a>
+                            <div class="jtc-number"> <strong class="J-count" id="cart-number">{{$cart_count}}</strong>件商品  </div>
+                            {{--<div class="jtc-sum"> 共计：<strong class="J-total" id="cart-sum">¥0</strong> </div>--}}
+                            <a class="jtc-btn J-btn" href="{{url('index/cart_index')}}" target="_blank">去购物车结算</a>
                         </div>
                     </div>
                 </div>
@@ -251,7 +269,7 @@
                 <div onclick="cartPanelView.tabItemClick('cart')" class="toolbar-tab tbar-tab-cart" data="购物车" tag="cart" >
                     <i class="tab-ico"></i>
                     <em class="tab-text"></em>
-                    <span class="tab-sub J-count " id="tab-sub-cart-count">0</span>
+                    <span class="tab-sub J-count " id="tab-sub-cart-count">{{$cart_count}}</span>
                 </div>
                 <div onclick="cartPanelView.tabItemClick('follow')" class="toolbar-tab tbar-tab-follow" data="我的关注" tag="follow" >
                     <i class="tab-ico"></i>
@@ -279,28 +297,28 @@
     </div>
 </div>
 <!--购物车单元格 模板-->
-<script type="text/template" id="tbar-cart-item-template">
+{{--<script type="text/template" id="tbar-cart-item-template">
     @foreach($cart_info as $v)
     <div class="tbar-cart-item" >
 
         <div class="jtc-item-promo">
-            {{--<em class="promo-tag promo-mz">满赠<i class="arrow"></i></em>--}}
-            {{--<div class="promo-text">已购满600元，您可领赠品</div>--}}
+            <em class="promo-tag promo-mz">满赠<i class="arrow"></i></em>
+            <div class="promo-text">已购满600元，您可领赠品</div>
         </div>
         <div class="jtc-item-goods">
 
             <span class="p-img"><a href="#" target="_blank"><img src="{{$v->goods_log}}" alt="{1}" height="50" width="50" /></a></span>
-            {{--<div class="p-name">--}}
-                {{--<a href="#">{{$v->goods_name}}</a>--}}
-            {{--</div>--}}
-            {{--<div class="p-price"><strong>¥{3}</strong>×{4} </div>--}}
-            {{--<a href="#none" class="p-del J-del">删除</a>--}}
+            --}}{{--<div class="p-name">--}}{{--
+                --}}{{--<a href="#">{{$v->goods_name}}</a>--}}{{--
+            --}}{{--</div>--}}{{--
+            --}}{{--<div class="p-price"><strong>¥{3}</strong>×{4} </div>--}}{{--
+            --}}{{--<a href="#none" class="p-del J-del">删除</a>--}}{{--
 
         </div>
 
     </div>
     @endforeach
-</script>
+</script>--}}
 <!--侧栏面板结束-->
 <script type="text/javascript" src="index/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript">
