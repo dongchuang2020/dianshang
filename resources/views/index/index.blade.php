@@ -42,7 +42,7 @@
                         @foreach($sloganInfo as $k=>$v) 
                         <li slogan_id="{{$v->slogan_id}}"> 
                             &nbsp;&nbsp;&nbsp;
-                            <a href="{{$v->slogan_url}}">{{$v->slogan_title}}</a>
+                            <a href="{{url('/sloganinfo/'.$v->slogan_id)}}">{{$v->slogan_title}}</a>
                         </li>
                         @endforeach  
                     </ul>
@@ -50,52 +50,52 @@
                 <ul class="yui3-g Lifeservice">
                     <li class="yui3-u-1-4 life-item tab-item">
                         <i class="list-item list-item-1"></i>
-                        <span class="service-intro"><a href="https://chongzhi.jd.com/">话费</a></span>
+                        <span class="service-intro"><a href="#">话费</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item tab-item">
                         <i class="list-item list-item-2"></i>
-                        <span class="service-intro"><a href="https://flights.ctrip.com/">机票</a></span>
+                        <span class="service-intro"><a href="#">机票</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item tab-item">
                         <i class="list-item list-item-3"></i>
-                        <span class="service-intro"><a href="https://maoyan.com/">电影票</a></span>
+                        <span class="service-intro"><a href="#">电影票</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item tab-item">
                         <i class="list-item list-item-4"></i>
-                        <span class="service-intro"><a href="http://tg.37.com/">游戏</a></span>
+                        <span class="service-intro"><a href="#">游戏</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item notab-item">
                         <i class="list-item list-item-5"></i>
-                        <span class="service-intro"><a href="https://caipiao.taobao.com/">彩票</a></span>
+                        <span class="service-intro"><a href="#">彩票</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item notab-item">
                         <i class="list-item list-item-6"></i>
-                        <span class="service-intro"><a href="http://www.nucarf.com/">加油站</a></span>
+                        <span class="service-intro"><a href="#">加油站</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item notab-item">
                         <i class="list-item list-item-7"></i>
-                        <span class="service-intro"><a href="https://hotels.ctrip.com/">酒店</a></span>
+                        <span class="service-intro"><a href="#">酒店</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item notab-item">
                         <i class="list-item list-item-8"></i>
                         <i class="list-item list-item-8"></i>
-                        <span class="service-intro"><a href="https://www.tieyou.com/">火车票</a></span>
+                        <span class="service-intro"><a href="#">火车票</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item  notab-item">
                         <i class="list-item list-item-9"></i>
-                        <span class="service-intro"><a href="https://www.shuidichou.com/">众筹</a></span>
+                        <span class="service-intro"><a href="#">众筹</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item notab-item">
                         <i class="list-item list-item-10"></i>
-                        <span class="service-intro"><a href="https://money.19lou.com/">理财</a></span>
+                        <span class="service-intro"><a href="#">理财</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item notab-item">
                         <i class="list-item list-item-11"></i>
-                        <span class="service-intro"><a href="https://o.jd.com/">礼品卡</a></span>
+                        <span class="service-intro"><a href="#">礼品卡</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item notab-item">
                         <i class="list-item list-item-12"></i>
-                        <span class="service-intro"><a href="https://baitiao.jd.com/">白条</a></span>
+                        <span class="service-intro"><a href="#">白条</a></span>
                     </li>
                 </ul>
                 <!-- <div class="life-item-content">
