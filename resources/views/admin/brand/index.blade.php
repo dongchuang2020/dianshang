@@ -166,9 +166,18 @@
             }
             if(confirm('是否确认删除')){
                 $.get('/brand/del/'+brand_id,function(msg){
+<<<<<<< Updated upstream
                     if(msg=='·1'){
                         alert("删除成功");
                         location.href="/brand/index"
+=======
+                    if(msg=='1'){
+//                        alert(msg.message);
+//                        history.go(0);
+//                        var url='/brand/index';
+//                        localtion.href=url;
+                        location.reload();
+>>>>>>> Stashed changes
                     }
                 })
             }

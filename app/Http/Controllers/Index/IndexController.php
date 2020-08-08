@@ -223,7 +223,7 @@ class IndexController extends Controller
             'data'  => $data
         ];
     }
-
+    
     public function del_session(Request $request){
         $request->session()->flush();
 //        session('user_id',null);
@@ -272,13 +272,14 @@ class IndexController extends Controller
 
             return view('index.search.search',['cate_dt'=>$cate_dt,'goods_res'=>$data]);
         }
+        #品牌
         $brand_res=BrandModel::where($where1)->first();
        //dd($brand_res);exit;
         if($brand_res){
             $goods_res=GoodsModel::where('brand_id',$brand_res['brand_id'])->get();
             return view('index.search.search',['cate_dt'=>$cate_dt,'goods_res'=>$goods_res]);
         }
-
+        #商品
        $goods_res=GoodsModel::where($where)->get();
 //       dd($goods_res);exit;
        return view('index.search.search',['cate_dt'=>$cate_dt,'goods_res'=>$goods_res]);

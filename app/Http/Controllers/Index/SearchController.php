@@ -88,7 +88,9 @@ class SearchController extends Controller
             ['is_del','=',1]
         ];
 
-        if(!empty($sid) || !empty($a_id)){
+
+        if(!empty($sid) && !empty($a_id)){
+
             $where[]=['a_id','=',$a_id];
             $where[]=['sid','=',$sid];
         }
@@ -115,6 +117,7 @@ class SearchController extends Controller
             }
         }
 //        print_r($where);
+//        dd($where);
         $search_goods_res=GoodsModel::where($where)->get();
 //        $search_brand_res=BrandModel::where($where1)->get();
 //        dd($search_goods_res);

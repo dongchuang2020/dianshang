@@ -35,6 +35,7 @@
 				<ul class="tags-choose">
 					<li class="tag" id="goods_price" style="display:none;">全网通<i class="sui-icon icon-tb-close"></i></li>
 					<li class="tag" id="brand"  style="display:none;">63G<i class="sui-icon icon-tb-close"></i></li>
+					<li class="tag" id="aid"  style="display:none;">63G<i class="sui-icon icon-tb-close"></i></li>
 				</ul>
 				<form class="fl sui-form form-dark">
 					<div class="input-control control-right">
@@ -93,7 +94,7 @@
 							@foreach($attr_res as $k=>$v)
 								@if($sku_res->sid==$v->sid)
 							<li>
-								<a>{{$v->a_name}}</a>
+								<a a_id="{{$v->a_id}}" class="a_name">{{$v->a_name}}</a>
 							</li>
 								@endif
 							@endforeach
@@ -127,7 +128,7 @@
 
 				<input type="hidden" id="cate_name" value="">
 				<input type="hidden" id="brand_name" value="">
-				<input type="hidden" id="sku_name" value="">
+				<input type="hidden" id="a_name" value="">
 				<input type="hidden" id="goods_price" value="">
 
 				<div class="sui-navbar">
@@ -647,23 +648,37 @@
 	$(document).ready(function(){
 		$(document).on("click",".goods_price",function(){
 			var _this=$(this);
+			_this.parent('li').siblings('li').find('a').removeClass('redhover');
+			_this.addClass('redhover');
 			var goods_price=_this.text();
 			var cate_id="{{$search_show->cate_id ?? ''}}";
 			$("#goods_price").show();
 			$('#goods_price').text(goods_price);
-
+			//累加条件
 			var brand_name=$("#brand_name").val();
-//			console.log(brand_name);
+			console.log(brand_name);
 //			return false;
 			if(brand_name==''){
 				brand_name=null;
+			}
+			var a_name=$("#a_name").val();
+			if(a_name==""){
+				a_name=null;
+			}
+			var a_id=_this.attr("a_id");
+			if(a_id==""){
+				a_id=null;
+			}
+			var sid="{{$sku_res->sid}}";
+			if(sid==""){
+				sid=null;
 			}
 			var url="/index/search_price";
 
 			$.ajax({
 				url:url,
 				type:'post',
-				data:{goods_price:goods_price,cate_id:cate_id,brand_id:brand_name},
+				data:{goods_price:goods_price,cate_id:cate_id,brand_id:brand_name,a_name:a_name,a_id:a_id,sid:sid},
 				dataType:'html',
 				success:function(msg){
 //					console.log(msg);
@@ -683,16 +698,60 @@
 			if(goods_price==''){
 				goods_price=null;
 			}
+			var a_name=$("#a_name").val();
+			if(a_name==''){
+				a_name=null;
+			}
+			var a_id=_this.attr("a_id");
+			if(a_id==""){
+				a_id=null;
+			}
+			var sid="{{$sku_res->sid}}";
+			if(sid==""){
+				sid=null;
+			}
 			var url="/index/search_price";
 			$.ajax({
 				url:url,
 				type:'post',
-				data:{brand_name:brand_name,brand_id:brand_id,cate_id:cate_id,goods_price:goods_price},
+				data:{brand_name:brand_name,brand_id:brand_id,cate_id:cate_id,goods_price:goods_price,a_name:a_name,a_id:a_id,sid:sid},
 				dataType:'html',
 				success:function(msg){
 					$('.newinfo').html(msg);
 				}
 			});
-		})
+		});
+		$(document).on("click",".a_name",function(){
+//			console.log(111);
+			var _this=$(this);
+			_this.parent('li').siblings('li').find('a').removeClass('redhover');
+			_this.addClass('redhover');
+			var a_name=_this.text();
+//			console.log(a_name);
+			var cate_id="{{$search_show->cate_id}}";
+			var a_id=_this.attr("a_id");
+			var sid="{{$sku_res->sid}}";
+//			alert(sid);return false;
+			var brand_name=$("#brand_name").val();
+			$("#aid").show();
+			$("#aid").text(a_name);
+			if(brand_name==''){
+				brand_name=null;
+			}
+			var goods_price=$("#goods_price").val();
+			if(goods_price==''){
+				goods_price=null;
+			}
+			var url="/index/search_price";
+			$.ajax({
+				url:url,
+				type:'post',
+				data:{a_name:a_name,cate_id:cate_id,goods_price:goods_price,brand_id:brand_name,a_id:a_id,sid:sid},
+				dataType:'html',
+				success:function(msg){
+					$('.newinfo').html(msg);
+				}
+			});
+		});
 	});
 </script>

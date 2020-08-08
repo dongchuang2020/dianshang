@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   <component name="PublishConfigData">
 =======
 <<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
   <component name="PublishConfigData" autoUpload="On explicit save action" serverName="chaung">
 >>>>>>> Stashed changes
     <serverData>
@@ -16,13 +19,22 @@
             <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
             <mapping deploy="" local="" />
 =======
+<<<<<<< Updated upstream
   <component name="PublishConfigData" serverName="dandan">
     <serverData>
       <paths name="dandan">
+=======
+  <component name="PublishConfigData" autoUpload="On explicit save action" serverName="swx">
+    <serverData>
+      <paths name="swx">
+>>>>>>> Stashed changes
         <serverdata>
           <mappings>
             <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
 >>>>>>> Stashed changes
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
           </mappings>
         </serverdata>
