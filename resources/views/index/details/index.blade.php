@@ -154,10 +154,6 @@
                                 </li>
                             </ul>
                         </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> cc6cb44d433a440cb3607c9197d8878835e343bf
                     </div>
                 </div>
             </div>
@@ -847,17 +843,17 @@
             type:'post',
             dataType:'json',
             success:function (res) {
-                if(res.code == '00001'){
-                    alert(res.msg)
-                    window.location.href = '/index/log';
-                }
-                if(res.code == '00002'){
-                    alert(res.msg)
+                if(res.code == '00000'){
+                    alert(res.msg);
                     $("#col").hide();
                     $("#col").next().show();
                 }
-                if(res.code == '00000'){
-                    alert(res.msg)
+                if(res.code == '00001'){
+                    alert(res.msg);
+                    window.location.href = '/index/log';
+                }
+                if(res.code == '00002'){
+                    alert(res.msg);
                     $("#col").hide();
                     $("#col").next().show();
                 }

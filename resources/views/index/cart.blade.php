@@ -343,12 +343,13 @@
             data:{'goods_id':goods_id},
             url:url,
             type:'get',
-            dataType:'json',
+//            dataType:'json',
             success:function (res) {
-                if(res.code == '00000'){
-                    window.location.reload();
+                if(res == "1"){
+                    location.reload();
                 }else{
-                    alert(res.msg)
+                    alert("删除失败");
+                    location.reload();
                 }
             }
         });
@@ -365,12 +366,13 @@
             data:{'goods_id':goods_id},
             url:url,
             type:'post',
-            dataType:'json',
+//            dataType:'json',
             success:function (res) {
-                if(res.code == '00000'){
-                    window.location.reload();
+                if(res == '·1'){
+                    location.reload();
                 }else{
-                    alert(res.msg)
+                    alert("删除失败");
+                    location.href='index/cart_index';
                 }
             }
         });
@@ -410,7 +412,7 @@
             data:{'goods_id':goods_id},
             url:url,
             type:'get',
-            dataType:'json',
+           // dataType:'json',
             success:function (res) {
                 $('#money').text(res)
             }

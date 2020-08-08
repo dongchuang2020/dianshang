@@ -35,9 +35,9 @@ class UserinfoController extends Controller
         ];
         $info = DB::table('user_info')->where($where)->delete();
         if($info){
-            return $this -> message('00000','成功');
+            return 1;
         }else{
-            return $this -> message('00001','失败');
+            return 2;
         }
     }
     public function up($uid){

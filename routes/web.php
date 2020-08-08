@@ -21,6 +21,10 @@ Route::get('/erees', function () {
     return view('erees');
 });
 
+Route::get('/phpinfo',function (){
+   phpinfo();
+});
+
 
 Route::any('admin/pipe_del', 'PipeController@del');
 
@@ -226,7 +230,7 @@ Route::any('/index/guo_add','Index\CartController@guo_add');
 Route::any('/index/addcart','Index\CartController@addcart');
 Route::any('/index/checknum','Index\CartController@checknum');    //改变文本框数量
 Route::any('/index/total','Index\CartController@total');    //获取小计
-Route::any('/index/getprice','Index\CartController@getprice');    //获取小计
+Route::any('/index/getprice','Index\CartController@getprice');    //获取zongjia
 Route::any('/index/delcart','Index\CartController@del');    //删除
 Route::any('/index/delall','Index\CartController@delall');    //全部删除
 Route::any('/index/cookie','Index\CartController@cookies');    //删除

@@ -66,14 +66,20 @@ class IndexController extends Controller
         // var_dump($goodsInfo);
         //浏览历史的展示
         $historyShow=ShopHistory::leftjoin("goods","shop_history.goods_id","=","goods.goods_id")->orderby('shop_history.add_time','desc')->limit(4)->get();
-        return view('index.index',['cate_dt'=>$cate_dt,'cate_info'=>$cate_info,'cate_show'=>$cate_show,'brand_res'=>$brand_res,"sloganInfo"=>$sloganInfo,'goods_info'=>$goods_info,"sloganInfo2"=>$sloganInfo2,'g_res'=>$g_res,'b_res'=>$b_res,'collect_info'=>$collect_info,'goodsinfo'=>$goodsInfo,'historyShow'=>$historyShow]);
+
+        //购物车
+        $cartwhere = [
+            'user_id'   => session('user_id'),
+            'ls_del'    => 1
+        ];
+        $cart_info = DB::table('shop_car')->join('goods','goods.goods_id','=','shop_car.goods_id')->where($cartwhere)->get();
+        return view('index.index',['cate_dt'=>$cate_dt,'cate_info'=>$cate_info,'cate_show'=>$cate_show,'brand_res'=>$brand_res,"sloganInfo"=>$sloganInfo,'goods_info'=>$goods_info,"sloganInfo2"=>$sloganInfo2,'g_res'=>$g_res,'b_res'=>$b_res,'collect_info'=>$collect_info,'goodsinfo'=>$goodsInfo,'historyShow'=>$historyShow,'cart_info'=>$cart_info]);
     }
     public function reg(){
         return view('index.reg');
     }
     public function do_reg(Request $request){
         $data = $request -> all();
-
         if(empty($data['user_name'])){
             return $this -> message('00001','用户名不能为空');
         }
@@ -215,17 +221,9 @@ class IndexController extends Controller
             'data'  => $data
         ];
     }
-<<<<<<< HEAD
+
     public function del_session(Request $request){
-//        cookie('user_id',null);
         $request->session()->flush();
-//        session('user_id',null);
-=======
-    public function del_session(){
-        setcookie('user_id',null);
-        session('user_id',null);
-        session('user_name',null);
->>>>>>> cc6cb44d433a440cb3607c9197d8878835e343bf
         return redirect('/');
     }
     public function test()

@@ -30,10 +30,6 @@ class DetailController extends Controller
 
         //收藏
         $res=GoodsModel::where('goods_id',$id)->first();
-<<<<<<< HEAD
-
-=======
->>>>>>> cc6cb44d433a440cb3607c9197d8878835e343bf
         $goods_imgs_res=GoodsImgsModel::where('goods_id',$id)->get();
 //        dd($goods_imgs_res);exit;
         $user_id= session('user_id');
@@ -55,10 +51,6 @@ class DetailController extends Controller
             $da[]=$shu_name_res;
         }
         $da=array_unique($da);
-<<<<<<< HEAD
-=======
-        $cate_dt = CateModel::where('cate_nav_show',1)->get();
->>>>>>> cc6cb44d433a440cb3607c9197d8878835e343bf
         $comment_res=CommentModel::where('goods_id',$id)->get();
         foreach($comment_res as $v){
             $dat = DB::table('user')->where('user_id','=',$v->user_id)->first();

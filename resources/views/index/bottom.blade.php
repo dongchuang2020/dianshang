@@ -280,20 +280,26 @@
 </div>
 <!--购物车单元格 模板-->
 <script type="text/template" id="tbar-cart-item-template">
+    @foreach($cart_info as $v)
     <div class="tbar-cart-item" >
+
         <div class="jtc-item-promo">
-            <em class="promo-tag promo-mz">满赠<i class="arrow"></i></em>
-            <div class="promo-text">已购满600元，您可领赠品</div>
+            {{--<em class="promo-tag promo-mz">满赠<i class="arrow"></i></em>--}}
+            {{--<div class="promo-text">已购满600元，您可领赠品</div>--}}
         </div>
         <div class="jtc-item-goods">
-            <span class="p-img"><a href="#" target="_blank"><img src="{2}" alt="{1}" height="50" width="50" /></a></span>
-            <div class="p-name">
-                <a href="#">{1}</a>
-            </div>
-            <div class="p-price"><strong>¥{3}</strong>×{4} </div>
-            <a href="#none" class="p-del J-del">删除</a>
+
+            <span class="p-img"><a href="#" target="_blank"><img src="{{$v->goods_log}}" alt="{1}" height="50" width="50" /></a></span>
+            {{--<div class="p-name">--}}
+                {{--<a href="#">{{$v->goods_name}}</a>--}}
+            {{--</div>--}}
+            {{--<div class="p-price"><strong>¥{3}</strong>×{4} </div>--}}
+            {{--<a href="#none" class="p-del J-del">删除</a>--}}
+
         </div>
+
     </div>
+    @endforeach
 </script>
 <!--侧栏面板结束-->
 <script type="text/javascript" src="index/plugins/jquery/jquery.min.js"></script>

@@ -78,6 +78,7 @@
                     </li>
                     <li class="yui3-u-1-4 life-item notab-item">
                         <i class="list-item list-item-8"></i>
+                        <i class="list-item list-item-8"></i>
                         <span class="service-intro"><a href="https://www.tieyou.com/">火车票</a></span>
                     </li>
                     <li class="yui3-u-1-4 life-item  notab-item">
