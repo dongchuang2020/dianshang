@@ -69,13 +69,14 @@
                 url:url,
                 type:'post',
                 data:{a_id:a_id,a_name:a_name,sid:sid},
-                dataType:'json',
+//                dataType:'json',
                 success:function(msg){
 //                    console.log(msg);
-                    if(msg.status==200){
-                        alert(msg.message);
-                        var url=msg.url;
-                        location.href=url;
+                    if(msg=="·1"){
+                        alert("修改成功");
+                        location.href="/attribute/index";
+                    }else{
+                        alert("修改失败");
                     }
                 }
             });

@@ -40,7 +40,7 @@
                 </thead>
                 <tbody>
                 @foreach($data as $v)
-                    <tr id="{{$v['sid']}}">
+                    <tr sid="{{$v['sid']}}">
                         <td>{{$v['sid']}}</td>
                         <td>{{$v['name']}}</td>
                         <td class="text-center">
@@ -60,16 +60,16 @@
 </html>
 <script>
     $(document).on('click','#btn',function () {
-        var id = $("#btn").parents("tr").attr('id');
+        var sid = $(this).parents("tr").attr('sid');
         var url = 'delsku';
         $.ajax({
             type:'get',
             url:url,
-            data:{'id':id},
-            dataType:'json',
+            data:{'sid':sid},
+//            dataType:'json',
             success:function (res) {
-                if(res.code=='00000'){
-                    alert(res.msg)
+                if(res=='·1'){
+                    alert("删除成功");
                     window.location.href = "/admins/skulist";
                 }
             }

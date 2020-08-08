@@ -133,12 +133,13 @@
                 url:url,
                 type:'post',
                 data:{a_name:a_name,sid:sid},
-                dataType:'json',
+//                dataType:'json',
                 success:function(msg){
-                    if(msg.status==200){
-                        alert(msg.message);
-                        var url=msg.url;
-                        location.href=url;
+                    if(msg=="·1"){
+                        alert("添加成功");
+                        location.href="/attribute/index";
+                    }else{
+                        alert("添加失败");
                     }
                 }
             });
@@ -150,12 +151,13 @@
         }
         if(confirm('是否确认删除')){
             $.get('/attribute/del/'+a_id,function(msg){
-                if(msg.status==200){
-                    alert(msg.message);
-                    var url=msg.url;
-                    location.href=url;
+                if(msg=="·1"){
+                    alert("删除成功");
+                    location.href="/attribute/index";
+                }else{
+                    alert("删除失败");
                 }
-            },'json')
+            })
         }
     }
 </script>

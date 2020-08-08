@@ -25,36 +25,20 @@ class AttrController extends Controller
         ];
         $res=AttrModel::insert($data);
         if($res){
-            $msg=[
-                'status'=>'200',
-                'message'=>'添加成功',
-                'url'=>'/attribute/index'
-            ];
+            $info=1;
         }else{
-            $msg=[
-                'status'=>'100',
-                'message'=>'添加失败',
-                'url'=>''
-            ];
+            $info=2;
         }
-        return json_encode($msg);
+        return $info;
     }
     public function del($id){
         $res=AttrModel::destroy($id);
         if($res){
-            $msg=[
-                'status'=>'200',
-                'message'=>'删除成功',
-                'url'=>'/attribute/index'
-            ];
+            $info=1;
         }else{
-            $msg=[
-                'status'=>'100',
-                'message'=>'删除失败',
-                'url'=>''
-            ];
+            $info=2;
         }
-        return json_encode($msg);
+        return $info;
     }
     public function edit($id){
         $re=SkuModel::get();
@@ -73,18 +57,10 @@ class AttrController extends Controller
         ];
         $res=AttrModel::where('a_id',$a_id)->update($data);
         if($res){
-            $msg=[
-                'status'=>'200',
-                'message'=>'编辑成功',
-                'url'=>'/attribute/index'
-            ];
+            $info=1;
         }else{
-            $msg=[
-                'status'=>'100',
-                'message'=>'编辑失败',
-                'url'=>''
-            ];
+            $info=2;
         }
-        return json_encode($msg);
+        return $info;
     }
 }

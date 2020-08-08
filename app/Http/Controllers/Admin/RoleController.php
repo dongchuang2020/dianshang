@@ -30,18 +30,11 @@ class RoleController extends Controller
     	];
     	$res=Role::where($where)->delete();
     	if($res){
-    		return [
-    			"success"=>"true",
-    			"code"=>"00000",
-    			"url"=>"/role/show"
-    		];
+    		$info=1;
     	}else{
-    		return [
-    			"success"=>"false",
-    			"code"=>"00001",
-    			"url"=>"/role/show"
-    		];
+    		$info=2;
     	}
+		return $info;
     }
     public function update($id){
     	$res=Role::where('role_id',$id)->first();
@@ -80,19 +73,11 @@ class RoleController extends Controller
     		$res=RoleChmodModel::insert($data);
     	}
     	if($res){
-    		$msg=[
-    			'status'=>'200',
-    			'message'=>'赋权成功',
-    			'url'=>'/role/show'
-    		];
+    		$info=1;
     	}else{
-    		$msg=[
-    			'status'=>'100',
-    			'message'=>'赋权失败',
-    			'url'=>''
-    		];
+    		$info=2;
     	}
-    	return json_encode($msg);	
+    	return $info;
     }
 
 }

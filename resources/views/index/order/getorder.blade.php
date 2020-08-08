@@ -42,17 +42,7 @@
     <form action="{{url('/zhi')}}" method="get">
 
     <!--logoArea-->
-    <div class="logoArea">
-        <div class="fl logo"><span class="title">结算页</span></div>
-        <div class="fr search">
-            <form class="sui-form form-inline">
-                <div class="input-append">
-                    <input type="text" type="text" class="input-error input-xxlarge" placeholder="品优购自营" />
-                    <button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
-                </div>
-            </form>
-        </div>
-    </div>
+
     <!--主内容-->
     <div class="checkout py-container">
         <div class="checkout-tit">
@@ -252,7 +242,7 @@
         <div class="fc-receiverInfo">寄送至:{{$v->di}} 收货人：{{$v->name}} {{$v->tel}}</div>
             @endif
         @endforeach
-        <div><a class="sui-btn btn-danger btn-xlarge" href="#" id="but">提交订单</a></div>
+        <div><a class="sui-btn btn-danger btn-xlarge" href="#" {{--id="but"--}}>提交订单</a></div>
     </div>
     </form>
 </div>

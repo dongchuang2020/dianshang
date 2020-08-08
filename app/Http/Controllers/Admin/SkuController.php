@@ -15,15 +15,16 @@ class SkuController extends Controller
         $data = [];
         $data['name'] = $request -> name;
         $data['addtime'] = time();
-        if(empty($data['name'])){
-            return $this -> message('00001','属性名不能为空');
-        }
+//        if(empty($data['name'])){
+//            return $this -> message('00001','属性名不能为空');
+//        }
         $res = SkuModel::insert($data);
         if($res){
-            return $this -> message('00000','成功');
+           $info=1;
         }else{
-            return $this -> message('00002','失败');
+           $info=2;
         }
+        return $info;
     }
     public function message($code , $msg , $data = []){
         return [
@@ -38,17 +39,18 @@ class SkuController extends Controller
         return view('admin.sku.list',['data'=>$res]);
     }
     public function del(Request $request){
-        $id = $request -> id;
+        $sid = $request ->post("sid");
 
         $where = [
-            'sid'    =>$id
+           [ 'sid',"=",$sid]
         ];
-        $res = SkuModel::where($where)->update(['is_del'=>2]);
+        $res = SkuModel::where($where)->delete();
         if($res){
-            return $this -> message('00000','成功');
+           $info=1;
         }else{
-            return $this -> message('00002','失败');
+           $info=2;
         }
+        return $info;
     }
     public function upsku($id){
         $where = ['sid' => $id];
@@ -64,9 +66,10 @@ class SkuController extends Controller
         ];
         $res = DB::table('sku_name')->where($whre)->update($data);
         if($res){
-            return $this -> message('00000','成功');
+           $info=1;
         }else{
-            return $this -> message('00001','失败');
+          $info=2;
         }
+        return $info;
     }
 }

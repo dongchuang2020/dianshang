@@ -71,11 +71,9 @@
                 'you':you
             },
             success:function (rm) {
-                alert(rm)
-                if (rm == '添加成功'){
-                    location.href="/admin/pipe_zhan"
-                } else {
-                    alert(rm)
+                if (rm == '·1'){
+                    alert("添加成功");
+                    location.href="/admin/pipe_zhan";
                 }
             }
         })

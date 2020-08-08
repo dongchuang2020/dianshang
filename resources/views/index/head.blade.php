@@ -89,14 +89,13 @@
             <div class="py-container">
                 <div class="yui3-g Logo">
                     <div class="yui3-u Left logoArea">
-                        <a class="logo-bd" title="品优购" href="JD-index.html" target="_blank"></a>
                     </div>
                     <div class="yui3-u Center searchArea">
                         <div class="search">
                             <form action="{{url('/index/search')}}" class="sui-form form-inline">
                                 <!--searchAutoComplete-->
                                 <div class="input-append">
-                                    <input type="text" name="goods_name" id="autocomplete" type="text" class="input-error input-xxlarge" />
+                                    <input type="text" name="goods_name" id="autocomplete" type="text" class="input-error input-xxlarge " />
                                     <button class="sui-btn btn-xlarge btn-danger" type="submit">搜索</button>
                                 </div>
                             </form>

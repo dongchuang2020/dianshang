@@ -51,6 +51,10 @@ class DetailController extends Controller
             $da[]=$shu_name_res;
         }
         $da=array_unique($da);
+<<<<<<< HEAD
+=======
+        $cate_dt = CateModel::where('cate_nav_show',1)->get();
+>>>>>>> 0596d9de5ecaeafb52102d81a11132f3900bf699
         $comment_res=CommentModel::where('goods_id',$id)->get();
         foreach($comment_res as $v){
             $dat = DB::table('user')->where('user_id','=',$v->user_id)->first();

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redis;
 
 class CheckToken
 {
@@ -16,7 +17,7 @@ class CheckToken
      */
     public function handle($request, Closure $next)
     {
-        $id = session('id');
+        $id = Redis::get('id');
         if ($id){
             $ls = $request->path();
             if ($ls == 'admin' || $ls == 'admin_home'){

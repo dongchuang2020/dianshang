@@ -166,17 +166,11 @@
             }
             if(confirm('是否确认删除')){
                 $.get('/brand/del/'+brand_id,function(msg){
-                    if(msg.status==200){
-                        alert(msg.message);
-                        history.go(0);
-                        var url=msg.url;
-                        localtion.href=url;
-                    }else if(msg.status==100){
-                        alert(msg.message);
-                        var url=msg.url;
-                        localtion.href=url;
+                    if(msg=='·1'){
+                        alert("删除成功");
+                        location.href="/brand/index"
                     }
-                },'json')
+                })
             }
         }
 

@@ -23,45 +23,30 @@ class ChmodController extends Controller
         ];
         $re=ChmodModel::where(['chmod_name'=>$chmod_name])->first();
         if($re){
-            $msg=[
-                'status'=>'10',
-                'message'=>'权限名称已存在',
-                'url'=>'/chmod/index'
-            ];
+//            $msg=[
+//                'status'=>'10',
+//                'message'=>'权限名称已存在',
+//                'url'=>'/chmod/index'
+//            ];
+            $info=3;
         }else{
             $res=ChmodModel::insert($data);
             if($res){
-                $msg=[
-                    'status'=>'200',
-                    'message'=>'添加成功',
-                    'url'=>'/chmod/index'
-                ];
+               $info=1;
             }else{
-                $msg=[
-                    'status'=>'100',
-                    'message'=>'添加失败',
-                    'url'=>''
-                ];
+               $info=2;
             }
         }
-        return json_encode($msg);
+        return $info;
     }
     public function del($id){
         $res=ChmodModel::destroy($id);
         if($res){
-            $msg=[
-                'status'=>'200',
-                'message'=>'删除成功',
-                'url'=>'/chmod/index'
-            ];
+            $info=1;
         }else{
-            $msg=[
-                'status'=>'100',
-                'message'=>'删除失败',
-                'url'=>''
-            ];
+            $info=2;
         }
-        return json_encode($msg);
+        return $info;
     }
     public function edit($id){
         $res=ChmodModel::where('chmod_id',$id)->first();
@@ -70,25 +55,11 @@ class ChmodController extends Controller
     public function update(Request $request){
         $data=$request->all();
         $res=ChmodModel::where('chmod_id',$data['chmod_id'])->update($data);
-        if($res==1){
-            $msg=[
-                'status'=>'200',
-                'message'=>'修改成功',
-                'url'=>'/chmod/index'
-            ];
-        }else if($res==0){
-            $msg=[
-                'status'=>'10',
-                'message'=>'数据未做任何修改',
-                'url'=>'/chmod/index'
-            ];
+        if($res!==false){
+            $info=1;
         }else{
-            $msg=[
-                'status'=>'100',
-                'message'=>'修改失败',
-                'url'=>''
-            ];
+            $info=2;
         }
-        return json_encode($msg);
+        return $info;
     }
 }

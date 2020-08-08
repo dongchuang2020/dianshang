@@ -138,15 +138,11 @@
 				type:"post",
 				data:data,
 				url:url,
-				dataType:"json",
+//				dataType:"json",
 				success:function(res){
-					if(res.success=="true"){
+					if(res=="·1") {
 						alert("删除成功");
-						location.href=res.url;
-					}
-					if(res.success=="fasle"){
-						alert("删除失败");
-						location.href=res.url;
+						location.href = "/role/show";
 					}
 				 }
 			 })

@@ -66,11 +66,9 @@
             },
             success:function (rm) {
 
-                if (rm == '修改成功'){
-                    alert(rm)
+                if (rm == '·1'){
+                   alert("修改成功");
                     location.href="/admin/pipe_zhan"
-                } else {
-                    alert(rm)
                 }
             }
         })

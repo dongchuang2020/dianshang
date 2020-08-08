@@ -264,7 +264,7 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="/front/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                            <span class="hidden-xs"><?php echo session('name'); ?></span>
+                            <span class="hidden-xs">{{$da_name ?? ''}}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
@@ -272,16 +272,14 @@
                                 <img src="/front/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    <?php echo session('name'); ?>
-                                    <small>最后登录 11:20AM</small>
+                                    {{$da_name ?? ''}}
+                                    <small>最后登录 {{date('H:i',$da_time ?? time())}}</small>
                                 </p>
                             </li>
 
                             <!-- Menu Footer-->
                             <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">修改密码</a>
-                                </div>
+
                                 <div class="pull-right">
                                     <a href="/admin/pipe_del" class="btn btn-default btn-flat">注销</a>
                                 </div>

@@ -231,7 +231,7 @@
                     @foreach($v->cate as $k=>$vv)
                         @if($k < 5)
                     <li>
-                        <a href="#tab2" data-toggle="tab">{{$vv->cate_name}}</a>
+                        <a href="{{url('/index/search/'.$vv->cate_id)}}">{{$vv->cate_name}}</a>
                     </li>
                         @endif
                     @endforeach
@@ -247,7 +247,7 @@
                             @foreach($v->cate as $k=>$vv)
                                 @if($k >= 5)
                                     <li>
-                                        <a href="#tab2" data-toggle="tab">{{$vv->cate_name}}</a>
+                                        <a href="{{url('/index/search/'.$vv->cate_id)}}">{{$vv->cate_name}}</a>
                                     </li>
                                 @endif
                             @endforeach
@@ -317,14 +317,14 @@
                         <div class="floor-conver-pit">
                             @foreach($v->data as $k=>$vv)
                                 @if($k == 7)
-                                    <img class="tou1" src="{{$vv->goods_log}}" />
+                                    <a href="{{url('/details/index/'.$vv->goods_id)}}"><img class="tou1" src="{{$vv->goods_log}}" /></a>
                                 @endif
                             @endforeach
                         </div>
                         <div class="floor-conver-pit">
                             @foreach($v->data as $k=>$vv)
                                 @if($k == 8)
-                                    <img class="tou1" src="{{$vv->goods_log}}" />
+                                    <a href="{{url('/details/index/'.$vv->goods_id)}}"><img class="tou1" src="{{$vv->goods_log}}" /></a>
                                 @endif
                             @endforeach
                         </div>

@@ -120,6 +120,7 @@
                             @endforeach
                         </dl>
                         @endforeach
+
                             @if($info==null)
                                 <span id="col" goods_id="{{$res->goods_id}}" >收 藏</span>
                                 <span id="del" goods_id="{{$res->goods_id}}" style="display: none">取消收藏</span>
@@ -154,6 +155,10 @@
                                 </li>
                             </ul>
                         </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0596d9de5ecaeafb52102d81a11132f3900bf699
                     </div>
                 </div>
             </div>
@@ -841,8 +846,9 @@
             data:{'goods_id':goods_id},
             url:url,
             type:'post',
-            dataType:'json',
+           // dataType:'json',
             success:function (res) {
+<<<<<<< HEAD
                 if(res.code == '00000'){
                     alert(res.msg);
                     $("#col").hide();
@@ -854,11 +860,24 @@
                 }
                 if(res.code == '00002'){
                     alert(res.msg);
+=======
+                if(res == '·1'){
+                    alert('请登录')
+                    window.location.href = '/index/log';
+                }
+                if(res == '·2'){
+                    alert('商品已收藏')
                     $("#col").hide();
                     $("#col").next().show();
                 }
-                if(res.code == '00003'){
-                    alert(res.msg)
+                if(res == '·3'){
+                    alert("收藏成功")
+>>>>>>> 0596d9de5ecaeafb52102d81a11132f3900bf699
+                    $("#col").hide();
+                    $("#col").next().show();
+                }
+                if(res == '·4'){
+                    alert('收藏失败')
                 }
             }
         });
@@ -870,7 +889,7 @@
             data:{'goods_id':goods_id},
             url:url,
             type:'get',
-            dataType:'json',
+           // dataType:'json',
             success:function (res) {
                if(res.code == '00000'){
                    alert(res.msg)
