@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <title>我的购物车</title>
+    <link rel="icon" href="assets/index/img/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/index/css/webbase.css" />
     <link rel="stylesheet" type="text/css" href="/index/css/pages-cart.css" />
@@ -13,22 +14,16 @@
 
 <body>
 <!--head-->
-@include('index.ding')
+<div id="nav-bottom">
+    <!--顶部-->
+    @include('index.ding1')
+</div>
 <div class="cart py-container">
     <!--logoArea-->
 
     <!--All goods-->
     <div class="allgoods">
-        <h4>全部商品<span>11</span></h4>
         <div class="cart-main">
-            <div class="yui3-g cart-th">
-                <div class="yui3-u-1-4"><input type="checkbox" name="" id="" value="" /> 全部</div>
-                <div class="yui3-u-1-4">商品</div>
-                <div class="yui3-u-1-8">单价（元）</div>
-                <div class="yui3-u-1-8">数量</div>
-                <div class="yui3-u-1-8">小计（元）</div>
-                <div class="yui3-u-1-8">操作</div>
-            </div>
             <div class="cart-item-list">
                 <div class="cart-body">
                     @foreach($cart_data as $v)
@@ -410,7 +405,7 @@
             data:{'goods_id':goods_id},
             url:url,
             type:'get',
-            dataType:'json',
+           // dataType:'json',
             success:function (res) {
                 $('#money').text(res)
             }

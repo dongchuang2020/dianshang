@@ -66,9 +66,6 @@ class CartController extends Controller
         $user_id = session('user_id');
         $goods_price = DB::table('goods')->where(['goods_id'=>$goods_id])->value('goods_price');
         if(empty($user_id)){
-
-            echo "<script>alert('请先登陆');location='/index/log'</script>";
-
             // $this -> addCartCookie($goods_id,$buy_number,$goods_price);
             // die;
              echo "<script>alert('请先登录');location='/index/log'</script>";
@@ -76,9 +73,10 @@ class CartController extends Controller
         $where = [
             'user_id'   => $user_id,
             'goods_id'  => $goods_id,
-            'ls_del'    => 2
+            'ls_del'    => 1
         ];
         $cart_info = DB::table('shop_car')->where($where)->first();
+
         if($cart_info){
             $result = $this -> checkGoodsNum($goods_id,$buy_number,$cart_info->buy_number);
             if($result==false){
@@ -88,6 +86,7 @@ class CartController extends Controller
             $buy_number = $buy_number+$cart_info->buy_number;
             $time = time();
             $upcart = DB::table('shop_car')->where($where)->update(['buy_number'=>$buy_number,'add_time'=>$time]);
+
             if($upcart){
                 echo "<script>alert('加入购物车成功');location='/index/cart_index'</script>";
             }else{
@@ -191,7 +190,7 @@ class CartController extends Controller
         foreach ($data as $v){
             $zongjia += $v->buy_number*$v->goods_price;
         }
-        return $zongjia;
+        return json_encode($zongjia);
     }
     //删除
     public function del(Request $request){
@@ -203,9 +202,9 @@ class CartController extends Controller
         ];
         $del = DB::table('shop_car')->where($where)->update(['ls_del'=>2]);
         if($del){
-            return $this -> message('00000','删除成功');
+            return 1;
         }else{
-            return $this -> message('00001','删除失败');
+            return 2;
         }
     }
     //删除选中的商品
@@ -225,9 +224,9 @@ class CartController extends Controller
             }
         }
         if($data){
-            return $this -> message('00000','删除成功');
+            return 1;
         }else{
-            return $this -> message('00001','删除失败');
+            return 2;
         }
     }
     public function message($code , $msg , $data = []){

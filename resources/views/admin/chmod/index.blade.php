@@ -130,17 +130,14 @@
               url:url,
               type:'post',
               data:{chmod_name:chmod_name,chmod_url:chmod_url,describe:describe},
-              dataType:'json',
+//              dataType:'json',
               success:function(msg){
-                  if(msg.status==200){
-                      alert(msg.message);
-                      history.go();
-                      var url=msg.url;
-                      localtion.href=url;
-                  }else if(msg.status==10){
-                      alert(msg.message);
-                      var url=msg.url;
-                      localtion.href=url;
+                if(msg=="·3"){
+                    alert("权限名称已经存在");
+                }
+                  if(msg=="·1"){
+                      alert("添加成功");
+                      location.href="/chmod/index";
                   }
               }
            });
@@ -152,12 +149,13 @@
         }
         if(confirm('是否确认删除')){
             $.get('/chmod/del/'+chmod_id,function(msg){
-                if(msg.status==200){
-                    alert(msg.message);
-                    var url=msg.url;
-                    location.href=url;
+                if(msg=="·1"){
+                    alert("删除成功");
+                    location.href="/chmod/index";
+                }else{
+                    alert("删除失败");
                 }
-            },'json')
+            })
         }
     }
 </script>

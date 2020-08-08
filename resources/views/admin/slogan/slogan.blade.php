@@ -168,12 +168,13 @@
 					type:"post",
 					url:url,
 					data:data,
-					dataType:"json",
+					//dataType:"json",
 					success:function(res){
-						if(res.success=="true"){
-							location.href=res.url;
+						console.log(res);
+						if(res == '·1'){
+							location.reload();
 						}
-						if(res.success=="false"){
+						if(res==2){
 							alert("删除失败");
 							location.href=res.url;
 						}

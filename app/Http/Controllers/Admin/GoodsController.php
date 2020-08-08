@@ -91,9 +91,9 @@ class GoodsController extends Controller
         ];
         $res = GoodsModel::where($where)->update(['is_del'=>2]);
         if($res){
-            return $this->message('00001','成功');
+            return 1;
         }else{
-            return $this->message('00002','失败');
+            return 2;
         }
     }
     //商品修改

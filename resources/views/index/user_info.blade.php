@@ -349,10 +349,13 @@ undefined
            data:{'uid':uid},
            url:url,
            type:'post',
-           dataType:'json',
+//           dataType:'json',
            success:function (res) {
-               if(res.code == '00000'){
+               if(res== '·1'){
+                   alert("删除成功");
                    window.location.href = '/index/user_info';
+               }else{
+                   alert("删除失败");
                }
            }
        });

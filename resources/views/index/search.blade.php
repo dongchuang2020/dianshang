@@ -30,7 +30,7 @@
 					<li>
 						<a href="/">全部结果</a>
 					</li>					
-					<li class="active">@if($search_show->cate_name) {{$search_show->cate_name}} @endif</li>
+					<li class="active">{{--@if($search_show)--}} {{$search_show->cate_name ?? ''}} {{--@endif--}}</li>
 				</ul>
 				<ul class="tags-choose">
 					<li class="tag" id="goods_price" style="display:none;">全网通<i class="sui-icon icon-tb-close"></i></li>
@@ -47,9 +47,10 @@
 			<!--selector-->
 			<div class="clearfix selector">
 			<div class="type-wrap">
-					<div class="fl key">{{$search_show->cate_name}}</div>
+					<div class="fl key">{{$search_show->cate_name ?? ''}}</div>
 					<div class="fl value">
 						<ul class="type-list">
+							@if($search_show != null)
 						@foreach($search_cate as $k=>$v)
 							@if($search_show->cate_id == $v->parent_id)
 							<li>
@@ -57,30 +58,26 @@
 							</li>
 							@endif
 							@endforeach
+								@endif
 						</ul>
 					</div>
 					<div class="fl ext"></div>
 				</div>
-				<!-- <div class="type-wrap logo">
-					<div class="fl key">{{$search_show->cate_name}}</div>
-					<div class="fl value logos">
-						<ul class="logo-list">
-							@foreach($search_cate as $k=>$v)
-							@if($search_show->cate_id == $v->parent_id)
-								<li>{{$v->cate_name}}</li>
-							@endif
-							@endforeach
-						</ul>
-					</div>
-					<div class="fl ext"></div>
-				</div> -->
 				<div class="type-wrap logo">
 					<div class="fl key brand">品牌</div>
 					<div class="value logos">
 						<ul class="logo-list">
+							@if($search_brand)
 						@foreach($search_brand as $k=>$v)
 							<li  class="brand_name" brand_name="{{$v->brand_name}}" brand_id="{{$v->brand_id}}"><img src="{{$v->brand_img}}" style="width:105px;height:52px" /></li>
 						@endforeach
+								@else
+								@foreach($shop_brand as $k=>$v)
+									@if($v->cate_id == $id)
+									<li  class="brand_name" brand_name="{{$v->brand_name}}" brand_id="{{$v->brand_id}}"><img src="{{$v->brand_img}}" style="width:105px;height:52px" /></li>
+									@endif
+								@endforeach
+							@endif
 						</ul>
 					</div>
 					<div class="ext">
@@ -89,9 +86,10 @@
 					</div>
 				</div>
 				<div class="type-wrap">
-					<div class="fl key">{{$sku_res->name}}</div>
+					<div class="fl key">{{$sku_res->name ?? ''}}</div>
 					<div class="fl value">
 						<ul class="type-list">
+							@if($sku_res != null)
 							@foreach($attr_res as $k=>$v)
 								@if($sku_res->sid==$v->sid)
 							<li>
@@ -99,6 +97,7 @@
 							</li>
 								@endif
 							@endforeach
+								@endif
 						</ul>
 					</div>
 					<div class="fl ext"></div>
@@ -649,7 +648,7 @@
 		$(document).on("click",".goods_price",function(){
 			var _this=$(this);
 			var goods_price=_this.text();
-			var cate_id="{{$search_show->cate_id}}";
+			var cate_id="{{$search_show->cate_id ?? ''}}";
 			$("#goods_price").show();
 			$('#goods_price').text(goods_price);
 
@@ -676,7 +675,7 @@
 			var _this=$(this);
 			var brand_name=_this.attr('brand_name');
 			var brand_id = _this.attr('brand_id');
-			var cate_id="{{$search_show->cate_id}}";
+			var cate_id="{{$search_show->cate_id ?? ''}}";
 //			alert(brand_name);
 			$("#brand").show();
 			$("#brand").text(brand_name);

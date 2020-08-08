@@ -139,11 +139,13 @@
             type:'get',
             url:url,
             data:{'goods_id':goods_id},
-            dataType:'json',
+//            dataType:'json',
             success:function (res) {
-                if(res.code=='00001'){
-                    alert(res.msg)
-                    window.location.href = '/admins/goodslist';
+                if(res == "·1"){
+                    location.reload();
+                }else{
+                    alert("失败")
+                    location.href = '/admins/goodslist';
                 }
             }
         })

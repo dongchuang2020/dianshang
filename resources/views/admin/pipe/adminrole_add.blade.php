@@ -61,12 +61,11 @@
                 type:'post',
                 data:{admin_id:admin_id,role_id:role_id},
                 // console.log(data);return;
-                dataType:'json',
+                //dataType:'json',
                 success:function(msg){
-                    if(msg.status==200){
-                        alert(msg.message);
-                        var url=msg.url;
-                        location.href=url;
+                    //alert(msg)
+                    if(msg=="·1"){
+                        location.href="/admin/pipe_zhan";
                     }
                 }
             });

@@ -63,12 +63,11 @@
                 type:'post',
                 data:{chmod_id:chmod_id,role_id:role_id},
                 // console.log(data);return;
-                dataType:'json',
+//                dataType:'json',
                 success:function(msg){
-                    if(msg.status==200){
-                        alert(msg.message);
-                        var url=msg.url;
-                        location.href=url;
+                    if(msg=="·1"){
+                        alert("赋权成功");
+                        location.href="/role/show";
                     }
                 }
             });

@@ -78,11 +78,21 @@ class SearchController extends Controller
         $goods_price=$request->post('goods_price');
         $cate_id=$request->post('cate_id');
         $brand_id=$request->post('brand_id');
-//        dd($brand_id);exit;
+        $a_name=$request->post('a_name');
+
+        $a_id=$request->post('a_id')??'';
+        $sid=$request->post('sid')??'';
+//        dd($sid);exit;
         $where=[
             ['cate_id','=',$cate_id],
             ['is_del','=',1]
         ];
+
+        if(!empty($sid) || !empty($a_id)){
+            $where[]=['a_id','=',$a_id];
+            $where[]=['sid','=',$sid];
+        }
+
         if(!empty($brand_id)){
             $where[]= ['brand_id','=',$brand_id];
         }
@@ -108,6 +118,6 @@ class SearchController extends Controller
         $search_goods_res=GoodsModel::where($where)->get();
 //        $search_brand_res=BrandModel::where($where1)->get();
 //        dd($search_goods_res);
-        return view('index.newgoodsprice',['search_goods_res'=>$search_goods_res,'goods_price'=>$goods_price,'brand_id'=>$brand_id]);
+        return view('index.newgoodsprice',['search_goods_res'=>$search_goods_res,'goods_price'=>$goods_price,'brand_id'=>$brand_id,'a_name'=>$a_name,'a_id'=>$a_id,'sid'=>$sid]);
     }
 }

@@ -37,18 +37,11 @@ class SloganController extends Controller
       ];
       $res=Slogan::where($where)->update(["is_del"=>1]);
       if($res){
-         return [
-            "success"=>"true",
-            "code"=>"00000",
-            "url"=>"/slogan/show"
-         ];
+         $info = 1;
       }else{
-         return [
-            "success"=>"false",
-            "code"=>"00001",
-            "url"=>"/slogan/show"
-         ];
+         $info = 2;
       }
+    return $info;
    }
    public function update($id){
       $where=[

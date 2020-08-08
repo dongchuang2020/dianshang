@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Role;
 use App\Models\AdminRole;
+use Illuminate\Support\Facades\Redis;
 
 class PipeController extends Controller
 {
@@ -35,12 +36,17 @@ class PipeController extends Controller
             ];
             $data = DB::table('admin')->where('admin_id','=',$id)->update($da);
             if ($data){
-                return '修改成功';
+                $info=1;
             }else{
-                return '修改失败';
+                $info=2;
             }
+            return $info;
         }
         $yong = $request->get('yong');
+//        if($yong==""){
+//            echo "<script>alert('用户名不能为空');location='/pipe/pipe_adds'</script>";
+//            die;
+//        }
         $mi = $request->get('mi');
         $dian = $request->get('dian');
         $you = $request->get('you');
@@ -54,10 +60,11 @@ class PipeController extends Controller
         ];
         $data = DB::table('admin')->insert($da);
         if ($data){
-            return '添加成功';
+            $info=1;
         }else{
-            return '添加失败';
+            $info=2;
         }
+        return $info;
     }
     public function pipe_zhan(){
         $data = DB::table('admin')->where('is_del','=',1)->paginate(3);
@@ -81,8 +88,9 @@ class PipeController extends Controller
 //        echo $mi;
 //        dd($data->pwd);
         if ($mi == $data->pwd && $data->is_del == 1){
-            session(['id'=>$data->admin_id]);
-            session(['name'=>$data->admin_name]);
+            Redis::set('id',$data->admin_id);
+            Redis::set('name',$data->admin_name);
+            Redis::set('time',time());
             return '成功';
         }else{
             return '密码错误';
@@ -109,24 +117,23 @@ class PipeController extends Controller
             // dd($res);die;
         }
         if($res){
-            $msg=[
-                'status'=>'200',
-                'message'=>'赋权成功',
-                'url'=>'/admin/pipe_zhan'
-            ];
+            $info=1;
         }else{
-            $msg=[
-                'status'=>'100',
-                'message'=>'赋权失败',
-                'url'=>''
-            ];
+            $info=2;
         }
-        return json_encode($msg);   
+        return $info;
     }
 
     public function del(Request $request){
-        $request->session()->flush();
+        Redis::del('id');
+        Redis::del('name');
+        Redis::del('time');
         return redirect('admin/pipe_log');
     }
-
+    public function index(){
+        $da_name = Redis::get('name');
+        $da_time = Redis::get('time');
+        //echo $da_name;
+        return view('admin.index',['da_name'=>$da_name,'da_time'=>$da_time]);
+    }
 }

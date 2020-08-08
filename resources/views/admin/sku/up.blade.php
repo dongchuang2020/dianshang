@@ -31,16 +31,14 @@
         $.ajax({
             type:'post',
             data:{'name':name,'sid':sid},
-            dataType:'json',
+//            dataType:'json',
             url:url,
             success:function (res) {
-                if(res.code == '00000'){
-                    alert(res.msg);
+                if(res== '·1') {
+                    alert("修改成功");
                     window.location.href = '/admins/skulist';
-                }
-                if(res.code == '00001'){
-                    alert(res.msg);
-                    window.location.href = '/admins/skulist';
+                }else{
+                    alert("修改失败");
                 }
             }
         })

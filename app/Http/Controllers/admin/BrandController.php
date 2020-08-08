@@ -18,6 +18,7 @@ class BrandController extends Controller
     }
     public function add_do(Request $request){
         $brand_name=$request->post('brand_name');
+//        dd($brand_name);exit;
         $cate_id=$request->post('cate_id');
         $fileinfo=$_FILES["brand_img"];
         //dd($fileinfo);
@@ -33,6 +34,7 @@ class BrandController extends Controller
             'brand_show'=>$brand_show,
             'add_time'=>time(),
         ];
+//        dd($data);exit;
         $res=BrandModel::insert($data);
         if($res){
             return redirect('/brand/index');
@@ -42,19 +44,21 @@ class BrandController extends Controller
         $res=BrandModel::destroy($id);
 //        var_dump($res);
         if($res){
-            $msg=[
-                'status'=>'200',
-                'message'=>'删除成功',
-                'url'=>'/brand/index'
-            ];
+//            $msg=[
+//                'status'=>'200',
+//                'message'=>'删除成功',
+//                'url'=>'/brand/index'
+//            ];
+            $info=1;
         }else{
-            $msg=[
-                'status'=>'100',
-                'message'=>'删除失败',
-                'url'=>''
-            ];
+//            $msg=[
+//                'status'=>'100',
+//                'message'=>'删除失败',
+//                'url'=>''
+//            ];
+            $info=2;
         }
-        return json_encode($msg);
+        return $info;
     }
     public function edit($id){
         $re=CategoryModel::get();

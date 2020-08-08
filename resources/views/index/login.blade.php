@@ -14,9 +14,9 @@
 <body>
 <div class="login-box">
     <!--head-->
-    <div class="py-container logoArea">
+   {{-- <div class="py-container logoArea">
         <a href="" class="logo"></a>
-    </div>
+    </div>--}}
     <!--loginArea-->
     <div class="loginArea">
         <div class="py-container login">

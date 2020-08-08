@@ -18,7 +18,6 @@ class IndexController extends Controller
         $goods_where = [
 
             'parent_id' => 0,
-
         ];
         $goods_info = DB::table('shop_category')->where($goods_where)->limit(3)->get();
         foreach ($goods_info as $k=>$v){
@@ -137,7 +136,7 @@ class IndexController extends Controller
         if($res){
             session(['user_name'=>$user_name]);
             session(['user_id'=>$res->user_id]);
-            setcookie('user_id',$res->user_id);
+           // setcookie('user_i',$res->user_id);
             echo "<script>alert('登陆成功');location='/'</script>";
         }else{
             echo "<script>alert('失败');location='/index/log'</script>";
@@ -163,7 +162,7 @@ class IndexController extends Controller
         }
     }
     public function code($phone){
-        $host = "http://yzxyzm.market.alicloudapi.com";
+            $host = "http://yzxyzm.market.alicloudapi.com";
         $path = "/yzx/verifySms";
         $method = "POST";
         $appcode = env('P_APP_CODE');
@@ -215,17 +214,10 @@ class IndexController extends Controller
             'data'  => $data
         ];
     }
-<<<<<<< HEAD
     public function del_session(Request $request){
 //        cookie('user_id',null);
         $request->session()->flush();
 //        session('user_id',null);
-=======
-    public function del_session(){
-        setcookie('user_id',null);
-        session('user_id',null);
-        session('user_name',null);
->>>>>>> cc6cb44d433a440cb3607c9197d8878835e343bf
         return redirect('/');
     }
     public function test()
@@ -251,6 +243,7 @@ class IndexController extends Controller
             $where2[]=['cate_name','=',$goods_name];
         }
         $cate_res=CateModel::where($where2)->first();
+        $cate_dt = CateModel::where('cate_nav_show',1)->get();
         //dd($cate_res);
         if($cate_res) {
             $data = [];
@@ -267,17 +260,18 @@ class IndexController extends Controller
                     }
             }
         }
-            return view('index.search.search',['goods_res'=>$data]);
+
+            return view('index.search.search',['cate_dt'=>$cate_dt,'goods_res'=>$data]);
         }
         $brand_res=BrandModel::where($where1)->first();
        //dd($brand_res);exit;
         if($brand_res){
             $goods_res=GoodsModel::where('brand_id',$brand_res['brand_id'])->get();
-            return view('index.search.search',['goods_res'=>$goods_res]);
+            return view('index.search.search',['cate_dt'=>$cate_dt,'goods_res'=>$goods_res]);
         }
 
        $goods_res=GoodsModel::where($where)->get();
 //       dd($goods_res);exit;
-       return view('index.search.search',['goods_res'=>$goods_res]);
+       return view('index.search.search',['cate_dt'=>$cate_dt,'goods_res'=>$goods_res]);
     }
 }

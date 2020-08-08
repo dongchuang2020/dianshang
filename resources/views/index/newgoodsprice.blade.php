@@ -2,8 +2,10 @@
 
     <input type="hidden" id="cate_name" value="">
     <input type="hidden" id="brand_name" value="{{$brand_id}}">
-    <input type="hidden" id="sku_name" value="">
+    <input type="hidden" id="a_name" value="{{$a_name}}">
     <input type="hidden" id="goods_price" value="{{$goods_price}}">
+    <input type="hidden" id="a_id" value="{{$a_id}}">
+    <input type="hidden" id="sid" value="{{$sid}}">
 
     <div class="sui-navbar">
         <div class="navbar-inner filter">

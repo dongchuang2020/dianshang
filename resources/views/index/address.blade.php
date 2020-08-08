@@ -157,7 +157,7 @@ $(function(){
     												</select>
                                                 </div>
                                             </div>
-                                            </div>									 
+                                            </div>
                                         </div>
                                         <div class="control-group">
                                             <label class="control-label">详细地址：</label>
