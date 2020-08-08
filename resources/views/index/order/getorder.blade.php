@@ -13,34 +13,9 @@
 
 <body>
 <!--head-->
-<div class="top">
-    <div class="py-container">
-        <div class="shortcut">
-            <ul class="fl">
-                <li class="f-item">品优购欢迎您！</li>
-                <li class="f-item">请登录　<span><a href="#">免费注册</a></span></li>
-            </ul>
-            <ul class="fr">
-                <li class="f-item">我的订单</li>
-                <li class="f-item space"></li>
-                <li class="f-item">我的品优购</li>
-                <li class="f-item space"></li>
-                <li class="f-item">品优购会员</li>
-                <li class="f-item space"></li>
-                <li class="f-item">企业采购</li>
-                <li class="f-item space"></li>
-                <li class="f-item">关注品优购</li>
-                <li class="f-item space"></li>
-                <li class="f-item">客户服务</li>
-                <li class="f-item space"></li>
-                <li class="f-item">网站导航</li>
-            </ul>
-        </div>
-    </div>
-</div>
+@include('index.ding')
 <div class="cart py-container">
-    <form action="{{url('/zhi')}}" method="get">
-
+    <form action="{{url('/do_orderadd')}}" method="get">
     <!--logoArea-->
 
     <!--主内容-->
@@ -161,7 +136,6 @@
                     </ul>
                 </div>
                 <input type="hidden" id="goods_id"  value="{{$goodss_id}}">
-
                 <div class="hr"></div>
                 <div class="step-tit">
                     <h5>送货清单</h5>
@@ -236,7 +210,6 @@
     </div>
     <div class="clearfix trade">
         <div class="fc-price">应付金额:　<span class="price" id="total">¥{{$jia}}</span></div>
-
         @foreach($data as $v)
             @if($v->is_default == 1)
         <div class="fc-receiverInfo">寄送至:{{$v->di}} 收货人：{{$v->name}} {{$v->tel}}</div>
@@ -244,6 +217,8 @@
         @endforeach
         <div><a class="sui-btn btn-danger btn-xlarge" href="#" {{--id="but"--}}>提交订单</a></div>
     </div>
+        <a class="sui-btn btn-danger btn-xlarge" href="#" id="but">提交订单</a>
+
     </form>
 </div>
 <!-- 底部栏位 -->
@@ -386,6 +361,12 @@
 <script type="text/javascript" src="components/ui-modules/nav/nav-portal-top.js"></script>
 <script type="text/javascript" src="index/js/pages/getOrderInfo.js"></script>
 </body>
+<<<<<<< Updated upstream
+=======
+
+<<<<<<< Updated upstream
+</html>
+>>>>>>> Stashed changes
 <script>
     $(document).on('click','#but',function () {
         var ress_id = $("#ress").attr('ress_id');
@@ -401,3 +382,4 @@
     })
 </script>
 </html>
+

@@ -110,17 +110,16 @@
 
                             <dt>
                             <div class="fl title">
-                                <i class="sku_name">{{$v->name}}</i>
+                                <i class="sku_name">{{$v->name ?? ''}}</i>
                             </div>
                             </dt>
                             @foreach($data as $kk=>$vv)
-                                @if($v->sid==$vv->sid)
+                                @if($v->sid ?? ''==$vv->sid)
                                     <dd a_id="{{$vv['a_id']}}"><a href="javascript:;"  class="" id="aa" name="yangshi" a_id="{{$vv['a_id']}}">{{$vv->a_name}}<span title="点击取消选择">&nbsp;</span></a></dd>
                                 @endif
                             @endforeach
                         </dl>
                         @endforeach
-
                             @if($info==null)
                                 <span id="col" goods_id="{{$res->goods_id}}" >收 藏</span>
                                 <span id="del" goods_id="{{$res->goods_id}}" style="display: none">取消收藏</span>
@@ -856,26 +855,6 @@
                 if(res.code == '00002') {
                     alert(res.msg);
                 }
-                if(res == '·1'){
-                    alert('请登录')
-                    window.location.href = '/index/log';
-                }
-                if(res == '·2'){
-                    alert('商品已收藏')
-                    $("#col").hide();
-                    $("#col").next().show();
-                }
-                if(res == '·3'){
-                    alert("收藏成功")
-                    $("#col").hide();
-                    $("#col").next().show();
-                }
-                if(res == '·4'){
-                    alert('收藏失败')
-                }
-            }
-        });
-    })
     $(document).on('click','#del',function () {
         var goods_id = $(this).attr('goods_id');
         var url = '/index/del_collect';

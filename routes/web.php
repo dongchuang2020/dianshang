@@ -256,3 +256,4 @@ Route::any('/index/search/{id}','Index\SearchController@search');
 Route::any('/index/search_price','Index\SearchController@search_price');
 //Route::get('/zhi', 'ZhiController@zhi');
 Route::get('/zhi', 'Index\Demo_eva_controller@zfu');
+

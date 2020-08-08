@@ -5,7 +5,7 @@
             <div class="py-container">
                 <div class="shortcut">
                     <ul class="fl">
-                        <li class="f-item">优购欢迎您！</li>
+                        <li class="f-item">欢迎您！</li>
                         <li class="f-item">
                             @if(@session('user_name'))
                                 <a href="{{url('index/user_info')}}" target="_blank">欢迎<?php echo session('user_name')?>登录</a>
@@ -20,24 +20,6 @@
                     <ul class="fr">
                         <li class="f-item">我的订单</li>
                         <li class="f-item space"></li>
-                        <li class="f-item"><a href="home.html" target="_blank">我的品优购</a></li>
-                        <li class="f-item space"></li>
-                        <li class="f-item">品优购会员</li>
-                        <li class="f-item space"></li>
-                        <li class="f-item">企业采购</li>
-                        <li class="f-item space"></li>
-                        <li class="f-item">关注品优购</li>
-                        <li class="f-item space"></li>
-                        <li class="f-item" id="service">
-                            <span>客户服务</span>
-                            <ul class="service">
-                                <li><a href="cooperation.html" target="_blank">合作招商</a></li>
-                                <li><a href="shoplogin.html" target="_blank">商家后台</a></li>
-                                <li><a href="cooperation.html" target="_blank">合作招商</a></li>
-                                <li><a href="#">商家后台</a></li>
-                            </ul>
-                        </li>
-                        <li class="f-item space"></li>
                         <li class="f-item"><a href="{{url('/index/user_info')}}">个人中心</a></li>
                     </ul>
                 </div>
@@ -49,13 +31,14 @@
             <div class="py-container">
                 <div class="yui3-g Logo">
                     <div class="yui3-u Left logoArea">
+                        <img class="logo-bd"  src="/index/img/tou.jpg" style="width: 70px;height: 80px" target="_blank">
                     </div>
                     <div class="yui3-u Center searchArea">
                         <div class="search">
                             <form action="{{url('/index/search')}}" class="sui-form form-inline">
                                 <!--searchAutoComplete-->
                                 <div class="input-append">
-                                    <input type="text" name="goods_name" id="autocomplete" type="text" class="input-error input-xxlarge" />
+                                    <input type="text" name="goods_name" style="height: 18px" id="autocomplete" type="text" class="input-error input-xxlarge" />
                                     <button class="sui-btn btn-xlarge btn-danger" type="submit">搜索</button>
                                 </div>
                             </form>

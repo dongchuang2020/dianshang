@@ -73,7 +73,7 @@ class CartController extends Controller
         $where = [
             'user_id'   => $user_id,
             'goods_id'  => $goods_id,
-            'ls_del'    => 1
+            'ls_del'    => 2
         ];
         $cart_info = DB::table('shop_car')->where($where)->first();
 
