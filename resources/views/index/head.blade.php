@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-    <title>品优购，优质！优质！</title>
+    <title>优质！优质！</title>
     <link rel="icon" href="assets/index/img/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="index/css/webbase.css" />
@@ -54,7 +53,7 @@
             <div class="py-container">
                 <div class="shortcut">
                     <ul class="fl">
-                        <li class="f-item">品优购欢迎您！</li>
+                        <li class="f-item">欢迎您！</li>
                         <li class="f-item">
                             @if(@session('user_name'))
                             <a href="{{url('index/user_info')}}" target="_blank">欢迎<?php echo session('user_name')?>登录</a>
@@ -89,6 +88,7 @@
             <div class="py-container">
                 <div class="yui3-g Logo">
                     <div class="yui3-u Left logoArea">
+                        <img class="logo-bd"  src="/index/img/tou.jpg" style="width: 70px;height: 80px" target="_blank">
                     </div>
                     <div class="yui3-u Center searchArea">
                         <div class="search">
@@ -156,7 +156,13 @@
                                                 <dt><a href="{{url('/index/search/'.$v->cate_id)}}">
                                                         {{$n->cate_name}}
                                                     </a></dt>
-                                                <!-- <dd><a href="">免费</a><a href="">小说</a></em><a href="">励志与成功</a><em><a href="">婚恋/两性</a></em><em><a href="">文学</a></em><em><a href="">经管</a></em><em><a href="">畅读VIP</a></em></dd> -->
+                                                 <dd>
+                                                     @foreach($cate_show as $kk=>$vv)
+                                                         @if($n->cate_id==$vv->parent_id)
+                                                     <em><a href="">{{$vv->cate_name}}</a></em>
+                                                         @endif
+                                                     @endforeach
+                                                 </dd>
                                                 </dl>
                                         @endif
                                     @endforeach

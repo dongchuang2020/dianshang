@@ -62,7 +62,9 @@ class IndexController extends Controller
         ];
         $goodsInfo = DB::table('goods')->where($whereinfo)->orderby('add_time','desc')->limit(4)->get()->toArray();
         //浏览历史的展示
-        $historyShow=ShopHistory::leftjoin("goods","shop_history.goods_id","=","goods.goods_id")->orderby('shop_history.add_time','desc')->limit(4)->get();
+
+        $historyShow=ShopHistory::leftjoin("goods","shop_history.goods_id","=","goods.goods_id")->orderby('shop_history.add_time','desc')->limit(6)->get();
+
 
         //购物车
         $cartwhere = [
@@ -220,7 +222,7 @@ class IndexController extends Controller
             'data'  => $data
         ];
     }
-
+    
     public function del_session(Request $request){
         $request->session()->flush();
 //        session('user_id',null);
@@ -269,15 +271,22 @@ class IndexController extends Controller
 
             return view('index.search.search',['cate_dt'=>$cate_dt,'goods_res'=>$data]);
         }
+        #品牌
         $brand_res=BrandModel::where($where1)->first();
        //dd($brand_res);exit;
         if($brand_res){
             $goods_res=GoodsModel::where('brand_id',$brand_res['brand_id'])->get();
             return view('index.search.search',['cate_dt'=>$cate_dt,'goods_res'=>$goods_res]);
         }
-
+        #商品
        $goods_res=GoodsModel::where($where)->get();
 //       dd($goods_res);exit;
        return view('index.search.search',['cate_dt'=>$cate_dt,'goods_res'=>$goods_res]);
+    }
+    public function sloganinfo($id){
+        $res=Slogan::where("slogan_id",$id)->first();
+        $cate_dt = CateModel::where('cate_nav_show',1)->get();
+        $historyShow=ShopHistory::leftjoin("goods","shop_history.goods_id","=","goods.goods_id")->orderby('shop_history.add_time','desc')->limit(6)->get();
+        return view("index.sloganinfo",["res"=>$res,"historyShow"=>$historyShow,"cate_dt"=>$cate_dt]);
     }
 }

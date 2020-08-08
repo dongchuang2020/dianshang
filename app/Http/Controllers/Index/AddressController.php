@@ -12,7 +12,8 @@ use App\Models\UserRess;
 class AddressController extends Controller
 {
     public function usercenter(Request $request){
-        return view("index.usercenter");
+        $cate_dt = CateModel::where('cate_nav_show',1)->get();
+        return view("index.usercenter",['cate_dt'=>$cate_dt ]);
     }
     public function address(Request $request){
     	$areaInfo=AreaModel::where(["pid"=>0])->get();

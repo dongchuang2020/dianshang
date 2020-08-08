@@ -1,15 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="chaung">
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+  <component name="PublishConfigData">
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+  <component name="PublishConfigData" autoUpload="On explicit save action" serverName="chaung">
+>>>>>>> Stashed changes
     <serverData>
       <paths name="chaung">
         <serverdata>
           <mappings>
+<<<<<<< Updated upstream
+            <mapping local="$PROJECT_DIR$" web="/" />
+=======
             <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
             <mapping deploy="" local="" />
+=======
+<<<<<<< Updated upstream
+  <component name="PublishConfigData" serverName="dandan">
+    <serverData>
+      <paths name="dandan">
+=======
+  <component name="PublishConfigData" autoUpload="On explicit save action" serverName="swx">
+    <serverData>
+      <paths name="swx">
+>>>>>>> Stashed changes
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+>>>>>>> Stashed changes
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
           </mappings>
         </serverdata>
       </paths>
     </serverData>
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+    <option name="myAutoUpload" value="ON_EXPLICIT_SAVE" />
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   </component>
 </project>

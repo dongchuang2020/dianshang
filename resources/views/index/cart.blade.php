@@ -16,7 +16,7 @@
 <!--head-->
 <div id="nav-bottom">
     <!--顶部-->
-    @include('index.ding1')
+    @include('index.ding')
 </div>
 <div class="cart py-container">
     <!--logoArea-->
