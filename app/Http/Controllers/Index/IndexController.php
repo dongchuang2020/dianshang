@@ -61,7 +61,6 @@ class IndexController extends Controller
             'is_del'    => 1
         ];
         $goodsInfo = DB::table('goods')->where($whereinfo)->orderby('add_time','desc')->limit(4)->get()->toArray();
-//         var_dump($goodsInfo);die;
         //浏览历史的展示
         $historyShow=ShopHistory::leftjoin("goods","shop_history.goods_id","=","goods.goods_id")->orderby('shop_history.add_time','desc')->limit(4)->get();
 

@@ -14,17 +14,17 @@
                         <li data-target="#myCarousel" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
-                        @foreach($sloganInfo as $kk=>$vv)
+                        @foreach($goodsinfo as $kk=>$vv)
                             @if($kk == 0)
                                 <div class="item active">
-                                    <a href="{{$vv->slogan_url}}">
-                                        <img src="{{$vv->slogan_img}}" style="width:730px;height:454px" />
+                                    <a href="{{url('details/index/'.$vv->goods_id)}}">
+                                        <img src="{{$vv->goods_log}}" style="width:730px;height:454px" />
                                     </a>
                                 </div>
                             @else
                                 <div class="item">
-                                    <a href="{{$vv->slogan_url}}">
-                                        <img src="{{$vv->slogan_img}}" style="width:730px;height:454px" />
+                                    <a href="{{url('details/index/'.$vv->goods_id)}}">
+                                        <img src="{{$vv->goods_log}}" style="width:730px;height:454px" />
                                     </a>
                                 </div>
                             @endif
@@ -203,7 +203,7 @@
             <div class="yui3-u row-405 Interest-conver-split blockgary">
                 <a href="{{url('details/index/'.$g_res[2]->goods_id)}}"><h5>{{$g_res[2]->goods_name}}</h5></a>
                 <div class="split-bt">
-                    <a href="{{url('details/index/'.$g_res[2]->goods_id)}}"> <img class="tou8" src="{{$g_res[2]->goods_log}}" style="width:400px; height:400px;"/></a>
+                    <a href="{{url('details/index/'.$g_res[2]->goods_id)}}"> <img class="tou8" src="{{$g_res[2]->goods_log}}" style="width:400px; height:400px;"/>
                 </div>
             </div>
             <div class="yui3-u row-165 brandArea">
