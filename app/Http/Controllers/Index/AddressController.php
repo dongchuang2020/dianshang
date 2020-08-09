@@ -71,7 +71,8 @@ class AddressController extends Controller
         ];
         $areaInfo=AreaModel::where(["pid"=>0])->get();
         $res=DB::table("user_ress")->where($where)->first();
-        return view("index.addressUpdate",["res"=>$res,"areaInfo"=>$areaInfo]);
+        $cate_dt = CateModel::where('cate_nav_show',1)->get();
+        return view("index.addressUpdate",["cate_dt"=>$cate_dt,"res"=>$res,"areaInfo"=>$areaInfo]);
     }
     public function addressUpdatedo(Request $request){
         $data=$request->all();  

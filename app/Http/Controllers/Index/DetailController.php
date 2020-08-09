@@ -27,7 +27,6 @@ class DetailController extends Controller
     		$data["add_time"]=time();
     		$historyInfo=ShopHistory::insert($data);
     	}
-
         //收藏
         $res=GoodsModel::where('goods_id',$id)->first();
         $goods_imgs_res=GoodsImgsModel::where('goods_id',$id)->get();
@@ -58,7 +57,7 @@ class DetailController extends Controller
         }
        //dd($comment_res);exit;
         $cate_dt = CateModel::where('cate_nav_show',1)->get();
-        return view('Index.details.index',['cate_dt'=>$cate_dt,'res'=>$res,'sku_goods_res'=>$sku_goods_res,'data'=>$data,'da'=>$da,'info'=>$collect_info,'goods_imgs_res'=>$goods_imgs_res,'comment_res'=>$comment_res]);
+        return view('index.details.index',['cate_dt'=>$cate_dt,'res'=>$res,'sku_goods_res'=>$sku_goods_res,'data'=>$data,'da'=>$da,'info'=>$collect_info,'goods_imgs_res'=>$goods_imgs_res,'comment_res'=>$comment_res]);
     }
     //浏览历史记录展示
     public function historyShow(Request $request){

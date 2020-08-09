@@ -68,10 +68,12 @@ class IndexController extends Controller
 
         //购物车
         $cartwhere = [
-            'user_id'   => session('user_id'),
-            'ls_del'    => 1
+            'shop_car.user_id'   => session('user_id'),
+            'shop_car.ls_del'    => 1
         ];
+        //return session('user_id');
         $cart_info = DB::table('shop_car')->join('goods','goods.goods_id','=','shop_car.goods_id')->where($cartwhere)->get();
+        //dd($cart_info);
         $cart_count = DB::table('shop_car')->where($cartwhere)->count();
         //dd($cart_info);
         return view('index.index',['cate_dt'=>$cate_dt,'cate_info'=>$cate_info,'cate_show'=>$cate_show,'brand_res'=>$brand_res,"sloganInfo"=>$sloganInfo,'goods_info'=>$goods_info,"sloganInfo2"=>$sloganInfo2,'g_res'=>$g_res,'b_res'=>$b_res,'collect_info'=>$collect_info,'goodsinfo'=>$goodsInfo,'historyShow'=>$historyShow,'cart_info'=>$cart_info,'cart_count'=>$cart_count]);
