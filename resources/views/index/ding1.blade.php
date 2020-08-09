@@ -32,7 +32,7 @@
 
                 <div class="yui3-g Logo">
                     <div class="yui3-u Left logoArea">
-                        <img class="logo-bd"  src="/index/img/tou.jpg" style="width: 70px;height: 80px" target="_blank">
+                        <img class="logo-bd"  src="/index/img/20200808161654.jpg" style="width: 120px;height: 80px" target="_blank">
                     </div>
                     <div class="yui3-u Center searchArea">
                         <div class="search">

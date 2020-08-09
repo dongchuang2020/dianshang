@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Index;
 
 use App\Http\Controllers\Controller;
+use App\Model\CateModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Shop_car;
@@ -36,8 +37,8 @@ class OrderController extends Controller
                 $car_data[] = $goods_data;
             }
         }
-
-    	return view('index.order.getorder',['data'=>$data,"goodss_id"=>$goodss_id,'car_data'=>$car_data,'jia'=>$jia]);
+        $cate_dt = CateModel::where('cate_nav_show',1)->get();
+    	return view('index.order.getorder',["cate_dt"=>$cate_dt,'data'=>$data,"goodss_id"=>$goodss_id,'car_data'=>$car_data,'jia'=>$jia]);
     }
     public function do_orderadd(Request $request){
         //订单表入库
@@ -81,6 +82,7 @@ class OrderController extends Controller
             'msg'   => $msg,
             'data'  => $data
         ];
-    	return view('index.order.getorder',['data'=>$data,'car_data'=>$car_data,'jia'=>$jia]);
+        $cate_dt = CateModel::where('cate_nav_show',1)->get();
+        return view('index.order.getorder',['cate_dt'=>$cate_dt,    'data'=>$data,'car_data'=>$car_data,'jia'=>$jia]);
     }
 }

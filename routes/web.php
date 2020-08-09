@@ -258,3 +258,6 @@ Route::any('/index/search_price','Index\SearchController@search_price');
 Route::get('/zhi', 'Index\Demo_eva_controller@zfu');
 //广告详情
 Route::any('/sloganinfo/{id}','Index\IndexController@sloganinfo');
+Route::get('/wang', function (){
+    return view('index.wang');
+});

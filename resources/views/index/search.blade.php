@@ -435,6 +435,7 @@
 	</div>
 	<!--页面底部END-->
 	<!--侧栏面板开始-->
+{{--
 	<div class="J-global-toolbar">
 		<div class="toolbar-wrap J-wrap">
 			<div class="toolbar">
@@ -555,6 +556,7 @@
 
 		</div>
 	</div>
+--}}
 	<!--购物车单元格 模板-->
 	<script type="text/template" id="tbar-cart-item-template">
 		<div class="tbar-cart-item">

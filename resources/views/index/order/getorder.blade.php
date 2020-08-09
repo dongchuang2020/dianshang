@@ -215,10 +215,8 @@
         <div class="fc-receiverInfo">寄送至:{{$v->di}} 收货人：{{$v->name}} {{$v->tel}}</div>
             @endif
         @endforeach
-        <div><a class="sui-btn btn-danger btn-xlarge" href="#" {{--id="but"--}}>提交订单</a></div>
+        <div><a class="sui-btn btn-danger btn-xlarge" href="#" id="but">提交订单</a></div>
     </div>
-        <a class="sui-btn btn-danger btn-xlarge" href="#" id="but">提交订单</a>
-
     </form>
 </div>
 <!-- 底部栏位 -->
@@ -361,12 +359,7 @@
 <script type="text/javascript" src="components/ui-modules/nav/nav-portal-top.js"></script>
 <script type="text/javascript" src="index/js/pages/getOrderInfo.js"></script>
 </body>
-<<<<<<< Updated upstream
-=======
-
-<<<<<<< Updated upstream
 </html>
->>>>>>> Stashed changes
 <script>
     $(document).on('click','#but',function () {
         var ress_id = $("#ress").attr('ress_id');
