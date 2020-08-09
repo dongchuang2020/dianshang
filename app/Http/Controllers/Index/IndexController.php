@@ -214,6 +214,23 @@ class IndexController extends Controller
             return false;
         }
     }
+    public function forget(){
+        return view('index/forget');
+    }
+    public function do_forget(Request $request){
+        $user_name = $request -> user_name;
+        $user_pwd = $request -> user_pwd;
+        $res = DB::table('user')->where(['user_name'=>$user_name])->first();
+        if(empty($res)){
+            echo "<script>alert('账号找不到');location='/index/forget'</script>";
+        }
+        $up = DB::table('user')->where(['user_name'=>$user_name])->update(['user_pwd'=>$user_pwd]);
+        if($up){
+            echo "<script>alert('修改成功');location='/index/log'</script>";
+        }else{
+            echo "<script>alert('失败');location='/index/forget'</script>";
+        }
+    }
     public function message($code , $msg , $data=[]){
         return [
             'code'  => $code,

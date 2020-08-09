@@ -207,6 +207,9 @@ Route::any('index/del_userinfo','Index\UserinfoController@del');
 Route::any('index/up_userinfo/{id}','Index\UserinfoController@up');
 Route::any('index/doup_userinfo','Index\UserinfoController@do_up');
 
+Route::any('index/forget','Index\IndexController@forget');      //忘记密码
+Route::any('index/do_forget','Index\IndexController@do_forget');
+
 
 //收藏
 Route::any('index/collect','Index\CollectController@add');
