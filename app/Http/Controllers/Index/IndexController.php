@@ -170,7 +170,7 @@ class IndexController extends Controller
         }
     }
     public function code($phone){
-            $host = "http://yzxyzm.market.alicloudapi.com";
+        $host = "http://yzxyzm.market.alicloudapi.com";
         $path = "/yzx/verifySms";
         $method = "POST";
         $appcode = env('P_APP_CODE');
@@ -193,12 +193,11 @@ class IndexController extends Controller
             curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
         }
-//        var_dump(curl_exec($curl));
-//        $res = curl_exec($curl);
-//        $response = json_decode($res,true);
-        $response = [
-            'return_code'   => 00000
-        ];
+        $res = curl_exec($curl);
+        $response = json_decode($res,true);
+//        $response = [
+//            'return_code'   => 00000
+//        ];
         if($response['return_code']==00000){
             $data = [
                 'phone'     => $phone,

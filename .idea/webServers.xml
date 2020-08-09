@@ -2,24 +2,12 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-<<<<<<< Updated upstream
-      <webServer id="14ae6236-8b25-4ad2-8433-b440f071c060" name="chaung" url="http://182.92.158.22">
+      <webServer id="7e082f43-2821-415f-b45b-6682a3609b4d" name="shop" url="http://182.92.158.22">
         <fileTransfer host="182.92.158.22" port="22" rootFolder="/home/www/dianshang" accessType="SFTP">
-          <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
-          </advancedOptions>
-          <option name="port" value="22" />
-=======
-<<<<<<< Updated upstream
-      <webServer id="905ec792-37fa-4e48-863c-e6f6974e8ab4" name="dandan" url="http://182.92.158.22">
-=======
-      <webServer id="7cafa121-a535-4d9e-9f73-d6e8e520f27c" name="swx" url="http://182.92.158.22">
->>>>>>> Stashed changes
-        <fileTransfer host="182.92.158.22" port="22" rootFolder="/home/www/dianshang" accessType="SFTP" password="dfe9dfe2dfdfdfcbdfc4dfcddf9bdf9fdf9a" username="root">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
->>>>>>> Stashed changes
+          <option name="port" value="22" />
         </fileTransfer>
       </webServer>
     </option>

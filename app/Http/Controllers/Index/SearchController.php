@@ -69,7 +69,7 @@ class SearchController extends Controller
 //            $price[] = $start.'-'.$end;
             // dump($end);
             // number_format — 以千位分隔符方式格式化一个数字
-            $price[]=number_format($start,0).'-'.number_format($end,0);
+                $price[]=number_format($start,0).'-'.number_format($end,0);
         }
         $price[]=$max_price.'及以上';
         return $price;

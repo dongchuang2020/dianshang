@@ -73,10 +73,10 @@ class CartController extends Controller
         $where = [
             'user_id'   => $user_id,
             'goods_id'  => $goods_id,
-            'ls_del'    => 2
+            'ls_del'    => 1
         ];
         $cart_info = DB::table('shop_car')->where($where)->first();
-
+        dd($cart_info);
         if($cart_info){
             $result = $this -> checkGoodsNum($goods_id,$buy_number,$cart_info->buy_number);
             if($result==false){
