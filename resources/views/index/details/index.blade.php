@@ -24,22 +24,6 @@
 
 <div class="py-container">
     <div id="item">
-        <div class="crumb-wrap">
-            <ul class="sui-breadcrumb">
-                <li>
-                    <a href="#"></a>
-                </li>
-
-                <li>
-                    <a href="#">手机</a>
-                </li>
-                <li>
-                    <a href="#">Apple苹果</a>
-                </li>
-                <li class="active">iphone 6S系类</li>
-
-            </ul>
-        </div>
         <!--product-info-->
         <div class="product-info">
             <div class="fl preview-wrap">
@@ -151,7 +135,7 @@
                                 <li>
 
                                     <a href="" target="_blank" class="sui-btn  btn-danger addshopcar">立即购买</a>
-                                    <a href="{{url('/details/comment/'.$res->goods_id)}}"  class="sui-btn  btn-danger addshopcar">评论</a>
+                                    <a href="{{url('/details/comment/'.$res->goods_id)}}"  class="sui-btn  btn-danger addshopcar">留言</a>
                                 </li>
                             </ul>
                         </div>

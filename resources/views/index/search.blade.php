@@ -55,7 +55,7 @@
 						@foreach($search_cate as $k=>$v)
 							@if($search_show->cate_id == $v->parent_id)
 							<li>
-								<a>| {{$v->cate_name}}  | </a>
+								<a href="{{url('/index/search/'.$v->cate_id)}}">| {{$v->cate_name}}  | </a>
 							</li>
 							@endif
 							@endforeach
@@ -671,7 +671,7 @@
 			if(a_id==""){
 				a_id=null;
 			}
-			var sid="{{$sku_res->sid}}";
+			var sid="{{$sku_res->sid ?? ''}}";
 			if(sid==""){
 				sid=null;
 			}

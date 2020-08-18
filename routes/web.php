@@ -248,10 +248,9 @@ Route::prefix('details')->group(function(){
     Route::any('/comment_add','Index\DetailController@comment_add');
     Route::any('/goodsSku','Index\DetailController@goodsSku');
 });
-
 //订单的添加
 Route::any('/orderadd','Index\OrderController@orderadd');
-Route::any('/do_order','Index\OrderController@do_orderadd');
+Route::any('/do_order','Index\Demo_eva_controller@zfu');
 #搜索
 Route::any('/index/search','Index\IndexController@search');
 

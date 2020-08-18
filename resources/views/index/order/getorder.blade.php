@@ -366,10 +366,12 @@
         var goods_id = $("#goods_id").val();
         var total = $("#total").text();
         var price_total = total.substr(1,total.length-1);
+        // alert(price_total);
+        // return false;
         var payname =$("li[class='selected']").attr('payname');
 
 
-        var url = "/do_order?price_total="+price_total+"&ress_id="+ress_id+"&payname="+payname+"&goods_id="+goods_id;
+        var url = "/do_order?price_total="+price_total;
         location.href=url;
         return false;
     })

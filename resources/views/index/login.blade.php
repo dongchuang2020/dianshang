@@ -41,10 +41,10 @@
                     <div id="profile" class="tab-pane  active">
                         <form class="sui-form" action="{{url('/index/do_login')}}" method="post">
                             <div class="input-prepend"><span class="add-on loginname"></span>
-                                <input id="prependedInput" type="text" name="user_name" style="height: 36px" placeholder="邮箱/用户名/手机号" class="span2 input-xfat">
+                                <input id="prependedInput" type="text" name="user_name" style="height: 23px" placeholder="邮箱/用户名/手机号" class="span2 input-xfat">
                             </div>
                             <div class="input-prepend"><span class="add-on loginpwd"></span>
-                                <input id="prependedInput" type="password" name="user_pwd" style="height: 36px" placeholder="请输入密码" class="span2 input-xfat">
+                                <input id="prependedInput" type="password" name="user_pwd" style="height: 23px" placeholder="请输入密码" class="span2 input-xfat">
                             </div>
                             <div class="setting">
                                 <label class="checkbox inline">

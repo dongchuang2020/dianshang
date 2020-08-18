@@ -14,6 +14,7 @@ class Demo_eva_controller extends Controller
         require_once app_path('libs/alipay/wappay/buildermodel/AlipayTradeWapPayContentBuilder.php');
         $config=config('alipayconfig');
         $xx=request()->all();
+        //dd($xx);
         $sf=array_key_exists('dd_id',$xx);
         // if(!$sf){return false;}
         // $id=Ddan::where('dd_id',$xx['dd_id'])->first();

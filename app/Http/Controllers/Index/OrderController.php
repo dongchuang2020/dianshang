@@ -28,7 +28,8 @@ class OrderController extends Controller
             foreach ($goods_id as $v){
                 $where = [
                     'shop_car.goods_id'=>$v,
-                    'shop_car.user_id'=>$sess
+                    'shop_car.user_id'=>$sess,
+                    'shop_car.ls_del'=>1
                 ];
                 $goods_data = DB::table('shop_car')->join('goods','shop_car.goods_id','=','goods.goods_id')
                     ->where($where)->first();
